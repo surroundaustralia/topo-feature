@@ -1,0 +1,50 @@
+- title: Points collection (topology nodes)
+  content: |
+    A minimal example showing 5 Point features used as topology nodes.
+    Points have explicit 3D coordinates and serve as the base geometry for all higher-order topology.
+    All other feature types reference these points (directly or transitively) to resolve coordinates.
+  snippets:
+    - language: json
+      ref: examples/points-example.json
+
+- title: Edges collection (LineString topology referencing points)
+  content: |
+    Edge features using the 'references' model of topology — each edge has type 'LineString'
+    and references two Point feature IDs in its topology.references array.
+    geometry is null; actual coordinates are resolved from the referenced points.
+  snippets:
+    - language: json
+      ref: examples/edges-example.json
+
+- title: Faces collection (faces referencing edges via Ring directed_references)
+  content: |
+    Face features referencing edges via Ring topology with directed_references.
+    Each face has one or more Rings; each Ring's directed_references is an ordered array
+    of oriented Edge references with 'ref' and 'orientation' ('+' or '-') indicating
+    direction of traversal. geometry is null on all non-point features — coordinates
+    are derived from the topological reference chain.
+  snippets:
+    - language: json
+      ref: examples/faces-example.json
+
+- title: Solid (Polyhedron) referencing faces via Shell directed_references
+  content: |
+    A Solid feature referencing faces via a Shell topology. The solid's topology contains
+    a 'shells' array; each Shell has a directed_references array of oriented Face references.
+    All supporting points, edges and faces are included to make the example self-contained.
+  snippets:
+    - language: json
+      ref: examples/solids-example.json
+
+- title: Complete 2D Sections Topology (all feature types)
+  content: |
+    The full 2D sections topology dataset derived from a building floor plan,
+    expressed in the multi-collection model. All geometry is null except on Point features;
+    topology is encoded via references and directed_references. Contains:
+    - 36 point features (3D coordinate geometry nodes)
+    - 66 edge features (LineString topology via references to point IDs)
+    - 37 face features (Face topology via rings of directed_references to Edge IDs)
+    - 5 solid features (Solid topology via shells of directed_references to Face IDs)
+  snippets:
+    - language: json
+      ref: examples/2d-sections-complete.json

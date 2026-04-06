@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "A Face feature: a bounded planar surface described by an outer Ring and optional inner (hole) Rings. geometry must be null. Each Ring uses directed_references to oriented Edge features.",
+  "$defs": {
+    "testCollection": {
+      "$anchor": "testCollection",
+      "description": "A convienence ref to a complete, testable collection objects and references",
+      "$ref": "bblocks://ogc.geo.topo.features.topo-feature-collection"
+    }
+  },  "allOf": [
+    {
+      "$ref": "bblocks://ogc.geo.topo.features.topo-feature"
+    },
+    {
+      "properties": {
+        "geometry": { "type": "null" },
+        "topology": {
+          "properties": {
+            "type": { "type": "string", "const": "Face" },
+            "rings": {
+              "type": "array",
+              "description": "Ordered list of Ring topology objects. First ring is the outer boundary; any subsequent rings are inner boundaries (holes).",
+              "items": {
+                "type": "object",
+                "required": ["type", "directed_references"],
+                "properties": {
+                  "type": { "type": "string", "const": "Ring" },
+                  "directed_references": {
+                    "type": "array",
+                    "description": "Ordered oriented Edge references forming the ring boundary",
+                    "items": {
+                      "$ref": "bblocks://ogc.geo.topo.datatypes.oriented-ref"
+                    },
+                    "minItems": 3
+                  }
+                }
+              },
+              "minItems": 1
+            }
+          },
+          "required": ["type", "rings"],
+          "not": { "required": ["references", "directed_references"] }
+        }
+      },
+      "required": ["topology"]
+    }
+  ]
+}

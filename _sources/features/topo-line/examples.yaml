@@ -1,20 +1,28 @@
 - title: LineString
-  # content: |-
-
 
   snippets:
     - language: json
       base-uri: http://www.example.com/features/
       ref: examples/linestring.json
-      # this is a "closure" of objects required to perform SHACL validation of logical constraints.
       shacl-closure:
         - ../topo-feature/examples/points.ttl
+
 - title: MultiLineString
-# content: |-
+
   snippets:
     - language: json
       base-uri: http://www.example.com/features/
       ref: examples/multilinestring.json
-      # this is a "closure" of objects required to perform SHACL validation of logical constraints.
       shacl-closure:
         - ../topo-feature/examples/points.ttl
+
+- title: Edge topology from 2D sections (references model)
+  content: |
+    Three Edge features from the 2D sections topology dataset, demonstrating the 'references'
+    model. Each edge has type 'LineString' and references two Point feature IDs in its
+    topology.references array. geometry is null — coordinates are resolved from the referenced
+    point features at render time. This is the standard topo-feature pattern for line topology.
+  snippets:
+    - language: json
+      ref: examples/edge-from-2d-sections.json
+      schema-ref: "#testCollection"

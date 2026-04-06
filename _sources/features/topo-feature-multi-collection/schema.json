@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "A structured topology dataset with named arrays for each topological dimension. Points carry explicit coordinates; all higher-order features (edges, faces, shells, solids) use null geometry with topology defined via references or directed_references. Each array is restricted to its corresponding building block schema.",
+  "type": "object",
+  "required": ["type"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "FeatureCollection"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional dataset metadata (units, coordinate precision, source info, etc.)",
+      "additionalProperties": true
+    },
+    "points": {
+      "type": "array",
+      "description": "Point features providing base coordinate geometry for the topology",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "bblocks://ogc.geo.topo.features.topo-feature-collection#FeatureOptions"
+          },
+          {
+            "properties": {
+              "geometry": {
+                "type": "object",
+                "required": ["type", "coordinates"],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "Point"
+                  },
+                  "coordinates": {
+                    "type": "array",
+                    "minItems": 2
+                  }
+                }
+              }
+            },
+            "required": ["geometry"]
+          }
+        ]
+      }
+    },
+    "edges": {
+      "type": "array",
+      "description": "Edge (LineString) features referencing two point nodes via topology.references. geometry is null.",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "bblocks://ogc.geo.topo.features.topo-line"
+          },
+          {
+            "properties": {
+              "geometry": { "type": "null" },
+              "topology": {
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": ["LineString", "MultiLineString"]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "faces": {
+      "type": "array",
+      "description": "Face features whose boundary rings reference edges via directed_references. geometry is null.",
+      "items": {
+        "$ref": "bblocks://ogc.geo.topo.features.topo-face"
+      }
+    },
+    "shells": {
+      "type": "array",
+      "description": "Shell features referencing faces via directed_references. geometry is null.",
+      "items": {
+        "$ref": "bblocks://ogc.geo.topo.features.topo-shell"
+      }
+    },
+    "solids": {
+      "type": "array",
+      "description": "Solid features whose shells reference faces via directed_references. geometry is null.",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "bblocks://ogc.geo.topo.features.topo-feature"
+          },
+          {
+            "properties": {
+              "geometry": { "type": "null" },
+              "topology": {
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "Solid"
+                  }
+                },
+                "required": ["type", "shells"]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

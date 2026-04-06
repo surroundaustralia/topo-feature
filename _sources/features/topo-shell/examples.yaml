@@ -1,0 +1,20 @@
+- title: Shell with full topological context (points + edges + faces + solid)
+  content: |
+    A self-contained example of a Solid with its Shell, all 8 bounding Face features,
+    and all supporting Edge and Point features. Demonstrates the full topology hierarchy:
+    solids → shells (directed_references to Faces) → faces → rings (directed_references to Edges) → edges → references to points → points.
+    All geometry properties are null except on Point features.
+  snippets:
+    - language: json
+      ref: examples/shell-with-context.json
+      schema-ref: "#testCollection"
+
+- title: Shell bounding a simple rectangular solid
+  content: |
+    A Shell feature referencing 8 Face features via directed_references.
+    The '+' orientation on each face indicates the face normal points outward from the enclosed volume.
+    Faces shared with adjacent solids would appear with '-' orientation in those solids' shells.
+  snippets:
+    - language: json
+      ref: examples/shell-simple.json
+      schema-ref: "#testCollection"

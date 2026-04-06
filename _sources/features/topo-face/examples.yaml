@@ -1,0 +1,29 @@
+- title: Face with full topological context (points + edges + face)
+  content: |
+    A self-contained example showing a single Face feature alongside all the supporting
+    Edge and Point features it references. The face outer Ring has 4 oriented Edge references
+    in its directed_references array. Point geometry provides actual coordinates;
+    edge and face geometry are null (topology-only).
+  snippets:
+    - language: json
+      ref: examples/face-with-context.json
+      schema-ref: "#testCollection"
+
+- title: Simple Face (4-edge rectangular face)
+  content: |
+    A Face feature with a single outer Ring containing four oriented Edge references
+    in directed_references. All edges are traversed in the '+' (forward) direction,
+    closing the loop. geometry is null — coordinates are derived from the referenced edges and points.
+  snippets:
+    - language: json
+      ref: examples/face-simple.json
+
+- title: Face with 6 edges and mixed orientations
+  content: |
+    An L-shaped Face with 6 edges in its outer Ring directed_references. Some edges are
+    shared with adjacent faces and therefore appear with '-' (reverse) orientation,
+    reflecting the shared boundary convention.
+  snippets:
+    - language: json
+      ref: examples/face-6edge.json
+

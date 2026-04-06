@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "A Shell feature: a closed surface boundary of a Solid, described as an ordered set of directed (oriented) Face references. geometry must be null.",
+  "$defs": {
+    "testCollection": {
+      "$anchor": "testCollection",
+      "description": "A convienence ref to a complete, testable collection objects and references",
+      "$ref": "bblocks://ogc.geo.topo.features.topo-feature-collection"
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "bblocks://ogc.geo.topo.features.topo-feature"
+    },
+    {
+      "properties": {
+        "geometry": {
+          "type": "null"
+        },
+        "topology": {
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "Shell"
+            },
+            "directed_references": {
+              "type": "array",
+              "description": "Ordered list of oriented Face references forming the closed shell surface",
+              "items": {
+                "$ref": "bblocks://ogc.geo.topo.datatypes.oriented-ref"
+              },
+              "minItems": 4
+            }
+          },
+          "required": [
+            "type",
+            "directed_references"
+          ],
+          "not": {
+            "required": [
+              "references"
+            ]
+          }
+        }
+      },
+      "required": [
+        "topology"
+      ]
+    }
+  ]
+}

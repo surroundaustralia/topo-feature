@@ -1,6 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "Line Feature with geometry by reference",
+  "$defs": {
+    "testCollection": {
+      "$anchor": "testCollection",
+      "description": "A convienence ref to a complete, testable collection objects and references",
+      "$ref": "bblocks://ogc.geo.topo.features.topo-feature-multi-collection"
+    }
+  },
   "allOf": [
     {
       "$ref": "../topo-feature/schema.json"
@@ -16,7 +23,10 @@
               "properties": {
                 "type": {
                   "type": "string",
-                  "enum": [ "LineString", "MultiLineString" ]
+                  "enum": [
+                    "LineString",
+                    "MultiLineString"
+                  ]
                 }
               }
             }

@@ -17,3 +17,24 @@
         - examples/points.ttl
         - examples/lines.ttl
 
+- title: Edge Feature (references model — two Point IDs)
+  content: |
+    An Edge feature referencing two Point features by their IDs via the 'references'
+    topology array (type LineString). geometry is null — actual coordinates are resolved
+    from the referenced point features at render time.
+
+  snippets:
+    - language: json
+      ref: examples/edge-vertex-refs.json
+      base-uri: http://www.example.com/features/
+
+- title: Face Feature (Ring/directed_references model)
+  content: |
+    A Face feature whose boundary is defined via Ring topology. Each Ring contains a
+    directed_references array of oriented Edge references, each with a 'ref' (Edge feature ID)
+    and 'orientation' ('+' or '-'). geometry is null — geometry is fully defined by the topology.
+
+  snippets:
+    - language: json
+      ref: examples/face-edge-refs.json
+      base-uri: http://www.example.com/features/

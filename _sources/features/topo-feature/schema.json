@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "description": "Feature with defined topology for bounding elements",
+  "description": "Feature with defined topology for bounding elements. When topology is used to define geometry, the 'geometry' property should be null (coordinates are derived from referenced features). The 'topology' property uses either 'references' (plain string IDs) or 'directed_references' (oriented refs with '+'/'-'), but not both.",
   "allOf": [
     {
       "$ref": "bblocks://ogc.geo.topo.features.topo-feature-collection#FeatureOptions"
@@ -10,6 +10,19 @@
       "properties": {
         "id": {
           "type": "string"
+        },
+        "geometry": {
+          "description": "Null when geometry is fully defined by topology references; a GeoJSON geometry object otherwise",
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "required": ["type"],
+              "properties": {
+                "type": { "type": "string" }
+              }
+            }
+          ]
         },
         "topology": {
           "$ref": "bblocks://ogc.geo.topo.datatypes.topology"

@@ -1,8 +1,72 @@
-- title: Example Topology object
-  content: |-
-    See panel to right - note that a more user friendly "collapsable" version is in development. 
-
+- title: LineString topology (references style)
+  content: |
+    A topology object for an edge feature using plain string ID references.
+    The 'references' array names the two point features that form the line's endpoints.
   snippets:
     - language: json
       ref: example.json
       base-uri: http://www.example.com/features/
+
+- title: Ring topology (directed_references style)
+  content: |
+    A Ring topology object using directed_references — each element has a 'ref' (Edge feature ID)
+    and an 'orientation' ('+' or '-'). Mutually exclusive with 'references'.
+  snippets:
+    - language: json
+      code: |
+        {
+          "type": "Ring",
+          "directed_references": [
+            { "ref": "uuid:c60507ba-226b-4e49-a702-e9afef899b23", "orientation": "+" },
+            { "ref": "uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac", "orientation": "+" },
+            { "ref": "uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569", "orientation": "+" },
+            { "ref": "uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8", "orientation": "+" }
+          ]
+        }
+
+- title: Face topology (rings of directed_references)
+  content: |
+    A Face topology object. The 'rings' array contains Ring objects, each with
+    directed_references to Edge features. The first ring is the outer boundary.
+    'references' and 'directed_references' must not both be present.
+  snippets:
+    - language: json
+      code: |
+        {
+          "type": "Face",
+          "rings": [
+            {
+              "type": "Ring",
+              "directed_references": [
+                { "ref": "uuid:c60507ba-226b-4e49-a702-e9afef899b23", "orientation": "+" },
+                { "ref": "uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac", "orientation": "+" },
+                { "ref": "uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569", "orientation": "+" },
+                { "ref": "uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8", "orientation": "+" }
+              ]
+            }
+          ]
+        }
+
+- title: Solid topology (shells of directed_references)
+  content: |
+    A Solid topology object. The 'shells' array contains Shell objects, each with
+    directed_references to Face features forming the closed boundary surface.
+  snippets:
+    - language: json
+      code: |
+        {
+          "type": "Solid",
+          "shells": [
+            {
+              "type": "Shell",
+              "directed_references": [
+                { "ref": "uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae", "orientation": "+" },
+                { "ref": "uuid:4a294022-4864-49c7-8cee-f9e43360bc4e", "orientation": "+" },
+                { "ref": "uuid:01947f47-ee13-44a9-85a4-2bcb4881982a", "orientation": "+" },
+                { "ref": "uuid:607a3363-3eb7-4ce6-a633-86d2e565692b", "orientation": "+" },
+                { "ref": "uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f", "orientation": "+" },
+                { "ref": "uuid:2387ae98-9236-42fe-9414-c45b99954c41", "orientation": "+" }
+              ]
+            }
+          ]
+        }

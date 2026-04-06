@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "description": "feature with geometry by reference",
+  "description": "Topology datatype for topo-features. Supports two reference styles: 'references' (array of string IDs) for simple positional references, and 'directed_references' (array of oriented object references with ref+orientation) for references where traversal direction matters. Exactly one of the two must be present.",
   "$defs": {
     "refOrNest": {
       "oneOf": [
@@ -11,23 +11,28 @@
           }
         },
         {
-          "type": "string"
+          "$ref": "bblocks://ogc.ogc-utils.iri-or-curie"
+        },
+        {
+          "$ref": "bblocks://ogc.geo.topo.datatypes.oriented-ref"
         }
       ]
     }
   },
   "oneOf": [
     {
+      "description": "Plain string ID references (e.g. LineString referencing point nodes)",
+      "required": [
+        "references"
+      ],
+      "not": {
+        "required": [
+          "directed_references"
+        ]
+      },
       "properties": {
         "type": {
-          "type": "string",
-          "not": {
-            "enum": [
-              "Polygon",
-              "MultiLineString",
-              "MultiPolygon"
-            ]
-          }
+          "type": "string"
         },
         "references": {
           "type": "array",
@@ -38,21 +43,63 @@
       }
     },
     {
+      "description": "Oriented (directed) references — each with 'ref' and 'orientation'. Used for Ring, Shell.",
+      "required": [
+        "directed_references"
+      ],
+      "not": {
+        "required": [
+          "references"
+        ]
+      },
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "directed_references": {
+          "type": "array",
+          "items": {
+            "$ref": "bblocks://ogc.geo.topo.datatypes.oriented-ref"
+          }
+        }
+      }
+    },
+    {
+      "description": "Face topology — rings of directed Edge references",
+      "required": [
+        "rings"
+      ],
+      "not": {
+        "required": [
+          "references",
+          "directed_references"
+        ]
+      },
       "properties": {
         "type": {
           "type": "string",
-          "enum": [
-            "MultiPolygon"
-          ]
+          "const": "Face"
         },
-        "references": {
+        "rings": {
           "type": "array",
+          "minItems": 1,
           "items": {
-            "type": "array",
-            "items": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/refOrNest"
+            "type": "object",
+            "required": [
+              "type",
+              "directed_references"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "const": "Ring"
+              },
+              "directed_references": {
+                "type": "array",
+                "minItems": 3,
+                "items": {
+                  "$ref": "bblocks://ogc.geo.topo.datatypes.oriented-ref"
+                }
               }
             }
           }
@@ -60,28 +107,46 @@
       }
     },
     {
+      "description": "Solid topology — shells of directed Face references",
+      "required": [
+        "shells"
+      ],
+      "not": {
+        "required": [
+          "references",
+          "directed_references"
+        ]
+      },
       "properties": {
         "type": {
           "type": "string",
-          "enum": [
-            "Polygon",
-            "MultiLineString"
-          ]
+          "const": "Solid"
         },
-        "references": {
+        "shells": {
           "type": "array",
+          "minItems": 1,
           "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/$defs/refOrNest"
+            "type": "object",
+            "required": [
+              "type",
+              "directed_references"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "const": "Shell"
+              },
+              "directed_references": {
+                "type": "array",
+                "minItems": 4,
+                "items": {
+                  "$ref": "bblocks://ogc.geo.topo.datatypes.oriented-ref"
+                }
+              }
             }
           }
         }
       }
     }
-  ],
-  "required": [
-    "references",
-    "type"
   ]
 }

@@ -1,16 +1,23 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "Line Feature with geometry by reference",
+  "$defs": {
+    "testCollection": {
+      "$anchor": "testCollection",
+      "description": "A convienence ref to a complete, testable collection objects and references",
+      "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/schema.json"
+    }
+  },
   "allOf": [
     {
-      "$ref": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.json"
+      "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.json"
     },
     {
       "properties": {
         "topology": {
           "allOf": [
             {
-              "$ref": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.json"
+              "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.json"
             },
             {
               "properties": {

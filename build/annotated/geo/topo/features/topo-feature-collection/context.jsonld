@@ -1,5 +1,58 @@
 {
   "@context": {
+    "type": "@type",
+    "features": {
+      "@context": {
+        "id": "@id",
+        "geometry": "geojson:geometry",
+        "bbox": {
+          "@id": "geojson:bbox",
+          "@container": "@list"
+        },
+        "links": {
+          "@context": {
+            "href": {
+              "@type": "@id",
+              "@id": "oa:hasTarget"
+            },
+            "rel": {
+              "@context": {
+                "@base": "http://www.iana.org/assignments/relation/"
+              },
+              "@id": "http://www.iana.org/assignments/relation",
+              "@type": "@id"
+            },
+            "type": "dct:type",
+            "hreflang": "dct:language",
+            "title": "rdfs:label",
+            "length": "dct:extent"
+          },
+          "@id": "rdfs:seeAlso"
+        },
+        "featureType": "@type",
+        "time": {
+          "@context": {
+            "date": {
+              "@id": "owlTime:hasTime",
+              "@type": "xsd:date"
+            },
+            "timestamp": {
+              "@id": "owlTime:hasTime",
+              "@type": "xsd:dateTime"
+            },
+            "interval": {
+              "@id": "owlTime:hasTime",
+              "@container": "@list"
+            }
+          },
+          "@id": "dct:time"
+        },
+        "coordRefSys": "http://www.opengis.net/def/glossary/term/CoordinateReferenceSystemCRS",
+        "place": "dct:spatial"
+      },
+      "@id": "geojson:features",
+      "@container": "@set"
+    },
     "links": {
       "@context": {
         "href": {
@@ -20,13 +73,8 @@
       },
       "@id": "rdfs:seeAlso"
     },
-    "features": {
-      "@container": "@set",
-      "@id": "geojson:features"
-    },
     "properties": "@nest",
-    "type": "@type",
-    "featureType": "@type",
+    "featureType": "geojson:collectionFeatureType",
     "Feature": "geojson:Feature",
     "FeatureCollection": "geojson:FeatureCollection",
     "GeometryCollection": "geojson:GeometryCollection",
@@ -36,31 +84,6 @@
     "MultiPolygon": "geojson:MultiPolygon",
     "Point": "geojson:Point",
     "Polygon": "geojson:Polygon",
-    "id": "@id",
-    "geometry": "geojson:geometry",
-    "bbox": {
-      "@container": "@list",
-      "@id": "geojson:bbox"
-    },
-    "time": {
-      "@context": {
-        "date": {
-          "@id": "owlTime:hasTime",
-          "@type": "xsd:date"
-        },
-        "timestamp": {
-          "@id": "owlTime:hasTime",
-          "@type": "xsd:dateTime"
-        },
-        "interval": {
-          "@id": "owlTime:hasTime",
-          "@container": "@list"
-        }
-      },
-      "@id": "dct:time"
-    },
-    "coordRefSys": "http://www.opengis.net/def/glossary/term/CoordinateReferenceSystemCRS",
-    "place": "dct:spatial",
     "Polyhedron": "geojson:Polyhedron",
     "MultiPolyhedron": "geojson:MultiPolyhedron",
     "Prism": {
@@ -85,17 +108,6 @@
       "@id": "geojson:geometry",
       "@container": "@list"
     },
-    "topology": {
-      "@context": {
-        "references": {
-          "@id": "geojson:relatedFeatures",
-          "@type": "@id",
-          "@container": "@list"
-        }
-      },
-      "@type": "@id",
-      "@id": "geojson:topology"
-    },
     "Arc": "geojson:Arc",
     "ArcWithCenter": "geojson:ArcWithCenter",
     "ArcByChord": "geojson:ArcByChord",
@@ -105,13 +117,21 @@
     "arcLength": "geojson:arcLength",
     "startTangentVector": "geojson:startTangentVector",
     "endTangentVector": "geojson:endTangentVector",
+    "ref": "@id",
+    "orientation": "topo:orientation",
+    "Face": "topo:Face",
+    "Ring": "topo:Ring",
+    "Shell": "topo:Shell",
+    "Solid": "topo:Solid",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "oa": "http://www.w3.org/ns/oa#",
     "dct": "http://purl.org/dc/terms/",
     "geojson": "https://purl.org/geojson/vocab#",
     "owlTime": "http://www.w3.org/2006/time#",
+    "time": "http://www.w3.org/2006/time#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "csdm": "https://linked.data.gov.au/def/csdm/",
+    "topo": "https://purl.org/geojson/topo#",
     "@version": 1.1
   }
 }

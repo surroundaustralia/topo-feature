@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "A structured topology dataset with named arrays for each topological dimension. Points carry explicit coordinates; all higher-order features (edges, faces, shells, solids) use null geometry with topology defined via references or directed_references. Each array is restricted to its corresponding building block schema.",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "FeatureCollection"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional dataset metadata (units, coordinate precision, source info, etc.)",
+      "additionalProperties": true
+    },
+    "points": {
+      "type": "array",
+      "description": "Point features providing base coordinate geometry for the topology",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.json#FeatureOptions"
+          },
+          {
+            "properties": {
+              "geometry": {
+                "type": "object",
+                "required": [
+                  "type",
+                  "coordinates"
+                ],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "Point"
+                  },
+                  "coordinates": {
+                    "type": "array",
+                    "minItems": 2
+                  }
+                }
+              }
+            },
+            "required": [
+              "geometry"
+            ]
+          }
+        ]
+      }
+    },
+    "edges": {
+      "type": "array",
+      "description": "Edge (LineString) features referencing two point nodes via topology.references. geometry is null.",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/schema.json"
+          },
+          {
+            "properties": {
+              "geometry": {
+                "type": "null"
+              },
+              "topology": {
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "LineString",
+                      "MultiLineString"
+                    ]
+                  }
+                },
+                "x-jsonld-type": "@id",
+                "x-jsonld-id": "https://purl.org/geojson/vocab#topology"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "faces": {
+      "type": "array",
+      "description": "Face features whose boundary rings reference edges via directed_references. geometry is null.",
+      "items": {
+        "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.json"
+      }
+    },
+    "shells": {
+      "type": "array",
+      "description": "Shell features referencing faces via directed_references. geometry is null.",
+      "items": {
+        "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.json"
+      },
+      "x-jsonld-id": "https://purl.org/geojson/topo#shells",
+      "x-jsonld-container": "@list"
+    },
+    "solids": {
+      "type": "array",
+      "description": "Solid features whose shells reference faces via directed_references. geometry is null.",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.json"
+          },
+          {
+            "properties": {
+              "geometry": {
+                "type": "null"
+              },
+              "topology": {
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "Solid"
+                  }
+                },
+                "required": [
+                  "type",
+                  "shells"
+                ],
+                "x-jsonld-type": "@id",
+                "x-jsonld-id": "https://purl.org/geojson/vocab#topology"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "x-jsonld-extra-terms": {
+    "references": {
+      "x-jsonld-id": "https://purl.org/geojson/vocab#relatedFeatures",
+      "x-jsonld-type": "@id",
+      "x-jsonld-container": "@list"
+    },
+    "directed_references": {
+      "x-jsonld-id": "https://purl.org/geojson/topo#directedReferences",
+      "x-jsonld-container": "@list"
+    },
+    "ref": "@id",
+    "orientation": "https://purl.org/geojson/topo#orientation",
+    "Face": "https://purl.org/geojson/topo#Face",
+    "Ring": "https://purl.org/geojson/topo#Ring",
+    "Shell": "https://purl.org/geojson/topo#Shell",
+    "Solid": "https://purl.org/geojson/topo#Solid",
+    "rings": {
+      "x-jsonld-id": "https://purl.org/geojson/topo#rings",
+      "x-jsonld-container": "@list"
+    }
+  },
+  "x-jsonld-prefixes": {
+    "geojson": "https://purl.org/geojson/vocab#",
+    "topo": "https://purl.org/geojson/topo#"
+  }
+}

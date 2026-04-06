@@ -86,13 +86,27 @@
       "@container": "@list"
     },
     "topology": {
+      "@context": {
+        "references": {
+          "@id": "geojson:relatedFeatures",
+          "@type": "@id",
+          "@container": "@list"
+        },
+        "directed_references": {
+          "@id": "topo:directedReferences",
+          "@container": "@list"
+        },
+        "rings": {
+          "@id": "topo:rings",
+          "@container": "@list"
+        },
+        "shells": {
+          "@id": "topo:shells",
+          "@container": "@list"
+        }
+      },
       "@type": "@id",
       "@id": "geojson:topology"
-    },
-    "references": {
-      "@id": "geojson:relatedFeatures",
-      "@type": "@id",
-      "@container": "@list"
     },
     "Arc": "geojson:Arc",
     "ArcWithCenter": "geojson:ArcWithCenter",
@@ -103,6 +117,12 @@
     "arcLength": "geojson:arcLength",
     "startTangentVector": "geojson:startTangentVector",
     "endTangentVector": "geojson:endTangentVector",
+    "ref": "@id",
+    "orientation": "topo:orientation",
+    "Face": "topo:Face",
+    "Ring": "topo:Ring",
+    "Shell": "topo:Shell",
+    "Solid": "topo:Solid",
     "geojson": "https://purl.org/geojson/vocab#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "oa": "http://www.w3.org/ns/oa#",
@@ -110,6 +130,7 @@
     "owlTime": "http://www.w3.org/2006/time#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "csdm": "https://linked.data.gov.au/def/csdm/",
+    "topo": "https://purl.org/geojson/topo#",
     "@version": 1.1
   }
 }

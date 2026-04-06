@@ -1,11 +1,13 @@
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix topo: <https://purl.org/geojson/topo#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://www.example.com/features/chord1> a geojson:Feature,
         <my:ArcChordFeature> ;
     geojson:arcLength 2.5615e+01 ;
     geojson:topology [ a geojson:ArcByChord ;
+            topo:orientation "cw" ;
             geojson:radius 1.05438e+02 ;
             geojson:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ] .
 

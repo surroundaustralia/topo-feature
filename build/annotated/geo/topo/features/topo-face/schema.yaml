@@ -1,0 +1,63 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+description: 'A Face feature: a bounded planar surface described by an outer Ring
+  and optional inner (hole) Rings. geometry must be null. Each Ring uses directed_references
+  to oriented Edge features.'
+$defs:
+  testCollection:
+    $anchor: testCollection
+    description: A convienence ref to a complete, testable collection objects and
+      references
+    $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml
+allOf:
+- $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
+- properties:
+    geometry:
+      type: 'null'
+    topology:
+      properties:
+        type:
+          type: string
+          const: Face
+        rings:
+          type: array
+          description: Ordered list of Ring topology objects. First ring is the outer
+            boundary; any subsequent rings are inner boundaries (holes).
+          items:
+            type: object
+            required:
+            - type
+            - directed_references
+            properties:
+              type:
+                type: string
+                const: Ring
+              directed_references:
+                type: array
+                description: Ordered oriented Edge references forming the ring boundary
+                items:
+                  $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml
+                minItems: 3
+                x-jsonld-id: https://purl.org/geojson/topo#directedReferences
+                x-jsonld-container: '@list'
+          minItems: 1
+          x-jsonld-id: https://purl.org/geojson/topo#rings
+          x-jsonld-container: '@list'
+      required:
+      - type
+      - rings
+      not:
+        required:
+        - references
+        - directed_references
+      x-jsonld-type: '@id'
+      x-jsonld-id: https://purl.org/geojson/vocab#topology
+  required:
+  - topology
+x-jsonld-extra-terms:
+  Face: https://purl.org/geojson/topo#Face
+  Ring: https://purl.org/geojson/topo#Ring
+  ref: '@id'
+  orientation: https://purl.org/geojson/topo#orientation
+x-jsonld-prefixes:
+  geojson: https://purl.org/geojson/vocab#
+  topo: https://purl.org/geojson/topo#

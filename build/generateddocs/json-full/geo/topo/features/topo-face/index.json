@@ -1,0 +1,124 @@
+
+
+{
+  "itemIdentifier": "ogc.geo.topo.features.topo-face",
+  "name": "Face Topology Feature",
+  "abstract": "A feature representing a Face in topology: a bounded planar region described by an outer boundary Ring and zero or more inner boundary (hole) Rings. Faces are used as the surfaces of a Shell/Solid.",
+  "status": "under-development",
+  "dateTimeAddition": "2024-01-01T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogcincubator",
+  "version": "0.1",
+  "dateOfLastChange": "2026-04-06",
+  "sources": [],
+  "maturity": "development",
+  "scope": "unstable",
+  "dependsOn": [
+    "ogc.geo.topo.features.topo-feature",
+    "ogc.geo.topo.datatypes.oriented-ref",
+    "ogc.geo.topo.datatypes.topology",
+    "ogc.geo.topo.features.topo-feature-collection"
+  ],
+  "tags": [
+    "topology",
+    "face",
+    "feature",
+    "3D"
+  ],
+  "group": "OGC",
+  "shaclShapes": {
+    "ogc.geo.topo.features.topo-feature": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+    ],
+    "ogc.geo.topo.features.topo-feature-collection": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+    ]
+  },
+  "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/context.jsonld",
+  "schema": {
+    "application/yaml": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml",
+    "application/json": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.json"
+  },
+  "sourceSchema": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-face/schema.json",
+  "sourceLdContext": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-face/context.jsonld",
+  "resolvedSchemaProperties": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/resolvedProperties.json",
+  "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-face/",
+  "rdfData": [],
+  "validationPassed": false,
+  "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-face/",
+  "description": "# Face Topology Feature\n\nA **Face** is a topological feature representing a bounded planar region (a polygon surface) described by an outer boundary Ring and zero or more inner boundary Rings (holes).\n\n## Topology Model\n\nA Face's topology consists of:\n\n- `type`: `\"Face\"`\n- `rings`: an ordered array of Ring topology objects\n  - The **first** ring is the **outer boundary**\n  - Any **subsequent** rings are **inner boundaries** (holes)\n\nEach Ring contains a `directed_references` array \u2014 an ordered list of [Oriented Object References](../../datatypes/oriented-ref/) that reference Edge features, with orientation (`+` or `-`) indicating direction of traversal.\n\nThe `geometry` property is `null` \u2014 actual coordinates are derived from the referenced Edge and Point features.\n\n## Relationship to other types\n\n| Lower dimension | Face | Higher dimension |\n|---|---|---|\n| Edge (referenced in Ring directed_references) | **Face** | Shell (references Faces via directed_references) |\n\n## Example\n\n```json\n{\n  \"id\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae\",\n  \"type\": \"Feature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Face\",\n    \"rings\": [\n      {\n        \"type\": \"Ring\",\n        \"directed_references\": [\n          { \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\", \"orientation\": \"+\" },\n          { \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\", \"orientation\": \"+\" },\n          { \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\", \"orientation\": \"+\" },\n          { \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\", \"orientation\": \"+\" }\n        ]\n      }\n    ]\n  },\n  \"properties\": {\n    \"normal\": [1.0, 0.0, 0.0],\n    \"area\": 24.0\n  }\n}\n```\n",
+  "examples": [
+    {
+      "title": "Face with full topological context (points + edges + face)",
+      "content": "A self-contained example showing a single Face feature alongside all the supporting\nEdge and Point features it references. The face outer Ring has 4 oriented Edge references\nin its directed_references array. Point geometry provides actual coordinates;\nedge and face geometry are null (topology-only).\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "examples/face-with-context.json",
+          "schema-ref": "#testCollection",
+          "code": "{\n  \"type\": \"FeatureCollection\",\n  \"comment\": \"Self-contained example: a single Face with all supporting edges and points included\",\n  \"points\": [\n    {\n      \"id\": \"uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38\",\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          18.0,\n          10.0,\n          3.0\n        ]\n      },\n      \"properties\": null\n    },\n    {\n      \"id\": \"uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0\",\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          18.0,\n          10.0,\n          6.0\n        ]\n      },\n      \"properties\": null\n    },\n    {\n      \"id\": \"uuid:c611f840-2829-44b2-b367-3915ca7875a4\",\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          18.0,\n          2.0,\n          6.0\n        ]\n      },\n      \"properties\": null\n    },\n    {\n      \"id\": \"uuid:fad324b9-801f-40f4-b65b-91f8753e9698\",\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          18.0,\n          2.0,\n          3.0\n        ]\n      },\n      \"properties\": null\n    }\n  ],\n  \"edges\": [\n    {\n      \"id\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"LineString\",\n        \"references\": [\n          \"uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38\",\n          \"uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0\"\n        ]\n      },\n      \"properties\": {\n        \"length\": 3.0\n      }\n    },\n    {\n      \"id\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"LineString\",\n        \"references\": [\n          \"uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0\",\n          \"uuid:c611f840-2829-44b2-b367-3915ca7875a4\"\n        ]\n      },\n      \"properties\": {\n        \"length\": 8.0\n      }\n    },\n    {\n      \"id\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"LineString\",\n        \"references\": [\n          \"uuid:c611f840-2829-44b2-b367-3915ca7875a4\",\n          \"uuid:fad324b9-801f-40f4-b65b-91f8753e9698\"\n        ]\n      },\n      \"properties\": {\n        \"length\": 3.0\n      }\n    },\n    {\n      \"id\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"LineString\",\n        \"references\": [\n          \"uuid:fad324b9-801f-40f4-b65b-91f8753e9698\",\n          \"uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38\"\n        ]\n      },\n      \"properties\": {\n        \"length\": 8.0\n      }\n    }\n  ],\n  \"faces\": [\n    {\n      \"id\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Face\",\n        \"rings\": [\n          {\n            \"type\": \"Ring\",\n            \"directed_references\": [\n              {\n                \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n                \"orientation\": \"+\"\n              },\n              {\n                \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\",\n                \"orientation\": \"+\"\n              },\n              {\n                \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\",\n                \"orientation\": \"+\"\n              },\n              {\n                \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\",\n                \"orientation\": \"+\"\n              }\n            ]\n          }\n        ]\n      },\n      \"properties\": {\n        \"normal\": [\n          1.0,\n          0.0,\n          -0.0\n        ],\n        \"area\": 24.0\n      }\n    }\n  ]\n}",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-face/example_1_1.json"
+        },
+        {
+          "language": "jsonld",
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/context.jsonld\",\n  \"type\": \"FeatureCollection\",\n  \"comment\": \"Self-contained example: a single Face with all supporting edges and points included\",\n  \"points\": [\n    {\n      \"id\": \"uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38\",\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          18.0,\n          10.0,\n          3.0\n        ]\n      },\n      \"properties\": null\n    },\n    {\n      \"id\": \"uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0\",\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          18.0,\n          10.0,\n          6.0\n        ]\n      },\n      \"properties\": null\n    },\n    {\n      \"id\": \"uuid:c611f840-2829-44b2-b367-3915ca7875a4\",\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          18.0,\n          2.0,\n          6.0\n        ]\n      },\n      \"properties\": null\n    },\n    {\n      \"id\": \"uuid:fad324b9-801f-40f4-b65b-91f8753e9698\",\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          18.0,\n          2.0,\n          3.0\n        ]\n      },\n      \"properties\": null\n    }\n  ],\n  \"edges\": [\n    {\n      \"id\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"LineString\",\n        \"references\": [\n          \"uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38\",\n          \"uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0\"\n        ]\n      },\n      \"properties\": {\n        \"length\": 3.0\n      }\n    },\n    {\n      \"id\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"LineString\",\n        \"references\": [\n          \"uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0\",\n          \"uuid:c611f840-2829-44b2-b367-3915ca7875a4\"\n        ]\n      },\n      \"properties\": {\n        \"length\": 8.0\n      }\n    },\n    {\n      \"id\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"LineString\",\n        \"references\": [\n          \"uuid:c611f840-2829-44b2-b367-3915ca7875a4\",\n          \"uuid:fad324b9-801f-40f4-b65b-91f8753e9698\"\n        ]\n      },\n      \"properties\": {\n        \"length\": 3.0\n      }\n    },\n    {\n      \"id\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"LineString\",\n        \"references\": [\n          \"uuid:fad324b9-801f-40f4-b65b-91f8753e9698\",\n          \"uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38\"\n        ]\n      },\n      \"properties\": {\n        \"length\": 8.0\n      }\n    }\n  ],\n  \"faces\": [\n    {\n      \"id\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Face\",\n        \"rings\": [\n          {\n            \"type\": \"Ring\",\n            \"directed_references\": [\n              {\n                \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n                \"orientation\": \"+\"\n              },\n              {\n                \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\",\n                \"orientation\": \"+\"\n              },\n              {\n                \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\",\n                \"orientation\": \"+\"\n              },\n              {\n                \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\",\n                \"orientation\": \"+\"\n              }\n            ]\n          }\n        ]\n      },\n      \"properties\": {\n        \"normal\": [\n          1.0,\n          0.0,\n          -0.0\n        ],\n        \"area\": 24.0\n      }\n    }\n  ]\n}",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-face/example_1_1.jsonld"
+        },
+        {
+          "language": "ttl",
+          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n\n[] a geojson:FeatureCollection .\n\n",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-face/example_1_1.ttl"
+        }
+      ]
+    },
+    {
+      "title": "Simple Face (4-edge rectangular face)",
+      "content": "A Face feature with a single outer Ring containing four oriented Edge references\nin directed_references. All edges are traversed in the '+' (forward) direction,\nclosing the loop. geometry is null \u2014 coordinates are derived from the referenced edges and points.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "examples/face-simple.json",
+          "code": "{\n  \"id\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae\",\n  \"type\": \"Feature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Face\",\n    \"rings\": [\n      {\n        \"type\": \"Ring\",\n        \"directed_references\": [\n          {\n            \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\",\n            \"orientation\": \"+\"\n          }\n        ]\n      }\n    ]\n  },\n  \"properties\": {\n    \"normal\": [\n      1.0,\n      0.0,\n      0.0\n    ],\n    \"area\": 24.0\n  }\n}",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-face/example_2_1.json"
+        },
+        {
+          "language": "jsonld",
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/context.jsonld\",\n  \"id\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae\",\n  \"type\": \"Feature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Face\",\n    \"rings\": [\n      {\n        \"type\": \"Ring\",\n        \"directed_references\": [\n          {\n            \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\",\n            \"orientation\": \"+\"\n          }\n        ]\n      }\n    ]\n  },\n  \"properties\": {\n    \"normal\": [\n      1.0,\n      0.0,\n      0.0\n    ],\n    \"area\": 24.0\n  }\n}",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-face/example_2_1.jsonld"
+        },
+        {
+          "language": "ttl",
+          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> a geojson:Feature ;\n    geojson:topology [ a topo:Face ;\n            topo:rings ( [ a topo:Ring ;\n                        topo:directedReferences ( <uuid:c60507ba-226b-4e49-a702-e9afef899b23> <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> <uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> <uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> ) ] ) ] .\n\n<uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> topo:orientation \"+\" .\n\n<uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> topo:orientation \"+\" .\n\n<uuid:c60507ba-226b-4e49-a702-e9afef899b23> topo:orientation \"+\" .\n\n<uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> topo:orientation \"+\" .\n\n",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-face/example_2_1.ttl"
+        }
+      ]
+    },
+    {
+      "title": "Face with 6 edges and mixed orientations",
+      "content": "An L-shaped Face with 6 edges in its outer Ring directed_references. Some edges are\nshared with adjacent faces and therefore appear with '-' (reverse) orientation,\nreflecting the shared boundary convention.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "examples/face-6edge.json",
+          "code": "{\n  \"id\": \"uuid:607a3363-3eb7-4ce6-a633-86d2e565692b\",\n  \"type\": \"Feature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Face\",\n    \"rings\": [\n      {\n        \"type\": \"Ring\",\n        \"directed_references\": [\n          {\n            \"ref\": \"uuid:8582d9c2-6053-495a-8413-f5493691c0de\",\n            \"orientation\": \"-\"\n          },\n          {\n            \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\",\n            \"orientation\": \"-\"\n          },\n          {\n            \"ref\": \"uuid:4c2a6434-03b0-4aa2-85ea-a9fcaea41555\",\n            \"orientation\": \"-\"\n          },\n          {\n            \"ref\": \"uuid:921e2351-efbf-48be-85d3-eedc0dc2ddc0\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:73f88b47-78ab-474d-9c62-73dfefd0dd5d\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:7aa2a76d-9d5c-4540-9f2e-d8bcf36fadb5\",\n            \"orientation\": \"+\"\n          }\n        ]\n      }\n    ]\n  },\n  \"properties\": {\n    \"normal\": [\n      0.0,\n      0.0,\n      1.0\n    ],\n    \"area\": 56.0\n  }\n}",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-face/example_3_1.json"
+        },
+        {
+          "language": "jsonld",
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/context.jsonld\",\n  \"id\": \"uuid:607a3363-3eb7-4ce6-a633-86d2e565692b\",\n  \"type\": \"Feature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Face\",\n    \"rings\": [\n      {\n        \"type\": \"Ring\",\n        \"directed_references\": [\n          {\n            \"ref\": \"uuid:8582d9c2-6053-495a-8413-f5493691c0de\",\n            \"orientation\": \"-\"\n          },\n          {\n            \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\",\n            \"orientation\": \"-\"\n          },\n          {\n            \"ref\": \"uuid:4c2a6434-03b0-4aa2-85ea-a9fcaea41555\",\n            \"orientation\": \"-\"\n          },\n          {\n            \"ref\": \"uuid:921e2351-efbf-48be-85d3-eedc0dc2ddc0\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:73f88b47-78ab-474d-9c62-73dfefd0dd5d\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:7aa2a76d-9d5c-4540-9f2e-d8bcf36fadb5\",\n            \"orientation\": \"+\"\n          }\n        ]\n      }\n    ]\n  },\n  \"properties\": {\n    \"normal\": [\n      0.0,\n      0.0,\n      1.0\n    ],\n    \"area\": 56.0\n  }\n}",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-face/example_3_1.jsonld"
+        },
+        {
+          "language": "ttl",
+          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n<uuid:607a3363-3eb7-4ce6-a633-86d2e565692b> a geojson:Feature ;\n    geojson:topology [ a topo:Face ;\n            topo:rings ( [ a topo:Ring ;\n                        topo:directedReferences ( <uuid:8582d9c2-6053-495a-8413-f5493691c0de> <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> <uuid:4c2a6434-03b0-4aa2-85ea-a9fcaea41555> <uuid:921e2351-efbf-48be-85d3-eedc0dc2ddc0> <uuid:73f88b47-78ab-474d-9c62-73dfefd0dd5d> <uuid:7aa2a76d-9d5c-4540-9f2e-d8bcf36fadb5> ) ] ) ] .\n\n<uuid:4c2a6434-03b0-4aa2-85ea-a9fcaea41555> topo:orientation \"-\" .\n\n<uuid:73f88b47-78ab-474d-9c62-73dfefd0dd5d> topo:orientation \"+\" .\n\n<uuid:7aa2a76d-9d5c-4540-9f2e-d8bcf36fadb5> topo:orientation \"+\" .\n\n<uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> topo:orientation \"-\" .\n\n<uuid:8582d9c2-6053-495a-8413-f5493691c0de> topo:orientation \"-\" .\n\n<uuid:921e2351-efbf-48be-85d3-eedc0dc2ddc0> topo:orientation \"+\" .\n\n",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-face/example_3_1.ttl"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: 'A Face feature: a bounded planar surface described by an outer Ring\n  and optional inner (hole) Rings. geometry must be null. Each Ring uses directed_references\n  to oriented Edge features.'\n$defs:\n  testCollection:\n    $anchor: testCollection\n    description: A convienence ref to a complete, testable collection objects and\n      references\n    $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml\nallOf:\n- $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml\n- properties:\n    geometry:\n      type: 'null'\n    topology:\n      properties:\n        type:\n          type: string\n          const: Face\n        rings:\n          type: array\n          description: Ordered list of Ring topology objects. First ring is the outer\n            boundary; any subsequent rings are inner boundaries (holes).\n          items:\n            type: object\n            required:\n            - type\n            - directed_references\n            properties:\n              type:\n                type: string\n                const: Ring\n              directed_references:\n                type: array\n                description: Ordered oriented Edge references forming the ring boundary\n                items:\n                  $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml\n                minItems: 3\n                x-jsonld-id: https://purl.org/geojson/topo#directedReferences\n                x-jsonld-container: '@list'\n          minItems: 1\n          x-jsonld-id: https://purl.org/geojson/topo#rings\n          x-jsonld-container: '@list'\n      required:\n      - type\n      - rings\n      not:\n        required:\n        - references\n        - directed_references\n      x-jsonld-type: '@id'\n      x-jsonld-id: https://purl.org/geojson/vocab#topology\n  required:\n  - topology\nx-jsonld-extra-terms:\n  Face: https://purl.org/geojson/topo#Face\n  Ring: https://purl.org/geojson/topo#Ring\n  ref: '@id'\n  orientation: https://purl.org/geojson/topo#orientation\nx-jsonld-prefixes:\n  geojson: https://purl.org/geojson/vocab#\n  topo: https://purl.org/geojson/topo#\n",
+  "gitRepository": "https://github.com/surroundaustralia/topo-feature",
+  "gitPath": "_sources/features/topo-face"
+}

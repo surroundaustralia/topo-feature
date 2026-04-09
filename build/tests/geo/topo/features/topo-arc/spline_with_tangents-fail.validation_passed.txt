@@ -1,5 +1,5 @@
 Validation report for ogc.geo.topo.features.topo-arc - Non-linear Arc and Spline Descriptions using Point topology
-Generated 2026-03-05T23:21:07.990504+00:00
+Generated 2026-04-09T01:49:59.561343+00:00
 === General ===
 Test was expected to fail and it did.
 === End General ===
@@ -60,6 +60,14 @@ On instance['topology']:
 === SHACL ===
 Using building block SHACL closures:
  - ../topo-feature/examples/points.ttl
+Validation result for _sources/features/topo-feature/tests/geometry-coordinates.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:
+ - Shape _:neb8a75b722e74e9eb7d3050becc72950b3: *none*
+ - Shape _:neb8a75b722e74e9eb7d3050becc72950b1: *none*
+
 Validation result for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:
   Validation Report
   Conforms: True
@@ -68,13 +76,28 @@ Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.
  - Shape topo:testTopoReferencesExist: <http://www.example.com/features/1853004>/geojson:topology
  - Shape topo:testTopoLinesReferencePoints: *none*
 
-Validation result for _sources/features/topo-feature/tests/geometry-coordinates.shacl:
+Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
   Validation Report
   Conforms: True
   
-Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:
- - Shape _:nfdc6896febac4ee6b8804347d7213ed7b1: *none*
- - Shape _:nfdc6896febac4ee6b8804347d7213ed7b3: *none*
+Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
+ - Shape geojson:FeatureCollectionShape: *none*
+ - Shape geojson:LinkShape: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+ - Shape geojson:GeometryShape: *none*
+ - Shape geojson:FeatureShape: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+
+Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+ - Shape geojson:LinkShape: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+ - Shape geojson:GeometryShape: *none*
+ - Shape geojson:FeatureShape: <http://www.example.com/features/1853004>
 
 === End SHACL ===
 

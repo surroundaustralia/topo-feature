@@ -43,7 +43,7 @@ This is a generalisation of the TopoJSON concept using inline data, and hence no
 #### jsonld
 ```jsonld
 {
-  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/context.jsonld",
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/context.jsonld",
   "type": "Feature",
   "id": "LineP1P2",
   "geometry": null,
@@ -98,7 +98,7 @@ This is a generalisation of the TopoJSON concept using inline data, and hence no
 #### jsonld
 ```jsonld
 {
-  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/context.jsonld",
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/context.jsonld",
   "type": "Feature",
   "id": "MultiLineP1P2P3",
   "geometry": null,
@@ -131,17 +131,258 @@ This is a generalisation of the TopoJSON concept using inline data, and hence no
 
 ```
 
+
+### Edge topology from 2D sections (references model)
+Three Edge features from the 2D sections topology dataset, demonstrating the 'references'
+model. Each edge has type 'LineString' and references two Point feature IDs in its
+topology.references array. geometry is null — coordinates are resolved from the referenced
+point features at render time. This is the standard topo-feature pattern for line topology.
+
+#### json
+```json
+{
+  "type": "FeatureCollection",
+  "features": [],
+  "points": [
+    {
+      "id": "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.0,
+          10.0,
+          3.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.0,
+          10.0,
+          6.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:c611f840-2829-44b2-b367-3915ca7875a4",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.0,
+          2.0,
+          6.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:fad324b9-801f-40f4-b65b-91f8753e9698",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.0,
+          2.0,
+          3.0
+        ]
+      },
+      "properties": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "uuid:c60507ba-226b-4e49-a702-e9afef899b23",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "LineString",
+        "references": [
+          "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
+          "uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0"
+        ]
+      },
+      "properties": {
+        "length": 3.0
+      }
+    },
+    {
+      "id": "uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "LineString",
+        "references": [
+          "uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0",
+          "uuid:c611f840-2829-44b2-b367-3915ca7875a4"
+        ]
+      },
+      "properties": {
+        "length": 8.0
+      }
+    },
+    {
+      "id": "uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "LineString",
+        "references": [
+          "uuid:c611f840-2829-44b2-b367-3915ca7875a4",
+          "uuid:fad324b9-801f-40f4-b65b-91f8753e9698"
+        ]
+      },
+      "properties": {
+        "length": 3.0
+      }
+    }
+  ]
+}
+```
+
+#### jsonld
+```jsonld
+{
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/context.jsonld",
+  "type": "FeatureCollection",
+  "features": [],
+  "points": [
+    {
+      "id": "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.0,
+          10.0,
+          3.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.0,
+          10.0,
+          6.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:c611f840-2829-44b2-b367-3915ca7875a4",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.0,
+          2.0,
+          6.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:fad324b9-801f-40f4-b65b-91f8753e9698",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.0,
+          2.0,
+          3.0
+        ]
+      },
+      "properties": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "uuid:c60507ba-226b-4e49-a702-e9afef899b23",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "LineString",
+        "references": [
+          "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
+          "uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0"
+        ]
+      },
+      "properties": {
+        "length": 3.0
+      }
+    },
+    {
+      "id": "uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "LineString",
+        "references": [
+          "uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0",
+          "uuid:c611f840-2829-44b2-b367-3915ca7875a4"
+        ]
+      },
+      "properties": {
+        "length": 8.0
+      }
+    },
+    {
+      "id": "uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "LineString",
+        "references": [
+          "uuid:c611f840-2829-44b2-b367-3915ca7875a4",
+          "uuid:fad324b9-801f-40f4-b65b-91f8753e9698"
+        ]
+      },
+      "properties": {
+        "length": 3.0
+      }
+    }
+  ]
+}
+```
+
+#### ttl
+```ttl
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+
+[] a geojson:FeatureCollection .
+
+
+```
+
 ## Schema
 
 ```yaml
 $schema: https://json-schema.org/draft/2020-12/schema
 description: Line Feature with geometry by reference
+$defs:
+  testCollection:
+    $anchor: testCollection
+    description: A convienence ref to a complete, testable collection objects and
+      references
+    $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/schema.yaml
 allOf:
-- $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
+- $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
 - properties:
     topology:
       allOf:
-      - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.yaml
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.yaml
       - properties:
           type:
             type: string
@@ -155,8 +396,8 @@ allOf:
 
 Links to the schema:
 
-* YAML version: [schema.yaml](https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/schema.json)
-* JSON version: [schema.json](https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/schema.yaml)
+* YAML version: [schema.yaml](https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/schema.json)
+* JSON version: [schema.json](https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/schema.yaml)
 
 
 # JSON-LD Context
@@ -250,13 +491,27 @@ Links to the schema:
       "@container": "@list"
     },
     "topology": {
+      "@context": {
+        "references": {
+          "@id": "geojson:relatedFeatures",
+          "@type": "@id",
+          "@container": "@list"
+        },
+        "directed_references": {
+          "@id": "topo:directedReferences",
+          "@container": "@list"
+        },
+        "rings": {
+          "@id": "topo:rings",
+          "@container": "@list"
+        },
+        "shells": {
+          "@id": "topo:shells",
+          "@container": "@list"
+        }
+      },
       "@type": "@id",
       "@id": "geojson:topology"
-    },
-    "references": {
-      "@id": "geojson:relatedFeatures",
-      "@type": "@id",
-      "@container": "@list"
     },
     "Arc": "geojson:Arc",
     "ArcWithCenter": "geojson:ArcWithCenter",
@@ -267,6 +522,12 @@ Links to the schema:
     "arcLength": "geojson:arcLength",
     "startTangentVector": "geojson:startTangentVector",
     "endTangentVector": "geojson:endTangentVector",
+    "ref": "@id",
+    "orientation": "topo:orientation",
+    "Face": "topo:Face",
+    "Ring": "topo:Ring",
+    "Shell": "topo:Shell",
+    "Solid": "topo:Solid",
     "geojson": "https://purl.org/geojson/vocab#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "oa": "http://www.w3.org/ns/oa#",
@@ -274,19 +535,20 @@ Links to the schema:
     "owlTime": "http://www.w3.org/2006/time#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "csdm": "https://linked.data.gov.au/def/csdm/",
+    "topo": "https://purl.org/geojson/topo#",
     "@version": 1.1
   }
 }
 ```
 
 You can find the full JSON-LD context here:
-[context.jsonld](https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/context.jsonld)
+[context.jsonld](https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/context.jsonld)
 
 
 # For developers
 
 The source code for this Building Block can be found in the following repository:
 
-* URL: [https://github.com/ogcincubator/topo-feature](https://github.com/ogcincubator/topo-feature)
+* URL: [https://github.com/surroundaustralia/topo-feature](https://github.com/surroundaustralia/topo-feature)
 * Path: `_sources/features/topo-line`
 

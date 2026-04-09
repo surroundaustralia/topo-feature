@@ -1,0 +1,24 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+description: An oriented reference to a topological object, combining a reference
+  identifier with an orientation indicator ('+' for forward/positive, '-' for reverse/negative).
+  Used in Ring members (referencing edges) and Shell members (referencing faces).
+type: object
+properties:
+  ref:
+    $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml
+    description: 'Identifier of the referenced topological object (e.g. a uuid: URI
+      or local id)'
+    x-jsonld-id: '@id'
+  orientation:
+    type: string
+    enum:
+    - +
+    - '-'
+    description: 'Orientation of the reference: ''+'' for forward/positive direction,
+      ''-'' for reverse/negative direction'
+    x-jsonld-id: https://purl.org/geojson/topo#orientation
+required:
+- ref
+- orientation
+x-jsonld-prefixes:
+  topo: https://purl.org/geojson/topo#

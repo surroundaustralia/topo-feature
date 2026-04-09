@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "description": "feature with geometry by reference",
+  "description": "Topology datatype for topo-features. Supports two reference styles: 'references' (array of string IDs) for simple positional references, and 'directed_references' (array of oriented object references with ref+orientation) for references where traversal direction matters. Exactly one of the two must be present.",
   "$defs": {
     "refOrNest": {
       "oneOf": [
@@ -11,23 +11,28 @@
           }
         },
         {
-          "type": "string"
+          "$ref": "https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.json"
+        },
+        {
+          "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.json"
         }
       ]
     }
   },
   "oneOf": [
     {
+      "description": "Plain string ID references (e.g. LineString referencing point nodes)",
+      "required": [
+        "references"
+      ],
+      "not": {
+        "required": [
+          "directed_references"
+        ]
+      },
       "properties": {
         "type": {
           "type": "string",
-          "not": {
-            "enum": [
-              "Polygon",
-              "MultiLineString",
-              "MultiPolygon"
-            ]
-          },
           "x-jsonld-id": "@type"
         },
         "references": {
@@ -42,59 +47,126 @@
       }
     },
     {
+      "description": "Oriented (directed) references \u2014 each with 'ref' and 'orientation'. Used for Ring, Shell.",
+      "required": [
+        "directed_references"
+      ],
+      "not": {
+        "required": [
+          "references"
+        ]
+      },
       "properties": {
         "type": {
           "type": "string",
-          "enum": [
-            "MultiPolygon"
-          ],
           "x-jsonld-id": "@type"
         },
-        "references": {
+        "directed_references": {
           "type": "array",
           "items": {
-            "type": "array",
-            "items": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/refOrNest"
-              }
-            }
+            "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.json"
           },
-          "x-jsonld-id": "https://purl.org/geojson/vocab#relatedFeatures",
-          "x-jsonld-type": "@id",
+          "x-jsonld-id": "https://purl.org/geojson/topo#directedReferences",
           "x-jsonld-container": "@list"
         }
       }
     },
     {
+      "description": "Face topology \u2014 rings of directed Edge references",
+      "required": [
+        "rings"
+      ],
+      "not": {
+        "required": [
+          "references",
+          "directed_references"
+        ]
+      },
       "properties": {
         "type": {
           "type": "string",
-          "enum": [
-            "Polygon",
-            "MultiLineString"
-          ],
+          "const": "Face",
           "x-jsonld-id": "@type"
         },
-        "references": {
+        "rings": {
           "type": "array",
+          "minItems": 1,
           "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/$defs/refOrNest"
+            "type": "object",
+            "required": [
+              "type",
+              "directed_references"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "const": "Ring",
+                "x-jsonld-id": "@type"
+              },
+              "directed_references": {
+                "type": "array",
+                "minItems": 3,
+                "items": {
+                  "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.json"
+                },
+                "x-jsonld-id": "https://purl.org/geojson/topo#directedReferences",
+                "x-jsonld-container": "@list"
+              }
             }
           },
-          "x-jsonld-id": "https://purl.org/geojson/vocab#relatedFeatures",
-          "x-jsonld-type": "@id",
+          "x-jsonld-id": "https://purl.org/geojson/topo#rings",
+          "x-jsonld-container": "@list"
+        }
+      }
+    },
+    {
+      "description": "Solid topology \u2014 shells of directed Face references",
+      "required": [
+        "shells"
+      ],
+      "not": {
+        "required": [
+          "references",
+          "directed_references"
+        ]
+      },
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "Solid",
+          "x-jsonld-id": "@type"
+        },
+        "shells": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "type",
+              "directed_references"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "const": "Shell",
+                "x-jsonld-id": "@type"
+              },
+              "directed_references": {
+                "type": "array",
+                "minItems": 4,
+                "items": {
+                  "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.json"
+                },
+                "x-jsonld-id": "https://purl.org/geojson/topo#directedReferences",
+                "x-jsonld-container": "@list"
+              }
+            }
+          },
+          "x-jsonld-id": "https://purl.org/geojson/topo#shells",
           "x-jsonld-container": "@list"
         }
       }
     }
-  ],
-  "required": [
-    "references",
-    "type"
   ],
   "x-jsonld-extra-terms": {
     "LineString": "https://purl.org/geojson/vocab#LineString",
@@ -109,7 +181,13 @@
     "radius": "https://purl.org/geojson/vocab#radius",
     "arcLength": "https://purl.org/geojson/vocab#arcLength",
     "startTangentVector": "https://purl.org/geojson/vocab#startTangentVector",
-    "endTangentVector": "https://purl.org/geojson/vocab#endTangentVector"
+    "endTangentVector": "https://purl.org/geojson/vocab#endTangentVector",
+    "ref": "@id",
+    "orientation": "https://purl.org/geojson/topo#orientation",
+    "Face": "https://purl.org/geojson/topo#Face",
+    "Ring": "https://purl.org/geojson/topo#Ring",
+    "Shell": "https://purl.org/geojson/topo#Shell",
+    "Solid": "https://purl.org/geojson/topo#Solid"
   },
   "x-jsonld-prefixes": {
     "geojson": "https://purl.org/geojson/vocab#",

@@ -1,0 +1,181 @@
+{
+  "title": "Validation report for ogc.geo.topo.features.topo-ring - Ring Topology Feature",
+  "bblockName": "Ring Topology Feature",
+  "bblockId": "ogc.geo.topo.features.topo-ring",
+  "generated": "2026-04-09T01:50:10.469768+00:00",
+  "result": true,
+  "items": [
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/geo/topo/features/topo-ring/example_1_1.json",
+        "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-ring/example_1_1.json",
+        "exampleIndex": 1,
+        "snippetIndex": 1,
+        "language": "application/json"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using examples/ring-simple.json from examples"
+            },
+            {
+              "op": "jsonld-uplift",
+              "isError": false,
+              "message": "JSON-LD context is present - uplifting"
+            },
+            {
+              "op": "jsonld-create",
+              "filename": "example_1_1.jsonld",
+              "isError": false,
+              "message": "Output JSON-LD example_1_1.jsonld created"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "example_1_1.ttl",
+              "size": 16,
+              "isError": false,
+              "message": "Output Turtle example_1_1.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "JSON_SCHEMA",
+          "title": "JSON Schema",
+          "entries": [
+            {
+              "op": "validation",
+              "result": true,
+              "isError": false,
+              "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+              "focusNodes": {
+                "topo:testTopoReferencesExist": {
+                  "nodes": [
+                    "<uuid:ring-east-face-outer>/geojson:topology"
+                  ]
+                },
+                "topo:testTopoLinesReferencePoints": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:\n - Shape topo:testTopoReferencesExist: <uuid:ring-east-face-outer>/geojson:topology\n - Shape topo:testTopoLinesReferencePoints: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+              "focusNodes": {
+                "_:nfe36403ee50b46909858007872ed9ac9b1": {
+                  "nodes": []
+                },
+                "_:nfe36403ee50b46909858007872ed9ac9b3": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:nfe36403ee50b46909858007872ed9ac9b1: *none*\n - Shape _:nfe36403ee50b46909858007872ed9ac9b3: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl",
+              "focusNodes": {
+                "geojson:FeatureCollectionShape": {
+                  "nodes": []
+                },
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape": {
+                  "nodes": []
+                },
+                "geojson:FeatureShape": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:FeatureCollectionShape: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
+              "focusNodes": {
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape": {
+                  "nodes": []
+                },
+                "geojson:FeatureShape": {
+                  "nodes": [
+                    "<uuid:ring-east-face-outer>"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: <uuid:ring-east-face-outer>\n"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "globalErrors": {},
+  "counts": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0
+  }
+}

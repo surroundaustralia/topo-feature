@@ -1,0 +1,85 @@
+
+
+{
+  "itemIdentifier": "ogc.geo.topo.features.topo-ring",
+  "name": "Ring Topology Feature",
+  "abstract": "A feature representing a Ring in topology: an ordered, closed sequence of oriented Edge references that form a boundary loop. A Ring is used as the boundary of a Face.",
+  "status": "under-development",
+  "dateTimeAddition": "2024-01-01T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogcincubator",
+  "version": "0.1",
+  "dateOfLastChange": "2026-04-09",
+  "sources": [],
+  "maturity": "development",
+  "scope": "unstable",
+  "dependsOn": [
+    "ogc.geo.topo.features.topo-feature",
+    "ogc.geo.topo.datatypes.topology",
+    "ogc.geo.topo.datatypes.oriented-ref",
+    "ogc.geo.topo.features.topo-feature-collection"
+  ],
+  "tags": [
+    "topology",
+    "ring",
+    "feature",
+    "3D"
+  ],
+  "group": "OGC",
+  "shaclShapes": {
+    "ogc.geo.topo.features.topo-feature": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+    ],
+    "ogc.geo.topo.features.topo-feature-collection": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+    ],
+    "ogc.geo.features.featureCollection": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+    ],
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+    ]
+  },
+  "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/context.jsonld",
+  "schema": {
+    "application/yaml": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml",
+    "application/json": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.json"
+  },
+  "sourceSchema": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-ring/schema.json",
+  "sourceLdContext": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-ring/context.jsonld",
+  "resolvedSchemaProperties": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/resolvedProperties.json",
+  "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-ring/",
+  "rdfData": [],
+  "validationPassed": true,
+  "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-ring/",
+  "description": "# Ring Topology Feature\n\nA **Ring** is a topological feature representing an ordered, closed loop of oriented Edge references. It forms the boundary of a Face.\n\n## Topology Model\n\nA Ring's topology consists of:\n\n- `type`: `\"Ring\"`\n- `directed_references`: an ordered array of [Oriented Object References](../../datatypes/oriented-ref/), each referencing an Edge feature with a `ref` (feature ID) and `orientation` (`+` or `-`)\n\nThe `directed_references` form a closed loop: the end vertex of each edge (considering orientation) must equal the start vertex of the next.\n\n## Orientation\n\nEach directed reference specifies an orientation (`+` or `-`) indicating whether the referenced Edge is traversed in its natural or reversed direction. This allows edges to be shared between adjacent faces.\n\n## Example\n\n```json\n{\n  \"topology\": {\n    \"type\": \"Ring\",\n    \"directed_references\": [\n      { \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\", \"orientation\": \"+\" },\n      { \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\", \"orientation\": \"+\" },\n      { \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\", \"orientation\": \"+\" },\n      { \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\", \"orientation\": \"+\" }\n    ]\n  }\n}\n```\n",
+  "examples": [
+    {
+      "title": "Simple Ring (4-edge boundary loop)",
+      "content": "A Ring feature forming a rectangular boundary from four oriented Edge references\nin its directed_references array. All edges are traversed in the '+' (forward) direction,\nclosing the loop. geometry is null \u2014 a Ring has no independent coordinate geometry.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "examples/ring-simple.json",
+          "code": "{\n  \"id\": \"uuid:ring-east-face-outer\",\n  \"type\": \"Feature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Ring\",\n    \"directed_references\": [\n      {\n        \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n        \"orientation\": \"+\"\n      },\n      {\n        \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\",\n        \"orientation\": \"+\"\n      },\n      {\n        \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\",\n        \"orientation\": \"+\"\n      },\n      {\n        \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\",\n        \"orientation\": \"+\"\n      }\n    ]\n  },\n  \"properties\": {\n    \"description\": \"Outer boundary ring of east face of upper section\"\n  }\n}",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-ring/example_1_1.json"
+        },
+        {
+          "language": "jsonld",
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/context.jsonld\",\n  \"id\": \"uuid:ring-east-face-outer\",\n  \"type\": \"Feature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Ring\",\n    \"directed_references\": [\n      {\n        \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n        \"orientation\": \"+\"\n      },\n      {\n        \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\",\n        \"orientation\": \"+\"\n      },\n      {\n        \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\",\n        \"orientation\": \"+\"\n      },\n      {\n        \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\",\n        \"orientation\": \"+\"\n      }\n    ]\n  },\n  \"properties\": {\n    \"description\": \"Outer boundary ring of east face of upper section\"\n  }\n}",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-ring/example_1_1.jsonld"
+        },
+        {
+          "language": "ttl",
+          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n<uuid:ring-east-face-outer> a geojson:Feature ;\n    geojson:topology [ a topo:Ring ;\n            topo:directedReferences ( <uuid:c60507ba-226b-4e49-a702-e9afef899b23> <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> <uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> <uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> ) ] .\n\n<uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> topo:orientation \"+\" .\n\n<uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> topo:orientation \"+\" .\n\n<uuid:c60507ba-226b-4e49-a702-e9afef899b23> topo:orientation \"+\" .\n\n<uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> topo:orientation \"+\" .\n\n",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-ring/example_1_1.ttl"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: 'A Ring feature: an ordered closed loop of directed (oriented) Edge references\n  forming a boundary. geometry must be null. Uses directed_references (not references)\n  in its topology.'\n$defs:\n  testCollection:\n    $anchor: testCollection\n    description: A convienence ref to a complete, testable collection objects and\n      references\n    $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml\nallOf:\n- $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml\n- properties:\n    geometry:\n      type: 'null'\n    topology:\n      properties:\n        type:\n          type: string\n          const: Ring\n        directed_references:\n          type: array\n          description: Ordered list of oriented Edge references forming the closed\n            ring boundary\n          items:\n            $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml\n          minItems: 3\n          x-jsonld-id: https://purl.org/geojson/topo#directedReferences\n          x-jsonld-container: '@list'\n      required:\n      - type\n      - directed_references\n      not:\n        required:\n        - references\n      x-jsonld-type: '@id'\n      x-jsonld-id: https://purl.org/geojson/vocab#topology\n  required:\n  - topology\nx-jsonld-extra-terms:\n  Ring: https://purl.org/geojson/topo#Ring\n  ref: '@id'\n  orientation: https://purl.org/geojson/topo#orientation\nx-jsonld-prefixes:\n  geojson: https://purl.org/geojson/vocab#\n  topo: https://purl.org/geojson/topo#\n",
+  "gitRepository": "https://github.com/surroundaustralia/topo-feature",
+  "gitPath": "_sources/features/topo-ring"
+}

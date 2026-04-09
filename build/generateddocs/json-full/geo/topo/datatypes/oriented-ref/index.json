@@ -1,0 +1,86 @@
+
+
+{
+  "itemIdentifier": "ogc.geo.topo.datatypes.oriented-ref",
+  "name": "Oriented Object Reference",
+  "abstract": "A datatype for referencing a topological object with an orientation indicator ('+' or '-'), used to define the sense (direction/orientation) of boundary elements such as edges in rings or faces in shells.",
+  "status": "under-development",
+  "dateTimeAddition": "2024-01-01T00:00:00Z",
+  "itemClass": "datatype",
+  "register": "ogcincubator",
+  "version": "0.1",
+  "dateOfLastChange": "2026-04-09",
+  "sources": [],
+  "maturity": "development",
+  "scope": "unstable",
+  "tags": [
+    "topology",
+    "reference",
+    "orientation"
+  ],
+  "group": "OGC",
+  "dependsOn": [
+    "ogc.ogc-utils.iri-or-curie"
+  ],
+  "shaclShapes": {},
+  "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/context.jsonld",
+  "schema": {
+    "application/yaml": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml",
+    "application/json": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.json"
+  },
+  "sourceSchema": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/oriented-ref/schema.json",
+  "sourceLdContext": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/oriented-ref/context.jsonld",
+  "resolvedSchemaProperties": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/resolvedProperties.json",
+  "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/oriented-ref/",
+  "rdfData": [],
+  "validationPassed": true,
+  "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/datatypes/oriented-ref/",
+  "description": "# Oriented Object Reference\n\nA datatype representing an oriented reference to a topological object \u2014 the atomic element used in `directed_references` arrays.\n\n## Usage\n\n`directed_references` arrays appear in:\n\n- **Ring** topology \u2014 each element references an **Edge** feature with an orientation\n- **Shell** topology \u2014 each element references a **Face** feature with an orientation\n- **Solid** topology (inline in shells array) \u2014 same pattern\n\nThis is distinct from plain `references`, which is an array of simple string IDs used for positional references (e.g. a LineString referencing point nodes by ID).\n\n## Orientation Semantics\n\n| Value | Meaning |\n|---|---|\n| `\"+\"` | Forward/positive: the object is used in its natural direction |\n| `\"-\"` | Reverse/negative: the object is traversed in the opposite direction |\n\nSharing edges between faces (and faces between shells) without duplication is achieved by varying orientation.\n\n## Example\n\n```json\n{\n  \"ref\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae\",\n  \"orientation\": \"+\"\n}\n```\n",
+  "examples": [
+    {
+      "title": "Oriented edge reference (forward)",
+      "content": "An oriented reference to an edge feature, used as an element of a Ring's directed_references array.\nThe '+' orientation means the edge is traversed in its natural direction.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "code": "{\n  \"ref\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae\",\n  \"orientation\": \"+\"\n}\n",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/oriented-ref/example_1_1.json"
+        },
+        {
+          "language": "jsonld",
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/context.jsonld\",\n  \"ref\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae\",\n  \"orientation\": \"+\"\n}",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/oriented-ref/example_1_1.jsonld"
+        },
+        {
+          "language": "ttl",
+          "code": "@prefix topo: <https://purl.org/geojson/topo#> .\n\n<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> topo:orientation \"+\" .\n\n",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/oriented-ref/example_1_1.ttl"
+        }
+      ]
+    },
+    {
+      "title": "Oriented edge reference (reverse)",
+      "content": "An oriented reference to an edge feature traversed in reverse.\nThe '-' orientation means the edge is used in the opposite direction to its definition.\nThis allows the same edge to serve as a boundary of two adjacent faces without duplication.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "code": "{\n  \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\",\n  \"orientation\": \"-\"\n}\n",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/oriented-ref/example_2_1.json"
+        },
+        {
+          "language": "jsonld",
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/context.jsonld\",\n  \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\",\n  \"orientation\": \"-\"\n}",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/oriented-ref/example_2_1.jsonld"
+        },
+        {
+          "language": "ttl",
+          "code": "@prefix topo: <https://purl.org/geojson/topo#> .\n\n<uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> topo:orientation \"-\" .\n\n",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/oriented-ref/example_2_1.ttl"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: An oriented reference to a topological object, combining a reference\n  identifier with an orientation indicator ('+' for forward/positive, '-' for reverse/negative).\n  Used in Ring members (referencing edges) and Shell members (referencing faces).\ntype: object\nproperties:\n  ref:\n    $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml\n    description: 'Identifier of the referenced topological object (e.g. a uuid: URI\n      or local id)'\n    x-jsonld-id: '@id'\n  orientation:\n    type: string\n    enum:\n    - +\n    - '-'\n    description: 'Orientation of the reference: ''+'' for forward/positive direction,\n      ''-'' for reverse/negative direction'\n    x-jsonld-id: https://purl.org/geojson/topo#orientation\nrequired:\n- ref\n- orientation\nx-jsonld-prefixes:\n  topo: https://purl.org/geojson/topo#\n",
+  "gitRepository": "https://github.com/surroundaustralia/topo-feature",
+  "gitPath": "_sources/datatypes/oriented-ref"
+}

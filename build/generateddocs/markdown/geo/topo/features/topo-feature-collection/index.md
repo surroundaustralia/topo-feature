@@ -63,7 +63,7 @@ can be solids, swept volumes or any other concept.
 #### jsonld
 ```jsonld
 {
-  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld",
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld",
   "type": "FeatureCollection",
   "id": "pointsonly",
   "features": [
@@ -168,7 +168,7 @@ can be solids, swept volumes or any other concept.
 #### jsonld
 ```jsonld
 {
-  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld",
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld",
   "type": "FeatureCollection",
   "id": "line",
   "features": [
@@ -343,7 +343,7 @@ can be solids, swept volumes or any other concept.
 #### jsonld
 ```jsonld
 {
-  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld",
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld",
   "type": "FeatureCollection",
   "id": "TopoCollectionExample",
   "features": [
@@ -523,15 +523,15 @@ properties:
     type: array
     items:
       anyOf:
-      - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
       - $ref: '#/$defs/PointOptions'
 
 ```
 
 Links to the schema:
 
-* YAML version: [schema.yaml](https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.json)
-* JSON version: [schema.json](https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml)
+* YAML version: [schema.yaml](https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.json)
+* JSON version: [schema.json](https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml)
 
 
 # JSON-LD Context
@@ -539,6 +539,15 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
+    "type": "@type",
+    "features": {
+      "@id": "geojson:features",
+      "@container": "@set"
+    },
+    "bbox": {
+      "@id": "geojson:bbox",
+      "@container": "@list"
+    },
     "links": {
       "@context": {
         "href": {
@@ -559,13 +568,9 @@ Links to the schema:
       },
       "@id": "rdfs:seeAlso"
     },
-    "features": {
-      "@container": "@set",
-      "@id": "geojson:features"
-    },
     "properties": "@nest",
-    "type": "@type",
     "featureType": "@type",
+    "coordRefSys": "http://www.opengis.net/def/glossary/term/CoordinateReferenceSystemCRS",
     "Feature": "geojson:Feature",
     "FeatureCollection": "geojson:FeatureCollection",
     "GeometryCollection": "geojson:GeometryCollection",
@@ -577,10 +582,6 @@ Links to the schema:
     "Polygon": "geojson:Polygon",
     "id": "@id",
     "geometry": "geojson:geometry",
-    "bbox": {
-      "@container": "@list",
-      "@id": "geojson:bbox"
-    },
     "time": {
       "@context": {
         "date": {
@@ -598,7 +599,6 @@ Links to the schema:
       },
       "@id": "dct:time"
     },
-    "coordRefSys": "http://www.opengis.net/def/glossary/term/CoordinateReferenceSystemCRS",
     "place": "dct:spatial",
     "Polyhedron": "geojson:Polyhedron",
     "MultiPolyhedron": "geojson:MultiPolyhedron",
@@ -630,6 +630,18 @@ Links to the schema:
           "@id": "geojson:relatedFeatures",
           "@type": "@id",
           "@container": "@list"
+        },
+        "directed_references": {
+          "@id": "topo:directedReferences",
+          "@container": "@list"
+        },
+        "rings": {
+          "@id": "topo:rings",
+          "@container": "@list"
+        },
+        "shells": {
+          "@id": "topo:shells",
+          "@container": "@list"
         }
       },
       "@type": "@id",
@@ -644,26 +656,33 @@ Links to the schema:
     "arcLength": "geojson:arcLength",
     "startTangentVector": "geojson:startTangentVector",
     "endTangentVector": "geojson:endTangentVector",
+    "ref": "@id",
+    "orientation": "topo:orientation",
+    "Face": "topo:Face",
+    "Ring": "topo:Ring",
+    "Shell": "topo:Shell",
+    "Solid": "topo:Solid",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "geojson": "https://purl.org/geojson/vocab#",
     "oa": "http://www.w3.org/ns/oa#",
     "dct": "http://purl.org/dc/terms/",
-    "geojson": "https://purl.org/geojson/vocab#",
     "owlTime": "http://www.w3.org/2006/time#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "csdm": "https://linked.data.gov.au/def/csdm/",
+    "topo": "https://purl.org/geojson/topo#",
     "@version": 1.1
   }
 }
 ```
 
 You can find the full JSON-LD context here:
-[context.jsonld](https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld)
+[context.jsonld](https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld)
 
 
 # For developers
 
 The source code for this Building Block can be found in the following repository:
 
-* URL: [https://github.com/ogcincubator/topo-feature](https://github.com/ogcincubator/topo-feature)
+* URL: [https://github.com/surroundaustralia/topo-feature](https://github.com/surroundaustralia/topo-feature)
 * Path: `_sources/features/topo-feature-collection`
 

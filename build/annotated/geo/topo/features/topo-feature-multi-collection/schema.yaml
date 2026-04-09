@@ -37,6 +37,8 @@ properties:
                 minItems: 2
         required:
         - geometry
+    x-jsonld-id: https://purl.org/geojson/topo#points
+    x-jsonld-container: '@list'
   edges:
     type: array
     description: Edge (LineString) features referencing two point nodes via topology.references.
@@ -54,8 +56,6 @@ properties:
                 enum:
                 - LineString
                 - MultiLineString
-            x-jsonld-type: '@id'
-            x-jsonld-id: https://purl.org/geojson/vocab#topology
   faces:
     type: array
     description: Face features whose boundary rings reference edges via directed_references.
@@ -88,18 +88,7 @@ properties:
             required:
             - type
             - shells
-            x-jsonld-type: '@id'
-            x-jsonld-id: https://purl.org/geojson/vocab#topology
 x-jsonld-extra-terms:
-  references:
-    x-jsonld-id: https://purl.org/geojson/vocab#relatedFeatures
-    x-jsonld-type: '@id'
-    x-jsonld-container: '@list'
-  directed_references:
-    x-jsonld-id: https://purl.org/geojson/topo#directedReferences
-    x-jsonld-container: '@list'
-  ref: '@id'
-  orientation: https://purl.org/geojson/topo#orientation
   Face: https://purl.org/geojson/topo#Face
   Ring: https://purl.org/geojson/topo#Ring
   Shell: https://purl.org/geojson/topo#Shell
@@ -108,5 +97,5 @@ x-jsonld-extra-terms:
     x-jsonld-id: https://purl.org/geojson/topo#rings
     x-jsonld-container: '@list'
 x-jsonld-prefixes:
-  geojson: https://purl.org/geojson/vocab#
   topo: https://purl.org/geojson/topo#
+  geojson: https://purl.org/geojson/vocab#

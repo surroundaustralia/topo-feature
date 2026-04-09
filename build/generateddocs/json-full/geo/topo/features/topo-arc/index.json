@@ -19,13 +19,11 @@
     "geometry",
     "topology"
   ],
-  "shaclClosures": [
-    "../topo-feature/examples/points.ttl"
-  ],
+  "shaclClosures": [],
   "shaclShapes": {
     "ogc.geo.topo.features.topo-arc": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ],
     "ogc.geo.topo.features.topo-feature": [
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
@@ -35,16 +33,16 @@
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
-    "ogc.geo.features.featureCollection": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
-    ],
     "ogc.geo.features.feature": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+    ],
+    "ogc.geo.features.featureCollection": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
     ]
   },
   "dependsOn": [
-    "ogc.geo.topo.datatypes.topology",
-    "ogc.geo.topo.features.topo-feature"
+    "ogc.geo.topo.features.topo-feature",
+    "ogc.geo.topo.datatypes.topology"
   ],
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld",
   "schema": {
@@ -56,7 +54,7 @@
   "resolvedSchemaProperties": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/resolvedProperties.json",
   "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/",
   "rdfData": [],
-  "validationPassed": false,
+  "validationPassed": true,
   "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-arc/",
   "description": "## Topology defining Arcs, Circles, Splines\n\nA feature type using a topology property to reference points defining non-linear curves.\n\nEach geometry type has a specific number of references to \"features\" defining point geometries.\n\n![Example](assets/arc.png)\n\nWhere additional properties are required to define the geometry these are included as sub-properties of the topology property.\n\nAdditional properties \"radius\" and \"arcLength\" are defined for optional use as feature properties.\n\nNote: the geojson: namespace is used for semantic annotations - this may be replaced with a more suitable namespace when a target ontology is available (such as the planned Geosparql version 1.3)\n\n\n",
   "examples": [

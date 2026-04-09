@@ -1,5 +1,5 @@
 Validation report for ogc.geo.topo.features.topo-feature-collection - TopoFeatureCollection
-Generated 2026-04-09T01:49:54.616264+00:00
+Generated 2026-04-09T01:52:29.057723+00:00
 === General ===
 Test was expected to fail and it did.
 === End General ===
@@ -21,8 +21,8 @@ Validation result for _sources/features/topo-feature/tests/geometry-coordinates.
   Conforms: True
   
 Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:
- - Shape _:n768ba678011e4b36a9bf795080791f15b3: <file:///github/workspace/P3>/geojson:geometry,<file:///github/workspace/P1>/geojson:geometry
- - Shape _:n768ba678011e4b36a9bf795080791f15b1: <file:///github/workspace/P3>/geojson:geometry,<file:///github/workspace/P1>/geojson:geometry
+ - Shape _:nac034a74fd2a403b84670b0dca8a2063b1: <file:///github/workspace/P3>/geojson:geometry,<file:///github/workspace/P1>/geojson:geometry
+ - Shape _:nac034a74fd2a403b84670b0dca8a2063b3: <file:///github/workspace/P3>/geojson:geometry,<file:///github/workspace/P1>/geojson:geometry
 
 
 ** Validation error **
@@ -30,26 +30,6 @@ Validation result for _sources/features/topo-feature-collection/tests/topo-refs-
   Validation Report
   Conforms: False
   Results (2):
-  Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
-  	Severity: sh:Violation
-  	Source Shape: topo:testTopoReferencesExist
-  	Focus Node: [ geojson:relatedFeatures ( <file:///github/workspace/P1> <file:///github/workspace/P2> ) ; rdf:type geojson:LineString ]
-  	Value Node: <file:///github/workspace/P2>
-  	Result Path: geojson:relatedFeatures
-  	Source Constraint: [ sh:message Literal("Referenced features must be present within current graph closure for  topological feature.") ; sh:select Literal("
-          prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-          PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
-          prefix geojson: <https://purl.org/geojson/vocab#>
-  
-          SELECT $this (geojson:relatedFeatures as ?path) (?ref as ?value)
-          WHERE {
-           $this geojson:relatedFeatures/rdf:rest*/rdf:first ?ref .
-           $this a ?geomtype .
-           FILTER ( ?geomtype != geojson:Polygon)
-           FILTER NOT EXISTS { ?ref ?p ?o }
-          }
-  ") ]
-  	Message: Referenced features must be present within current graph closure for  topological feature.
   Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
   	Severity: sh:Violation
   	Source Shape: topo:testTopoLinesReferencePoints
@@ -71,22 +51,30 @@ Validation result for _sources/features/topo-feature-collection/tests/topo-refs-
           }
   ") ]
   	Message: Lines topologies must reference points within current graph closure.
+  Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+  	Severity: sh:Violation
+  	Source Shape: topo:testTopoReferencesExist
+  	Focus Node: [ geojson:relatedFeatures ( <file:///github/workspace/P1> <file:///github/workspace/P2> ) ; rdf:type geojson:LineString ]
+  	Value Node: <file:///github/workspace/P2>
+  	Result Path: geojson:relatedFeatures
+  	Source Constraint: [ sh:message Literal("Referenced features must be present within current graph closure for  topological feature.") ; sh:select Literal("
+          prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+          PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+          prefix geojson: <https://purl.org/geojson/vocab#>
+  
+          SELECT $this (geojson:relatedFeatures as ?path) (?ref as ?value)
+          WHERE {
+           $this geojson:relatedFeatures/rdf:rest*/rdf:first ?ref .
+           $this a ?geomtype .
+           FILTER ( ?geomtype != geojson:Polygon)
+           FILTER NOT EXISTS { ?ref ?p ?o }
+          }
+  ") ]
+  	Message: Referenced features must be present within current graph closure for  topological feature.
   
 Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:
- - Shape topo:testTopoReferencesExist: <file:///github/workspace/LineP1P2>/geojson:topology
  - Shape topo:testTopoLinesReferencePoints: <file:///github/workspace/LineP1P2>/geojson:topology
-
-Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
-  Validation Report
-  Conforms: True
-  
-Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
- - Shape geojson:FeatureCollectionShape: <file:///github/workspace/line>
- - Shape geojson:LinkShape: *none*
- - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
- - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
- - Shape geojson:GeometryShape: *none*
- - Shape geojson:FeatureShape: *none*
+ - Shape topo:testTopoReferencesExist: <file:///github/workspace/LineP1P2>/geojson:topology
 
 Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
   Validation Report
@@ -94,10 +82,22 @@ Validation result for https://opengeospatial.github.io/bblocks/registereditems/g
   
 Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
  - Shape geojson:LinkShape: *none*
- - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
  - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+ - Shape geojson:FeatureShape: <file:///github/workspace/P3>,<file:///github/workspace/P1>,<file:///github/workspace/LineP1P2>
  - Shape geojson:GeometryShape: *none*
- - Shape geojson:FeatureShape: <file:///github/workspace/LineP1P2>,<file:///github/workspace/P3>,<file:///github/workspace/P1>
+ - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+
+Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
+ - Shape geojson:LinkShape: *none*
+ - Shape geojson:FeatureCollectionShape: <file:///github/workspace/line>
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+ - Shape geojson:FeatureShape: *none*
+ - Shape geojson:GeometryShape: *none*
 
 === End SHACL ===
 

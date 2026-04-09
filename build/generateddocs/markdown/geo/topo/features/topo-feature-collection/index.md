@@ -101,6 +101,10 @@ can be solids, swept volumes or any other concept.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<http://www.example.com/features/pointsonly> a geojson:FeatureCollection ;
+    geojson:features <http://www.example.com/features/P1>,
+        <http://www.example.com/features/P2> .
+
 <http://www.example.com/features/P1> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 10 10 ) ] .
@@ -108,10 +112,6 @@ can be solids, swept volumes or any other concept.
 <http://www.example.com/features/P2> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 20 20 ) ] .
-
-[] a geojson:FeatureCollection ;
-    geojson:features <http://www.example.com/features/P1>,
-        <http://www.example.com/features/P2> .
 
 
 ```
@@ -219,7 +219,14 @@ can be solids, swept volumes or any other concept.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://www.example.com/features/LineP1P2> a geojson:Feature .
+<http://www.example.com/features/line> a geojson:FeatureCollection ;
+    geojson:features <http://www.example.com/features/LineP1P2>,
+        <http://www.example.com/features/P1>,
+        <http://www.example.com/features/P2> .
+
+<http://www.example.com/features/LineP1P2> a geojson:Feature ;
+    geojson:topology [ a geojson:LineString ;
+            geojson:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ] .
 
 <http://www.example.com/features/P1> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -228,11 +235,6 @@ can be solids, swept volumes or any other concept.
 <http://www.example.com/features/P2> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 20 20 ) ] .
-
-[] a geojson:FeatureCollection ;
-    geojson:features <http://www.example.com/features/LineP1P2>,
-        <http://www.example.com/features/P1>,
-        <http://www.example.com/features/P2> .
 
 
 ```
@@ -444,11 +446,30 @@ can be solids, swept volumes or any other concept.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://www.example.com/features/LineP1P2> a geojson:Feature .
+<http://www.example.com/features/TopoCollectionExample> a geojson:FeatureCollection ;
+    geojson:features <http://www.example.com/features/LineP1P2>,
+        <http://www.example.com/features/LineP2P3>,
+        <http://www.example.com/features/LineP3P1>,
+        <http://www.example.com/features/P1>,
+        <http://www.example.com/features/P2>,
+        <http://www.example.com/features/P3>,
+        <http://www.example.com/features/TriangleP1P2P3> .
 
-<http://www.example.com/features/LineP2P3> a geojson:Feature .
+<http://www.example.com/features/TriangleP1P2P3> a geojson:Feature ;
+    geojson:topology [ a geojson:Polygon ;
+            geojson:relatedFeatures ( <http://www.example.com/features/LineP1P2> <http://www.example.com/features/LineP2P3> <http://www.example.com/features/LineP3P1> ) ] .
 
-<http://www.example.com/features/LineP3P1> a geojson:Feature .
+<http://www.example.com/features/LineP1P2> a geojson:Feature ;
+    geojson:topology [ a geojson:LineString ;
+            geojson:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ] .
+
+<http://www.example.com/features/LineP2P3> a geojson:Feature ;
+    geojson:topology [ a geojson:LineString ;
+            geojson:relatedFeatures ( <http://www.example.com/features/P2> <http://www.example.com/features/P3> ) ] .
+
+<http://www.example.com/features/LineP3P1> a geojson:Feature ;
+    geojson:topology [ a geojson:LineString ;
+            geojson:relatedFeatures ( <http://www.example.com/features/P3> <http://www.example.com/features/P1> ) ] .
 
 <http://www.example.com/features/P1> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
@@ -461,17 +482,6 @@ can be solids, swept volumes or any other concept.
 <http://www.example.com/features/P3> a geojson:Feature ;
     geojson:geometry [ a geojson:Point ;
             geojson:coordinates ( 10 20 ) ] .
-
-<http://www.example.com/features/TriangleP1P2P3> a geojson:Feature .
-
-[] a geojson:FeatureCollection ;
-    geojson:features <http://www.example.com/features/LineP1P2>,
-        <http://www.example.com/features/LineP2P3>,
-        <http://www.example.com/features/LineP3P1>,
-        <http://www.example.com/features/P1>,
-        <http://www.example.com/features/P2>,
-        <http://www.example.com/features/P3>,
-        <http://www.example.com/features/TriangleP1P2P3> .
 
 
 ```
@@ -531,56 +541,12 @@ Links to the schema:
   "@context": {
     "type": "@type",
     "features": {
-      "@context": {
-        "id": "@id",
-        "geometry": "geojson:geometry",
-        "bbox": {
-          "@id": "geojson:bbox",
-          "@container": "@list"
-        },
-        "links": {
-          "@context": {
-            "href": {
-              "@type": "@id",
-              "@id": "oa:hasTarget"
-            },
-            "rel": {
-              "@context": {
-                "@base": "http://www.iana.org/assignments/relation/"
-              },
-              "@id": "http://www.iana.org/assignments/relation",
-              "@type": "@id"
-            },
-            "type": "dct:type",
-            "hreflang": "dct:language",
-            "title": "rdfs:label",
-            "length": "dct:extent"
-          },
-          "@id": "rdfs:seeAlso"
-        },
-        "featureType": "@type",
-        "time": {
-          "@context": {
-            "date": {
-              "@id": "owlTime:hasTime",
-              "@type": "xsd:date"
-            },
-            "timestamp": {
-              "@id": "owlTime:hasTime",
-              "@type": "xsd:dateTime"
-            },
-            "interval": {
-              "@id": "owlTime:hasTime",
-              "@container": "@list"
-            }
-          },
-          "@id": "dct:time"
-        },
-        "coordRefSys": "http://www.opengis.net/def/glossary/term/CoordinateReferenceSystemCRS",
-        "place": "dct:spatial"
-      },
       "@id": "geojson:features",
       "@container": "@set"
+    },
+    "bbox": {
+      "@id": "geojson:bbox",
+      "@container": "@list"
     },
     "links": {
       "@context": {
@@ -603,7 +569,8 @@ Links to the schema:
       "@id": "rdfs:seeAlso"
     },
     "properties": "@nest",
-    "featureType": "geojson:collectionFeatureType",
+    "featureType": "@type",
+    "coordRefSys": "http://www.opengis.net/def/glossary/term/CoordinateReferenceSystemCRS",
     "Feature": "geojson:Feature",
     "FeatureCollection": "geojson:FeatureCollection",
     "GeometryCollection": "geojson:GeometryCollection",
@@ -613,6 +580,26 @@ Links to the schema:
     "MultiPolygon": "geojson:MultiPolygon",
     "Point": "geojson:Point",
     "Polygon": "geojson:Polygon",
+    "id": "@id",
+    "geometry": "geojson:geometry",
+    "time": {
+      "@context": {
+        "date": {
+          "@id": "owlTime:hasTime",
+          "@type": "xsd:date"
+        },
+        "timestamp": {
+          "@id": "owlTime:hasTime",
+          "@type": "xsd:dateTime"
+        },
+        "interval": {
+          "@id": "owlTime:hasTime",
+          "@container": "@list"
+        }
+      },
+      "@id": "dct:time"
+    },
+    "place": "dct:spatial",
     "Polyhedron": "geojson:Polyhedron",
     "MultiPolyhedron": "geojson:MultiPolyhedron",
     "Prism": {
@@ -637,6 +624,29 @@ Links to the schema:
       "@id": "geojson:geometry",
       "@container": "@list"
     },
+    "topology": {
+      "@context": {
+        "references": {
+          "@id": "geojson:relatedFeatures",
+          "@type": "@id",
+          "@container": "@list"
+        },
+        "directed_references": {
+          "@id": "topo:directedReferences",
+          "@container": "@list"
+        },
+        "rings": {
+          "@id": "topo:rings",
+          "@container": "@list"
+        },
+        "shells": {
+          "@id": "topo:shells",
+          "@container": "@list"
+        }
+      },
+      "@type": "@id",
+      "@id": "geojson:topology"
+    },
     "Arc": "geojson:Arc",
     "ArcWithCenter": "geojson:ArcWithCenter",
     "ArcByChord": "geojson:ArcByChord",
@@ -653,11 +663,10 @@ Links to the schema:
     "Shell": "topo:Shell",
     "Solid": "topo:Solid",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "geojson": "https://purl.org/geojson/vocab#",
     "oa": "http://www.w3.org/ns/oa#",
     "dct": "http://purl.org/dc/terms/",
-    "geojson": "https://purl.org/geojson/vocab#",
     "owlTime": "http://www.w3.org/2006/time#",
-    "time": "http://www.w3.org/2006/time#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "csdm": "https://linked.data.gov.au/def/csdm/",
     "topo": "https://purl.org/geojson/topo#",

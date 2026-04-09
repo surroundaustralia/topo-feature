@@ -67,6 +67,7 @@ All other feature types reference these points (directly or transitively) to res
 ```json
 {
   "type": "FeatureCollection",
+    "features": [],
   "points": [
     {
       "id": "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
@@ -142,6 +143,7 @@ All other feature types reference these points (directly or transitively) to res
 {
   "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
   "type": "FeatureCollection",
+  "features": [],
   "points": [
     {
       "id": "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
@@ -214,6 +216,32 @@ All other feature types reference these points (directly or transitively) to res
 
 #### ttl
 ```ttl
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix topo: <https://purl.org/geojson/topo#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 1e+01 6e+00 ) ] .
+
+<uuid:a0ec1bfd-0f7a-4c42-bc71-bacdcd44071d> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 2e+00 3e+00 ) ] .
+
+<uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 1e+01 3e+00 ) ] .
+
+<uuid:c611f840-2829-44b2-b367-3915ca7875a4> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 2e+00 6e+00 ) ] .
+
+<uuid:fad324b9-801f-40f4-b65b-91f8753e9698> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 2e+00 3e+00 ) ] .
+
+[] topo:points ( <uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> <uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0> <uuid:c611f840-2829-44b2-b367-3915ca7875a4> <uuid:fad324b9-801f-40f4-b65b-91f8753e9698> <uuid:a0ec1bfd-0f7a-4c42-bc71-bacdcd44071d> ) .
 
 
 ```
@@ -228,6 +256,7 @@ geometry is null; actual coordinates are resolved from the referenced points.
 ```json
 {
   "type": "FeatureCollection",
+  "features": [],
   "points": [
     {
       "id": "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
@@ -365,6 +394,7 @@ geometry is null; actual coordinates are resolved from the referenced points.
 {
   "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
   "type": "FeatureCollection",
+  "features": [],
   "points": [
     {
       "id": "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
@@ -499,6 +529,32 @@ geometry is null; actual coordinates are resolved from the referenced points.
 
 #### ttl
 ```ttl
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix topo: <https://purl.org/geojson/topo#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 1e+01 6e+00 ) ] .
+
+<uuid:a0ec1bfd-0f7a-4c42-bc71-bacdcd44071d> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 2e+00 3e+00 ) ] .
+
+<uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 1e+01 3e+00 ) ] .
+
+<uuid:c611f840-2829-44b2-b367-3915ca7875a4> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 2e+00 6e+00 ) ] .
+
+<uuid:fad324b9-801f-40f4-b65b-91f8753e9698> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 2e+00 3e+00 ) ] .
+
+[] topo:points ( <uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> <uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0> <uuid:c611f840-2829-44b2-b367-3915ca7875a4> <uuid:fad324b9-801f-40f4-b65b-91f8753e9698> <uuid:a0ec1bfd-0f7a-4c42-bc71-bacdcd44071d> ) .
 
 
 ```
@@ -515,6 +571,7 @@ are derived from the topological reference chain.
 ```json
 {
   "type": "FeatureCollection",
+    "features": [],
   "points": [
     {
       "id": "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
@@ -2065,6 +2122,7 @@ are derived from the topological reference chain.
 {
   "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
   "type": "FeatureCollection",
+  "features": [],
   "points": [
     {
       "id": "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
@@ -3612,6 +3670,156 @@ are derived from the topological reference chain.
 
 #### ttl
 ```ttl
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix topo: <https://purl.org/geojson/topo#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<uuid:11caaac5-b631-4bd8-a6af-f82cb6371071> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 2e+00 6e+00 ) ] .
+
+<uuid:16c35df5-bc63-4edd-8da5-dbcc5548a61e> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 0e+00 ) ] .
+
+<uuid:1d2a5d01-8547-4de6-abea-8f9ab994d35e> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 6e+00 3e+00 ) ] .
+
+<uuid:1e20237c-9dfa-4251-9f3f-cc5e56a5becd> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+00 1e+01 6e+00 ) ] .
+
+<uuid:206806a4-a2f8-4c04-858e-99d289858a40> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 6e+00 0e+00 ) ] .
+
+<uuid:20d3c864-4a8c-4440-b600-a1d424e92f51> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 1e+01 0e+00 ) ] .
+
+<uuid:22138e52-65ef-4773-b69d-5ea2628fad7b> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 3e+00 ) ] .
+
+<uuid:2b34e214-cba7-4a66-8443-ceb932c5ef09> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 1e+01 3e+00 ) ] .
+
+<uuid:307b7db6-8014-4628-b80e-ff925bf71168> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+00 2e+00 3e+00 ) ] .
+
+<uuid:3c08ae4e-7b27-4e95-8bfb-6b42451be8f6> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+00 2e+00 6e+00 ) ] .
+
+<uuid:5e08b82a-8efb-447c-b5c2-54f8ff5788b3> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 6e+00 ) ] .
+
+<uuid:62a26df3-3e19-49bf-9ee4-24dbeb814a70> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 6e+00 6e+00 ) ] .
+
+<uuid:793997c5-bcc4-4610-984b-6cf2c2997348> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 0e+00 3e+00 ) ] .
+
+<uuid:7fe8cb9b-976e-4344-bf72-f3721d878ba4> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 0e+00 3e+00 ) ] .
+
+<uuid:8087116e-84cc-44d1-8047-78dc3837d7e8> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 6e+00 6e+00 ) ] .
+
+<uuid:87373f95-ee4b-4471-9980-f4a8258ee1e3> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 6e+00 3e+00 ) ] .
+
+<uuid:8cda5c68-9c82-43b4-84d7-979efa36dfe1> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 1e+01 3e+00 ) ] .
+
+<uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 1e+01 6e+00 ) ] .
+
+<uuid:8e503e04-ad51-423b-8102-708a845189b6> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 0e+00 3e+00 ) ] .
+
+<uuid:92bd9ed9-c138-45c3-b72c-a9ecb7f7cfe9> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 0e+00 0e+00 ) ] .
+
+<uuid:9a1d8124-ca37-4abd-b07e-bff4c8eaa2f9> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 2e+00 6e+00 ) ] .
+
+<uuid:9ef3d2ea-acea-4365-8bd5-2f8ef3036ed0> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 6e+00 0e+00 ) ] .
+
+<uuid:a0ec1bfd-0f7a-4c42-bc71-bacdcd44071d> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 2e+00 3e+00 ) ] .
+
+<uuid:a3b19f96-9bca-4c31-ac7e-4cb1615878df> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 0e+00 0e+00 ) ] .
+
+<uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 1e+01 3e+00 ) ] .
+
+<uuid:b6d10150-f9d4-4f7e-b028-c4bbee8e7717> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 0e+00 0e+00 ) ] .
+
+<uuid:b8412dad-b40a-4e35-9f42-f983e0fce39d> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 2e+00 3e+00 ) ] .
+
+<uuid:c060c1dc-6544-4595-b583-72ecf603fd6d> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 0e+00 3e+00 ) ] .
+
+<uuid:c611f840-2829-44b2-b367-3915ca7875a4> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 2e+00 6e+00 ) ] .
+
+<uuid:ca62577e-8e24-4af2-88bf-33b34e25e606> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 1e+01 0e+00 ) ] .
+
+<uuid:caa6045e-4189-4571-8914-1189e51ac71e> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 6e+00 6e+00 ) ] .
+
+<uuid:d8d136c6-604c-4ad3-adf7-b0a7e04d034a> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 6e+00 0e+00 ) ] .
+
+<uuid:e7300a01-f8c1-4351-9511-02790a5376b0> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+00 1e+01 3e+00 ) ] .
+
+<uuid:f34d9f2e-4180-41de-a613-46f78f4c178f> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 6e+00 3e+00 ) ] .
+
+<uuid:fad324b9-801f-40f4-b65b-91f8753e9698> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 2e+00 3e+00 ) ] .
+
+<uuid:ff685e16-64f8-4f41-8a9e-7d8e83312fd6> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 0e+00 0e+00 ) ] .
+
+[] topo:points ( <uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> <uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0> <uuid:c611f840-2829-44b2-b367-3915ca7875a4> <uuid:fad324b9-801f-40f4-b65b-91f8753e9698> <uuid:a0ec1bfd-0f7a-4c42-bc71-bacdcd44071d> <uuid:11caaac5-b631-4bd8-a6af-f82cb6371071> <uuid:5e08b82a-8efb-447c-b5c2-54f8ff5788b3> <uuid:22138e52-65ef-4773-b69d-5ea2628fad7b> <uuid:62a26df3-3e19-49bf-9ee4-24dbeb814a70> <uuid:8087116e-84cc-44d1-8047-78dc3837d7e8> <uuid:f34d9f2e-4180-41de-a613-46f78f4c178f> <uuid:87373f95-ee4b-4471-9980-f4a8258ee1e3> <uuid:e7300a01-f8c1-4351-9511-02790a5376b0> <uuid:1e20237c-9dfa-4251-9f3f-cc5e56a5becd> <uuid:307b7db6-8014-4628-b80e-ff925bf71168> <uuid:3c08ae4e-7b27-4e95-8bfb-6b42451be8f6> <uuid:b8412dad-b40a-4e35-9f42-f983e0fce39d> <uuid:9a1d8124-ca37-4abd-b07e-bff4c8eaa2f9> <uuid:caa6045e-4189-4571-8914-1189e51ac71e> <uuid:1d2a5d01-8547-4de6-abea-8f9ab994d35e> <uuid:ff685e16-64f8-4f41-8a9e-7d8e83312fd6> <uuid:92bd9ed9-c138-45c3-b72c-a9ecb7f7cfe9> <uuid:c060c1dc-6544-4595-b583-72ecf603fd6d> <uuid:7fe8cb9b-976e-4344-bf72-f3721d878ba4> <uuid:20d3c864-4a8c-4440-b600-a1d424e92f51> <uuid:2b34e214-cba7-4a66-8443-ceb932c5ef09> <uuid:16c35df5-bc63-4edd-8da5-dbcc5548a61e> <uuid:206806a4-a2f8-4c04-858e-99d289858a40> <uuid:d8d136c6-604c-4ad3-adf7-b0a7e04d034a> <uuid:b6d10150-f9d4-4f7e-b028-c4bbee8e7717> <uuid:a3b19f96-9bca-4c31-ac7e-4cb1615878df> <uuid:793997c5-bcc4-4610-984b-6cf2c2997348> <uuid:8e503e04-ad51-423b-8102-708a845189b6> <uuid:ca62577e-8e24-4af2-88bf-33b34e25e606> <uuid:8cda5c68-9c82-43b4-84d7-979efa36dfe1> <uuid:9ef3d2ea-acea-4365-8bd5-2f8ef3036ed0> ) .
 
 
 ```
@@ -3626,6 +3834,7 @@ All supporting points, edges and faces are included to make the example self-con
 ```json
 {
   "type": "FeatureCollection",
+    "features": [],
   "metadata": {
     "units": "meters",
     "coordinate_precision": 3,
@@ -6698,6 +6907,7 @@ All supporting points, edges and faces are included to make the example self-con
 {
   "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
   "type": "FeatureCollection",
+  "features": [],
   "metadata": {
     "units": "meters",
     "coordinate_precision": 3,
@@ -9767,6 +9977,156 @@ All supporting points, edges and faces are included to make the example self-con
 
 #### ttl
 ```ttl
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix topo: <https://purl.org/geojson/topo#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<uuid:11caaac5-b631-4bd8-a6af-f82cb6371071> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 2e+00 6e+00 ) ] .
+
+<uuid:16c35df5-bc63-4edd-8da5-dbcc5548a61e> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 0e+00 ) ] .
+
+<uuid:1d2a5d01-8547-4de6-abea-8f9ab994d35e> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 6e+00 3e+00 ) ] .
+
+<uuid:1e20237c-9dfa-4251-9f3f-cc5e56a5becd> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+00 1e+01 6e+00 ) ] .
+
+<uuid:206806a4-a2f8-4c04-858e-99d289858a40> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 6e+00 0e+00 ) ] .
+
+<uuid:20d3c864-4a8c-4440-b600-a1d424e92f51> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 1e+01 0e+00 ) ] .
+
+<uuid:22138e52-65ef-4773-b69d-5ea2628fad7b> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 3e+00 ) ] .
+
+<uuid:2b34e214-cba7-4a66-8443-ceb932c5ef09> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 1e+01 3e+00 ) ] .
+
+<uuid:307b7db6-8014-4628-b80e-ff925bf71168> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+00 2e+00 3e+00 ) ] .
+
+<uuid:3c08ae4e-7b27-4e95-8bfb-6b42451be8f6> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+00 2e+00 6e+00 ) ] .
+
+<uuid:5e08b82a-8efb-447c-b5c2-54f8ff5788b3> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 6e+00 ) ] .
+
+<uuid:62a26df3-3e19-49bf-9ee4-24dbeb814a70> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 6e+00 6e+00 ) ] .
+
+<uuid:793997c5-bcc4-4610-984b-6cf2c2997348> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 0e+00 3e+00 ) ] .
+
+<uuid:7fe8cb9b-976e-4344-bf72-f3721d878ba4> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 0e+00 3e+00 ) ] .
+
+<uuid:8087116e-84cc-44d1-8047-78dc3837d7e8> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 6e+00 6e+00 ) ] .
+
+<uuid:87373f95-ee4b-4471-9980-f4a8258ee1e3> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 6e+00 3e+00 ) ] .
+
+<uuid:8cda5c68-9c82-43b4-84d7-979efa36dfe1> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 1e+01 3e+00 ) ] .
+
+<uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 1e+01 6e+00 ) ] .
+
+<uuid:8e503e04-ad51-423b-8102-708a845189b6> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 0e+00 3e+00 ) ] .
+
+<uuid:92bd9ed9-c138-45c3-b72c-a9ecb7f7cfe9> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 0e+00 0e+00 ) ] .
+
+<uuid:9a1d8124-ca37-4abd-b07e-bff4c8eaa2f9> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 2e+00 6e+00 ) ] .
+
+<uuid:9ef3d2ea-acea-4365-8bd5-2f8ef3036ed0> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 6e+00 0e+00 ) ] .
+
+<uuid:a0ec1bfd-0f7a-4c42-bc71-bacdcd44071d> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 2e+00 3e+00 ) ] .
+
+<uuid:a3b19f96-9bca-4c31-ac7e-4cb1615878df> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 0e+00 0e+00 ) ] .
+
+<uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 1e+01 3e+00 ) ] .
+
+<uuid:b6d10150-f9d4-4f7e-b028-c4bbee8e7717> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 0e+00 0e+00 ) ] .
+
+<uuid:b8412dad-b40a-4e35-9f42-f983e0fce39d> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 2e+00 3e+00 ) ] .
+
+<uuid:c060c1dc-6544-4595-b583-72ecf603fd6d> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 0e+00 3e+00 ) ] .
+
+<uuid:c611f840-2829-44b2-b367-3915ca7875a4> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 2e+00 6e+00 ) ] .
+
+<uuid:ca62577e-8e24-4af2-88bf-33b34e25e606> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 1e+01 0e+00 ) ] .
+
+<uuid:caa6045e-4189-4571-8914-1189e51ac71e> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 6e+00 6e+00 ) ] .
+
+<uuid:d8d136c6-604c-4ad3-adf7-b0a7e04d034a> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 6e+00 0e+00 ) ] .
+
+<uuid:e7300a01-f8c1-4351-9511-02790a5376b0> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+00 1e+01 3e+00 ) ] .
+
+<uuid:f34d9f2e-4180-41de-a613-46f78f4c178f> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 6e+00 3e+00 ) ] .
+
+<uuid:fad324b9-801f-40f4-b65b-91f8753e9698> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 2e+00 3e+00 ) ] .
+
+<uuid:ff685e16-64f8-4f41-8a9e-7d8e83312fd6> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 0e+00 0e+00 ) ] .
+
+[] topo:points ( <uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> <uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0> <uuid:c611f840-2829-44b2-b367-3915ca7875a4> <uuid:fad324b9-801f-40f4-b65b-91f8753e9698> <uuid:a0ec1bfd-0f7a-4c42-bc71-bacdcd44071d> <uuid:11caaac5-b631-4bd8-a6af-f82cb6371071> <uuid:5e08b82a-8efb-447c-b5c2-54f8ff5788b3> <uuid:22138e52-65ef-4773-b69d-5ea2628fad7b> <uuid:62a26df3-3e19-49bf-9ee4-24dbeb814a70> <uuid:8087116e-84cc-44d1-8047-78dc3837d7e8> <uuid:f34d9f2e-4180-41de-a613-46f78f4c178f> <uuid:87373f95-ee4b-4471-9980-f4a8258ee1e3> <uuid:e7300a01-f8c1-4351-9511-02790a5376b0> <uuid:1e20237c-9dfa-4251-9f3f-cc5e56a5becd> <uuid:307b7db6-8014-4628-b80e-ff925bf71168> <uuid:3c08ae4e-7b27-4e95-8bfb-6b42451be8f6> <uuid:b8412dad-b40a-4e35-9f42-f983e0fce39d> <uuid:9a1d8124-ca37-4abd-b07e-bff4c8eaa2f9> <uuid:caa6045e-4189-4571-8914-1189e51ac71e> <uuid:1d2a5d01-8547-4de6-abea-8f9ab994d35e> <uuid:ff685e16-64f8-4f41-8a9e-7d8e83312fd6> <uuid:92bd9ed9-c138-45c3-b72c-a9ecb7f7cfe9> <uuid:c060c1dc-6544-4595-b583-72ecf603fd6d> <uuid:7fe8cb9b-976e-4344-bf72-f3721d878ba4> <uuid:20d3c864-4a8c-4440-b600-a1d424e92f51> <uuid:2b34e214-cba7-4a66-8443-ceb932c5ef09> <uuid:16c35df5-bc63-4edd-8da5-dbcc5548a61e> <uuid:206806a4-a2f8-4c04-858e-99d289858a40> <uuid:d8d136c6-604c-4ad3-adf7-b0a7e04d034a> <uuid:b6d10150-f9d4-4f7e-b028-c4bbee8e7717> <uuid:a3b19f96-9bca-4c31-ac7e-4cb1615878df> <uuid:793997c5-bcc4-4610-984b-6cf2c2997348> <uuid:8e503e04-ad51-423b-8102-708a845189b6> <uuid:ca62577e-8e24-4af2-88bf-33b34e25e606> <uuid:8cda5c68-9c82-43b4-84d7-979efa36dfe1> <uuid:9ef3d2ea-acea-4365-8bd5-2f8ef3036ed0> ) .
 
 
 ```
@@ -16400,6 +16760,156 @@ topology is encoded via references and directed_references. Contains:
 
 #### ttl
 ```ttl
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix topo: <https://purl.org/geojson/topo#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<uuid:11caaac5-b631-4bd8-a6af-f82cb6371071> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 2e+00 6e+00 ) ] .
+
+<uuid:16c35df5-bc63-4edd-8da5-dbcc5548a61e> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 0e+00 ) ] .
+
+<uuid:1d2a5d01-8547-4de6-abea-8f9ab994d35e> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 6e+00 3e+00 ) ] .
+
+<uuid:1e20237c-9dfa-4251-9f3f-cc5e56a5becd> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+00 1e+01 6e+00 ) ] .
+
+<uuid:206806a4-a2f8-4c04-858e-99d289858a40> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 6e+00 0e+00 ) ] .
+
+<uuid:20d3c864-4a8c-4440-b600-a1d424e92f51> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 1e+01 0e+00 ) ] .
+
+<uuid:22138e52-65ef-4773-b69d-5ea2628fad7b> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 3e+00 ) ] .
+
+<uuid:2b34e214-cba7-4a66-8443-ceb932c5ef09> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 1e+01 3e+00 ) ] .
+
+<uuid:307b7db6-8014-4628-b80e-ff925bf71168> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+00 2e+00 3e+00 ) ] .
+
+<uuid:3c08ae4e-7b27-4e95-8bfb-6b42451be8f6> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+00 2e+00 6e+00 ) ] .
+
+<uuid:5e08b82a-8efb-447c-b5c2-54f8ff5788b3> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 6e+00 ) ] .
+
+<uuid:62a26df3-3e19-49bf-9ee4-24dbeb814a70> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 6e+00 6e+00 ) ] .
+
+<uuid:793997c5-bcc4-4610-984b-6cf2c2997348> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 0e+00 3e+00 ) ] .
+
+<uuid:7fe8cb9b-976e-4344-bf72-f3721d878ba4> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 0e+00 3e+00 ) ] .
+
+<uuid:8087116e-84cc-44d1-8047-78dc3837d7e8> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 6e+00 6e+00 ) ] .
+
+<uuid:87373f95-ee4b-4471-9980-f4a8258ee1e3> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 6e+00 3e+00 ) ] .
+
+<uuid:8cda5c68-9c82-43b4-84d7-979efa36dfe1> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 1e+01 3e+00 ) ] .
+
+<uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 1e+01 6e+00 ) ] .
+
+<uuid:8e503e04-ad51-423b-8102-708a845189b6> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 0e+00 3e+00 ) ] .
+
+<uuid:92bd9ed9-c138-45c3-b72c-a9ecb7f7cfe9> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 0e+00 0e+00 ) ] .
+
+<uuid:9a1d8124-ca37-4abd-b07e-bff4c8eaa2f9> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 2e+00 6e+00 ) ] .
+
+<uuid:9ef3d2ea-acea-4365-8bd5-2f8ef3036ed0> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 6e+00 0e+00 ) ] .
+
+<uuid:a0ec1bfd-0f7a-4c42-bc71-bacdcd44071d> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 2e+00 3e+00 ) ] .
+
+<uuid:a3b19f96-9bca-4c31-ac7e-4cb1615878df> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 0e+00 0e+00 ) ] .
+
+<uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 1e+01 3e+00 ) ] .
+
+<uuid:b6d10150-f9d4-4f7e-b028-c4bbee8e7717> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 0e+00 0e+00 ) ] .
+
+<uuid:b8412dad-b40a-4e35-9f42-f983e0fce39d> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 2e+00 3e+00 ) ] .
+
+<uuid:c060c1dc-6544-4595-b583-72ecf603fd6d> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 0e+00 3e+00 ) ] .
+
+<uuid:c611f840-2829-44b2-b367-3915ca7875a4> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 2e+00 6e+00 ) ] .
+
+<uuid:ca62577e-8e24-4af2-88bf-33b34e25e606> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 1e+01 0e+00 ) ] .
+
+<uuid:caa6045e-4189-4571-8914-1189e51ac71e> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 8e+00 6e+00 6e+00 ) ] .
+
+<uuid:d8d136c6-604c-4ad3-adf7-b0a7e04d034a> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 6e+00 0e+00 ) ] .
+
+<uuid:e7300a01-f8c1-4351-9511-02790a5376b0> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+00 1e+01 3e+00 ) ] .
+
+<uuid:f34d9f2e-4180-41de-a613-46f78f4c178f> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 6e+00 3e+00 ) ] .
+
+<uuid:fad324b9-801f-40f4-b65b-91f8753e9698> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 2e+00 3e+00 ) ] .
+
+<uuid:ff685e16-64f8-4f41-8a9e-7d8e83312fd6> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.2e+01 0e+00 0e+00 ) ] .
+
+[] topo:points ( <uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> <uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0> <uuid:c611f840-2829-44b2-b367-3915ca7875a4> <uuid:fad324b9-801f-40f4-b65b-91f8753e9698> <uuid:a0ec1bfd-0f7a-4c42-bc71-bacdcd44071d> <uuid:11caaac5-b631-4bd8-a6af-f82cb6371071> <uuid:5e08b82a-8efb-447c-b5c2-54f8ff5788b3> <uuid:22138e52-65ef-4773-b69d-5ea2628fad7b> <uuid:62a26df3-3e19-49bf-9ee4-24dbeb814a70> <uuid:8087116e-84cc-44d1-8047-78dc3837d7e8> <uuid:f34d9f2e-4180-41de-a613-46f78f4c178f> <uuid:87373f95-ee4b-4471-9980-f4a8258ee1e3> <uuid:e7300a01-f8c1-4351-9511-02790a5376b0> <uuid:1e20237c-9dfa-4251-9f3f-cc5e56a5becd> <uuid:307b7db6-8014-4628-b80e-ff925bf71168> <uuid:3c08ae4e-7b27-4e95-8bfb-6b42451be8f6> <uuid:b8412dad-b40a-4e35-9f42-f983e0fce39d> <uuid:9a1d8124-ca37-4abd-b07e-bff4c8eaa2f9> <uuid:caa6045e-4189-4571-8914-1189e51ac71e> <uuid:1d2a5d01-8547-4de6-abea-8f9ab994d35e> <uuid:ff685e16-64f8-4f41-8a9e-7d8e83312fd6> <uuid:92bd9ed9-c138-45c3-b72c-a9ecb7f7cfe9> <uuid:c060c1dc-6544-4595-b583-72ecf603fd6d> <uuid:7fe8cb9b-976e-4344-bf72-f3721d878ba4> <uuid:20d3c864-4a8c-4440-b600-a1d424e92f51> <uuid:2b34e214-cba7-4a66-8443-ceb932c5ef09> <uuid:16c35df5-bc63-4edd-8da5-dbcc5548a61e> <uuid:206806a4-a2f8-4c04-858e-99d289858a40> <uuid:d8d136c6-604c-4ad3-adf7-b0a7e04d034a> <uuid:b6d10150-f9d4-4f7e-b028-c4bbee8e7717> <uuid:a3b19f96-9bca-4c31-ac7e-4cb1615878df> <uuid:793997c5-bcc4-4610-984b-6cf2c2997348> <uuid:8e503e04-ad51-423b-8102-708a845189b6> <uuid:ca62577e-8e24-4af2-88bf-33b34e25e606> <uuid:8cda5c68-9c82-43b4-84d7-979efa36dfe1> <uuid:9ef3d2ea-acea-4365-8bd5-2f8ef3036ed0> ) .
 
 
 ```
@@ -16446,6 +16956,8 @@ properties:
                 minItems: 2
         required:
         - geometry
+    x-jsonld-id: https://purl.org/geojson/topo#points
+    x-jsonld-container: '@list'
   edges:
     type: array
     description: Edge (LineString) features referencing two point nodes via topology.references.
@@ -16463,8 +16975,6 @@ properties:
                 enum:
                 - LineString
                 - MultiLineString
-            x-jsonld-type: '@id'
-            x-jsonld-id: https://purl.org/geojson/vocab#topology
   faces:
     type: array
     description: Face features whose boundary rings reference edges via directed_references.
@@ -16497,18 +17007,7 @@ properties:
             required:
             - type
             - shells
-            x-jsonld-type: '@id'
-            x-jsonld-id: https://purl.org/geojson/vocab#topology
 x-jsonld-extra-terms:
-  references:
-    x-jsonld-id: https://purl.org/geojson/vocab#relatedFeatures
-    x-jsonld-type: '@id'
-    x-jsonld-container: '@list'
-  directed_references:
-    x-jsonld-id: https://purl.org/geojson/topo#directedReferences
-    x-jsonld-container: '@list'
-  ref: '@id'
-  orientation: https://purl.org/geojson/topo#orientation
   Face: https://purl.org/geojson/topo#Face
   Ring: https://purl.org/geojson/topo#Ring
   Shell: https://purl.org/geojson/topo#Shell
@@ -16517,8 +17016,8 @@ x-jsonld-extra-terms:
     x-jsonld-id: https://purl.org/geojson/topo#rings
     x-jsonld-container: '@list'
 x-jsonld-prefixes:
-  geojson: https://purl.org/geojson/vocab#
   topo: https://purl.org/geojson/topo#
+  geojson: https://purl.org/geojson/vocab#
 
 ```
 
@@ -16533,17 +17032,6 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
-    "references": {
-      "@id": "geojson:relatedFeatures",
-      "@type": "@id",
-      "@container": "@list"
-    },
-    "directed_references": {
-      "@id": "topo:directedReferences",
-      "@container": "@list"
-    },
-    "ref": "@id",
-    "orientation": "topo:orientation",
     "Face": "topo:Face",
     "Ring": "topo:Ring",
     "Shell": "topo:Shell",
@@ -16552,9 +17040,54 @@ Links to the schema:
       "@id": "topo:rings",
       "@container": "@list"
     },
-    "topology": {
-      "@type": "@id",
-      "@id": "geojson:topology"
+    "points": {
+      "@context": {
+        "type": "@type",
+        "id": "@id",
+        "geometry": "geojson:geometry",
+        "links": {
+          "@context": {
+            "href": {
+              "@type": "@id",
+              "@id": "oa:hasTarget"
+            },
+            "rel": {
+              "@context": {
+                "@base": "http://www.iana.org/assignments/relation/"
+              },
+              "@id": "http://www.iana.org/assignments/relation",
+              "@type": "@id"
+            },
+            "type": "dct:type",
+            "hreflang": "dct:language",
+            "title": "rdfs:label",
+            "length": "dct:extent"
+          },
+          "@id": "rdfs:seeAlso"
+        },
+        "featureType": "@type",
+        "time": {
+          "@context": {
+            "date": {
+              "@id": "owlTime:hasTime",
+              "@type": "xsd:date"
+            },
+            "timestamp": {
+              "@id": "owlTime:hasTime",
+              "@type": "xsd:dateTime"
+            },
+            "interval": {
+              "@id": "owlTime:hasTime",
+              "@container": "@list"
+            }
+          },
+          "@id": "dct:time"
+        },
+        "coordRefSys": "http://www.opengis.net/def/glossary/term/CoordinateReferenceSystemCRS",
+        "place": "dct:spatial"
+      },
+      "@id": "topo:points",
+      "@container": "@list"
     },
     "shells": {
       "@context": {
@@ -16600,7 +17133,22 @@ Links to the schema:
           "@id": "dct:time"
         },
         "coordRefSys": "http://www.opengis.net/def/glossary/term/CoordinateReferenceSystemCRS",
-        "place": "dct:spatial"
+        "place": "dct:spatial",
+        "topology": {
+          "@context": {
+            "references": {
+              "@id": "geojson:relatedFeatures",
+              "@type": "@id",
+              "@container": "@list"
+            },
+            "directed_references": {
+              "@id": "topo:directedReferences",
+              "@container": "@list"
+            }
+          },
+          "@type": "@id",
+          "@id": "geojson:topology"
+        }
       },
       "@id": "topo:shells",
       "@container": "@list"
@@ -16656,8 +17204,10 @@ Links to the schema:
     "arcLength": "geojson:arcLength",
     "startTangentVector": "geojson:startTangentVector",
     "endTangentVector": "geojson:endTangentVector",
-    "geojson": "https://purl.org/geojson/vocab#",
+    "ref": "@id",
+    "orientation": "topo:orientation",
     "topo": "https://purl.org/geojson/topo#",
+    "geojson": "https://purl.org/geojson/vocab#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "oa": "http://www.w3.org/ns/oa#",
     "dct": "http://purl.org/dc/terms/",

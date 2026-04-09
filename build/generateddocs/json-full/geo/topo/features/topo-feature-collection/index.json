@@ -10,18 +10,18 @@
   "itemClass": "schema",
   "register": "ogc-building-block-register",
   "version": "0.1",
-  "dateOfLastChange": "2026-04-06",
+  "dateOfLastChange": "2026-04-09",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
   "dependsOn": [
-    "ogc.geo.features.feature",
-    "ogc.geo.features.featureCollection",
     "ogc.geo.json-fg.feature",
     "ogc.geo.json-fg.feature-lenient",
-    "ogc.geo.topo.features.topo-feature",
     "ogc.geo.json-fg.featureCollection-lenient",
-    "ogc.geo.json-fg.featureCollection"
+    "ogc.geo.features.feature",
+    "ogc.geo.json-fg.featureCollection",
+    "ogc.geo.topo.features.topo-feature",
+    "ogc.geo.features.featureCollection"
   ],
   "tags": [
     "topology",
@@ -32,6 +32,12 @@
     "ogc.geo.topo.features.topo-feature-collection": [
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+    ],
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+    ],
+    "ogc.geo.features.featureCollection": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
     ],
     "ogc.geo.topo.features.topo-feature": [
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
@@ -48,7 +54,7 @@
   "resolvedSchemaProperties": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/resolvedProperties.json",
   "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/",
   "rdfData": [],
-  "validationPassed": false,
+  "validationPassed": true,
   "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-feature-collection/",
   "description": "## Feature Collection with Explicit Topology \n\n%definition% \n\nA Feature Collection where the set of TopoFeatures contained describe the full geometry of higher-dimension features by topology relationships, ultimately grounded in Point features with explicit coordinates.\n\nTopoFeature is feature type using a topology property to reference an ordered list of references to other features. \n\nOther features may be either features with topology properties or GeoJSON (or FG-JSON) point objects.\n\nThis is a generalisation of the TopoJSON concept using inline data, but not limited to the LineStrings. Topological defined objects \ncan be solids, swept volumes or any other concept.\n\n",
   "examples": [
@@ -69,7 +75,7 @@
         },
         {
           "language": "ttl",
-          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<http://www.example.com/features/P1> a geojson:Feature ;\n    geojson:geometry [ a geojson:Point ;\n            geojson:coordinates ( 10 10 ) ] .\n\n<http://www.example.com/features/P2> a geojson:Feature ;\n    geojson:geometry [ a geojson:Point ;\n            geojson:coordinates ( 20 20 ) ] .\n\n[] a geojson:FeatureCollection ;\n    geojson:features <http://www.example.com/features/P1>,\n        <http://www.example.com/features/P2> .\n\n",
+          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<http://www.example.com/features/pointsonly> a geojson:FeatureCollection ;\n    geojson:features <http://www.example.com/features/P1>,\n        <http://www.example.com/features/P2> .\n\n<http://www.example.com/features/P1> a geojson:Feature ;\n    geojson:geometry [ a geojson:Point ;\n            geojson:coordinates ( 10 10 ) ] .\n\n<http://www.example.com/features/P2> a geojson:Feature ;\n    geojson:geometry [ a geojson:Point ;\n            geojson:coordinates ( 20 20 ) ] .\n\n",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/example_1_1.ttl"
         }
       ]
@@ -91,7 +97,7 @@
         },
         {
           "language": "ttl",
-          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<http://www.example.com/features/LineP1P2> a geojson:Feature .\n\n<http://www.example.com/features/P1> a geojson:Feature ;\n    geojson:geometry [ a geojson:Point ;\n            geojson:coordinates ( 10 10 ) ] .\n\n<http://www.example.com/features/P2> a geojson:Feature ;\n    geojson:geometry [ a geojson:Point ;\n            geojson:coordinates ( 20 20 ) ] .\n\n[] a geojson:FeatureCollection ;\n    geojson:features <http://www.example.com/features/LineP1P2>,\n        <http://www.example.com/features/P1>,\n        <http://www.example.com/features/P2> .\n\n",
+          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<http://www.example.com/features/line> a geojson:FeatureCollection ;\n    geojson:features <http://www.example.com/features/LineP1P2>,\n        <http://www.example.com/features/P1>,\n        <http://www.example.com/features/P2> .\n\n<http://www.example.com/features/LineP1P2> a geojson:Feature ;\n    geojson:topology [ a geojson:LineString ;\n            geojson:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ] .\n\n<http://www.example.com/features/P1> a geojson:Feature ;\n    geojson:geometry [ a geojson:Point ;\n            geojson:coordinates ( 10 10 ) ] .\n\n<http://www.example.com/features/P2> a geojson:Feature ;\n    geojson:geometry [ a geojson:Point ;\n            geojson:coordinates ( 20 20 ) ] .\n\n",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/example_2_1.ttl"
         }
       ]
@@ -113,7 +119,7 @@
         },
         {
           "language": "ttl",
-          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<http://www.example.com/features/LineP1P2> a geojson:Feature .\n\n<http://www.example.com/features/LineP2P3> a geojson:Feature .\n\n<http://www.example.com/features/LineP3P1> a geojson:Feature .\n\n<http://www.example.com/features/P1> a geojson:Feature ;\n    geojson:geometry [ a geojson:Point ;\n            geojson:coordinates ( 10 10 ) ] .\n\n<http://www.example.com/features/P2> a geojson:Feature ;\n    geojson:geometry [ a geojson:Point ;\n            geojson:coordinates ( 20 20 ) ] .\n\n<http://www.example.com/features/P3> a geojson:Feature ;\n    geojson:geometry [ a geojson:Point ;\n            geojson:coordinates ( 10 20 ) ] .\n\n<http://www.example.com/features/TriangleP1P2P3> a geojson:Feature .\n\n[] a geojson:FeatureCollection ;\n    geojson:features <http://www.example.com/features/LineP1P2>,\n        <http://www.example.com/features/LineP2P3>,\n        <http://www.example.com/features/LineP3P1>,\n        <http://www.example.com/features/P1>,\n        <http://www.example.com/features/P2>,\n        <http://www.example.com/features/P3>,\n        <http://www.example.com/features/TriangleP1P2P3> .\n\n",
+          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<http://www.example.com/features/TopoCollectionExample> a geojson:FeatureCollection ;\n    geojson:features <http://www.example.com/features/LineP1P2>,\n        <http://www.example.com/features/LineP2P3>,\n        <http://www.example.com/features/LineP3P1>,\n        <http://www.example.com/features/P1>,\n        <http://www.example.com/features/P2>,\n        <http://www.example.com/features/P3>,\n        <http://www.example.com/features/TriangleP1P2P3> .\n\n<http://www.example.com/features/TriangleP1P2P3> a geojson:Feature ;\n    geojson:topology [ a geojson:Polygon ;\n            geojson:relatedFeatures ( <http://www.example.com/features/LineP1P2> <http://www.example.com/features/LineP2P3> <http://www.example.com/features/LineP3P1> ) ] .\n\n<http://www.example.com/features/LineP1P2> a geojson:Feature ;\n    geojson:topology [ a geojson:LineString ;\n            geojson:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ] .\n\n<http://www.example.com/features/LineP2P3> a geojson:Feature ;\n    geojson:topology [ a geojson:LineString ;\n            geojson:relatedFeatures ( <http://www.example.com/features/P2> <http://www.example.com/features/P3> ) ] .\n\n<http://www.example.com/features/LineP3P1> a geojson:Feature ;\n    geojson:topology [ a geojson:LineString ;\n            geojson:relatedFeatures ( <http://www.example.com/features/P3> <http://www.example.com/features/P1> ) ] .\n\n<http://www.example.com/features/P1> a geojson:Feature ;\n    geojson:geometry [ a geojson:Point ;\n            geojson:coordinates ( 10 10 ) ] .\n\n<http://www.example.com/features/P2> a geojson:Feature ;\n    geojson:geometry [ a geojson:Point ;\n            geojson:coordinates ( 20 20 ) ] .\n\n<http://www.example.com/features/P3> a geojson:Feature ;\n    geojson:geometry [ a geojson:Point ;\n            geojson:coordinates ( 10 20 ) ] .\n\n",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/example_3_1.ttl"
         }
       ]

@@ -2,8 +2,8 @@
   "title": "Validation report for ogc.geo.topo.features.topo-line - Line using Point References",
   "bblockName": "Line using Point References",
   "bblockId": "ogc.geo.topo.features.topo-line",
-  "generated": "2026-04-06T23:24:34.667535+00:00",
-  "result": true,
+  "generated": "2026-04-09T01:50:05.547946+00:00",
+  "result": false,
   "items": [
     {
       "source": {
@@ -15,7 +15,7 @@
         "snippetIndex": 1,
         "language": "application/json"
       },
-      "result": true,
+      "result": false,
       "sections": [
         {
           "name": "FILES",
@@ -72,26 +72,6 @@
             },
             {
               "op": "shacl-report",
-              "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
-              "isError": false,
-              "message": "Validation result for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n  Validation Report\n  Conforms: True\n  "
-            },
-            {
-              "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-              "focusNodes": {
-                "_:n1c83b99d6e364f628c145a9523df485eb1": {
-                  "nodes": []
-                },
-                "_:n1c83b99d6e364f628c145a9523df485eb3": {
-                  "nodes": []
-                }
-              },
-              "isError": false,
-              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:n1c83b99d6e364f628c145a9523df485eb1: *none*\n - Shape _:n1c83b99d6e364f628c145a9523df485eb3: *none*\n"
-            },
-            {
-              "op": "shacl-report",
               "shaclFile": "_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
               "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
               "isError": false,
@@ -113,6 +93,89 @@
               },
               "isError": false,
               "message": "Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:\n - Shape topo:testTopoReferencesExist: <http://www.example.com/features/LineP1P2>/geojson:topology\n - Shape topo:testTopoLinesReferencePoints: <http://www.example.com/features/LineP1P2>/geojson:topology\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+              "focusNodes": {
+                "_:n3d33f21e257c4484b6d80060b7c25b1ab1": {
+                  "nodes": []
+                },
+                "_:n3d33f21e257c4484b6d80060b7c25b1ab3": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:n3d33f21e257c4484b6d80060b7c25b1ab1: *none*\n - Shape _:n3d33f21e257c4484b6d80060b7c25b1ab3: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl",
+              "graph": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms false ;\n    sh:result [ a sh:ValidationResult ;\n            sh:focusNode _:n5329238a707f4556a330aad1eed81fc2b25 ;\n            sh:resultMessage \"Value does not conform to Shape geojson:FeatureShape\" ;\n            sh:resultPath geojson:features ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:NodeConstraintComponent ;\n            sh:sourceShape _:nf0f1458134cf4823b574df80f2a8b004b1 ;\n            sh:value <http://www.example.com/features/P1> ],\n        [ a sh:ValidationResult ;\n            sh:focusNode _:n2f654ffdfd8a4bc4aec8d33de491f048b25 ;\n            sh:resultMessage \"Value does not conform to Shape geojson:FeatureShape\" ;\n            sh:resultPath geojson:features ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:NodeConstraintComponent ;\n            sh:sourceShape _:nf0f1458134cf4823b574df80f2a8b004b1 ;\n            sh:value <http://www.example.com/features/P2> ],\n        [ a sh:ValidationResult ;\n            sh:focusNode _:n2f654ffdfd8a4bc4aec8d33de491f048b25 ;\n            sh:resultMessage \"Value does not conform to Shape geojson:FeatureShape\" ;\n            sh:resultPath geojson:features ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:NodeConstraintComponent ;\n            sh:sourceShape _:nf0f1458134cf4823b574df80f2a8b004b1 ;\n            sh:value <http://www.example.com/features/P1> ],\n        [ a sh:ValidationResult ;\n            sh:focusNode _:n5329238a707f4556a330aad1eed81fc2b25 ;\n            sh:resultMessage \"Value does not conform to Shape geojson:FeatureShape\" ;\n            sh:resultPath geojson:features ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:NodeConstraintComponent ;\n            sh:sourceShape _:nf0f1458134cf4823b574df80f2a8b004b1 ;\n            sh:value <http://www.example.com/features/P2> ] .\n\n_:n2f654ffdfd8a4bc4aec8d33de491f048b25 geojson:features <http://www.example.com/features/P1>,\n        <http://www.example.com/features/P2> .\n\n_:n5329238a707f4556a330aad1eed81fc2b25 geojson:features <http://www.example.com/features/P1>,\n        <http://www.example.com/features/P2> .\n\n_:nf0f1458134cf4823b574df80f2a8b004b1 sh:class geojson:Feature ;\n    sh:name \"features\" ;\n    sh:node geojson:FeatureShape ;\n    sh:path geojson:features .\n\n",
+              "isError": true,
+              "message": "Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n  Validation Report\n  Conforms: False\n  Results (4):\n  Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:class geojson:Feature ; sh:name Literal(\"features\") ; sh:node geojson:FeatureShape ; sh:path geojson:features ]\n  \tFocus Node: [ geojson:features <http://www.example.com/features/P1>, <http://www.example.com/features/P2> ]\n  \tValue Node: <http://www.example.com/features/P1>\n  \tResult Path: geojson:features\n  \tMessage: Value does not conform to Shape geojson:FeatureShape\n  Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:class geojson:Feature ; sh:name Literal(\"features\") ; sh:node geojson:FeatureShape ; sh:path geojson:features ]\n  \tFocus Node: [ geojson:features <http://www.example.com/features/P1>, <http://www.example.com/features/P2> ]\n  \tValue Node: <http://www.example.com/features/P2>\n  \tResult Path: geojson:features\n  \tMessage: Value does not conform to Shape geojson:FeatureShape\n  Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:class geojson:Feature ; sh:name Literal(\"features\") ; sh:node geojson:FeatureShape ; sh:path geojson:features ]\n  \tFocus Node: [ geojson:features <http://www.example.com/features/P1>, <http://www.example.com/features/P2> ]\n  \tValue Node: <http://www.example.com/features/P1>\n  \tResult Path: geojson:features\n  \tMessage: Value does not conform to Shape geojson:FeatureShape\n  Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:class geojson:Feature ; sh:name Literal(\"features\") ; sh:node geojson:FeatureShape ; sh:path geojson:features ]\n  \tFocus Node: [ geojson:features <http://www.example.com/features/P1>, <http://www.example.com/features/P2> ]\n  \tValue Node: <http://www.example.com/features/P2>\n  \tResult Path: geojson:features\n  \tMessage: Value does not conform to Shape geojson:FeatureShape\n  "
+            },
+            {
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl",
+              "focusNodes": {
+                "geojson:FeatureCollectionShape": {
+                  "nodes": []
+                },
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape": {
+                  "nodes": []
+                },
+                "geojson:FeatureShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:FeatureCollectionShape: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
+              "graph": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms false ;\n    sh:result [ a sh:ValidationResult ;\n            sh:focusNode <http://www.example.com/features/Px1> ;\n            sh:resultMessage \"More than 1 values on <http://www.example.com/features/Px1>->geojson:geometry\" ;\n            sh:resultPath geojson:geometry ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:MaxCountConstraintComponent ;\n            sh:sourceShape _:n45f35360dc154aa0b9d6d104644167e8b1 ],\n        [ a sh:ValidationResult ;\n            sh:focusNode <http://www.example.com/features/PVE> ;\n            sh:resultMessage \"More than 1 values on <http://www.example.com/features/PVE>->geojson:geometry\" ;\n            sh:resultPath geojson:geometry ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:MaxCountConstraintComponent ;\n            sh:sourceShape _:n45f35360dc154aa0b9d6d104644167e8b1 ],\n        [ a sh:ValidationResult ;\n            sh:focusNode <http://www.example.com/features/Px2> ;\n            sh:resultMessage \"More than 1 values on <http://www.example.com/features/Px2>->geojson:geometry\" ;\n            sh:resultPath geojson:geometry ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:MaxCountConstraintComponent ;\n            sh:sourceShape _:n45f35360dc154aa0b9d6d104644167e8b1 ],\n        [ a sh:ValidationResult ;\n            sh:focusNode <http://www.example.com/features/P2> ;\n            sh:resultMessage \"More than 1 values on <http://www.example.com/features/P2>->geojson:geometry\" ;\n            sh:resultPath geojson:geometry ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:MaxCountConstraintComponent ;\n            sh:sourceShape _:n45f35360dc154aa0b9d6d104644167e8b1 ],\n        [ a sh:ValidationResult ;\n            sh:focusNode <http://www.example.com/features/P3> ;\n            sh:resultMessage \"More than 1 values on <http://www.example.com/features/P3>->geojson:geometry\" ;\n            sh:resultPath geojson:geometry ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:MaxCountConstraintComponent ;\n            sh:sourceShape _:n45f35360dc154aa0b9d6d104644167e8b1 ],\n        [ a sh:ValidationResult ;\n            sh:focusNode <http://www.example.com/features/P1> ;\n            sh:resultMessage \"More than 1 values on <http://www.example.com/features/P1>->geojson:geometry\" ;\n            sh:resultPath geojson:geometry ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:MaxCountConstraintComponent ;\n            sh:sourceShape _:n45f35360dc154aa0b9d6d104644167e8b1 ],\n        [ a sh:ValidationResult ;\n            sh:focusNode <http://www.example.com/features/PVS> ;\n            sh:resultMessage \"More than 1 values on <http://www.example.com/features/PVS>->geojson:geometry\" ;\n            sh:resultPath geojson:geometry ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:MaxCountConstraintComponent ;\n            sh:sourceShape _:n45f35360dc154aa0b9d6d104644167e8b1 ],\n        [ a sh:ValidationResult ;\n            sh:focusNode <http://www.example.com/features/PC> ;\n            sh:resultMessage \"More than 1 values on <http://www.example.com/features/PC>->geojson:geometry\" ;\n            sh:resultPath geojson:geometry ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:MaxCountConstraintComponent ;\n            sh:sourceShape _:n45f35360dc154aa0b9d6d104644167e8b1 ] .\n\n_:n45f35360dc154aa0b9d6d104644167e8b1 sh:description \"A Feature may have at most one geometry value; null geometry produces no RDF triple.\" ;\n    sh:maxCount 1 ;\n    sh:name \"geometry\" ;\n    sh:node geojson:GeometryShape ;\n    sh:nodeKind sh:BlankNodeOrIRI ;\n    sh:path geojson:geometry .\n\n",
+              "isError": true,
+              "message": "Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n  Validation Report\n  Conforms: False\n  Results (8):\n  Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:description Literal(\"A Feature may have at most one geometry value; null geometry produces no RDF triple.\") ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:name Literal(\"geometry\") ; sh:node geojson:GeometryShape ; sh:nodeKind sh:BlankNodeOrIRI ; sh:path geojson:geometry ]\n  \tFocus Node: <http://www.example.com/features/PC>\n  \tResult Path: geojson:geometry\n  \tMessage: More than 1 values on <http://www.example.com/features/PC>->geojson:geometry\n  Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:description Literal(\"A Feature may have at most one geometry value; null geometry produces no RDF triple.\") ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:name Literal(\"geometry\") ; sh:node geojson:GeometryShape ; sh:nodeKind sh:BlankNodeOrIRI ; sh:path geojson:geometry ]\n  \tFocus Node: <http://www.example.com/features/P3>\n  \tResult Path: geojson:geometry\n  \tMessage: More than 1 values on <http://www.example.com/features/P3>->geojson:geometry\n  Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:description Literal(\"A Feature may have at most one geometry value; null geometry produces no RDF triple.\") ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:name Literal(\"geometry\") ; sh:node geojson:GeometryShape ; sh:nodeKind sh:BlankNodeOrIRI ; sh:path geojson:geometry ]\n  \tFocus Node: <http://www.example.com/features/P2>\n  \tResult Path: geojson:geometry\n  \tMessage: More than 1 values on <http://www.example.com/features/P2>->geojson:geometry\n  Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:description Literal(\"A Feature may have at most one geometry value; null geometry produces no RDF triple.\") ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:name Literal(\"geometry\") ; sh:node geojson:GeometryShape ; sh:nodeKind sh:BlankNodeOrIRI ; sh:path geojson:geometry ]\n  \tFocus Node: <http://www.example.com/features/Px1>\n  \tResult Path: geojson:geometry\n  \tMessage: More than 1 values on <http://www.example.com/features/Px1>->geojson:geometry\n  Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:description Literal(\"A Feature may have at most one geometry value; null geometry produces no RDF triple.\") ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:name Literal(\"geometry\") ; sh:node geojson:GeometryShape ; sh:nodeKind sh:BlankNodeOrIRI ; sh:path geojson:geometry ]\n  \tFocus Node: <http://www.example.com/features/P1>\n  \tResult Path: geojson:geometry\n  \tMessage: More than 1 values on <http://www.example.com/features/P1>->geojson:geometry\n  Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:description Literal(\"A Feature may have at most one geometry value; null geometry produces no RDF triple.\") ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:name Literal(\"geometry\") ; sh:node geojson:GeometryShape ; sh:nodeKind sh:BlankNodeOrIRI ; sh:path geojson:geometry ]\n  \tFocus Node: <http://www.example.com/features/Px2>\n  \tResult Path: geojson:geometry\n  \tMessage: More than 1 values on <http://www.example.com/features/Px2>->geojson:geometry\n  Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:description Literal(\"A Feature may have at most one geometry value; null geometry produces no RDF triple.\") ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:name Literal(\"geometry\") ; sh:node geojson:GeometryShape ; sh:nodeKind sh:BlankNodeOrIRI ; sh:path geojson:geometry ]\n  \tFocus Node: <http://www.example.com/features/PVS>\n  \tResult Path: geojson:geometry\n  \tMessage: More than 1 values on <http://www.example.com/features/PVS>->geojson:geometry\n  Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:description Literal(\"A Feature may have at most one geometry value; null geometry produces no RDF triple.\") ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:name Literal(\"geometry\") ; sh:node geojson:GeometryShape ; sh:nodeKind sh:BlankNodeOrIRI ; sh:path geojson:geometry ]\n  \tFocus Node: <http://www.example.com/features/PVE>\n  \tResult Path: geojson:geometry\n  \tMessage: More than 1 values on <http://www.example.com/features/PVE>->geojson:geometry\n  "
+            },
+            {
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
+              "focusNodes": {
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape": {
+                  "nodes": []
+                },
+                "geojson:FeatureShape": {
+                  "nodes": [
+                    "<http://www.example.com/features/LineP1P2>"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: <http://www.example.com/features/LineP1P2>\n"
             }
           ]
         }
@@ -128,7 +191,7 @@
         "snippetIndex": 1,
         "language": "application/json"
       },
-      "result": true,
+      "result": false,
       "sections": [
         {
           "name": "FILES",
@@ -185,26 +248,6 @@
             },
             {
               "op": "shacl-report",
-              "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
-              "isError": false,
-              "message": "Validation result for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n  Validation Report\n  Conforms: True\n  "
-            },
-            {
-              "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-              "focusNodes": {
-                "_:n1c83b99d6e364f628c145a9523df485eb1": {
-                  "nodes": []
-                },
-                "_:n1c83b99d6e364f628c145a9523df485eb3": {
-                  "nodes": []
-                }
-              },
-              "isError": false,
-              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:n1c83b99d6e364f628c145a9523df485eb1: *none*\n - Shape _:n1c83b99d6e364f628c145a9523df485eb3: *none*\n"
-            },
-            {
-              "op": "shacl-report",
               "shaclFile": "_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
               "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
               "isError": false,
@@ -224,6 +267,89 @@
               },
               "isError": false,
               "message": "Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:\n - Shape topo:testTopoReferencesExist: <http://www.example.com/features/MultiLineP1P2P3>/geojson:topology\n - Shape topo:testTopoLinesReferencePoints: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+              "focusNodes": {
+                "_:n3d33f21e257c4484b6d80060b7c25b1ab1": {
+                  "nodes": []
+                },
+                "_:n3d33f21e257c4484b6d80060b7c25b1ab3": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:n3d33f21e257c4484b6d80060b7c25b1ab1: *none*\n - Shape _:n3d33f21e257c4484b6d80060b7c25b1ab3: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl",
+              "graph": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms false ;\n    sh:result [ a sh:ValidationResult ;\n            sh:focusNode _:na7f1961f9f2c4a68a090e7b2f48140ceb25 ;\n            sh:resultMessage \"Value does not conform to Shape geojson:FeatureShape\" ;\n            sh:resultPath geojson:features ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:NodeConstraintComponent ;\n            sh:sourceShape _:nf0f1458134cf4823b574df80f2a8b004b1 ;\n            sh:value <http://www.example.com/features/P1> ],\n        [ a sh:ValidationResult ;\n            sh:focusNode _:na7f1961f9f2c4a68a090e7b2f48140ceb25 ;\n            sh:resultMessage \"Value does not conform to Shape geojson:FeatureShape\" ;\n            sh:resultPath geojson:features ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:NodeConstraintComponent ;\n            sh:sourceShape _:nf0f1458134cf4823b574df80f2a8b004b1 ;\n            sh:value <http://www.example.com/features/P2> ],\n        [ a sh:ValidationResult ;\n            sh:focusNode _:n2f654ffdfd8a4bc4aec8d33de491f048b25 ;\n            sh:resultMessage \"Value does not conform to Shape geojson:FeatureShape\" ;\n            sh:resultPath geojson:features ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:NodeConstraintComponent ;\n            sh:sourceShape _:nf0f1458134cf4823b574df80f2a8b004b1 ;\n            sh:value <http://www.example.com/features/P1> ],\n        [ a sh:ValidationResult ;\n            sh:focusNode _:n2f654ffdfd8a4bc4aec8d33de491f048b25 ;\n            sh:resultMessage \"Value does not conform to Shape geojson:FeatureShape\" ;\n            sh:resultPath geojson:features ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:NodeConstraintComponent ;\n            sh:sourceShape _:nf0f1458134cf4823b574df80f2a8b004b1 ;\n            sh:value <http://www.example.com/features/P2> ] .\n\n_:n2f654ffdfd8a4bc4aec8d33de491f048b25 geojson:features <http://www.example.com/features/P1>,\n        <http://www.example.com/features/P2> .\n\n_:na7f1961f9f2c4a68a090e7b2f48140ceb25 geojson:features <http://www.example.com/features/P1>,\n        <http://www.example.com/features/P2> .\n\n_:nf0f1458134cf4823b574df80f2a8b004b1 sh:class geojson:Feature ;\n    sh:name \"features\" ;\n    sh:node geojson:FeatureShape ;\n    sh:path geojson:features .\n\n",
+              "isError": true,
+              "message": "Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n  Validation Report\n  Conforms: False\n  Results (4):\n  Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:class geojson:Feature ; sh:name Literal(\"features\") ; sh:node geojson:FeatureShape ; sh:path geojson:features ]\n  \tFocus Node: [ geojson:features <http://www.example.com/features/P1>, <http://www.example.com/features/P2> ]\n  \tValue Node: <http://www.example.com/features/P1>\n  \tResult Path: geojson:features\n  \tMessage: Value does not conform to Shape geojson:FeatureShape\n  Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:class geojson:Feature ; sh:name Literal(\"features\") ; sh:node geojson:FeatureShape ; sh:path geojson:features ]\n  \tFocus Node: [ geojson:features <http://www.example.com/features/P1>, <http://www.example.com/features/P2> ]\n  \tValue Node: <http://www.example.com/features/P2>\n  \tResult Path: geojson:features\n  \tMessage: Value does not conform to Shape geojson:FeatureShape\n  Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:class geojson:Feature ; sh:name Literal(\"features\") ; sh:node geojson:FeatureShape ; sh:path geojson:features ]\n  \tFocus Node: [ geojson:features <http://www.example.com/features/P1>, <http://www.example.com/features/P2> ]\n  \tValue Node: <http://www.example.com/features/P1>\n  \tResult Path: geojson:features\n  \tMessage: Value does not conform to Shape geojson:FeatureShape\n  Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:class geojson:Feature ; sh:name Literal(\"features\") ; sh:node geojson:FeatureShape ; sh:path geojson:features ]\n  \tFocus Node: [ geojson:features <http://www.example.com/features/P1>, <http://www.example.com/features/P2> ]\n  \tValue Node: <http://www.example.com/features/P2>\n  \tResult Path: geojson:features\n  \tMessage: Value does not conform to Shape geojson:FeatureShape\n  "
+            },
+            {
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl",
+              "focusNodes": {
+                "geojson:FeatureCollectionShape": {
+                  "nodes": []
+                },
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape": {
+                  "nodes": []
+                },
+                "geojson:FeatureShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:FeatureCollectionShape: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
+              "graph": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms false ;\n    sh:result [ a sh:ValidationResult ;\n            sh:focusNode <http://www.example.com/features/P2> ;\n            sh:resultMessage \"More than 1 values on <http://www.example.com/features/P2>->geojson:geometry\" ;\n            sh:resultPath geojson:geometry ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:MaxCountConstraintComponent ;\n            sh:sourceShape _:n45f35360dc154aa0b9d6d104644167e8b1 ],\n        [ a sh:ValidationResult ;\n            sh:focusNode <http://www.example.com/features/PVS> ;\n            sh:resultMessage \"More than 1 values on <http://www.example.com/features/PVS>->geojson:geometry\" ;\n            sh:resultPath geojson:geometry ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:MaxCountConstraintComponent ;\n            sh:sourceShape _:n45f35360dc154aa0b9d6d104644167e8b1 ],\n        [ a sh:ValidationResult ;\n            sh:focusNode <http://www.example.com/features/P3> ;\n            sh:resultMessage \"More than 1 values on <http://www.example.com/features/P3>->geojson:geometry\" ;\n            sh:resultPath geojson:geometry ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:MaxCountConstraintComponent ;\n            sh:sourceShape _:n45f35360dc154aa0b9d6d104644167e8b1 ],\n        [ a sh:ValidationResult ;\n            sh:focusNode <http://www.example.com/features/P1> ;\n            sh:resultMessage \"More than 1 values on <http://www.example.com/features/P1>->geojson:geometry\" ;\n            sh:resultPath geojson:geometry ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:MaxCountConstraintComponent ;\n            sh:sourceShape _:n45f35360dc154aa0b9d6d104644167e8b1 ],\n        [ a sh:ValidationResult ;\n            sh:focusNode <http://www.example.com/features/Px2> ;\n            sh:resultMessage \"More than 1 values on <http://www.example.com/features/Px2>->geojson:geometry\" ;\n            sh:resultPath geojson:geometry ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:MaxCountConstraintComponent ;\n            sh:sourceShape _:n45f35360dc154aa0b9d6d104644167e8b1 ],\n        [ a sh:ValidationResult ;\n            sh:focusNode <http://www.example.com/features/PVE> ;\n            sh:resultMessage \"More than 1 values on <http://www.example.com/features/PVE>->geojson:geometry\" ;\n            sh:resultPath geojson:geometry ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:MaxCountConstraintComponent ;\n            sh:sourceShape _:n45f35360dc154aa0b9d6d104644167e8b1 ],\n        [ a sh:ValidationResult ;\n            sh:focusNode <http://www.example.com/features/PC> ;\n            sh:resultMessage \"More than 1 values on <http://www.example.com/features/PC>->geojson:geometry\" ;\n            sh:resultPath geojson:geometry ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:MaxCountConstraintComponent ;\n            sh:sourceShape _:n45f35360dc154aa0b9d6d104644167e8b1 ],\n        [ a sh:ValidationResult ;\n            sh:focusNode <http://www.example.com/features/Px1> ;\n            sh:resultMessage \"More than 1 values on <http://www.example.com/features/Px1>->geojson:geometry\" ;\n            sh:resultPath geojson:geometry ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:MaxCountConstraintComponent ;\n            sh:sourceShape _:n45f35360dc154aa0b9d6d104644167e8b1 ] .\n\n_:n45f35360dc154aa0b9d6d104644167e8b1 sh:description \"A Feature may have at most one geometry value; null geometry produces no RDF triple.\" ;\n    sh:maxCount 1 ;\n    sh:name \"geometry\" ;\n    sh:node geojson:GeometryShape ;\n    sh:nodeKind sh:BlankNodeOrIRI ;\n    sh:path geojson:geometry .\n\n",
+              "isError": true,
+              "message": "Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n  Validation Report\n  Conforms: False\n  Results (8):\n  Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:description Literal(\"A Feature may have at most one geometry value; null geometry produces no RDF triple.\") ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:name Literal(\"geometry\") ; sh:node geojson:GeometryShape ; sh:nodeKind sh:BlankNodeOrIRI ; sh:path geojson:geometry ]\n  \tFocus Node: <http://www.example.com/features/PC>\n  \tResult Path: geojson:geometry\n  \tMessage: More than 1 values on <http://www.example.com/features/PC>->geojson:geometry\n  Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:description Literal(\"A Feature may have at most one geometry value; null geometry produces no RDF triple.\") ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:name Literal(\"geometry\") ; sh:node geojson:GeometryShape ; sh:nodeKind sh:BlankNodeOrIRI ; sh:path geojson:geometry ]\n  \tFocus Node: <http://www.example.com/features/P3>\n  \tResult Path: geojson:geometry\n  \tMessage: More than 1 values on <http://www.example.com/features/P3>->geojson:geometry\n  Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:description Literal(\"A Feature may have at most one geometry value; null geometry produces no RDF triple.\") ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:name Literal(\"geometry\") ; sh:node geojson:GeometryShape ; sh:nodeKind sh:BlankNodeOrIRI ; sh:path geojson:geometry ]\n  \tFocus Node: <http://www.example.com/features/P2>\n  \tResult Path: geojson:geometry\n  \tMessage: More than 1 values on <http://www.example.com/features/P2>->geojson:geometry\n  Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:description Literal(\"A Feature may have at most one geometry value; null geometry produces no RDF triple.\") ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:name Literal(\"geometry\") ; sh:node geojson:GeometryShape ; sh:nodeKind sh:BlankNodeOrIRI ; sh:path geojson:geometry ]\n  \tFocus Node: <http://www.example.com/features/Px1>\n  \tResult Path: geojson:geometry\n  \tMessage: More than 1 values on <http://www.example.com/features/Px1>->geojson:geometry\n  Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:description Literal(\"A Feature may have at most one geometry value; null geometry produces no RDF triple.\") ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:name Literal(\"geometry\") ; sh:node geojson:GeometryShape ; sh:nodeKind sh:BlankNodeOrIRI ; sh:path geojson:geometry ]\n  \tFocus Node: <http://www.example.com/features/P1>\n  \tResult Path: geojson:geometry\n  \tMessage: More than 1 values on <http://www.example.com/features/P1>->geojson:geometry\n  Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:description Literal(\"A Feature may have at most one geometry value; null geometry produces no RDF triple.\") ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:name Literal(\"geometry\") ; sh:node geojson:GeometryShape ; sh:nodeKind sh:BlankNodeOrIRI ; sh:path geojson:geometry ]\n  \tFocus Node: <http://www.example.com/features/Px2>\n  \tResult Path: geojson:geometry\n  \tMessage: More than 1 values on <http://www.example.com/features/Px2>->geojson:geometry\n  Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:description Literal(\"A Feature may have at most one geometry value; null geometry produces no RDF triple.\") ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:name Literal(\"geometry\") ; sh:node geojson:GeometryShape ; sh:nodeKind sh:BlankNodeOrIRI ; sh:path geojson:geometry ]\n  \tFocus Node: <http://www.example.com/features/PVS>\n  \tResult Path: geojson:geometry\n  \tMessage: More than 1 values on <http://www.example.com/features/PVS>->geojson:geometry\n  Constraint Violation in MaxCountConstraintComponent (http://www.w3.org/ns/shacl#MaxCountConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:description Literal(\"A Feature may have at most one geometry value; null geometry produces no RDF triple.\") ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:name Literal(\"geometry\") ; sh:node geojson:GeometryShape ; sh:nodeKind sh:BlankNodeOrIRI ; sh:path geojson:geometry ]\n  \tFocus Node: <http://www.example.com/features/PVE>\n  \tResult Path: geojson:geometry\n  \tMessage: More than 1 values on <http://www.example.com/features/PVE>->geojson:geometry\n  "
+            },
+            {
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
+              "focusNodes": {
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape": {
+                  "nodes": []
+                },
+                "geojson:FeatureShape": {
+                  "nodes": [
+                    "<http://www.example.com/features/MultiLineP1P2P3>"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: <http://www.example.com/features/MultiLineP1P2P3>\n"
             }
           ]
         }
@@ -297,26 +423,6 @@
             },
             {
               "op": "shacl-report",
-              "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
-              "isError": false,
-              "message": "Validation result for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n  Validation Report\n  Conforms: True\n  "
-            },
-            {
-              "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-              "focusNodes": {
-                "_:n1c83b99d6e364f628c145a9523df485eb1": {
-                  "nodes": []
-                },
-                "_:n1c83b99d6e364f628c145a9523df485eb3": {
-                  "nodes": []
-                }
-              },
-              "isError": false,
-              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:n1c83b99d6e364f628c145a9523df485eb1: *none*\n - Shape _:n1c83b99d6e364f628c145a9523df485eb3: *none*\n"
-            },
-            {
-              "op": "shacl-report",
               "shaclFile": "_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
               "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
               "isError": false,
@@ -334,6 +440,87 @@
               },
               "isError": false,
               "message": "Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:\n - Shape topo:testTopoReferencesExist: *none*\n - Shape topo:testTopoLinesReferencePoints: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+              "focusNodes": {
+                "_:n3d33f21e257c4484b6d80060b7c25b1ab1": {
+                  "nodes": []
+                },
+                "_:n3d33f21e257c4484b6d80060b7c25b1ab3": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:n3d33f21e257c4484b6d80060b7c25b1ab1: *none*\n - Shape _:n3d33f21e257c4484b6d80060b7c25b1ab3: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl",
+              "focusNodes": {
+                "geojson:FeatureCollectionShape": {
+                  "nodes": []
+                },
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape": {
+                  "nodes": []
+                },
+                "geojson:FeatureShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:FeatureCollectionShape: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: *none*\n"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
+              "focusNodes": {
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape": {
+                  "nodes": []
+                },
+                "geojson:FeatureShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: *none*\n"
             }
           ]
         }
@@ -343,7 +530,7 @@
   "globalErrors": {},
   "counts": {
     "total": 3,
-    "passed": 3,
-    "failed": 0
+    "passed": 1,
+    "failed": 2
   }
 }

@@ -36,39 +36,39 @@ This ensures valid topology for volume computation.
 
 Rules marked **✅ TR-##** have a corresponding validator function and unit tests.  Rules marked **— Not implemented** are in scope for future work.
 
-| #  | Rule Category                | Common Rule Name                 | Short Description                                           | Status                                                                 |
-|----|------------------------------|----------------------------------|-------------------------------------------------------------|------------------------------------------------------------------------|
-| 1  | **Point Rules**              | Unique cadastral points          | No duplicate points within tolerance                        | ✅ TR-01                                                                |
-| 2  |                              | Point fabric consistency         | All geometry vertices must reference cadastral survey marks | ✅ TR-11: partially implemented, need to add type test                  |
-| 3  | **Curve Rules**              | Simple curve                     | Curves must not self-intersect except at endpoints          | ✅ TR-02                                                                |
-| 4  |                              | Minimum curve length             | Curves must exceed minimum length tolerance                 | ✅ TR-12                                                                |
-| 5  |                              | No duplicate curves              | Identical curves cannot exist in same dataset               | ✅ TR-13                                                                |
-| 6  |                              | Curve orientation                | Curves must follow consistent direction when required       | ✅ TR-22                                                                |
-| 7  |                              | Curve intersection at nodes only | Curves may only meet at shared cadastral points             | ✅ TR-14                                                                |
-| 8  |                              | No dangling curves               | Curves must form boundaries or be explicitly flagged        | ✅ TR-03                                                                |
-| 9  |                              | Curve must bound surface         | Curves must belong to at least one surface                  | ✅ TR-03                                                                |
-| 10 | **Surface Rules**            | Closed surface rings             | Surface boundaries must be closed                           | ✅ TR-04                                                                |
-| 11 |                              | No surface self-intersection     | Surface rings must not intersect each other                 | ✅ TR-15                                                                |
-| 12 |                              | Connected interior               | Surface interior must be continuous                         | ✅ TR-23                                                                |
-| 13 |                              | No duplicate surfaces            | Identical surfaces not allowed                              | ✅ TR-16                                                                |
-| 14 |                              | Surface-curve consistency        | Surface edges must reference known curves                   | ✅ TR-17                                                                |
-| 15 |                              | Shared edges consistency         | Adjacent surfaces must use opposite edge orientations       | ✅ TR-05                                                                |
-| 16 |                              | Surface form constraint          | Surfaces must meet model-specific form rules (optional)     | — Not implemented                                                      |
-| 17 | **Shell / Face Rules**       | Surfaces form shells             | Surfaces assemble into closed shells                        | ✅ TR-06                                                                |
-| 18 |                              | No shell gaps or overlaps        | Shell surfaces must meet perfectly                          | ✅ TR-06                                                                |
-| 19 |                              | No dangling faces                | Every face must participate in at least one shell           | ✅ TR-18                                                                |
-| 20 |                              | Two faces per edge               | Each shell edge shared by exactly two faces                 | ✅ TR-06                                                                |
-| 21 | **Solid Rules**              | Closed solid                     | Solid must be bounded by closed shell(s)                    | ✅ TR-06                                                                |
-| 22 |                              | Solid non self-intersection      | Solids must not intersect themselves                        | ✅ TR-24                                                                |
-| 23 |                              | Positive volume                  | Solid must have non-zero volume                             | ✅ TR-07                                                                |
-| 24 |                              | Minimum thickness                | Avoid sliver solids (thin AABB in any axis)                 | ✅ TR-19                                                                |
-| 25 |                              | Shell orientation                | Outer shell outward, inner shells inward                    | ✅ TR-25: partially implemented,need to consider inner shells as well   |
-| 26 | **Solid Relationship Rules** | Shared boundary consistency      | Adjacent solids share a common face                         | ✅ TR-10                                                                |
-| 27 |                              | Face adjacency limit             | Face adjacent to at most one neighbour solid                | ✅ TR-10                                                                |
-| 28 |                              | No overlapping solids            | Solids in same theme cannot overlap (by 3D AABB)            | ✅ TR-08: partially implemented, need to add type test                  |
-| 29 | **Containment Rules**        | Parent-child containment         | Child parcel bbox must lie within parent parcel bbox        | ✅ TR-09                                                                |
-| 30 |                              | Easement containment             | Easements must lie within their servient parcel             | ✅ TR-20                                                                |
-| 31 |                              | Thematic host relationship       | Thematic solids must reference a valid host parcel          | ✅ TR-21                                                                |
+| #  | Rule Category                | Common Rule Name                 | Short Description                                           | Status                                                                |
+|----|------------------------------|----------------------------------|-------------------------------------------------------------|-----------------------------------------------------------------------|
+| 1  | **Point Rules**              | Unique cadastral points          | No duplicate points within tolerance                        | ✅ TR-01                                                               |
+| 2  |                              | Point fabric consistency         | All geometry vertices must reference cadastral survey marks | ✅ TR-11: partially implemented, need to add type test                 |
+| 3  | **Curve Rules**              | Simple curve                     | Curves must not self-intersect except at endpoints          | ✅ TR-02                                                               |
+| 4  |                              | Minimum curve length             | Curves must exceed minimum length tolerance                 | ✅ TR-12                                                               |
+| 5  |                              | No duplicate curves              | Identical curves cannot exist in same dataset               | ✅ TR-13                                                               |
+| 6  |                              | Curve orientation                | Curves must follow consistent direction when required       | ✅ TR-22                                                               |
+| 7  |                              | Curve intersection at nodes only | Curves may only meet at shared cadastral points             | ✅ TR-14                                                               |
+| 8  |                              | No dangling curves               | Curves must form boundaries or be explicitly flagged        | ✅ TR-03                                                               |
+| 9  |                              | Curve must bound surface         | Curves must belong to at least one surface                  | ✅ TR-03                                                               |
+| 10 | **Surface Rules**            | Closed surface rings             | Surface boundaries must be closed                           | ✅ TR-04                                                               |
+| 11 |                              | No surface self-intersection     | Surface rings must not intersect each other                 | ✅ TR-15                                                               |
+| 12 |                              | Connected interior               | Surface interior must be continuous                         | ✅ TR-23                                                               |
+| 13 |                              | No duplicate surfaces            | Identical surfaces not allowed                              | ✅ TR-16                                                               |
+| 14 |                              | Surface-curve consistency        | Surface edges must reference known curves                   | ✅ TR-17                                                               |
+| 15 |                              | Shared edges consistency         | Adjacent surfaces must use opposite edge orientations       | ✅ TR-05                                                               |
+| 16 |                              | Surface form constraint          | Surfaces must meet model-specific form rules (optional)     | — Not implemented                                                     |
+| 17 | **Shell / Face Rules**       | Surfaces form shells             | Surfaces assemble into closed shells                        | ✅ TR-06                                                               |
+| 18 |                              | No shell gaps or overlaps        | Shell surfaces must meet perfectly                          | ✅ TR-06                                                               |
+| 19 |                              | No dangling faces                | Every face must participate in at least one shell           | ✅ TR-18                                                               |
+| 20 |                              | Two faces per edge               | Each shell edge shared by exactly two faces                 | ✅ TR-06                                                               |
+| 21 | **Solid Rules**              | Closed solid                     | Solid must be bounded by closed shell(s)                    | ✅ TR-06                                                               |
+| 22 |                              | Solid non self-intersection      | Solids must not intersect themselves                        | ✅ TR-24                                                               |
+| 23 |                              | Positive volume                  | Solid must have non-zero volume                             | ✅ TR-07                                                               |
+| 24 |                              | Minimum thickness                | Avoid sliver solids (thin AABB in any axis)                 | ✅ TR-19                                                               |
+| 25 |                              | Shell orientation                | Outer shell outward, inner shells inward                    | ✅ TR-25: partially implemented, need to consider inner shells as well |
+| 26 | **Solid Relationship Rules** | Shared boundary consistency      | Adjacent solids share a common face                         | ✅ TR-10                                                               |
+| 27 |                              | Face adjacency limit             | Face adjacent to at most one neighbour solid                | ✅ TR-10                                                               |
+| 28 |                              | No overlapping solids            | Solids in same theme cannot overlap (by 3D AABB)            | ✅ TR-08: partially implemented, need to add type test                 |
+| 29 | **Containment Rules**        | Parent-child containment         | Child parcel bbox must lie within parent parcel bbox        | ✅ TR-09                                                               |
+| 30 |                              | Easement containment             | Easements must lie within their servient parcel             | ✅ TR-20                                                               |
+| 31 |                              | Thematic host relationship       | Thematic solids must reference a valid host parcel          | ✅ TR-21                                                               |
 
 ---
 
@@ -388,3 +388,6 @@ The following rules from the full NGSC Delivery 1 specification are identified b
 | Rule                    | Description                                  | Notes                                          |
 |-------------------------|----------------------------------------------|------------------------------------------------|
 | Surface form constraint | Surfaces must meet model-specific form rules | Dataset-specific; out of scope for generic POC |
+| No duplicate faces      | Faces must not be duplicated                 | Implementation pending                         |
+| No duplicate solids     | Solids must not be duplicated                | Implementation pending                         |
+| No duplicate shells     | Shells must not be duplicated                | Implementation pending                         |

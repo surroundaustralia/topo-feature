@@ -10,7 +10,7 @@
   "itemClass": "schema",
   "register": "icsm-csdm",
   "version": "0.1",
-  "dateOfLastChange": "2026-04-09",
+  "dateOfLastChange": "2026-04-14",
   "link": "https://github.com/icsm-au/3d-csdm-schema",
   "sources": [],
   "maturity": "development",
@@ -22,8 +22,8 @@
   ],
   "shaclShapes": {},
   "dependsOn": [
-    "ogc.geo.topo.datatypes.oriented-ref",
-    "ogc.ogc-utils.iri-or-curie"
+    "ogc.ogc-utils.iri-or-curie",
+    "ogc.geo.topo.datatypes.oriented-ref"
   ],
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld",
   "schema": {
@@ -45,20 +45,20 @@
       "snippets": [
         {
           "language": "json",
-          "ref": "example.json",
+          "ref": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/topology/example.json",
           "base-uri": "http://www.example.com/features/",
           "code": "{\n  \"type\": \"LineString\",\n  \"references\": [\n    \"P1\",\n    \"P2\"\n  ]\n}",
-          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/example_1_1.json"
+          "url": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/topology/build/tests/geo/topo/datatypes/topology/example_1_1.json"
         },
         {
           "language": "jsonld",
           "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld\",\n  \"type\": \"LineString\",\n  \"references\": [\n    \"P1\",\n    \"P2\"\n  ]\n}",
-          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/example_1_1.jsonld"
+          "url": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/topology/build/tests/geo/topo/datatypes/topology/example_1_1.jsonld"
         },
         {
           "language": "ttl",
           "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n\n[] a geojson:LineString ;\n    geojson:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) .\n\n",
-          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/example_1_1.ttl"
+          "url": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/topology/build/tests/geo/topo/datatypes/topology/example_1_1.ttl"
         }
       ]
     },
@@ -69,17 +69,17 @@
         {
           "language": "json",
           "code": "{\n  \"type\": \"Ring\",\n  \"directed_references\": [\n    { \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\", \"orientation\": \"+\" },\n    { \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\", \"orientation\": \"+\" },\n    { \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\", \"orientation\": \"+\" },\n    { \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\", \"orientation\": \"+\" }\n  ]\n}\n",
-          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/example_2_1.json"
+          "url": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/topology/build/tests/geo/topo/datatypes/topology/example_2_1.json"
         },
         {
           "language": "jsonld",
           "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld\",\n  \"type\": \"Ring\",\n  \"directed_references\": [\n    {\n      \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n      \"orientation\": \"+\"\n    },\n    {\n      \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\",\n      \"orientation\": \"+\"\n    },\n    {\n      \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\",\n      \"orientation\": \"+\"\n    },\n    {\n      \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\",\n      \"orientation\": \"+\"\n    }\n  ]\n}",
-          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/example_2_1.jsonld"
+          "url": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/topology/build/tests/geo/topo/datatypes/topology/example_2_1.jsonld"
         },
         {
           "language": "ttl",
           "code": "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n<uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> topo:orientation \"+\" .\n\n<uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> topo:orientation \"+\" .\n\n<uuid:c60507ba-226b-4e49-a702-e9afef899b23> topo:orientation \"+\" .\n\n<uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> topo:orientation \"+\" .\n\n[] a topo:Ring ;\n    topo:directedReferences ( <uuid:c60507ba-226b-4e49-a702-e9afef899b23> <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> <uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> <uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> ) .\n\n",
-          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/example_2_1.ttl"
+          "url": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/topology/build/tests/geo/topo/datatypes/topology/example_2_1.ttl"
         }
       ]
     },
@@ -90,17 +90,17 @@
         {
           "language": "json",
           "code": "{\n  \"type\": \"Face\",\n  \"rings\": [\n    {\n      \"type\": \"Ring\",\n      \"directed_references\": [\n        { \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\", \"orientation\": \"+\" },\n        { \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\", \"orientation\": \"+\" },\n        { \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\", \"orientation\": \"+\" },\n        { \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\", \"orientation\": \"+\" }\n      ]\n    }\n  ]\n}\n",
-          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/example_3_1.json"
+          "url": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/topology/build/tests/geo/topo/datatypes/topology/example_3_1.json"
         },
         {
           "language": "jsonld",
           "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld\",\n  \"type\": \"Face\",\n  \"rings\": [\n    {\n      \"type\": \"Ring\",\n      \"directed_references\": [\n        {\n          \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n          \"orientation\": \"+\"\n        },\n        {\n          \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\",\n          \"orientation\": \"+\"\n        },\n        {\n          \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\",\n          \"orientation\": \"+\"\n        },\n        {\n          \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\",\n          \"orientation\": \"+\"\n        }\n      ]\n    }\n  ]\n}",
-          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/example_3_1.jsonld"
+          "url": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/topology/build/tests/geo/topo/datatypes/topology/example_3_1.jsonld"
         },
         {
           "language": "ttl",
           "code": "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n<uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> topo:orientation \"+\" .\n\n<uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> topo:orientation \"+\" .\n\n<uuid:c60507ba-226b-4e49-a702-e9afef899b23> topo:orientation \"+\" .\n\n<uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> topo:orientation \"+\" .\n\n[] a topo:Face ;\n    topo:rings ( [ a topo:Ring ;\n                topo:directedReferences ( <uuid:c60507ba-226b-4e49-a702-e9afef899b23> <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> <uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> <uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> ) ] ) .\n\n",
-          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/example_3_1.ttl"
+          "url": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/topology/build/tests/geo/topo/datatypes/topology/example_3_1.ttl"
         }
       ]
     },
@@ -111,17 +111,17 @@
         {
           "language": "json",
           "code": "{\n  \"type\": \"Solid\",\n  \"shells\": [\n    {\n      \"type\": \"Shell\",\n      \"directed_references\": [\n        { \"ref\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae\", \"orientation\": \"+\" },\n        { \"ref\": \"uuid:4a294022-4864-49c7-8cee-f9e43360bc4e\", \"orientation\": \"+\" },\n        { \"ref\": \"uuid:01947f47-ee13-44a9-85a4-2bcb4881982a\", \"orientation\": \"+\" },\n        { \"ref\": \"uuid:607a3363-3eb7-4ce6-a633-86d2e565692b\", \"orientation\": \"+\" },\n        { \"ref\": \"uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f\", \"orientation\": \"+\" },\n        { \"ref\": \"uuid:2387ae98-9236-42fe-9414-c45b99954c41\", \"orientation\": \"+\" }\n      ]\n    }\n  ]\n}\n",
-          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/example_4_1.json"
+          "url": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/topology/build/tests/geo/topo/datatypes/topology/example_4_1.json"
         },
         {
           "language": "jsonld",
           "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld\",\n  \"type\": \"Solid\",\n  \"shells\": [\n    {\n      \"type\": \"Shell\",\n      \"directed_references\": [\n        {\n          \"ref\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae\",\n          \"orientation\": \"+\"\n        },\n        {\n          \"ref\": \"uuid:4a294022-4864-49c7-8cee-f9e43360bc4e\",\n          \"orientation\": \"+\"\n        },\n        {\n          \"ref\": \"uuid:01947f47-ee13-44a9-85a4-2bcb4881982a\",\n          \"orientation\": \"+\"\n        },\n        {\n          \"ref\": \"uuid:607a3363-3eb7-4ce6-a633-86d2e565692b\",\n          \"orientation\": \"+\"\n        },\n        {\n          \"ref\": \"uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f\",\n          \"orientation\": \"+\"\n        },\n        {\n          \"ref\": \"uuid:2387ae98-9236-42fe-9414-c45b99954c41\",\n          \"orientation\": \"+\"\n        }\n      ]\n    }\n  ]\n}",
-          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/example_4_1.jsonld"
+          "url": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/topology/build/tests/geo/topo/datatypes/topology/example_4_1.jsonld"
         },
         {
           "language": "ttl",
           "code": "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n<uuid:01947f47-ee13-44a9-85a4-2bcb4881982a> topo:orientation \"+\" .\n\n<uuid:2387ae98-9236-42fe-9414-c45b99954c41> topo:orientation \"+\" .\n\n<uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f> topo:orientation \"+\" .\n\n<uuid:4a294022-4864-49c7-8cee-f9e43360bc4e> topo:orientation \"+\" .\n\n<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> topo:orientation \"+\" .\n\n<uuid:607a3363-3eb7-4ce6-a633-86d2e565692b> topo:orientation \"+\" .\n\n[] a topo:Solid ;\n    topo:shells ( [ a topo:Shell ;\n                topo:directedReferences ( <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> <uuid:4a294022-4864-49c7-8cee-f9e43360bc4e> <uuid:01947f47-ee13-44a9-85a4-2bcb4881982a> <uuid:607a3363-3eb7-4ce6-a633-86d2e565692b> <uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f> <uuid:2387ae98-9236-42fe-9414-c45b99954c41> ) ] ) .\n\n",
-          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/example_4_1.ttl"
+          "url": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/topology/build/tests/geo/topo/datatypes/topology/example_4_1.ttl"
         }
       ]
     }

@@ -171,8 +171,9 @@ Segments that are skew (non-coplanar) are correctly treated as non-intersecting.
 #### TR-16 — NoDuplicateSurfaces
 **Function:** `validate_no_duplicate_surfaces(data)`
 **Error code:** `DUPLICATE_SURFACE`
-No two surfaces may reference the same set of curves.  
-Two surfaces are considered duplicates when the frozenset of all curve ids referenced in their rings is identical, regardless of ring or member order.
+No two surfaces may reference the same set of curves.
+Two surfaces are considered duplicates when the frozenset of all curve ids referenced in their rings is identical, regardless of ring order, member order, or the orientation (`"+"` / `"-"`) of each member.
+Reversed winding and/or reversed per-edge orientation do not make two faces distinct.
 
 #### TR-17 — SurfaceCurveConsistency
 **Function:** `validate_surface_curve_consistency(data)`
@@ -344,7 +345,7 @@ Pytest fixtures and topology builders.
 - **`--fixture <filename>`** CLI option — selects a JSON geometry fixture file for the `TestFixture` class (default: `tetrahedron.json`).
 
 ### `test_validator.py`
-108 unit tests across 27 classes.  Each implemented rule has at least one valid (happy-path) test and one invalid (violation-injection) test.
+111 unit tests across 27 classes.  Each implemented rule has at least one valid (happy-path) test and one invalid (violation-injection) test.
 
 | Class                                  | Rule           | Tests |
 |----------------------------------------|----------------|-------|
@@ -363,7 +364,7 @@ Pytest fixtures and topology builders.
 | `TestTR13NoDuplicateCurves`            | TR-13          | 3     |
 | `TestTR14CurveIntersectionAtNodesOnly` | TR-14          | 3     |
 | `TestTR15NoSurfaceSelfIntersection`    | TR-15          | 2     |
-| `TestTR16NoDuplicateSurfaces`          | TR-16          | 2     |
+| `TestTR16NoDuplicateSurfaces`          | TR-16          | 5     |
 | `TestTR17SurfaceCurveConsistency`      | TR-17          | 2     |
 | `TestTR18NoDanglingFaces`              | TR-18          | 2     |
 | `TestTR19MinimumSolidThickness`        | TR-19          | 3     |
@@ -388,6 +389,4 @@ The following rules from the full NGSC Delivery 1 specification are identified b
 | Rule                    | Description                                  | Notes                                          |
 |-------------------------|----------------------------------------------|------------------------------------------------|
 | Surface form constraint | Surfaces must meet model-specific form rules | Dataset-specific; out of scope for generic POC |
-| No duplicate faces      | Faces must not be duplicated                 | Implementation pending                         |
-| No duplicate solids     | Solids must not be duplicated                | Implementation pending                         |
 | No duplicate shells     | Shells must not be duplicated                | Implementation pending                         |

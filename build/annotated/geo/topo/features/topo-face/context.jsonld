@@ -88,11 +88,23 @@
     "topology": {
       "@context": {
         "references": {
+          "@context": {
+            "ref": {
+              "@type": "@id",
+              "@id": "topo:ref"
+            }
+          },
           "@id": "geojson:relatedFeatures",
           "@type": "@id",
           "@container": "@list"
         },
         "directed_references": {
+          "@context": {
+            "ref": {
+              "@type": "@id",
+              "@id": "topo:ref"
+            }
+          },
           "@id": "topo:directedReferences",
           "@container": "@list"
         },
@@ -103,7 +115,8 @@
         "shells": {
           "@id": "topo:shells",
           "@container": "@list"
-        }
+        },
+        "ref": "topo:ref"
       },
       "@type": "@id",
       "@id": "geojson:topology"

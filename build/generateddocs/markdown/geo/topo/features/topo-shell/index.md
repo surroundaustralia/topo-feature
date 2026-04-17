@@ -64,6 +64,7 @@ All geometry properties are null except on Point features.
 ```json
 {
   "type": "FeatureCollection",
+  "features": [],
   "comment": "Self-contained example: a Solid with its Shell and all supporting faces, edges and points",
   "points": [
     {
@@ -889,6 +890,7 @@ All geometry properties are null except on Point features.
 {
   "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/context.jsonld",
   "type": "FeatureCollection",
+  "features": [],
   "comment": "Self-contained example: a Solid with its Shell and all supporting faces, edges and points",
   "points": [
     {
@@ -1831,23 +1833,15 @@ Faces shared with adjacent solids would appear with '-' orientation in those sol
 
 <uuid:shell-upper-east> a geojson:Feature ;
     geojson:topology [ a topo:Shell ;
-            topo:directedReferences ( <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> <uuid:4a294022-4864-49c7-8cee-f9e43360bc4e> <uuid:01947f47-ee13-44a9-85a4-2bcb4881982a> <uuid:607a3363-3eb7-4ce6-a633-86d2e565692b> <uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f> <uuid:fe522919-1421-4fd1-9930-8c6551e3f2a5> <uuid:2387ae98-9236-42fe-9414-c45b99954c41> <uuid:4ba85faa-3935-4e89-a9f8-dcd647a5dbed> ) ] .
-
-<uuid:01947f47-ee13-44a9-85a4-2bcb4881982a> topo:orientation "+" .
-
-<uuid:2387ae98-9236-42fe-9414-c45b99954c41> topo:orientation "+" .
-
-<uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f> topo:orientation "+" .
-
-<uuid:4a294022-4864-49c7-8cee-f9e43360bc4e> topo:orientation "+" .
-
-<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> topo:orientation "+" .
-
-<uuid:4ba85faa-3935-4e89-a9f8-dcd647a5dbed> topo:orientation "+" .
-
-<uuid:607a3363-3eb7-4ce6-a633-86d2e565692b> topo:orientation "+" .
-
-<uuid:fe522919-1421-4fd1-9930-8c6551e3f2a5> topo:orientation "+" .
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:4a294022-4864-49c7-8cee-f9e43360bc4e> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:01947f47-ee13-44a9-85a4-2bcb4881982a> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:607a3363-3eb7-4ce6-a633-86d2e565692b> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:fe522919-1421-4fd1-9930-8c6551e3f2a5> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:2387ae98-9236-42fe-9414-c45b99954c41> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:4ba85faa-3935-4e89-a9f8-dcd647a5dbed> ] ) ] .
 
 
 ```
@@ -2002,11 +1996,23 @@ Links to the schema:
     "topology": {
       "@context": {
         "references": {
+          "@context": {
+            "ref": {
+              "@type": "@id",
+              "@id": "topo:ref"
+            }
+          },
           "@id": "geojson:relatedFeatures",
           "@type": "@id",
           "@container": "@list"
         },
         "directed_references": {
+          "@context": {
+            "ref": {
+              "@type": "@id",
+              "@id": "topo:ref"
+            }
+          },
           "@id": "topo:directedReferences",
           "@container": "@list"
         },
@@ -2017,7 +2023,8 @@ Links to the schema:
         "shells": {
           "@id": "topo:shells",
           "@container": "@list"
-        }
+        },
+        "ref": "topo:ref"
       },
       "@type": "@id",
       "@id": "geojson:topology"

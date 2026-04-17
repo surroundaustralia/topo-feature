@@ -296,15 +296,11 @@ and 'orientation' ('+' or '-'). geometry is null — geometry is fully defined b
 <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> a geojson:Feature ;
     geojson:topology [ a topo:Face ;
             topo:rings ( [ a topo:Ring ;
-                        topo:directedReferences ( <uuid:c60507ba-226b-4e49-a702-e9afef899b23> <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> <uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> <uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> ) ] ) ] .
-
-<uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> topo:orientation "+" .
-
-<uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> topo:orientation "+" .
-
-<uuid:c60507ba-226b-4e49-a702-e9afef899b23> topo:orientation "+" .
-
-<uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> topo:orientation "+" .
+                        topo:directedReferences ( [ topo:orientation "+" ;
+                                    topo:ref <uuid:c60507ba-226b-4e49-a702-e9afef899b23> ] [ topo:orientation "+" ;
+                                    topo:ref <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> ] [ topo:orientation "+" ;
+                                    topo:ref <uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> ] [ topo:orientation "+" ;
+                                    topo:ref <uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> ] ) ] ) ] .
 
 
 ```
@@ -445,11 +441,23 @@ Links to the schema:
     "topology": {
       "@context": {
         "references": {
+          "@context": {
+            "ref": {
+              "@type": "@id",
+              "@id": "topo:ref"
+            }
+          },
           "@id": "geojson:relatedFeatures",
           "@type": "@id",
           "@container": "@list"
         },
         "directed_references": {
+          "@context": {
+            "ref": {
+              "@type": "@id",
+              "@id": "topo:ref"
+            }
+          },
           "@id": "topo:directedReferences",
           "@container": "@list"
         },
@@ -474,7 +482,7 @@ Links to the schema:
     "arcLength": "geojson:arcLength",
     "startTangentVector": "geojson:startTangentVector",
     "endTangentVector": "geojson:endTangentVector",
-    "ref": "@id",
+    "ref": "topo:ref",
     "orientation": "topo:orientation",
     "Face": "topo:Face",
     "Ring": "topo:Ring",

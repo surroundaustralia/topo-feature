@@ -69,7 +69,8 @@ The '+' orientation means the edge is traversed in its natural direction.
 ```ttl
 @prefix topo: <https://purl.org/geojson/topo#> .
 
-<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> topo:orientation "+" .
+[] topo:orientation "+" ;
+    topo:ref <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> .
 
 
 ```
@@ -102,7 +103,8 @@ This allows the same edge to serve as a boundary of two adjacent faces without d
 ```ttl
 @prefix topo: <https://purl.org/geojson/topo#> .
 
-<uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> topo:orientation "-" .
+[] topo:orientation "-" ;
+    topo:ref <uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> .
 
 
 ```
@@ -120,7 +122,8 @@ properties:
     $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml
     description: 'Identifier of the referenced topological object (e.g. a uuid: URI
       or local id)'
-    x-jsonld-id: '@id'
+    x-jsonld-type: '@id'
+    x-jsonld-id: https://purl.org/geojson/topo#ref
   orientation:
     type: string
     enum:
@@ -148,7 +151,10 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
-    "ref": "@id",
+    "ref": {
+      "@type": "@id",
+      "@id": "topo:ref"
+    },
     "orientation": "topo:orientation",
     "topo": "https://purl.org/geojson/topo#",
     "@version": 1.1

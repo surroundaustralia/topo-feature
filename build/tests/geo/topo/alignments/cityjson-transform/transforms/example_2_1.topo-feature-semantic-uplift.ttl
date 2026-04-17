@@ -279,15 +279,15 @@ c:city a city:City ;
     city:version "1.1" .
 
 c:city-objects-Building_1 a city:Building ;
-    city:hasGeometry [ city:hasSurface [ a city:RoofSurface,
-                        gml:MultiSurface ;
-                    city:boundaries ( c:city-objects-Building_1_geom_2 ) ],
-                [ a city:WallSurface,
+    city:hasGeometry [ city:hasSurface [ a city:WallSurface,
                         gml:MultiSurface ;
                     city:boundaries ( c:city-objects-Building_1_geom_1 ) ],
                 [ a city:GroundSurface,
                         gml:MultiSurface ;
-                    city:boundaries ( c:city-objects-Building_1_geom_0 ) ] ;
+                    city:boundaries ( c:city-objects-Building_1_geom_0 ) ],
+                [ a city:RoofSurface,
+                        gml:MultiSurface ;
+                    city:boundaries ( c:city-objects-Building_1_geom_2 ) ] ;
             city:lod "2" ] ;
     dct:identifier "Building_1" .
 
@@ -1187,12 +1187,12 @@ c:city-objects-Building_2 a city:Building ;
     city:hasGeometry [ city:hasSurface [ a city:WallSurface,
                         gml:MultiSurface ;
                     city:boundaries ( c:city-objects-Building_2_geom_1 ) ],
-                [ a city:RoofSurface,
-                        gml:MultiSurface ;
-                    city:boundaries ( c:city-objects-Building_2_geom_2 ) ],
                 [ a city:GroundSurface,
                         gml:MultiSurface ;
-                    city:boundaries ( c:city-objects-Building_2_geom_0 ) ] ;
+                    city:boundaries ( c:city-objects-Building_2_geom_0 ) ],
+                [ a city:RoofSurface,
+                        gml:MultiSurface ;
+                    city:boundaries ( c:city-objects-Building_2_geom_2 ) ] ;
             city:lod "2" ] ;
     dct:identifier "Building_2" .
 

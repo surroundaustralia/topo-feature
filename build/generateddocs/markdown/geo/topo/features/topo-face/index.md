@@ -73,6 +73,7 @@ edge and face geometry are null (topology-only).
 {
   "type": "FeatureCollection",
   "comment": "Self-contained example: a single Face with all supporting edges and points included",
+  "features": [],
   "points": [
     {
       "id": "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
@@ -239,6 +240,7 @@ edge and face geometry are null (topology-only).
   "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/context.jsonld",
   "type": "FeatureCollection",
   "comment": "Self-contained example: a single Face with all supporting edges and points included",
+  "features": [],
   "points": [
     {
       "id": "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
@@ -510,15 +512,11 @@ closing the loop. geometry is null — coordinates are derived from the referenc
 <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> a geojson:Feature ;
     geojson:topology [ a topo:Face ;
             topo:rings ( [ a topo:Ring ;
-                        topo:directedReferences ( <uuid:c60507ba-226b-4e49-a702-e9afef899b23> <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> <uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> <uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> ) ] ) ] .
-
-<uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> topo:orientation "+" .
-
-<uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> topo:orientation "+" .
-
-<uuid:c60507ba-226b-4e49-a702-e9afef899b23> topo:orientation "+" .
-
-<uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> topo:orientation "+" .
+                        topo:directedReferences ( [ topo:orientation "+" ;
+                                    topo:ref <uuid:c60507ba-226b-4e49-a702-e9afef899b23> ] [ topo:orientation "+" ;
+                                    topo:ref <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> ] [ topo:orientation "+" ;
+                                    topo:ref <uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> ] [ topo:orientation "+" ;
+                                    topo:ref <uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> ] ) ] ) ] .
 
 
 ```
@@ -641,19 +639,13 @@ reflecting the shared boundary convention.
 <uuid:607a3363-3eb7-4ce6-a633-86d2e565692b> a geojson:Feature ;
     geojson:topology [ a topo:Face ;
             topo:rings ( [ a topo:Ring ;
-                        topo:directedReferences ( <uuid:8582d9c2-6053-495a-8413-f5493691c0de> <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> <uuid:4c2a6434-03b0-4aa2-85ea-a9fcaea41555> <uuid:921e2351-efbf-48be-85d3-eedc0dc2ddc0> <uuid:73f88b47-78ab-474d-9c62-73dfefd0dd5d> <uuid:7aa2a76d-9d5c-4540-9f2e-d8bcf36fadb5> ) ] ) ] .
-
-<uuid:4c2a6434-03b0-4aa2-85ea-a9fcaea41555> topo:orientation "-" .
-
-<uuid:73f88b47-78ab-474d-9c62-73dfefd0dd5d> topo:orientation "+" .
-
-<uuid:7aa2a76d-9d5c-4540-9f2e-d8bcf36fadb5> topo:orientation "+" .
-
-<uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> topo:orientation "-" .
-
-<uuid:8582d9c2-6053-495a-8413-f5493691c0de> topo:orientation "-" .
-
-<uuid:921e2351-efbf-48be-85d3-eedc0dc2ddc0> topo:orientation "+" .
+                        topo:directedReferences ( [ topo:orientation "-" ;
+                                    topo:ref <uuid:8582d9c2-6053-495a-8413-f5493691c0de> ] [ topo:orientation "-" ;
+                                    topo:ref <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> ] [ topo:orientation "-" ;
+                                    topo:ref <uuid:4c2a6434-03b0-4aa2-85ea-a9fcaea41555> ] [ topo:orientation "+" ;
+                                    topo:ref <uuid:921e2351-efbf-48be-85d3-eedc0dc2ddc0> ] [ topo:orientation "+" ;
+                                    topo:ref <uuid:73f88b47-78ab-474d-9c62-73dfefd0dd5d> ] [ topo:orientation "+" ;
+                                    topo:ref <uuid:7aa2a76d-9d5c-4540-9f2e-d8bcf36fadb5> ] ) ] ) ] .
 
 
 ```
@@ -826,11 +818,23 @@ Links to the schema:
     "topology": {
       "@context": {
         "references": {
+          "@context": {
+            "ref": {
+              "@type": "@id",
+              "@id": "topo:ref"
+            }
+          },
           "@id": "geojson:relatedFeatures",
           "@type": "@id",
           "@container": "@list"
         },
         "directed_references": {
+          "@context": {
+            "ref": {
+              "@type": "@id",
+              "@id": "topo:ref"
+            }
+          },
           "@id": "topo:directedReferences",
           "@container": "@list"
         },
@@ -841,7 +845,8 @@ Links to the schema:
         "shells": {
           "@id": "topo:shells",
           "@container": "@list"
-        }
+        },
+        "ref": "topo:ref"
       },
       "@type": "@id",
       "@id": "geojson:topology"

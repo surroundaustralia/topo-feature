@@ -57,6 +57,159 @@
       "@id": "topo:points",
       "@container": "@list"
     },
+    "edges": {
+      "@context": {
+        "type": "@type",
+        "id": "@id",
+        "geometry": "geojson:geometry",
+        "links": {
+          "@context": {
+            "href": {
+              "@type": "@id",
+              "@id": "oa:hasTarget"
+            },
+            "rel": {
+              "@context": {
+                "@base": "http://www.iana.org/assignments/relation/"
+              },
+              "@id": "http://www.iana.org/assignments/relation",
+              "@type": "@id"
+            },
+            "type": "dct:type",
+            "hreflang": "dct:language",
+            "title": "rdfs:label",
+            "length": "dct:extent"
+          },
+          "@id": "rdfs:seeAlso"
+        },
+        "featureType": "@type",
+        "time": {
+          "@context": {
+            "date": {
+              "@id": "owlTime:hasTime",
+              "@type": "xsd:date"
+            },
+            "timestamp": {
+              "@id": "owlTime:hasTime",
+              "@type": "xsd:dateTime"
+            },
+            "interval": {
+              "@id": "owlTime:hasTime",
+              "@container": "@list"
+            }
+          },
+          "@id": "dct:time"
+        },
+        "coordRefSys": "http://www.opengis.net/def/glossary/term/CoordinateReferenceSystemCRS",
+        "place": "dct:spatial",
+        "topology": {
+          "@context": {
+            "references": {
+              "@context": {
+                "ref": {
+                  "@type": "@id",
+                  "@id": "topo:ref"
+                }
+              },
+              "@id": "geojson:relatedFeatures",
+              "@type": "@id",
+              "@container": "@list"
+            },
+            "directed_references": {
+              "@context": {
+                "ref": {
+                  "@type": "@id",
+                  "@id": "topo:ref"
+                }
+              },
+              "@id": "topo:directedReferences",
+              "@container": "@list"
+            }
+          },
+          "@type": "@id",
+          "@id": "geojson:topology"
+        }
+      },
+      "@id": "topo:edges",
+      "@container": "@list"
+    },
+    "faces": {
+      "@context": {
+        "type": "@type",
+        "id": "@id",
+        "geometry": "geojson:geometry",
+        "links": {
+          "@context": {
+            "href": {
+              "@type": "@id",
+              "@id": "oa:hasTarget"
+            },
+            "rel": {
+              "@context": {
+                "@base": "http://www.iana.org/assignments/relation/"
+              },
+              "@id": "http://www.iana.org/assignments/relation",
+              "@type": "@id"
+            },
+            "type": "dct:type",
+            "hreflang": "dct:language",
+            "title": "rdfs:label",
+            "length": "dct:extent"
+          },
+          "@id": "rdfs:seeAlso"
+        },
+        "featureType": "@type",
+        "time": {
+          "@context": {
+            "date": {
+              "@id": "owlTime:hasTime",
+              "@type": "xsd:date"
+            },
+            "timestamp": {
+              "@id": "owlTime:hasTime",
+              "@type": "xsd:dateTime"
+            },
+            "interval": {
+              "@id": "owlTime:hasTime",
+              "@container": "@list"
+            }
+          },
+          "@id": "dct:time"
+        },
+        "coordRefSys": "http://www.opengis.net/def/glossary/term/CoordinateReferenceSystemCRS",
+        "place": "dct:spatial",
+        "topology": {
+          "@context": {
+            "references": {
+              "@context": {
+                "ref": {
+                  "@type": "@id",
+                  "@id": "topo:ref"
+                }
+              },
+              "@id": "geojson:relatedFeatures",
+              "@type": "@id",
+              "@container": "@list"
+            },
+            "directed_references": {
+              "@context": {
+                "ref": {
+                  "@type": "@id",
+                  "@id": "topo:ref"
+                }
+              },
+              "@id": "topo:directedReferences",
+              "@container": "@list"
+            }
+          },
+          "@type": "@id",
+          "@id": "geojson:topology"
+        },
+        "ref": "@id"
+      },
+      "@id": "topo:faces",
+      "@container": "@list"
+    },
     "shells": {
       "@context": {
         "type": "@type",
@@ -105,11 +258,100 @@
         "topology": {
           "@context": {
             "references": {
+              "@context": {
+                "ref": {
+                  "@type": "@id",
+                  "@id": "topo:ref"
+                }
+              },
               "@id": "geojson:relatedFeatures",
               "@type": "@id",
               "@container": "@list"
             },
             "directed_references": {
+              "@context": {
+                "ref": {
+                  "@type": "@id",
+                  "@id": "topo:ref"
+                }
+              },
+              "@id": "topo:directedReferences",
+              "@container": "@list"
+            }
+          },
+          "@type": "@id",
+          "@id": "geojson:topology"
+        },
+        "ref": "@id"
+      },
+      "@id": "topo:shells",
+      "@container": "@list"
+    },
+    "solids": {
+      "@context": {
+        "type": "@type",
+        "id": "@id",
+        "geometry": "geojson:geometry",
+        "links": {
+          "@context": {
+            "href": {
+              "@type": "@id",
+              "@id": "oa:hasTarget"
+            },
+            "rel": {
+              "@context": {
+                "@base": "http://www.iana.org/assignments/relation/"
+              },
+              "@id": "http://www.iana.org/assignments/relation",
+              "@type": "@id"
+            },
+            "type": "dct:type",
+            "hreflang": "dct:language",
+            "title": "rdfs:label",
+            "length": "dct:extent"
+          },
+          "@id": "rdfs:seeAlso"
+        },
+        "featureType": "@type",
+        "time": {
+          "@context": {
+            "date": {
+              "@id": "owlTime:hasTime",
+              "@type": "xsd:date"
+            },
+            "timestamp": {
+              "@id": "owlTime:hasTime",
+              "@type": "xsd:dateTime"
+            },
+            "interval": {
+              "@id": "owlTime:hasTime",
+              "@container": "@list"
+            }
+          },
+          "@id": "dct:time"
+        },
+        "coordRefSys": "http://www.opengis.net/def/glossary/term/CoordinateReferenceSystemCRS",
+        "place": "dct:spatial",
+        "topology": {
+          "@context": {
+            "references": {
+              "@context": {
+                "ref": {
+                  "@type": "@id",
+                  "@id": "topo:ref"
+                }
+              },
+              "@id": "geojson:relatedFeatures",
+              "@type": "@id",
+              "@container": "@list"
+            },
+            "directed_references": {
+              "@context": {
+                "ref": {
+                  "@type": "@id",
+                  "@id": "topo:ref"
+                }
+              },
               "@id": "topo:directedReferences",
               "@container": "@list"
             }
@@ -172,7 +414,7 @@
     "arcLength": "geojson:arcLength",
     "startTangentVector": "geojson:startTangentVector",
     "endTangentVector": "geojson:endTangentVector",
-    "ref": "@id",
+    "ref": "topo:ref",
     "orientation": "topo:orientation",
     "topo": "https://purl.org/geojson/topo#",
     "geojson": "https://purl.org/geojson/vocab#",

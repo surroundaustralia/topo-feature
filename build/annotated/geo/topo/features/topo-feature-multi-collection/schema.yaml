@@ -56,12 +56,16 @@ properties:
                 enum:
                 - LineString
                 - MultiLineString
+    x-jsonld-id: https://purl.org/geojson/topo#edges
+    x-jsonld-container: '@list'
   faces:
     type: array
     description: Face features whose boundary rings reference edges via directed_references.
       geometry is null.
     items:
       $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml
+    x-jsonld-id: https://purl.org/geojson/topo#faces
+    x-jsonld-container: '@list'
   shells:
     type: array
     description: Shell features referencing faces via directed_references. geometry
@@ -88,6 +92,8 @@ properties:
             required:
             - type
             - shells
+    x-jsonld-id: https://purl.org/geojson/topo#shells
+    x-jsonld-container: '@list'
 x-jsonld-extra-terms:
   Face: https://purl.org/geojson/topo#Face
   Ring: https://purl.org/geojson/topo#Ring

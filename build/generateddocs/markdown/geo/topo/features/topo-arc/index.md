@@ -650,11 +650,23 @@ Links to the schema:
       "@id": "geojson:topology"
     },
     "references": {
+      "@context": {
+        "ref": {
+          "@type": "@id",
+          "@id": "topo:ref"
+        }
+      },
       "@id": "geojson:relatedFeatures",
       "@type": "@id",
       "@container": "@list"
     },
     "directed_references": {
+      "@context": {
+        "ref": {
+          "@type": "@id",
+          "@id": "topo:ref"
+        }
+      },
       "@id": "topo:directedReferences",
       "@container": "@list"
     },
@@ -675,7 +687,7 @@ Links to the schema:
     "arcLength": "geojson:arcLength",
     "startTangentVector": "geojson:startTangentVector",
     "endTangentVector": "geojson:endTangentVector",
-    "ref": "@id",
+    "ref": "topo:ref",
     "orientation": "topo:orientation",
     "Face": "topo:Face",
     "Ring": "topo:Ring",

@@ -145,16 +145,12 @@ and an 'orientation' ('+' or '-'). Mutually exclusive with 'references'.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix topo: <https://purl.org/geojson/topo#> .
 
-<uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> topo:orientation "+" .
-
-<uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> topo:orientation "+" .
-
-<uuid:c60507ba-226b-4e49-a702-e9afef899b23> topo:orientation "+" .
-
-<uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> topo:orientation "+" .
-
 [] a topo:Ring ;
-    topo:directedReferences ( <uuid:c60507ba-226b-4e49-a702-e9afef899b23> <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> <uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> <uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> ) .
+    topo:directedReferences ( [ topo:orientation "+" ;
+                topo:ref <uuid:c60507ba-226b-4e49-a702-e9afef899b23> ] [ topo:orientation "+" ;
+                topo:ref <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> ] [ topo:orientation "+" ;
+                topo:ref <uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> ] [ topo:orientation "+" ;
+                topo:ref <uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> ] ) .
 
 
 ```
@@ -220,17 +216,13 @@ directed_references to Edge features. The first ring is the outer boundary.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix topo: <https://purl.org/geojson/topo#> .
 
-<uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> topo:orientation "+" .
-
-<uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> topo:orientation "+" .
-
-<uuid:c60507ba-226b-4e49-a702-e9afef899b23> topo:orientation "+" .
-
-<uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> topo:orientation "+" .
-
 [] a topo:Face ;
     topo:rings ( [ a topo:Ring ;
-                topo:directedReferences ( <uuid:c60507ba-226b-4e49-a702-e9afef899b23> <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> <uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> <uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> ) ] ) .
+                topo:directedReferences ( [ topo:orientation "+" ;
+                            topo:ref <uuid:c60507ba-226b-4e49-a702-e9afef899b23> ] [ topo:orientation "+" ;
+                            topo:ref <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> ] [ topo:orientation "+" ;
+                            topo:ref <uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> ] [ topo:orientation "+" ;
+                            topo:ref <uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> ] ) ] ) .
 
 
 ```
@@ -305,21 +297,15 @@ directed_references to Face features forming the closed boundary surface.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix topo: <https://purl.org/geojson/topo#> .
 
-<uuid:01947f47-ee13-44a9-85a4-2bcb4881982a> topo:orientation "+" .
-
-<uuid:2387ae98-9236-42fe-9414-c45b99954c41> topo:orientation "+" .
-
-<uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f> topo:orientation "+" .
-
-<uuid:4a294022-4864-49c7-8cee-f9e43360bc4e> topo:orientation "+" .
-
-<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> topo:orientation "+" .
-
-<uuid:607a3363-3eb7-4ce6-a633-86d2e565692b> topo:orientation "+" .
-
 [] a topo:Solid ;
     topo:shells ( [ a topo:Shell ;
-                topo:directedReferences ( <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> <uuid:4a294022-4864-49c7-8cee-f9e43360bc4e> <uuid:01947f47-ee13-44a9-85a4-2bcb4881982a> <uuid:607a3363-3eb7-4ce6-a633-86d2e565692b> <uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f> <uuid:2387ae98-9236-42fe-9414-c45b99954c41> ) ] ) .
+                topo:directedReferences ( [ topo:orientation "+" ;
+                            topo:ref <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> ] [ topo:orientation "+" ;
+                            topo:ref <uuid:4a294022-4864-49c7-8cee-f9e43360bc4e> ] [ topo:orientation "+" ;
+                            topo:ref <uuid:01947f47-ee13-44a9-85a4-2bcb4881982a> ] [ topo:orientation "+" ;
+                            topo:ref <uuid:607a3363-3eb7-4ce6-a633-86d2e565692b> ] [ topo:orientation "+" ;
+                            topo:ref <uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f> ] [ topo:orientation "+" ;
+                            topo:ref <uuid:2387ae98-9236-42fe-9414-c45b99954c41> ] ) ] ) .
 
 
 ```
@@ -457,7 +443,8 @@ x-jsonld-extra-terms:
   arcLength: https://purl.org/geojson/vocab#arcLength
   startTangentVector: https://purl.org/geojson/vocab#startTangentVector
   endTangentVector: https://purl.org/geojson/vocab#endTangentVector
-  ref: '@id'
+  ref:
+    x-jsonld-id: topo:ref
   orientation: https://purl.org/geojson/topo#orientation
   Face: https://purl.org/geojson/topo#Face
   Ring: https://purl.org/geojson/topo#Ring
@@ -483,11 +470,23 @@ Links to the schema:
   "@context": {
     "type": "@type",
     "references": {
+      "@context": {
+        "ref": {
+          "@type": "@id",
+          "@id": "topo:ref"
+        }
+      },
       "@id": "geojson:relatedFeatures",
       "@type": "@id",
       "@container": "@list"
     },
     "directed_references": {
+      "@context": {
+        "ref": {
+          "@type": "@id",
+          "@id": "topo:ref"
+        }
+      },
       "@id": "topo:directedReferences",
       "@container": "@list"
     },
@@ -512,7 +511,7 @@ Links to the schema:
     "arcLength": "geojson:arcLength",
     "startTangentVector": "geojson:startTangentVector",
     "endTangentVector": "geojson:endTangentVector",
-    "ref": "@id",
+    "ref": "topo:ref",
     "orientation": "topo:orientation",
     "Face": "topo:Face",
     "Ring": "topo:Ring",

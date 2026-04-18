@@ -9,15 +9,15 @@
   "itemClass": "schema",
   "register": "ogcincubator",
   "version": "0.1",
-  "dateOfLastChange": "2026-04-16",
+  "dateOfLastChange": "2026-04-17",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
   "dependsOn": [
-    "ogc.geo.topo.features.topo-feature",
-    "ogc.geo.topo.datatypes.oriented-ref",
     "ogc.geo.topo.datatypes.topology",
-    "ogc.geo.topo.features.topo-feature-collection"
+    "ogc.geo.topo.features.topo-feature-collection",
+    "ogc.geo.topo.datatypes.oriented-ref",
+    "ogc.geo.topo.features.topo-feature"
   ],
   "tags": [
     "topology",
@@ -27,19 +27,19 @@
   ],
   "group": "OGC",
   "shaclShapes": {
-    "ogc.geo.topo.features.topo-feature": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
-    ],
     "ogc.geo.topo.features.topo-feature-collection": [
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+    ],
     "ogc.geo.features.featureCollection": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
     ],
-    "ogc.geo.features.feature": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+    "ogc.geo.topo.features.topo-feature": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ]
   },
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/context.jsonld",
@@ -73,7 +73,7 @@
         },
         {
           "language": "ttl",
-          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n<uuid:ring-east-face-outer> a geojson:Feature ;\n    geojson:topology [ a topo:Ring ;\n            topo:directedReferences ( <uuid:c60507ba-226b-4e49-a702-e9afef899b23> <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> <uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> <uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> ) ] .\n\n<uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> topo:orientation \"+\" .\n\n<uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> topo:orientation \"+\" .\n\n<uuid:c60507ba-226b-4e49-a702-e9afef899b23> topo:orientation \"+\" .\n\n<uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> topo:orientation \"+\" .\n\n",
+          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n<uuid:ring-east-face-outer> a geojson:Feature ;\n    geojson:topology [ a topo:Ring ;\n            topo:directedReferences ( [ topo:orientation \"+\" ;\n                        topo:ref <uuid:c60507ba-226b-4e49-a702-e9afef899b23> ] [ topo:orientation \"+\" ;\n                        topo:ref <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> ] [ topo:orientation \"+\" ;\n                        topo:ref <uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> ] [ topo:orientation \"+\" ;\n                        topo:ref <uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> ] ) ] .\n\n",
           "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-ring/build/tests/geo/topo/features/topo-ring/example_1_1.ttl"
         }
       ]

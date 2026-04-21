@@ -10,7 +10,7 @@
   "itemClass": "schema",
   "register": "ogcincubator",
   "version": "0.1",
-  "dateOfLastChange": "2026-04-19",
+  "dateOfLastChange": "2026-04-21",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
@@ -22,8 +22,8 @@
   "shaclClosures": [],
   "shaclShapes": {
     "ogc.geo.topo.features.topo-arc": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ],
     "ogc.geo.topo.features.topo-feature": [
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
@@ -33,11 +33,11 @@
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
-    "ogc.geo.features.feature": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-    ],
     "ogc.geo.features.featureCollection": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+    ],
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ]
   },
   "dependsOn": [
@@ -70,17 +70,17 @@
             "../topo-feature/examples/points.ttl"
           ],
           "code": "{\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:ArcFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"ArcWithCenter\",\n    \"x-description\": \"References is an ordered list of features with point geometries Start,End,Center\",\n    \"references\": [\n      \"P1\",\n      \"P2\",\n      \"PC\"\n    ],\n    \"orientation\": \"ccw\"\n  },\n  \"properties\": {\n    \"arcLength\": 25.615,\n    \"radius\": 105.438\n  }\n}",
-          "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/build/tests/geo/topo/features/topo-arc/example_1_1.json"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/example_1_1.json"
         },
         {
           "language": "jsonld",
           "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld\",\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:ArcFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"ArcWithCenter\",\n    \"x-description\": \"References is an ordered list of features with point geometries Start,End,Center\",\n    \"references\": [\n      \"P1\",\n      \"P2\",\n      \"PC\"\n    ],\n    \"orientation\": \"ccw\"\n  },\n  \"properties\": {\n    \"arcLength\": 25.615,\n    \"radius\": 105.438\n  }\n}",
-          "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/build/tests/geo/topo/features/topo-arc/example_1_1.jsonld"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/example_1_1.jsonld"
         },
         {
           "language": "ttl",
           "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<http://www.example.com/features/1853004> a geojson:Feature,\n        <my:ArcFeature> ;\n    geojson:arcLength 2.5615e+01 ;\n    geojson:radius 1.05438e+02 ;\n    geojson:topology [ a geojson:ArcWithCenter ;\n            topo:orientation \"ccw\" ;\n            geojson:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> <http://www.example.com/features/PC> ) ] .\n\n",
-          "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/build/tests/geo/topo/features/topo-arc/example_1_1.ttl"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/example_1_1.ttl"
         }
       ]
     },
@@ -96,17 +96,17 @@
             "../topo-feature/examples/points.ttl"
           ],
           "code": "{\n  \"id\": \"arc1\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:ArcFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Arc\",\n    \"x-description\": \"References is an ordered list of 3 features with point geometries defining Arc\",\n    \"references\": [\n      \"P1\",\n      \"P3\",\n      \"P2\"\n    ]\n  },\n  \"properties\": {\n    \"arcLength\": 25.615,\n    \"radius\": 105.438\n  }\n}",
-          "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/build/tests/geo/topo/features/topo-arc/example_2_1.json"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/example_2_1.json"
         },
         {
           "language": "jsonld",
           "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld\",\n  \"id\": \"arc1\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:ArcFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Arc\",\n    \"x-description\": \"References is an ordered list of 3 features with point geometries defining Arc\",\n    \"references\": [\n      \"P1\",\n      \"P3\",\n      \"P2\"\n    ]\n  },\n  \"properties\": {\n    \"arcLength\": 25.615,\n    \"radius\": 105.438\n  }\n}",
-          "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/build/tests/geo/topo/features/topo-arc/example_2_1.jsonld"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/example_2_1.jsonld"
         },
         {
           "language": "ttl",
           "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<http://www.example.com/features/arc1> a geojson:Feature,\n        <my:ArcFeature> ;\n    geojson:arcLength 2.5615e+01 ;\n    geojson:radius 1.05438e+02 ;\n    geojson:topology [ a geojson:Arc ;\n            geojson:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P3> <http://www.example.com/features/P2> ) ] .\n\n",
-          "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/build/tests/geo/topo/features/topo-arc/example_2_1.ttl"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/example_2_1.ttl"
         }
       ]
     },
@@ -122,17 +122,17 @@
             "../topo-feature/examples/points.ttl"
           ],
           "code": "{\n  \"id\": \"chord1\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:ArcChordFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"ArcByChord\",\n    \"x-description\": \"References is an ordered list of features with for an Arc Chord, radius and length determine geometry\",\n    \"references\": [\n      \"P1\",\n      \"P2\"\n    ],\n    \"radius\": 105.438,\n    \"orientation\": \"cw\"\n  },\n  \"properties\": {\n    \"arcLength\": 25.615\n  }\n}",
-          "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/build/tests/geo/topo/features/topo-arc/example_3_1.json"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/example_3_1.json"
         },
         {
           "language": "jsonld",
           "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld\",\n  \"id\": \"chord1\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:ArcChordFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"ArcByChord\",\n    \"x-description\": \"References is an ordered list of features with for an Arc Chord, radius and length determine geometry\",\n    \"references\": [\n      \"P1\",\n      \"P2\"\n    ],\n    \"radius\": 105.438,\n    \"orientation\": \"cw\"\n  },\n  \"properties\": {\n    \"arcLength\": 25.615\n  }\n}",
-          "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/build/tests/geo/topo/features/topo-arc/example_3_1.jsonld"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/example_3_1.jsonld"
         },
         {
           "language": "ttl",
           "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<http://www.example.com/features/chord1> a geojson:Feature,\n        <my:ArcChordFeature> ;\n    geojson:arcLength 2.5615e+01 ;\n    geojson:topology [ a geojson:ArcByChord ;\n            topo:orientation \"cw\" ;\n            geojson:radius 1.05438e+02 ;\n            geojson:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ] .\n\n",
-          "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/build/tests/geo/topo/features/topo-arc/example_3_1.ttl"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/example_3_1.ttl"
         }
       ]
     },
@@ -150,17 +150,17 @@
             "../topo-feature/examples/points.ttl"
           ],
           "code": "{\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:CircleFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"CircleByCenter\",\n    \"x-description\": \"Reference is the feature defining the centre point of a circle - it must have a Point geometry.\",\n    \"references\": [\n      \"PC\"\n    ],\n    \"radius\": 10\n  },\n  \"properties\": null\n}",
-          "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/build/tests/geo/topo/features/topo-arc/example_5_1.json"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/example_5_1.json"
         },
         {
           "language": "jsonld",
           "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld\",\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:CircleFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"CircleByCenter\",\n    \"x-description\": \"Reference is the feature defining the centre point of a circle - it must have a Point geometry.\",\n    \"references\": [\n      \"PC\"\n    ],\n    \"radius\": 10\n  },\n  \"properties\": null\n}",
-          "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/build/tests/geo/topo/features/topo-arc/example_5_1.jsonld"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/example_5_1.jsonld"
         },
         {
           "language": "ttl",
           "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<http://www.example.com/features/1853004> a geojson:Feature,\n        <my:CircleFeature> ;\n    geojson:topology [ a geojson:CircleByCenter ;\n            geojson:radius 10 ;\n            geojson:relatedFeatures ( <http://www.example.com/features/PC> ) ] .\n\n",
-          "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/build/tests/geo/topo/features/topo-arc/example_5_1.ttl"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/example_5_1.ttl"
         }
       ]
     },
@@ -178,17 +178,17 @@
             "../topo-feature/examples/points.ttl"
           ],
           "code": "{\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:SplineFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"CubicSpline\",\n    \"x-description\": \"References is an ordered list of features with point geometries\",\n    \"references\": [\n      \"P1\",\n      \"Px1\",\n      \"Px2\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}",
-          "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/build/tests/geo/topo/features/topo-arc/example_7_1.json"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/example_7_1.json"
         },
         {
           "language": "jsonld",
           "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld\",\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:SplineFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"CubicSpline\",\n    \"x-description\": \"References is an ordered list of features with point geometries\",\n    \"references\": [\n      \"P1\",\n      \"Px1\",\n      \"Px2\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}",
-          "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/build/tests/geo/topo/features/topo-arc/example_7_1.jsonld"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/example_7_1.jsonld"
         },
         {
           "language": "ttl",
           "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n\n<http://www.example.com/features/1853004> a geojson:Feature,\n        <my:SplineFeature> ;\n    geojson:topology [ a geojson:CubicSpline ;\n            geojson:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/Px1> <http://www.example.com/features/Px2> <http://www.example.com/features/P2> ) ] .\n\n",
-          "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/build/tests/geo/topo/features/topo-arc/example_7_1.ttl"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/example_7_1.ttl"
         }
       ]
     },
@@ -204,17 +204,17 @@
             "../topo-feature/examples/points.ttl"
           ],
           "code": "{\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:SplineFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"CubicSpline\",\n    \"x-description\": \"References is an ordered list of features with point geometries, with tangent vectors defining entry and exit angles\",\n    \"startTangentVector\": {\n      \"references\": [\n        \"PVS\",\n        \"P1\"\n      ]\n    },\n    \"endTangentVector\": {\n      \"references\": [\n        \"P2\",\n        \"PVE\"\n      ]\n    },\n    \"references\": [\n      \"P1\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}",
-          "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/build/tests/geo/topo/features/topo-arc/example_8_1.json"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/example_8_1.json"
         },
         {
           "language": "jsonld",
           "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld\",\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:SplineFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"CubicSpline\",\n    \"x-description\": \"References is an ordered list of features with point geometries, with tangent vectors defining entry and exit angles\",\n    \"startTangentVector\": {\n      \"references\": [\n        \"PVS\",\n        \"P1\"\n      ]\n    },\n    \"endTangentVector\": {\n      \"references\": [\n        \"P2\",\n        \"PVE\"\n      ]\n    },\n    \"references\": [\n      \"P1\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}",
-          "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/build/tests/geo/topo/features/topo-arc/example_8_1.jsonld"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/example_8_1.jsonld"
         },
         {
           "language": "ttl",
           "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n\n<http://www.example.com/features/1853004> a geojson:Feature,\n        <my:SplineFeature> ;\n    geojson:topology [ a geojson:CubicSpline ;\n            geojson:endTangentVector [ geojson:relatedFeatures ( <http://www.example.com/features/P2> <http://www.example.com/features/PVE> ) ] ;\n            geojson:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ;\n            geojson:startTangentVector [ geojson:relatedFeatures ( <http://www.example.com/features/PVS> <http://www.example.com/features/P1> ) ] ] .\n\n",
-          "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/build/tests/geo/topo/features/topo-arc/example_8_1.ttl"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/example_8_1.ttl"
         }
       ]
     }

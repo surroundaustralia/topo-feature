@@ -1,6 +1,13 @@
 # NGSC Topology Questions
 
-Date: 17 April 2026
+Date: 21 April 2026
+
+<!--
+| version | Title                                           | Date          |
+|---------|-------------------------------------------------|---------------|
+| v. 0.1  | Initial draft                                   | 17 April 2026 |
+| v. 1.0  | Added Secondary Parcel decomposition commentary | 21 April 2026 |
+-->
 
 The following questions and comments were provided by Landgate (via Colin Stewart) on 15 April 2026.
 They reference the set of potential [NGSC Topology Rules](https://github.com/surroundaustralia/topo-feature/blob/master/proposals/topology_rules.md#3d-csdm-topology-rules-test-oriented-summary) discussed with Landgate and Accenture on 8 April 2026.

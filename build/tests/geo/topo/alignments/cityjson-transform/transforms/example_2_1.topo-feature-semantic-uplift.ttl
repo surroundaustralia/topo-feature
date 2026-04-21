@@ -279,15 +279,15 @@ c:city a city:City ;
     city:version "1.1" .
 
 c:city-objects-Building_1 a city:Building ;
-    city:hasGeometry [ city:hasSurface [ a city:GroundSurface,
+    city:hasGeometry [ city:hasSurface [ a city:RoofSurface,
+                        gml:MultiSurface ;
+                    city:boundaries ( c:city-objects-Building_1_geom_2 ) ],
+                [ a city:GroundSurface,
                         gml:MultiSurface ;
                     city:boundaries ( c:city-objects-Building_1_geom_0 ) ],
                 [ a city:WallSurface,
                         gml:MultiSurface ;
-                    city:boundaries ( c:city-objects-Building_1_geom_1 ) ],
-                [ a city:RoofSurface,
-                        gml:MultiSurface ;
-                    city:boundaries ( c:city-objects-Building_1_geom_2 ) ] ;
+                    city:boundaries ( c:city-objects-Building_1_geom_1 ) ] ;
             city:lod "2" ] ;
     dct:identifier "Building_1" .
 
@@ -1184,15 +1184,15 @@ c:city-objects-Building_1_geom_2_9_1 a geojson:Feature ;
             geojson:relatedFeatures ( c:vertices-34 c:vertices-15 c:vertices-32 ) ] .
 
 c:city-objects-Building_2 a city:Building ;
-    city:hasGeometry [ city:hasSurface [ a city:RoofSurface,
-                        gml:MultiSurface ;
-                    city:boundaries ( c:city-objects-Building_2_geom_2 ) ],
-                [ a city:WallSurface,
+    city:hasGeometry [ city:hasSurface [ a city:WallSurface,
                         gml:MultiSurface ;
                     city:boundaries ( c:city-objects-Building_2_geom_1 ) ],
                 [ a city:GroundSurface,
                         gml:MultiSurface ;
-                    city:boundaries ( c:city-objects-Building_2_geom_0 ) ] ;
+                    city:boundaries ( c:city-objects-Building_2_geom_0 ) ],
+                [ a city:RoofSurface,
+                        gml:MultiSurface ;
+                    city:boundaries ( c:city-objects-Building_2_geom_2 ) ] ;
             city:lod "2" ] ;
     dct:identifier "Building_2" .
 

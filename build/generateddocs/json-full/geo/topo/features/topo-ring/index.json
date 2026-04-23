@@ -9,15 +9,15 @@
   "itemClass": "schema",
   "register": "ogcincubator",
   "version": "0.1",
-  "dateOfLastChange": "2026-04-22",
+  "dateOfLastChange": "2026-04-23",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
   "dependsOn": [
-    "ogc.geo.topo.datatypes.topology",
-    "ogc.geo.topo.features.topo-feature-collection",
     "ogc.geo.topo.features.topo-feature",
-    "ogc.geo.topo.datatypes.oriented-ref"
+    "ogc.geo.topo.features.topo-feature-collection",
+    "ogc.geo.topo.datatypes.oriented-ref",
+    "ogc.geo.topo.datatypes.topology"
   ],
   "tags": [
     "topology",
@@ -27,19 +27,19 @@
   ],
   "group": "OGC",
   "shaclShapes": {
-    "ogc.geo.topo.features.topo-feature-collection": [
+    "ogc.geo.topo.features.topo-feature": [
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
-    "ogc.geo.features.feature": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-    ],
-    "ogc.geo.topo.features.topo-feature": [
+    "ogc.geo.topo.features.topo-feature-collection": [
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
     "ogc.geo.features.featureCollection": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+    ],
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ]
   },
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/context.jsonld",
@@ -51,7 +51,6 @@
   "sourceLdContext": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-ring/context.jsonld",
   "resolvedSchemaProperties": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/resolvedProperties.json",
   "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-ring/",
-  "rdfData": [],
   "validationPassed": true,
   "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-ring/",
   "description": "# Ring Topology Feature\n\nA **Ring** is a topological feature representing an ordered, closed loop of oriented Edge references. It forms the boundary of a Face.\n\n## Topology Model\n\nA Ring's topology consists of:\n\n- `type`: `\"Ring\"`\n- `directed_references`: an ordered array of [Oriented Object References](../../datatypes/oriented-ref/), each referencing an Edge feature with a `ref` (feature ID) and `orientation` (`+` or `-`)\n\nThe `directed_references` form a closed loop: the end vertex of each edge (considering orientation) must equal the start vertex of the next.\n\n## Orientation\n\nEach directed reference specifies an orientation (`+` or `-`) indicating whether the referenced Edge is traversed in its natural or reversed direction. This allows edges to be shared between adjacent faces.\n\n## Example\n\n```json\n{\n  \"topology\": {\n    \"type\": \"Ring\",\n    \"directed_references\": [\n      { \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\", \"orientation\": \"+\" },\n      { \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\", \"orientation\": \"+\" },\n      { \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\", \"orientation\": \"+\" },\n      { \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\", \"orientation\": \"+\" }\n    ]\n  }\n}\n```\n",

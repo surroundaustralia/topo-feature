@@ -9,15 +9,15 @@
   "itemClass": "schema",
   "register": "ogcincubator",
   "version": "0.1",
-  "dateOfLastChange": "2026-04-22",
+  "dateOfLastChange": "2026-04-23",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
   "dependsOn": [
-    "ogc.geo.topo.datatypes.topology",
-    "ogc.geo.topo.features.topo-feature-collection",
     "ogc.geo.topo.features.topo-feature",
-    "ogc.geo.topo.datatypes.oriented-ref"
+    "ogc.geo.topo.features.topo-feature-collection",
+    "ogc.geo.topo.datatypes.oriented-ref",
+    "ogc.geo.topo.datatypes.topology"
   ],
   "tags": [
     "topology",
@@ -27,19 +27,19 @@
   ],
   "group": "OGC",
   "shaclShapes": {
-    "ogc.geo.topo.features.topo-feature-collection": [
+    "ogc.geo.topo.features.topo-feature": [
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
-    "ogc.geo.features.feature": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-    ],
-    "ogc.geo.topo.features.topo-feature": [
+    "ogc.geo.topo.features.topo-feature-collection": [
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
     "ogc.geo.features.featureCollection": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+    ],
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ]
   },
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/context.jsonld",
@@ -51,7 +51,6 @@
   "sourceLdContext": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-face/context.jsonld",
   "resolvedSchemaProperties": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/resolvedProperties.json",
   "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-face/",
-  "rdfData": [],
   "validationPassed": true,
   "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-face/",
   "description": "# Face Topology Feature\n\nA **Face** is a topological feature representing a bounded planar region (a polygon surface) described by an outer boundary Ring and zero or more inner boundary Rings (holes).\n\n## Topology Model\n\nA Face's topology consists of:\n\n- `type`: `\"Face\"`\n- `rings`: an ordered array of Ring topology objects\n  - The **first** ring is the **outer boundary**\n  - Any **subsequent** rings are **inner boundaries** (holes)\n\nEach Ring contains a `directed_references` array \u2014 an ordered list of [Oriented Object References](../../datatypes/oriented-ref/) that reference Edge features, with orientation (`+` or `-`) indicating direction of traversal.\n\nThe `geometry` property is `null` \u2014 actual coordinates are derived from the referenced Edge and Point features.\n\n## Relationship to other types\n\n| Lower dimension | Face | Higher dimension |\n|---|---|---|\n| Edge (referenced in Ring directed_references) | **Face** | Shell (references Faces via directed_references) |\n\n## Example\n\n```json\n{\n  \"id\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae\",\n  \"type\": \"Feature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Face\",\n    \"rings\": [\n      {\n        \"type\": \"Ring\",\n        \"directed_references\": [\n          { \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\", \"orientation\": \"+\" },\n          { \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\", \"orientation\": \"+\" },\n          { \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\", \"orientation\": \"+\" },\n          { \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\", \"orientation\": \"+\" }\n        ]\n      }\n    ]\n  },\n  \"properties\": {\n    \"normal\": [1.0, 0.0, 0.0],\n    \"area\": 24.0\n  }\n}\n```\n",

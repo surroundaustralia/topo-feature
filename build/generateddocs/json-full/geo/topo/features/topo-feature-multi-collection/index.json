@@ -9,16 +9,16 @@
   "itemClass": "schema",
   "register": "ogcincubator",
   "version": "0.1",
-  "dateOfLastChange": "2026-04-22",
+  "dateOfLastChange": "2026-04-23",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
   "dependsOn": [
-    "ogc.geo.topo.features.topo-shell",
     "ogc.geo.topo.features.topo-feature",
     "ogc.geo.topo.features.topo-line",
-    "ogc.geo.topo.features.topo-face",
-    "ogc.geo.topo.features.topo-feature-collection"
+    "ogc.geo.topo.features.topo-shell",
+    "ogc.geo.topo.features.topo-feature-collection",
+    "ogc.geo.topo.features.topo-face"
   ],
   "tags": [
     "topology",
@@ -28,19 +28,19 @@
   ],
   "group": "OGC",
   "shaclShapes": {
-    "ogc.geo.topo.features.topo-feature-collection": [
+    "ogc.geo.topo.features.topo-feature": [
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
-    "ogc.geo.features.feature": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-    ],
-    "ogc.geo.topo.features.topo-feature": [
+    "ogc.geo.topo.features.topo-feature-collection": [
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
     "ogc.geo.features.featureCollection": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+    ],
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ]
   },
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
@@ -52,7 +52,6 @@
   "sourceLdContext": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-multi-collection/context.jsonld",
   "resolvedSchemaProperties": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/resolvedProperties.json",
   "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-multi-collection/",
-  "rdfData": [],
   "validationPassed": true,
   "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-feature-multi-collection/",
   "description": "# Topo Feature Multi-Collection\n\nA **Topo Feature Multi-Collection** is a structured dataset that organises topological features into typed named collections, one for each topological dimension. This enables representation of a full topology hierarchy \u2014 from point nodes to volumetric solids \u2014 in a single, self-describing document.\n\n## Structure\n\n| Collection key | Feature type | Building block | Topology property |\n|---|---|---|---|\n| `points` | Point geometry nodes | GeoJSON Feature (Point geometry) | \u2014 (explicit coordinates) |\n| `edges` | Edge (line) topology | `topo-line` | `references`: ordered string IDs |\n| `faces` | Face (polygon surface) topology | `topo-face` | `rings[].directed_references`: oriented Edge refs |\n| `shells` | Shell (closed surface) topology | `topo-shell` | `directed_references`: oriented Face refs |\n| `solids` | Solid (volumetric) topology | `topo-feature` (Solid/Shell) | `shells[].directed_references`: oriented Face refs |\n\n## Reference models\n\nTwo reference styles are used, each appropriate to the relationship type:\n\n- **`references`** \u2014 a plain ordered array of string feature IDs. Used for edges referencing point nodes, where position (not direction) is what matters.\n- **`directed_references`** \u2014 an ordered array of oriented object references `{ \"ref\": \"...\", \"orientation\": \"+\"|\"-\" }`. Used for Rings referencing Edges, and Shells referencing Faces, where traversal direction determines the sense of the boundary.\n\nThe two styles must not coexist within the same topology object.\n\n## Referential integrity chain\n\n```\nsolids\n  \u2514\u2500 topology.shells[].directed_references \u2192 Face IDs\n       \u2514\u2500 topology.rings[].directed_references \u2192 Edge IDs\n            \u2514\u2500 topology.references \u2192 Point IDs\n                 \u2514\u2500 geometry.coordinates (actual 3D coordinates)\n```\n\n`geometry` is `null` on all feature types except Points \u2014 coordinates are derived by following the reference chain.\n\n## Example skeleton\n\n```json\n{\n  \"type\": \"FeatureCollection\",\n  \"points\": [ { \"type\": \"Feature\", \"geometry\": { \"type\": \"Point\", \"coordinates\": [...] }, ... } ],\n  \"edges\":  [ { \"type\": \"Feature\", \"geometry\": null, \"topology\": { \"type\": \"LineString\", \"references\": [\"uuid:...\", \"uuid:...\"] }, ... } ],\n  \"faces\":  [ { \"type\": \"Feature\", \"geometry\": null, \"topology\": { \"type\": \"Face\",   \"rings\": [{ \"type\": \"Ring\", \"directed_references\": [...] }] }, ... } ],\n  \"solids\": [ { \"type\": \"Feature\", \"geometry\": null, \"topology\": { \"type\": \"Solid\",  \"shells\": [{ \"type\": \"Shell\", \"directed_references\": [...] }] }, ... } ]\n}\n```\n",

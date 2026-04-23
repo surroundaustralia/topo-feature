@@ -9,15 +9,15 @@
   "itemClass": "schema",
   "register": "ogcincubator",
   "version": "0.1",
-  "dateOfLastChange": "2026-04-22",
+  "dateOfLastChange": "2026-04-23",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
   "dependsOn": [
-    "ogc.geo.topo.datatypes.topology",
-    "ogc.geo.topo.features.topo-feature-collection",
     "ogc.geo.topo.features.topo-feature",
-    "ogc.geo.topo.datatypes.oriented-ref"
+    "ogc.geo.topo.features.topo-feature-collection",
+    "ogc.geo.topo.datatypes.oriented-ref",
+    "ogc.geo.topo.datatypes.topology"
   ],
   "tags": [
     "topology",
@@ -27,19 +27,19 @@
   ],
   "group": "OGC",
   "shaclShapes": {
-    "ogc.geo.topo.features.topo-feature-collection": [
+    "ogc.geo.topo.features.topo-feature": [
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
-    "ogc.geo.features.feature": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-    ],
-    "ogc.geo.topo.features.topo-feature": [
+    "ogc.geo.topo.features.topo-feature-collection": [
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
     "ogc.geo.features.featureCollection": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+    ],
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ]
   },
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/context.jsonld",
@@ -51,7 +51,6 @@
   "sourceLdContext": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-shell/context.jsonld",
   "resolvedSchemaProperties": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/resolvedProperties.json",
   "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-shell/",
-  "rdfData": [],
   "validationPassed": true,
   "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-shell/",
   "description": "# Shell Topology Feature\n\nA **Shell** is a topological feature representing a closed surface \u2014 the boundary of a volumetric Solid. It is composed of an ordered set of oriented Face references in its `directed_references` array.\n\nA Shell is the 3D analog of a Ring: just as a Ring closes a 2D boundary from Edges, a Shell closes a 3D boundary from Faces.\n\n## Topology Model\n\nA Shell's topology consists of:\n\n- `type`: `\"Shell\"`\n- `directed_references`: an ordered array of [Oriented Object References](../../datatypes/oriented-ref/), each referencing a Face feature with a `ref` (feature ID) and `orientation` (`+` or `-`)\n\nThe `geometry` property is `null` \u2014 actual coordinates are derived from the referenced Face, Edge and Point features.\n\n## Orientation\n\nThe orientation of each Face reference (`+` or `-`) indicates the outward normal direction with respect to the enclosed solid volume. Faces shared between adjacent solids appear with opposite orientations in each solid's shell.\n\n## Relationship to other types\n\n| Lower dimension | Shell | Higher dimension |\n|---|---|---|\n| Face (referenced in Shell directed_references) | **Shell** | Solid (contains Shell objects in its `shells` array) |\n\n## Example\n\n```json\n{\n  \"topology\": {\n    \"type\": \"Shell\",\n    \"directed_references\": [\n      { \"ref\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae\", \"orientation\": \"+\" },\n      { \"ref\": \"uuid:4a294022-4864-49c7-8cee-f9e43360bc4e\", \"orientation\": \"+\" },\n      { \"ref\": \"uuid:01947f47-ee13-44a9-85a4-2bcb4881982a\", \"orientation\": \"+\" },\n      { \"ref\": \"uuid:607a3363-3eb7-4ce6-a633-86d2e565692b\", \"orientation\": \"+\" },\n      { \"ref\": \"uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f\", \"orientation\": \"+\" },\n      { \"ref\": \"uuid:2387ae98-9236-42fe-9414-c45b99954c41\", \"orientation\": \"+\" }\n    ]\n  }\n}\n```\n",

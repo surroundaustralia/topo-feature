@@ -10,13 +10,13 @@
   "itemClass": "schema",
   "register": "ogc-building-block-register",
   "version": "0.1",
-  "dateOfLastChange": "2026-04-22",
+  "dateOfLastChange": "2026-04-23",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
   "dependsOn": [
-    "ogc.geo.topo.datatypes.topology",
-    "ogc.geo.topo.features.topo-feature-collection"
+    "ogc.geo.topo.features.topo-feature-collection",
+    "ogc.geo.topo.datatypes.topology"
   ],
   "tags": [
     "topology",
@@ -32,11 +32,11 @@
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
-    "ogc.geo.features.feature": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-    ],
     "ogc.geo.features.featureCollection": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+    ],
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ]
   },
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/context.jsonld",
@@ -48,7 +48,6 @@
   "sourceLdContext": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/context.jsonld",
   "resolvedSchemaProperties": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/resolvedProperties.json",
   "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/",
-  "rdfData": [],
   "validationPassed": true,
   "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-feature/",
   "description": "## Feature with explicit Topology\n\nA feature type that defines its geometry through topological references to other features, rather than inline coordinates.\n\nThe `topology` property references an ordered list of other features by ID. The `geometry` property is `null` when geometry is fully defined by topology \u2014 actual coordinates are resolved from the referenced features (ultimately from Point features with explicit coordinates).\n\n### Reference styles\n\nThe topology object uses exactly one of two reference styles (they must not coexist):\n\n- **`references`**: an ordered array of plain string feature IDs. Used for positional relationships, e.g. a LineString edge referencing its two vertex Point features.\n\n- **`directed_references`**: an ordered array of oriented object references `{ \"ref\": \"...\", \"orientation\": \"+\"|\"-\" }`. Used when traversal direction matters \u2014 Ring boundaries (referencing Edges) and Shell boundaries (referencing Faces).\n\n### Topology hierarchy\n\nHigher-order topology types use structured containers:\n\n- **Face** uses `rings` \u2014 each ring is `{ type: \"Ring\", directed_references: [...edge refs...] }`\n- **Solid** uses `shells` \u2014 each shell is `{ type: \"Shell\", directed_references: [...face refs...] }`\n\nThis is a generalisation of the TopoJSON concept using identified features rather than inline coordinate compaction. It supports explicit CRS and is not limited to LineStrings \u2014 topologically defined objects can be surfaces, solids, swept volumes, or any other concept where geometry is derivable from referenced elements.\n",

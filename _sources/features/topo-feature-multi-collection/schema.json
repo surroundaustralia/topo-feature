@@ -2,7 +2,9 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "A structured topology dataset with named arrays for each topological dimension. Points carry explicit coordinates; all higher-order features (edges, faces, shells, solids) use null geometry with topology defined via references or directed_references. Each array is restricted to its corresponding building block schema.",
   "type": "object",
-  "required": ["type"],
+  "required": [
+    "type"
+  ],
   "properties": {
     "type": {
       "type": "string",
@@ -25,7 +27,10 @@
             "properties": {
               "geometry": {
                 "type": "object",
-                "required": ["type", "coordinates"],
+                "required": [
+                  "type",
+                  "coordinates"
+                ],
                 "properties": {
                   "type": {
                     "type": "string",
@@ -38,14 +43,16 @@
                 }
               }
             },
-            "required": ["geometry"]
+            "required": [
+              "geometry"
+            ]
           }
         ]
       }
     },
     "edges": {
       "type": "array",
-      "description": "Edge (LineString) features referencing two point nodes via topology.references. geometry is null.",
+      "description": "Edge (LineString) features referencing two point nodes via topology.references.",
       "items": {
         "allOf": [
           {
@@ -53,18 +60,30 @@
           },
           {
             "properties": {
-              "geometry": { "type": "null" },
               "topology": {
                 "properties": {
                   "type": {
                     "type": "string",
-                    "enum": ["LineString", "MultiLineString"]
+                    "enum": [
+                      "LineString"
+                    ]
+                  },
+                  "references": {
+                    "minItems": 2,
+                    "maxItems": 2
                   }
                 }
               }
             }
           }
         ]
+      }
+    },
+    "rings": {
+      "type": "array",
+      "description": "Rings connect edges in a directed",
+      "items": {
+        "$ref": "bblocks://ogc.geo.topo.features.topo-ring"
       }
     },
     "faces": {
@@ -91,7 +110,9 @@
           },
           {
             "properties": {
-              "geometry": { "type": "null" },
+              "geometry": {
+                "type": "null"
+              },
               "topology": {
                 "properties": {
                   "type": {
@@ -99,7 +120,10 @@
                     "const": "Solid"
                   }
                 },
-                "required": ["type", "shells"]
+                "required": [
+                  "type",
+                  "shells"
+                ]
               }
             }
           }

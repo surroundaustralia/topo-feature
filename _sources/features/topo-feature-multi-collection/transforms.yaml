@@ -1,0 +1,14 @@
+transforms:
+
+  - id: topo2geojson
+    description: Generate a GeoJSON smoke test visualisation for Topo Features
+    type: python
+    inputs:
+      mediaTypes: [ application/json ]
+    outputs:
+      mediaTypes: [ application/json ]
+    metadata:
+      dependencies:
+        pip: geopandas>=1.1.3
+        python: ">=3.10"   # optional; skipped if not met
+    ref: transforms/topo2geojson.py

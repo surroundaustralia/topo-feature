@@ -42,21 +42,27 @@ properties:
   edges:
     type: array
     description: Edge (LineString) features referencing two point nodes via topology.references.
-      geometry is null.
     items:
       allOf:
       - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/schema.yaml
       - properties:
-          geometry:
-            type: 'null'
           topology:
             properties:
               type:
                 type: string
                 enum:
                 - LineString
-                - MultiLineString
+              references:
+                minItems: 2
+                maxItems: 2
     x-jsonld-id: https://purl.org/geojson/topo#edges
+    x-jsonld-container: '@list'
+  rings:
+    type: array
+    description: Rings connect edges in a directed
+    items:
+      $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml
+    x-jsonld-id: https://purl.org/geojson/topo#rings
     x-jsonld-container: '@list'
   faces:
     type: array
@@ -99,9 +105,6 @@ x-jsonld-extra-terms:
   Ring: https://purl.org/geojson/topo#Ring
   Shell: https://purl.org/geojson/topo#Shell
   Solid: https://purl.org/geojson/topo#Solid
-  rings:
-    x-jsonld-id: https://purl.org/geojson/topo#rings
-    x-jsonld-container: '@list'
 x-jsonld-prefixes:
   topo: https://purl.org/geojson/topo#
   geojson: https://purl.org/geojson/vocab#

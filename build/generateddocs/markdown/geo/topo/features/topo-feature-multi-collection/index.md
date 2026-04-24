@@ -2282,8 +2282,8 @@ Self-contained collection of topology objects defining a Cube
     topo:faces ( <uuid:c49e2288-1c24-4d38-bd69-9af1de66bd4c> ) ;
     topo:points ( <uuid:c13927c3-68a2-4aa9-b036-6b599a9a71d8> ) ;
     topo:rings ( <uuid:3c1ad946-65a9-44e9-b490-6f85f2ee4c65> ) ;
-    topo:shells ( <uuid:72937dc0-ca23-40c9-bec3-c43ae5580775> ),
-        ( <uuid:f87fa3d7-6645-41e1-abbe-5acfcdda8dbc> ) .
+    topo:shells ( <uuid:f87fa3d7-6645-41e1-abbe-5acfcdda8dbc> ),
+        ( <uuid:72937dc0-ca23-40c9-bec3-c43ae5580775> ) .
 
 
 ```
@@ -3677,8 +3677,8 @@ Self-contained collection of topology objects defining a Tetrahedron
     topo:faces ( <uuid:ea176699-b591-4857-b37f-ae1a241f5b85> ) ;
     topo:points ( <uuid:ac1d1ed7-1a19-4dcf-89b8-abf2f04e4174> ) ;
     topo:rings ( <uuid:35aba5dd-6230-4d95-85b9-2f4c9f7c333b> ) ;
-    topo:shells ( <uuid:1517c2e0-5317-48ef-a436-204640796480> ),
-        ( <uuid:829a1816-17cf-45bb-a845-101b6f2f6cd4> ) .
+    topo:shells ( <uuid:829a1816-17cf-45bb-a845-101b6f2f6cd4> ),
+        ( <uuid:1517c2e0-5317-48ef-a436-204640796480> ) .
 
 
 ```

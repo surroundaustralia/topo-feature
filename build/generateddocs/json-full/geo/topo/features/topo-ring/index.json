@@ -3,21 +3,22 @@
 {
   "itemIdentifier": "ogc.geo.topo.features.topo-ring",
   "name": "Ring Topology Feature",
+  "highlighted": true,
   "abstract": "A feature representing a Ring in topology: an ordered, closed sequence of oriented Edge references that form a boundary loop. A Ring is used as the boundary of a Face.",
   "status": "under-development",
   "dateTimeAddition": "2024-01-01T00:00:00Z",
   "itemClass": "schema",
   "register": "ogcincubator",
   "version": "0.1",
-  "dateOfLastChange": "2026-04-23",
+  "dateOfLastChange": "2026-04-24",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
   "dependsOn": [
-    "ogc.geo.topo.datatypes.topology",
     "ogc.geo.topo.datatypes.oriented-ref",
+    "ogc.geo.topo.features.topo-feature-collection",
     "ogc.geo.topo.features.topo-feature",
-    "ogc.geo.topo.features.topo-feature-collection"
+    "ogc.geo.topo.datatypes.topology"
   ],
   "tags": [
     "topology",
@@ -27,19 +28,19 @@
   ],
   "group": "OGC",
   "shaclShapes": {
-    "ogc.geo.topo.features.topo-feature": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
-    ],
     "ogc.geo.topo.features.topo-feature-collection": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+    ],
+    "ogc.geo.features.featureCollection": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
     ],
     "ogc.geo.features.feature": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ],
-    "ogc.geo.features.featureCollection": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+    "ogc.geo.topo.features.topo-feature": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ]
   },
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/context.jsonld",

@@ -21,31 +21,38 @@
       "items": {
         "allOf": [
           {
-            "$ref": "bblocks://ogc.geo.topo.features.topo-feature-collection#FeatureOptions"
+            "$ref": "bblocks://ogc.geo.topo.features.topo-feature-collection#FeatureCollectionOptions"
           },
           {
             "properties": {
-              "geometry": {
-                "type": "object",
-                "required": [
-                  "type",
-                  "coordinates"
-                ],
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "const": "Point"
+              "features": {
+                "type": "array",
+                "items": {
+                  "properties": {
+                    "geometry": {
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "coordinates"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "const": "Point"
+                        },
+                        "coordinates": {
+                          "type": "array",
+                          "minItems": 2
+                        }
+                      }
+                    }
                   },
-                  "coordinates": {
-                    "type": "array",
-                    "minItems": 2
-                  }
+                  "required": [
+                    "geometry"
+                  ]
                 }
               }
-            },
-            "required": [
-              "geometry"
-            ]
+            }
           }
         ]
       }

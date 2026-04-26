@@ -21,22 +21,26 @@ properties:
     description: Point features providing base coordinate geometry for the topology
     items:
       allOf:
-      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureOptions
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
       - properties:
-          geometry:
-            type: object
-            required:
-            - type
-            - coordinates
-            properties:
-              type:
-                type: string
-                const: Point
-              coordinates:
-                type: array
-                minItems: 2
-        required:
-        - geometry
+          features:
+            type: array
+            items:
+              properties:
+                geometry:
+                  type: object
+                  required:
+                  - type
+                  - coordinates
+                  properties:
+                    type:
+                      type: string
+                      const: Point
+                    coordinates:
+                      type: array
+                      minItems: 2
+              required:
+              - geometry
     x-jsonld-id: https://purl.org/geojson/topo#points
     x-jsonld-container: '@list'
   edges:

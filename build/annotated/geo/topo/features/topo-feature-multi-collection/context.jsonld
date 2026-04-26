@@ -6,9 +6,54 @@
     "Solid": "topo:Solid",
     "points": {
       "@context": {
-        "type": "@type",
-        "id": "@id",
-        "geometry": "geojson:geometry",
+        "features": {
+          "@context": {
+            "id": "@id",
+            "geometry": "geojson:geometry",
+            "links": {
+              "@context": {
+                "href": {
+                  "@type": "@id",
+                  "@id": "oa:hasTarget"
+                },
+                "rel": {
+                  "@context": {
+                    "@base": "http://www.iana.org/assignments/relation/"
+                  },
+                  "@id": "http://www.iana.org/assignments/relation",
+                  "@type": "@id"
+                },
+                "type": "dct:type",
+                "hreflang": "dct:language",
+                "title": "rdfs:label",
+                "length": "dct:extent"
+              },
+              "@id": "rdfs:seeAlso"
+            },
+            "featureType": "@type",
+            "time": {
+              "@context": {
+                "date": {
+                  "@id": "owlTime:hasTime",
+                  "@type": "xsd:date"
+                },
+                "timestamp": {
+                  "@id": "owlTime:hasTime",
+                  "@type": "xsd:dateTime"
+                },
+                "interval": {
+                  "@id": "owlTime:hasTime",
+                  "@container": "@list"
+                }
+              },
+              "@id": "dct:time"
+            },
+            "coordRefSys": "http://www.opengis.net/def/glossary/term/CoordinateReferenceSystemCRS",
+            "place": "dct:spatial"
+          },
+          "@id": "geojson:features",
+          "@container": "@set"
+        },
         "links": {
           "@context": {
             "href": {
@@ -29,33 +74,13 @@
           },
           "@id": "rdfs:seeAlso"
         },
-        "featureType": "@type",
-        "time": {
-          "@context": {
-            "date": {
-              "@id": "owlTime:hasTime",
-              "@type": "xsd:date"
-            },
-            "timestamp": {
-              "@id": "owlTime:hasTime",
-              "@type": "xsd:dateTime"
-            },
-            "interval": {
-              "@id": "owlTime:hasTime",
-              "@container": "@list"
-            }
-          },
-          "@id": "dct:time"
-        },
-        "coordRefSys": "http://www.opengis.net/def/glossary/term/CoordinateReferenceSystemCRS",
-        "place": "dct:spatial"
+        "featureType": "geojson:collectionFeatureType"
       },
       "@id": "topo:points",
       "@container": "@list"
     },
     "edges": {
       "@context": {
-        "type": "@type",
         "id": "@id",
         "geometry": "geojson:geometry",
         "links": {
@@ -131,7 +156,6 @@
     },
     "rings": {
       "@context": {
-        "type": "@type",
         "id": "@id",
         "geometry": "geojson:geometry",
         "links": {
@@ -208,7 +232,6 @@
     },
     "faces": {
       "@context": {
-        "type": "@type",
         "id": "@id",
         "geometry": "geojson:geometry",
         "links": {
@@ -285,7 +308,6 @@
     },
     "shells": {
       "@context": {
-        "type": "@type",
         "id": "@id",
         "geometry": "geojson:geometry",
         "links": {
@@ -362,7 +384,6 @@
     },
     "solids": {
       "@context": {
-        "type": "@type",
         "id": "@id",
         "geometry": "geojson:geometry",
         "links": {
@@ -436,6 +457,8 @@
       "@id": "topo:shells",
       "@container": "@list"
     },
+    "properties": "@nest",
+    "type": "@type",
     "Feature": "geojson:Feature",
     "FeatureCollection": "geojson:FeatureCollection",
     "GeometryCollection": "geojson:GeometryCollection",
@@ -449,7 +472,6 @@
       "@container": "@set",
       "@id": "geojson:features"
     },
-    "properties": "@nest",
     "Polyhedron": "geojson:Polyhedron",
     "MultiPolyhedron": "geojson:MultiPolyhedron",
     "Prism": {

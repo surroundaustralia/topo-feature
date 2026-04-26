@@ -1,5 +1,5 @@
 Validation report for ogc.geo.topo.features.topo-feature-multi-collection - Topo Feature Multi-Collection
-Generated 2026-04-24T05:35:06.209595+00:00
+Generated 2026-04-26T00:20:04.310118+00:00
 === Files ===
 Using examples/cube.json from examples
 JSON-LD context is present - uplifting
@@ -10,148 +10,116 @@ Output Turtle cube.ttl created
 === JSON Schema ===
 
 ** Validation error **
-ValidationError: 'geometry' is a required property
+ValidationError: 'topology' is a required property
 
-Failed validating 'required' in schema['properties']['points']['items']['allOf'][1]:
-    {'properties': {'geometry': {'properties': {'coordinates': {'minItems': 2,
-                                                                'type': 'array'},
-                                                'type': {'const': 'Point',
+Failed validating 'required' in schema['properties']['rings']['items']['allOf'][1]:
+    {'properties': {'geometry': {'type': 'null'},
+                    'topology': {'not': {'required': ['references']},
+                                 'properties': {'directed_references': {'description': 'Ordered '
+                                                                                       'list '
+                                                                                       'of '
+                                                                                       'oriented '
+                                                                                       'Edge '
+                                                                                       'references '
+                                                                                       'forming '
+                                                                                       'the '
+                                                                                       'closed '
+                                                                                       'ring '
+                                                                                       'boundary',
+                                                                        'items': {'$ref': 'https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml'},
+                                                                        'minItems': 3,
+                                                                        'type': 'array',
+                                                                        'x-jsonld-container': '@list',
+                                                                        'x-jsonld-id': 'https://purl.org/geojson/topo#directedReferences'},
+                                                'type': {'const': 'Ring',
                                                          'type': 'string'}},
-                                 'required': ['type', 'coordinates'],
-                                 'type': 'object'}},
-     'required': ['geometry']}
+                                 'required': ['type',
+                                              'directed_references'],
+                                 'x-jsonld-id': 'https://purl.org/geojson/vocab#topology',
+                                 'x-jsonld-type': '@id'}},
+     'required': ['topology']}
 
-On instance['points'][0]:
-    {'featureType': 'CadastralMark',
-     'features': [{'featureType': 'BoundaryMark',
-                   'geometry': {'coordinates': [115.99404848179692,
-                                                -31.88799411030673,
-                                                2.5],
-                                'type': 'Point'},
-                   'id': 'uuid:59beee45-4517-4757-af4b-a96f4ad8ed6d',
-                   'place': {'coordinates': [404865.0, 6471538.0, 2.5],
-                             'type': 'Point'},
-                   'properties': {'comment': None,
-                                  'monumentedBy': {'condition': 'wa-monument-condition:ok',
-                                                   'form': 'wa-monument-form:cadastral-point-unmarked',
-                                                   'state': 'wa-monument-state:unmarked'},
-                                  'ptQualityMeasure': 0.1,
-                                  'purpose': 'wa-surveypoint-purpose:boundary'},
-                   'time': '2026-04-23T04:21:18.170932+00:00',
+On instance['rings'][0]:
+    {'featureType': 'Ring',
+     'features': [{'geometry': None,
+                   'id': 'uuid:1e8d916c-1f57-4644-9d12-e0a4ce979746',
+                   'properties': {'circumference': 4.0},
+                   'topology': {'directed_references': [{'orientation': '+',
+                                                         'ref': 'uuid:ba33e25e-6c0e-45fe-a010-8f3d5489a066'},
+                                                        {'orientation': '+',
+                                                         'ref': 'uuid:e086e3d8-032d-46b4-b4e6-dc79687c9728'},
+                                                        {'orientation': '+',
+                                                         'ref': 'uuid:0b335be0-f2a0-428d-8505-099c0ded93c5'},
+                                                        {'orientation': '+',
+                                                         'ref': 'uuid:eab267d2-9094-4e4e-b74e-8756b4e1b805'}],
+                                'type': 'Ring'},
                    'type': 'Feature'},
-                  {'featureType': 'BoundaryMark',
-                   'geometry': {'coordinates': [115.99404838372895,
-                                                -31.888003130884595,
-                                                2.5],
-                                'type': 'Point'},
-                   'id': 'uuid:31d5612f-cf59-4e39-9c5b-1081495fa6c9',
-                   'place': {'coordinates': [404865.0, 6471537.0, 2.5],
-                             'type': 'Point'},
-                   'properties': {'comment': None,
-                                  'monumentedBy': {'condition': 'wa-monument-condition:ok',
-                                                   'form': 'wa-monument-form:cadastral-point-unmarked',
-                                                   'state': 'wa-monument-state:unmarked'},
-                                  'ptQualityMeasure': 0.1,
-                                  'purpose': 'wa-surveypoint-purpose:boundary'},
-                   'time': '2026-04-23T04:21:18.170932+00:00',
+                  {'geometry': None,
+                   'id': 'uuid:5cf1190c-2309-4cc2-89a2-1e01c7702c4c',
+                   'properties': {'circumference': 4.0},
+                   'topology': {'directed_references': [{'orientation': '-',
+                                                         'ref': 'uuid:ba33e25e-6c0e-45fe-a010-8f3d5489a066'},
+                                                        {'orientation': '+',
+                                                         'ref': 'uuid:91b7ae1d-df02-45a8-bc7a-7b258fa91134'},
+                                                        {'orientation': '-',
+                                                         'ref': 'uuid:a8225e64-5dba-4963-a6f0-444ef2e24572'},
+                                                        {'orientation': '+',
+                                                         'ref': 'uuid:b3e7c55d-45f5-4edf-8f9a-a9faf896b420'}],
+                                'type': 'Ring'},
                    'type': 'Feature'},
-                  {'featureType': 'BoundaryMark',
-                   'geometry': {'coordinates': [115.99403781118421,
-                                                -31.88800304721178,
-                                                2.5],
-                                'type': 'Point'},
-                   'id': 'uuid:1cc3fef9-d960-4e99-92d1-e1589af529b8',
-                   'place': {'coordinates': [404864.0, 6471537.0, 2.5],
-                             'type': 'Point'},
-                   'properties': {'comment': None,
-                                  'monumentedBy': {'condition': 'wa-monument-condition:ok',
-                                                   'form': 'wa-monument-form:cadastral-point-unmarked',
-                                                   'state': 'wa-monument-state:unmarked'},
-                                  'ptQualityMeasure': 0.1,
-                                  'purpose': 'wa-surveypoint-purpose:boundary'},
-                   'time': '2026-04-23T04:21:18.170932+00:00',
+                  {'geometry': None,
+                   'id': 'uuid:dadd1fa1-c29a-4186-aeb3-af439c359ad7',
+                   'properties': {'circumference': 4.0},
+                   'topology': {'directed_references': [{'orientation': '+',
+                                                         'ref': 'uuid:a8225e64-5dba-4963-a6f0-444ef2e24572'},
+                                                        {'orientation': '+',
+                                                         'ref': 'uuid:3eed454a-5c7b-41e9-90b7-6144fe91c8be'},
+                                                        {'orientation': '+',
+                                                         'ref': 'uuid:143e5c18-4ce7-433d-bef2-7350336b8ec5'},
+                                                        {'orientation': '+',
+                                                         'ref': 'uuid:0eaebed1-1671-48c1-be86-604a5740e494'}],
+                                'type': 'Ring'},
                    'type': 'Feature'},
-                  {'featureType': 'BoundaryMark',
-                   'geometry': {'coordinates': [115.9940379092532,
-                                                -31.88799402663394,
-                                                2.5],
-                                'type': 'Point'},
-                   'id': 'uuid:7fb0d489-2844-4bb4-8a16-c0477a6df039',
-                   'place': {'coordinates': [404864.0, 6471538.0, 2.5],
-                             'type': 'Point'},
-                   'properties': {'comment': None,
-                                  'monumentedBy': {'condition': 'wa-monument-condition:ok',
-                                                   'form': 'wa-monument-form:cadastral-point-unmarked',
-                                                   'state': 'wa-monument-state:unmarked'},
-                                  'ptQualityMeasure': 0.1,
-                                  'purpose': 'wa-surveypoint-purpose:boundary'},
-                   'time': '2026-04-23T04:21:18.170932+00:00',
+                  {'geometry': None,
+                   'id': 'uuid:27c3e7c0-4133-4a85-ac73-8b27b45aac38',
+                   'properties': {'circumference': 4.0},
+                   'topology': {'directed_references': [{'orientation': '-',
+                                                         'ref': 'uuid:eab267d2-9094-4e4e-b74e-8756b4e1b805'},
+                                                        {'orientation': '+',
+                                                         'ref': 'uuid:0d5d3fe7-b851-4948-9a1f-d15a9e1d5805'},
+                                                        {'orientation': '-',
+                                                         'ref': 'uuid:3eed454a-5c7b-41e9-90b7-6144fe91c8be'},
+                                                        {'orientation': '-',
+                                                         'ref': 'uuid:91b7ae1d-df02-45a8-bc7a-7b258fa91134'}],
+                                'type': 'Ring'},
                    'type': 'Feature'},
-                  {'featureType': 'BoundaryMark',
-                   'geometry': {'coordinates': [115.99404848179692,
-                                                -31.88799411030673,
-                                                3.5],
-                                'type': 'Point'},
-                   'id': 'uuid:9eef2bdc-bf41-4f59-86a3-1dc08b605fb2',
-                   'place': {'coordinates': [404865.0, 6471538.0, 3.5],
-                             'type': 'Point'},
-                   'properties': {'comment': None,
-                                  'monumentedBy': {'condition': 'wa-monument-condition:ok',
-                                                   'form': 'wa-monument-form:cadastral-point-unmarked',
-                                                   'state': 'wa-monument-state:unmarked'},
-                                  'ptQualityMeasure': 0.1,
-                                  'purpose': 'wa-surveypoint-purpose:boundary'},
-                   'time': '2026-04-23T04:21:18.170932+00:00',
+                  {'geometry': None,
+                   'id': 'uuid:df428c3f-6471-4a16-a44e-fe725174d2ca',
+                   'properties': {'circumference': 4.0},
+                   'topology': {'directed_references': [{'orientation': '-',
+                                                         'ref': 'uuid:0b335be0-f2a0-428d-8505-099c0ded93c5'},
+                                                        {'orientation': '+',
+                                                         'ref': 'uuid:6a76a75c-8a26-46a5-9af3-b3e5e77cd8a6'},
+                                                        {'orientation': '-',
+                                                         'ref': 'uuid:143e5c18-4ce7-433d-bef2-7350336b8ec5'},
+                                                        {'orientation': '-',
+                                                         'ref': 'uuid:0d5d3fe7-b851-4948-9a1f-d15a9e1d5805'}],
+                                'type': 'Ring'},
                    'type': 'Feature'},
-                  {'featureType': 'BoundaryMark',
-                   'geometry': {'coordinates': [115.99404838372895,
-                                                -31.888003130884595,
-                                                3.5],
-                                'type': 'Point'},
-                   'id': 'uuid:1c309f67-6a12-42f6-a11b-0510696efa63',
-                   'place': {'coordinates': [404865.0, 6471537.0, 3.5],
-                             'type': 'Point'},
-                   'properties': {'comment': None,
-                                  'monumentedBy': {'condition': 'wa-monument-condition:ok',
-                                                   'form': 'wa-monument-form:cadastral-point-unmarked',
-                                                   'state': 'wa-monument-state:unmarked'},
-                                  'ptQualityMeasure': 0.1,
-                                  'purpose': 'wa-surveypoint-purpose:boundary'},
-                   'time': '2026-04-23T04:21:18.170932+00:00',
-                   'type': 'Feature'},
-                  {'featureType': 'BoundaryMark',
-                   'geometry': {'coordinates': [115.9940379092532,
-                                                -31.88799402663394,
-                                                3.5],
-                                'type': 'Point'},
-                   'id': 'uuid:2697a8f6-5ed7-4b52-8508-f2e0bb021bd5',
-                   'place': {'coordinates': [404864.0, 6471538.0, 3.5],
-                             'type': 'Point'},
-                   'properties': {'comment': None,
-                                  'monumentedBy': {'condition': 'wa-monument-condition:ok',
-                                                   'form': 'wa-monument-form:cadastral-point-unmarked',
-                                                   'state': 'wa-monument-state:unmarked'},
-                                  'ptQualityMeasure': 0.1,
-                                  'purpose': 'wa-surveypoint-purpose:boundary'},
-                   'time': '2026-04-23T04:21:18.170932+00:00',
-                   'type': 'Feature'},
-                  {'featureType': 'BoundaryMark',
-                   'geometry': {'coordinates': [115.99403781118421,
-                                                -31.88800304721178,
-                                                3.5],
-                                'type': 'Point'},
-                   'id': 'uuid:1158ec01-5cd1-4cfa-9888-4297d9148fe5',
-                   'place': {'coordinates': [404864.0, 6471537.0, 3.5],
-                             'type': 'Point'},
-                   'properties': {'comment': None,
-                                  'monumentedBy': {'condition': 'wa-monument-condition:ok',
-                                                   'form': 'wa-monument-form:cadastral-point-unmarked',
-                                                   'state': 'wa-monument-state:unmarked'},
-                                  'ptQualityMeasure': 0.1,
-                                  'purpose': 'wa-surveypoint-purpose:boundary'},
-                   'time': '2026-04-23T04:21:18.170932+00:00',
+                  {'geometry': None,
+                   'id': 'uuid:b7035770-c9ae-487a-84d0-f7d116a61102',
+                   'properties': {'circumference': 4.0},
+                   'topology': {'directed_references': [{'orientation': '-',
+                                                         'ref': 'uuid:e086e3d8-032d-46b4-b4e6-dc79687c9728'},
+                                                        {'orientation': '-',
+                                                         'ref': 'uuid:b3e7c55d-45f5-4edf-8f9a-a9faf896b420'},
+                                                        {'orientation': '-',
+                                                         'ref': 'uuid:0eaebed1-1671-48c1-be86-604a5740e494'},
+                                                        {'orientation': '-',
+                                                         'ref': 'uuid:6a76a75c-8a26-46a5-9af3-b3e5e77cd8a6'}],
+                                'type': 'Ring'},
                    'type': 'Feature'}],
-     'id': 'uuid:c13927c3-68a2-4aa9-b036-6b599a9a71d8',
+     'id': 'uuid:18cd84c9-6e95-4127-8e08-5e81aa47095b',
      'type': 'FeatureCollection'}
 === End JSON Schema ===
 
@@ -161,39 +129,39 @@ Validation result for _sources/features/topo-feature/tests/geometry-coordinates.
   Conforms: True
   
 Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:
- - Shape _:n527e2c37d6db407e866a44c0aaf0e20eb1: <uuid:1c309f67-6a12-42f6-a11b-0510696efa63>/dct:spatial,<uuid:1cc3fef9-d960-4e99-92d1-e1589af529b8>/geojson:geometry,<uuid:31d5612f-cf59-4e39-9c5b-1081495fa6c9>/geojson:geometry,<uuid:1c309f67-6a12-42f6-a11b-0510696efa63>/geojson:geometry,<uuid:59beee45-4517-4757-af4b-a96f4ad8ed6d>/geojson:geometry,<uuid:2697a8f6-5ed7-4b52-8508-f2e0bb021bd5>/geojson:geometry,<uuid:9eef2bdc-bf41-4f59-86a3-1dc08b605fb2>/dct:spatial,<uuid:1158ec01-5cd1-4cfa-9888-4297d9148fe5>/dct:spatial,<uuid:31d5612f-cf59-4e39-9c5b-1081495fa6c9>/dct:spatial,<uuid:7fb0d489-2844-4bb4-8a16-c0477a6df039>/dct:spatial,<uuid:2697a8f6-5ed7-4b52-8508-f2e0bb021bd5>/dct:spatial,<uuid:9eef2bdc-bf41-4f59-86a3-1dc08b605fb2>/geojson:geometry,<uuid:1158ec01-5cd1-4cfa-9888-4297d9148fe5>/geojson:geometry,<uuid:1cc3fef9-d960-4e99-92d1-e1589af529b8>/dct:spatial,<uuid:59beee45-4517-4757-af4b-a96f4ad8ed6d>/dct:spatial,<uuid:7fb0d489-2844-4bb4-8a16-c0477a6df039>/geojson:geometry
- - Shape _:n527e2c37d6db407e866a44c0aaf0e20eb3: <uuid:1cc3fef9-d960-4e99-92d1-e1589af529b8>/geojson:geometry,<uuid:9eef2bdc-bf41-4f59-86a3-1dc08b605fb2>/geojson:geometry,<uuid:31d5612f-cf59-4e39-9c5b-1081495fa6c9>/geojson:geometry,<uuid:1158ec01-5cd1-4cfa-9888-4297d9148fe5>/geojson:geometry,<uuid:1c309f67-6a12-42f6-a11b-0510696efa63>/geojson:geometry,<uuid:7fb0d489-2844-4bb4-8a16-c0477a6df039>/geojson:geometry,<uuid:59beee45-4517-4757-af4b-a96f4ad8ed6d>/geojson:geometry,<uuid:2697a8f6-5ed7-4b52-8508-f2e0bb021bd5>/geojson:geometry
+ - Shape _:n789cc8b2612b492bb92c5f2987c5ab27b3: <uuid:a5078406-7292-4503-a531-32db5ae43cfe>/geojson:geometry,<uuid:ea460053-354e-4831-96d5-2e296f237fb7>/geojson:geometry,<uuid:f89d0e8d-84c0-4048-86a7-3bf7fe5555ac>/geojson:geometry,<uuid:f2526f17-ad25-493d-a132-9a4255c67455>/geojson:geometry,<uuid:d2f0668c-72b6-4ac7-9752-ded389fe160e>/geojson:geometry,<uuid:64d41bdf-c7e7-485d-96b9-de0d7f95d23a>/geojson:geometry,<uuid:871c7ae3-1f82-4b01-a881-baee48ea53fc>/geojson:geometry,<uuid:b9813f50-0d52-4f85-9edf-d9fc8a3ed434>/geojson:geometry
+ - Shape _:n789cc8b2612b492bb92c5f2987c5ab27b1: <uuid:ea460053-354e-4831-96d5-2e296f237fb7>/geojson:geometry,<uuid:f89d0e8d-84c0-4048-86a7-3bf7fe5555ac>/dct:spatial,<uuid:d2f0668c-72b6-4ac7-9752-ded389fe160e>/dct:spatial,<uuid:871c7ae3-1f82-4b01-a881-baee48ea53fc>/dct:spatial,<uuid:64d41bdf-c7e7-485d-96b9-de0d7f95d23a>/dct:spatial,<uuid:64d41bdf-c7e7-485d-96b9-de0d7f95d23a>/geojson:geometry,<uuid:a5078406-7292-4503-a531-32db5ae43cfe>/geojson:geometry,<uuid:b9813f50-0d52-4f85-9edf-d9fc8a3ed434>/dct:spatial,<uuid:f89d0e8d-84c0-4048-86a7-3bf7fe5555ac>/geojson:geometry,<uuid:f2526f17-ad25-493d-a132-9a4255c67455>/geojson:geometry,<uuid:d2f0668c-72b6-4ac7-9752-ded389fe160e>/geojson:geometry,<uuid:f2526f17-ad25-493d-a132-9a4255c67455>/dct:spatial,<uuid:a5078406-7292-4503-a531-32db5ae43cfe>/dct:spatial,<uuid:871c7ae3-1f82-4b01-a881-baee48ea53fc>/geojson:geometry,<uuid:ea460053-354e-4831-96d5-2e296f237fb7>/dct:spatial,<uuid:b9813f50-0d52-4f85-9edf-d9fc8a3ed434>/geojson:geometry
 
 Validation result for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:
   Validation Report
   Conforms: True
   
 Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:
- - Shape topo:testTopoReferencesExist: <uuid:b2dfa681-8b2a-4c26-a4ff-f02d21a4b716>/geojson:topology,<uuid:4c8e9d96-de76-4883-a84b-507583e2a4bc>/geojson:topology,<uuid:1f648ddf-c85d-4cce-9576-f1f2e21bdd58>/geojson:topology,<uuid:885c1f08-41fe-41ec-a76d-cb137fc57276>/geojson:topology,<uuid:3c1adafe-b2dd-4595-b21b-d0a56ad38a14>/geojson:topology,<uuid:6cb5cd42-a912-42b5-9ee8-9580cf01e69b>/geojson:topology,<uuid:d177ab95-e782-4e53-a74d-d4094b7ca581>/geojson:topology,<uuid:20b578e8-0549-4ca6-b5af-8b4e86d64b9d>/geojson:topology,<uuid:323a919d-ee53-45ea-a4a0-4e70311df48b>/geojson:topology,<uuid:d5f6f14c-5cc7-4bbb-b3d3-c285b571794b>/geojson:topology,<uuid:3be84332-420a-46f4-94de-d34f17e1a492>/geojson:topology,<uuid:d66d5c85-4016-4ff7-ac11-ed2cf4c29c3a>/geojson:topology,<uuid:7f48b42d-3889-4ddd-8dda-f3438d7aa818>/geojson:topology,<uuid:863c0239-7dc3-40da-903d-d332cfe400a1>/geojson:topology,<uuid:77478cdc-4bb5-4ede-bbdf-21253e325a62>/geojson:topology,<uuid:9f55f589-9d78-4467-8126-f41da2dbe404>/geojson:topology,<uuid:60115a05-efd5-4aaf-8e2b-bf0f693bf35e>/geojson:topology,<uuid:ddfaa024-2879-48e6-a6eb-b3e02d10a9a7>/geojson:topology,<uuid:0b2bd4f6-daf9-45c6-a88c-067b5d7df5cd>/geojson:topology,<uuid:e7352284-f534-4791-9012-84345df113dd>/geojson:topology,<uuid:573410ad-6db5-4f32-b5da-3aa465e066b3>/geojson:topology,<uuid:33065ff1-2fa1-40ed-b8b8-bcf93176e920>/geojson:topology,<uuid:f1430fb0-7089-4d85-b886-c6c38e6f83d4>/geojson:topology,<uuid:6a9e0b77-e48c-4de9-89ad-9dc2f94bac56>/geojson:topology,<uuid:88bfff5c-9b92-4096-b54a-9edb52537f77>/geojson:topology,<uuid:66b1ef39-5a00-475d-941f-ccffde23b965>/geojson:topology
- - Shape topo:testTopoLinesReferencePoints: <uuid:9f55f589-9d78-4467-8126-f41da2dbe404>/geojson:topology,<uuid:885c1f08-41fe-41ec-a76d-cb137fc57276>/geojson:topology,<uuid:60115a05-efd5-4aaf-8e2b-bf0f693bf35e>/geojson:topology,<uuid:3c1adafe-b2dd-4595-b21b-d0a56ad38a14>/geojson:topology,<uuid:0b2bd4f6-daf9-45c6-a88c-067b5d7df5cd>/geojson:topology,<uuid:6cb5cd42-a912-42b5-9ee8-9580cf01e69b>/geojson:topology,<uuid:33065ff1-2fa1-40ed-b8b8-bcf93176e920>/geojson:topology,<uuid:f1430fb0-7089-4d85-b886-c6c38e6f83d4>/geojson:topology,<uuid:6a9e0b77-e48c-4de9-89ad-9dc2f94bac56>/geojson:topology,<uuid:d66d5c85-4016-4ff7-ac11-ed2cf4c29c3a>/geojson:topology,<uuid:863c0239-7dc3-40da-903d-d332cfe400a1>/geojson:topology,<uuid:66b1ef39-5a00-475d-941f-ccffde23b965>/geojson:topology
+ - Shape topo:testTopoReferencesExist: <uuid:e3f71310-2b3b-4f7e-a5f8-53c4c73f9215>/geojson:topology,<uuid:dadd1fa1-c29a-4186-aeb3-af439c359ad7>/geojson:topology,<uuid:27c3e7c0-4133-4a85-ac73-8b27b45aac38>/geojson:topology,<uuid:1e8d916c-1f57-4644-9d12-e0a4ce979746>/geojson:topology,<uuid:b7035770-c9ae-487a-84d0-f7d116a61102>/geojson:topology,<uuid:5cf1190c-2309-4cc2-89a2-1e01c7702c4c>/geojson:topology,<uuid:4e1a653c-7ac5-41b5-b2b9-32269748e4d1>/geojson:topology,<uuid:4bbe6e8b-588b-4f36-a674-ec46b9a6598d>/geojson:topology,<uuid:1a9af266-0e07-4723-a04a-b0d9304b34aa>/geojson:topology,<uuid:df428c3f-6471-4a16-a44e-fe725174d2ca>/geojson:topology,<uuid:a3b3ad39-0e64-4ab2-8174-2379006acd0a>/geojson:topology,<uuid:76cf1d2b-0c59-497f-ba78-a17ff67a11d5>/geojson:topology,<uuid:d3084ff7-082a-457e-9011-e8d4f9ea98e1>/geojson:topology,<uuid:9da1026a-5bfd-4d56-aa2e-b37c990ecd46>/geojson:topology
+ - Shape topo:testTopoLinesReferencePoints: *none*
 
 Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
   Validation Report
   Conforms: True
   
 Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
- - Shape geojson:GeometryShape: *none*
  - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
  - Shape geojson:FeatureShape: *none*
- - Shape geojson:LinkShape: *none*
+ - Shape geojson:GeometryShape: *none*
+ - Shape geojson:FeatureCollectionShape: _:N6bcceef34be04853af3dbd6cadffd7dc,<uuid:0907609e-f4d3-4461-80c9-3f38da835ab3>,<uuid:15a876b9-def1-4798-9293-8b539b152d92>,<uuid:d8681dff-73ed-4fd4-88c3-bc25493827dc>,<uuid:18cd84c9-6e95-4127-8e08-5e81aa47095b>
  - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
- - Shape geojson:FeatureCollectionShape: <uuid:72937dc0-ca23-40c9-bec3-c43ae5580775>,<uuid:f87fa3d7-6645-41e1-abbe-5acfcdda8dbc>,<uuid:d0049922-af13-4b40-b28d-95944f799d4e>,<uuid:c13927c3-68a2-4aa9-b036-6b599a9a71d8>,<uuid:3c1ad946-65a9-44e9-b490-6f85f2ee4c65>,<uuid:c49e2288-1c24-4d38-bd69-9af1de66bd4c>
+ - Shape geojson:LinkShape: *none*
 
 Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
   Validation Report
   Conforms: True
   
 Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
+ - Shape geojson:FeatureShape: <uuid:e3f71310-2b3b-4f7e-a5f8-53c4c73f9215>,<uuid:27c3e7c0-4133-4a85-ac73-8b27b45aac38>,<uuid:1a9af266-0e07-4723-a04a-b0d9304b34aa>,<uuid:dadd1fa1-c29a-4186-aeb3-af439c359ad7>,<uuid:df428c3f-6471-4a16-a44e-fe725174d2ca>,<uuid:64d41bdf-c7e7-485d-96b9-de0d7f95d23a>,<uuid:d3084ff7-082a-457e-9011-e8d4f9ea98e1>,<uuid:1e8d916c-1f57-4644-9d12-e0a4ce979746>,<uuid:9da1026a-5bfd-4d56-aa2e-b37c990ecd46>,<uuid:d2f0668c-72b6-4ac7-9752-ded389fe160e>,<uuid:b9813f50-0d52-4f85-9edf-d9fc8a3ed434>,<uuid:a3b3ad39-0e64-4ab2-8174-2379006acd0a>,<uuid:76cf1d2b-0c59-497f-ba78-a17ff67a11d5>,<uuid:871c7ae3-1f82-4b01-a881-baee48ea53fc>,<uuid:5cf1190c-2309-4cc2-89a2-1e01c7702c4c>,<uuid:4e1a653c-7ac5-41b5-b2b9-32269748e4d1>,<uuid:f89d0e8d-84c0-4048-86a7-3bf7fe5555ac>,<uuid:ea460053-354e-4831-96d5-2e296f237fb7>,<uuid:4bbe6e8b-588b-4f36-a674-ec46b9a6598d>,<uuid:f2526f17-ad25-493d-a132-9a4255c67455>,<uuid:a5078406-7292-4503-a531-32db5ae43cfe>,<uuid:b7035770-c9ae-487a-84d0-f7d116a61102>
  - Shape geojson:GeometryShape: *none*
- - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
- - Shape geojson:FeatureShape: <uuid:6cb5cd42-a912-42b5-9ee8-9580cf01e69b>,<uuid:9eef2bdc-bf41-4f59-86a3-1dc08b605fb2>,<uuid:9f55f589-9d78-4467-8126-f41da2dbe404>,<uuid:0b2bd4f6-daf9-45c6-a88c-067b5d7df5cd>,<uuid:d5f6f14c-5cc7-4bbb-b3d3-c285b571794b>,<uuid:573410ad-6db5-4f32-b5da-3aa465e066b3>,<uuid:7f48b42d-3889-4ddd-8dda-f3438d7aa818>,<uuid:4c8e9d96-de76-4883-a84b-507583e2a4bc>,<uuid:f1430fb0-7089-4d85-b886-c6c38e6f83d4>,<uuid:b2dfa681-8b2a-4c26-a4ff-f02d21a4b716>,<uuid:20b578e8-0549-4ca6-b5af-8b4e86d64b9d>,<uuid:88bfff5c-9b92-4096-b54a-9edb52537f77>,<uuid:3c1adafe-b2dd-4595-b21b-d0a56ad38a14>,<uuid:77478cdc-4bb5-4ede-bbdf-21253e325a62>,<uuid:31d5612f-cf59-4e39-9c5b-1081495fa6c9>,<uuid:e7352284-f534-4791-9012-84345df113dd>,<uuid:1cc3fef9-d960-4e99-92d1-e1589af529b8>,<uuid:d177ab95-e782-4e53-a74d-d4094b7ca581>,<uuid:66b1ef39-5a00-475d-941f-ccffde23b965>,<uuid:2697a8f6-5ed7-4b52-8508-f2e0bb021bd5>,<uuid:885c1f08-41fe-41ec-a76d-cb137fc57276>,<uuid:1c309f67-6a12-42f6-a11b-0510696efa63>,<uuid:6a9e0b77-e48c-4de9-89ad-9dc2f94bac56>,<uuid:33065ff1-2fa1-40ed-b8b8-bcf93176e920>,<uuid:863c0239-7dc3-40da-903d-d332cfe400a1>,<uuid:323a919d-ee53-45ea-a4a0-4e70311df48b>,<uuid:1158ec01-5cd1-4cfa-9888-4297d9148fe5>,<uuid:ddfaa024-2879-48e6-a6eb-b3e02d10a9a7>,<uuid:60115a05-efd5-4aaf-8e2b-bf0f693bf35e>,<uuid:d66d5c85-4016-4ff7-ac11-ed2cf4c29c3a>,<uuid:1f648ddf-c85d-4cce-9576-f1f2e21bdd58>,<uuid:7fb0d489-2844-4bb4-8a16-c0477a6df039>,<uuid:3be84332-420a-46f4-94de-d34f17e1a492>,<uuid:59beee45-4517-4757-af4b-a96f4ad8ed6d>
  - Shape geojson:LinkShape: *none*
  - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
 
 === End SHACL ===
 

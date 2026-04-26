@@ -1,15 +1,29 @@
-Validation report for ogc.geo.topo.features.topo-face - Face Topology Feature
-Generated 2026-04-26T00:19:49.518873+00:00
+Validation report for ogc.geo.topo.features.topo-line - Line using Point References
+Generated 2026-04-26T00:19:54.542346+00:00
 === Files ===
-Using examples/face-with-context.json from examples
+Using examples/edge-from-2d-sections.json from examples
 JSON-LD context is present - uplifting
-Output JSON-LD example_1_1.jsonld created
-Output Turtle example_1_1.ttl created
+Output JSON-LD example_3_1.jsonld created
+Output Turtle example_3_1.ttl created
 === End Files ===
 
 === JSON Schema ===
 Using the following JSON Schema: #testCollection
-Validation passed
+
+** Validation error **
+ValidationError: {'id': 'uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38', 'type': 'Feature', 'geometry': {'type': 'Point', 'coordinates': [18.0, 10.0, 3.0]}, 'properties': None} is not valid under any of the given schemas
+
+Failed validating 'anyOf' in schema['properties']['points']['items']['allOf'][0]:
+    {'$anchor': 'FeatureCollectionOptions',
+     'anyOf': [{'$ref': 'https://opengeospatial.github.io/bblocks/annotated-schemas/geo/json-fg/featureCollection/schema.yaml'},
+               {'$ref': 'https://opengeospatial.github.io/bblocks/annotated-schemas/geo/json-fg/featureCollection-lenient/schema.yaml'},
+               {'$ref': 'https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/featureCollection/schema.yaml'}]}
+
+On instance['points'][0]:
+    {'geometry': {'coordinates': [18.0, 10.0, 3.0], 'type': 'Point'},
+     'id': 'uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38',
+     'properties': None,
+     'type': 'Feature'}
 === End JSON Schema ===
 
 === SHACL ===
@@ -18,8 +32,8 @@ Validation result for _sources/features/topo-feature/tests/geometry-coordinates.
   Conforms: True
   
 Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:
- - Shape _:n727b1fa09c7848478aa68b78073b892ab3: *none*
- - Shape _:n727b1fa09c7848478aa68b78073b892ab1: *none*
+ - Shape _:n4f79e0415256471ca3ee07c2114d8935b1: *none*
+ - Shape _:n4f79e0415256471ca3ee07c2114d8935b3: *none*
 
 Validation result for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:
   Validation Report
@@ -37,9 +51,9 @@ Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/fea
  - Shape geojson:FeatureShape: *none*
  - Shape geojson:GeometryShape: *none*
  - Shape geojson:FeatureCollectionShape: *none*
- - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
  - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
  - Shape geojson:LinkShape: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
 
 Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
   Validation Report
@@ -48,9 +62,9 @@ Validation result for https://opengeospatial.github.io/bblocks/registereditems/g
 Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
  - Shape geojson:FeatureShape: *none*
  - Shape geojson:GeometryShape: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
  - Shape geojson:LinkShape: *none*
  - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
- - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
 
 === End SHACL ===
 

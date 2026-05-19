@@ -42,7 +42,7 @@ solids
   └─ topology.shells[].directed_references → Face IDs
        └─ topology.faces[].directed_references → Ring IDs
             └─ topology.rings[].directed_references → Edge IDs   
-                └─ topology..edges[].references → Point IDs
+                └─ topology.edges[].references → Point IDs
                     └─ points.geometry.coordinates (actual 3D coordinates)
 ```
 

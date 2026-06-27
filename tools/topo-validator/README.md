@@ -1,6 +1,6 @@
 # Topology Boundary-Block Validator
 
-`topo_bblock_validator` validates Topo Feature / WA 3D CSDM topology data against a set of boundary-block topology rules. It checks whether points, curves, surfaces, shells, solids, and solid relationships form a coherent 3D topological model.
+`topo-validator` validates `topo-feature` / WA 3D CSDM topology data against a set of boundary-block topology rules. It checks whether points, curves, surfaces, shells, solids, and solid relationships form a coherent 3D topological model.
 
 The validator can be used:
 
@@ -51,7 +51,7 @@ The loader maps CSDM feature collections into the validator's internal model:
 | `shells[].features[].topology.directed_references`                | `solids[].shells[].faces`    |
 | `solids[].features[].topology.shells`                             | `solids[]` via shell lookup  |
 
-You can also validate an already-converted internal topology dictionary by using the `--raw-internal` CLI flag or calling `validate_topology()` directly.
+You can also validate an "internal" topology dictionary by using the `--raw-internal` CLI flag or calling `validate_topology()` directly.
 
 ## Internal topology model
 
@@ -82,16 +82,15 @@ For shells:
 
 ## Installation / setup
 
-From the repository root, ensure Python can import the `src` package.
+From the repository root, ensure Python can import the `topo_validator` package.
 
 For local development, run commands from the repository root, for example:
 
 ```bash 
-python -m topo_validator.cli src/topo_bblock_validator/tests/tetrahedron.json
+python -m topo_validator.cli topo-validator/tests/tetrahedron.json
 ```
 
 If your environment requires dependencies, install the project/test requirements used by the wider repository before running validation.
-
 
 
 ## Command-line usage
@@ -209,18 +208,6 @@ Default tolerances are:
 | `length`    |  `1e-3` | minimum curve length                         |
 | `thickness` |  `1e-3` | minimum solid thickness                      |
 
-### Run only selected conformance classes
-
-Use `conformance_classes` to limit validation to a subset of checks.
-
-```python 
-from topo_validator import validate_topology
-issues = validate_topology
-```
-
-This example runs only point and curve topology checks.
-
-If `conformance_classes` is omitted or `None`, all registered conformance classes are run.
 
 ## Understanding validation results
 
@@ -267,7 +254,7 @@ if has_error(issues, "DUPLICATE_POINT_PROXIMITY"): print("Duplicate points detec
 
 ### Text report
 
-Best for terminals and CI logs.
+For terminals and CI logs.
 
 ```bash 
 python -m topo_validator.cli path/to/model.json --format text
@@ -282,7 +269,7 @@ The text report includes:
 
 ### JSON report
 
-Best for automation, pipelines, or downstream tooling.
+For automation, pipelines, or downstream tooling.
 
 ```bash 
 python -m topo_validator.cli path/to/model.json --format json
@@ -298,7 +285,7 @@ The JSON report includes:
 
 ### HTML report
 
-Best for review by humans.
+For review.
 
 ```bash 
 python -m topo_validator.cli path/to/model.json
@@ -517,21 +504,21 @@ Run the validator after generating, converting, simplifying, or deduplicating to
 
 ## Running tests
 
-The package includes fixtures and report examples under `src/topo_bblock_validator/tests`.
+The package includes fixtures and report examples under `topo_validator/tests`.
 
 Run package tests from the repository root:
 
 ```bash 
-pytest src/topo_bblock_validator/tests -v
+pytest topo_validator/tests -v
 ```
 
 Validate a specific fixture through the CLI:
 
 ```bash 
 python -m topo_validator.cli
-src/topo_bblock_validator/tests/tetrahedron.json
+topo_validator/tests/tetrahedron.json
 --format html
---output src/topo_bblock_validator/tests/reports/tetrahedron-validation-report.html
+--output topo_validator/tests/reports/tetrahedron-validation-report.html
 ```
 
 Example fixtures include:

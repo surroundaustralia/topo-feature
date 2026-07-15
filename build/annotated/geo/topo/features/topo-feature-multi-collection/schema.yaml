@@ -10,7 +10,7 @@ $defs:
     type: array
     items:
       allOf:
-      - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
       - properties:
           geometry:
             type: 'null'
@@ -27,7 +27,7 @@ $defs:
     type: array
     items:
       allOf:
-      - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
       - properties:
           geometry:
             type: 'null'
@@ -44,7 +44,7 @@ $defs:
     type: array
     items:
       allOf:
-      - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
       - properties:
           geometry:
             type: 'null'
@@ -61,7 +61,7 @@ $defs:
     type: array
     items:
       allOf:
-      - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
       - properties:
           geometry:
             type: 'null'
@@ -97,7 +97,7 @@ $defs:
     type: array
     items:
       allOf:
-      - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/schema.yaml
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/schema.yaml
       - properties:
           topology:
             properties:
@@ -123,7 +123,7 @@ properties:
       oneOf:
       - $ref: '#PointFeatures'
       - allOf:
-        - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
+        - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
         - properties:
             features:
               $ref: '#PointFeatures'
@@ -136,7 +136,7 @@ properties:
       description: Edge (LineString) features referencing two point nodes via topology.references.
       items:
         allOf:
-        - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
+        - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
         - properties:
             features:
               $ref: '#EdgeFeatures'
@@ -147,43 +147,43 @@ rings:
   description: Rings connect edges in a directed
   items:
     allOf:
-    - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
+    - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
     - properties:
         features:
           type: array
           items:
-            $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml
+            $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml
 faces:
   type: array
   description: Face features whose boundary rings reference edges via directed_references.
     geometry is null.
   items:
     allOf:
-    - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
+    - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
     - properties:
         features:
           type: array
           items:
-            $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml
+            $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml
 shells:
   type: array
   description: Shell features referencing faces via directed_references. geometry
     is null.
   items:
     allOf:
-    - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
+    - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
     - properties:
         features:
           type: array
           items:
-            $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.yaml
+            $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.yaml
 solids:
   type: array
   description: Solid features whose shells reference faces via directed_references.
     geometry is null.
   items:
     allOf:
-    - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
+    - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
     - properties:
         features:
           $ref: '#SolidFeatures'

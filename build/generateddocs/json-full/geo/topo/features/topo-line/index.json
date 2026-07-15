@@ -10,7 +10,7 @@
   "itemClass": "schema",
   "register": "icsm-csdm",
   "version": "0.1",
-  "dateOfLastChange": "2026-07-15",
+  "dateOfLastChange": "2023-05-24",
   "link": "https://github.com/icsm-au/3d-csdm-schema",
   "sources": [],
   "shaclClosures": [],
@@ -23,35 +23,35 @@
   ],
   "shaclShapes": {
     "ogc.geo.topo.features.topo-feature": [
-      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
     "ogc.geo.topo.features.topo-feature-collection": [
-      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
-    ],
-    "ogc.geo.features.feature": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
     "ogc.geo.features.featureCollection": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+    ],
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ]
   },
   "dependsOn": [
-    "ogc.geo.topo.features.topo-feature",
-    "ogc.geo.topo.datatypes.topology"
+    "ogc.geo.topo.datatypes.topology",
+    "ogc.geo.topo.features.topo-feature"
   ],
-  "ldContext": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/context.jsonld",
+  "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/context.jsonld",
   "schema": {
-    "application/yaml": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/schema.yaml",
-    "application/json": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/schema.json"
+    "application/yaml": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/schema.yaml",
+    "application/json": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/schema.json"
   },
-  "sourceSchema": "https://ogcincubator.github.io/topo-feature/_sources/features/topo-line/schema.json",
-  "sourceLdContext": "https://ogcincubator.github.io/topo-feature/_sources/features/topo-line/context.jsonld",
-  "resolvedSchemaProperties": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/resolvedProperties.json",
-  "sourceFiles": "https://ogcincubator.github.io/topo-feature/_sources/features/topo-line/",
+  "sourceSchema": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-line/schema.json",
+  "sourceLdContext": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-line/context.jsonld",
+  "resolvedSchemaProperties": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/resolvedProperties.json",
+  "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-line/",
   "validationPassed": true,
-  "testOutputs": "https://github.com/ogcincubator/topo-feature/blob/master/build/tests/geo/topo/features/topo-line/",
+  "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-line/",
   "description": "## Topology defined Line\n\n%definition% \n\nA feature type using a topology property to reference an ordered list of points.\n\nThe topology property has an ordered array, defining the direction of the line from the first to second and subsequent points.\n\nThis is a generalisation of the TopoJSON concept using inline data, and hence not limited to linestrings.\n\n",
   "examples": [
     {
@@ -60,23 +60,23 @@
         {
           "language": "json",
           "base-uri": "http://www.example.com/features/",
-          "ref": "https://ogcincubator.github.io/topo-feature/_sources/features/topo-line/examples/linestring.json",
+          "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-line/examples/linestring.json",
           "shacl-closure": [
             "../topo-feature/examples/points.ttl"
           ],
-          "url": "https://ogcincubator.github.io/topo-feature/build/tests/geo/topo/features/topo-line/example_1_1.json",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-line/example_1_1.json",
           "sizeBytes": 175,
           "code": "{\n  \"type\": \"Feature\",\n  \"id\": \"LineP1P2\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Edge\",\n    \"references\": [\n      \"P1\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}"
         },
         {
           "language": "jsonld",
-          "url": "https://ogcincubator.github.io/topo-feature/build/tests/geo/topo/features/topo-line/example_1_1.jsonld",
-          "sizeBytes": 295,
-          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/context.jsonld\",\n  \"type\": \"Feature\",\n  \"id\": \"LineP1P2\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Edge\",\n    \"references\": [\n      \"P1\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-line/example_1_1.jsonld",
+          "sizeBytes": 300,
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/context.jsonld\",\n  \"type\": \"Feature\",\n  \"id\": \"LineP1P2\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Edge\",\n    \"references\": [\n      \"P1\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}"
         },
         {
           "language": "ttl",
-          "url": "https://ogcincubator.github.io/topo-feature/build/tests/geo/topo/features/topo-line/example_1_1.ttl",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-line/example_1_1.ttl",
           "sizeBytes": 380,
           "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n<http://www.example.com/features/LineP1P2> a geojson:Feature ;\n    geojson:topology [ a topo:Edge ;\n            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ] .\n\n"
         }
@@ -88,30 +88,30 @@
         {
           "language": "json",
           "base-uri": "http://www.example.com/features/",
-          "ref": "https://ogcincubator.github.io/topo-feature/_sources/features/topo-line/examples/multilinestring.json",
+          "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-line/examples/multilinestring.json",
           "shacl-closure": [
             "../topo-feature/examples/points.ttl"
           ],
-          "url": "https://ogcincubator.github.io/topo-feature/build/tests/geo/topo/features/topo-line/example_2_1.json",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-line/example_2_1.json",
           "sizeBytes": 257,
           "code": "{\n  \"type\": \"Feature\",\n  \"id\": \"MultiLineP1P2P3\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"MultiLineString\",\n    \"references\": [\n      [\n        \"P1\",\n        \"P2\"\n      ],\n      [\n        \"P2\",\n        \"P3\"\n      ]\n    ]\n  },\n  \"properties\": null\n}"
         },
         {
           "language": "jsonld",
-          "url": "https://ogcincubator.github.io/topo-feature/build/tests/geo/topo/features/topo-line/example_2_1.jsonld",
-          "sizeBytes": 377,
-          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/context.jsonld\",\n  \"type\": \"Feature\",\n  \"id\": \"MultiLineP1P2P3\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"MultiLineString\",\n    \"references\": [\n      [\n        \"P1\",\n        \"P2\"\n      ],\n      [\n        \"P2\",\n        \"P3\"\n      ]\n    ]\n  },\n  \"properties\": null\n}"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-line/example_2_1.jsonld",
+          "sizeBytes": 382,
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/context.jsonld\",\n  \"type\": \"Feature\",\n  \"id\": \"MultiLineP1P2P3\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"MultiLineString\",\n    \"references\": [\n      [\n        \"P1\",\n        \"P2\"\n      ],\n      [\n        \"P2\",\n        \"P3\"\n      ]\n    ]\n  },\n  \"properties\": null\n}"
         },
         {
           "language": "ttl",
-          "url": "https://ogcincubator.github.io/topo-feature/build/tests/geo/topo/features/topo-line/example_2_1.ttl",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-line/example_2_1.ttl",
           "sizeBytes": 483,
           "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n<http://www.example.com/features/MultiLineP1P2P3> a geojson:Feature ;\n    geojson:topology [ a geojson:MultiLineString ;\n            topo:relatedFeatures ( ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ( <http://www.example.com/features/P2> <http://www.example.com/features/P3> ) ) ] .\n\n"
         }
       ]
     }
   ],
-  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: Line Feature with geometry by reference\nallOf:\n- $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml\n- properties:\n    topology:\n      allOf:\n      - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.yaml\n      - properties:\n          type:\n            type: string\n            enum:\n            - Edge\n            - LineString\n            - MultiLineString\n  required:\n  - topology\n",
-  "gitRepository": "https://github.com/ogcincubator/topo-feature",
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: Line Feature with geometry by reference\nallOf:\n- $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml\n- properties:\n    topology:\n      allOf:\n      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.yaml\n      - properties:\n          type:\n            type: string\n            enum:\n            - Edge\n            - LineString\n            - MultiLineString\n  required:\n  - topology\n",
+  "gitRepository": "https://github.com/surroundaustralia/topo-feature",
   "gitPath": "_sources/features/topo-line"
 }

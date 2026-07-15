@@ -5234,6 +5234,6 @@ Demonstration of a transform from CityJSON to TopoFeature
 
 The source code for this Building Block can be found in the following repository:
 
-* URL: [https://github.com/ogcincubator/topo-feature](https://github.com/ogcincubator/topo-feature)
+* URL: [https://github.com/surroundaustralia/topo-feature](https://github.com/surroundaustralia/topo-feature)
 * Path: `_sources/alignments/cityjson-transform`
 

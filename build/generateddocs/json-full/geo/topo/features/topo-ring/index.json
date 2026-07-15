@@ -10,14 +10,14 @@
   "itemClass": "schema",
   "register": "ogcincubator",
   "version": "0.1",
-  "dateOfLastChange": "2026-07-15",
+  "dateOfLastChange": "2024-01-01",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
   "dependsOn": [
-    "ogc.geo.topo.datatypes.oriented-ref",
+    "ogc.geo.topo.datatypes.topology",
     "ogc.geo.topo.features.topo-feature",
-    "ogc.geo.topo.datatypes.topology"
+    "ogc.geo.topo.datatypes.oriented-ref"
   ],
   "tags": [
     "topology",
@@ -28,31 +28,31 @@
   "group": "OGC",
   "shaclShapes": {
     "ogc.geo.topo.features.topo-feature": [
-      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
     "ogc.geo.topo.features.topo-feature-collection": [
-      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
-    ],
-    "ogc.geo.features.feature": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
     "ogc.geo.features.featureCollection": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+    ],
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ]
   },
-  "ldContext": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/context.jsonld",
+  "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/context.jsonld",
   "schema": {
-    "application/yaml": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml",
-    "application/json": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.json"
+    "application/yaml": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml",
+    "application/json": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.json"
   },
-  "sourceSchema": "https://ogcincubator.github.io/topo-feature/_sources/features/topo-ring/schema.json",
-  "sourceLdContext": "https://ogcincubator.github.io/topo-feature/_sources/features/topo-ring/context.jsonld",
-  "resolvedSchemaProperties": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/resolvedProperties.json",
-  "sourceFiles": "https://ogcincubator.github.io/topo-feature/_sources/features/topo-ring/",
+  "sourceSchema": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-ring/schema.json",
+  "sourceLdContext": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-ring/context.jsonld",
+  "resolvedSchemaProperties": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/resolvedProperties.json",
+  "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-ring/",
   "validationPassed": true,
-  "testOutputs": "https://github.com/ogcincubator/topo-feature/blob/master/build/tests/geo/topo/features/topo-ring/",
+  "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-ring/",
   "description": "# Ring Topology Feature\n\nA **Ring** is a topological feature representing an ordered, closed loop of oriented Edge references. \nIt forms the boundary of a Face.\n\n## Topology Model\n\nA Ring's topology consists of:\n\n- `type`: `\"Ring\"`\n- `directed_references`: an ordered array of [Oriented Object References](../../datatypes/oriented-ref/), each referencing an Edge feature with a `ref` (feature ID) and `orientation` (`+` or `-`)\n\nThe `directed_references` form a closed loop: the end vertex of each edge (considering orientation) must equal the start vertex of the next.\n\n## Orientation\n\nEach directed reference specifies an orientation (`+` or `-`) indicating whether the referenced Edge is traversed in its natural or reversed direction. \nThis allows edges to be shared between adjacent faces.\n\n## Example\n\n```json\n{\n  \"topology\": {\n    \"type\": \"Ring\",\n    \"directed_references\": [\n      { \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\", \"orientation\": \"+\" },\n      { \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\", \"orientation\": \"+\" },\n      { \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\", \"orientation\": \"+\" },\n      { \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\", \"orientation\": \"+\" }\n    ]\n  }\n}\n```\n",
   "examples": [
     {
@@ -61,27 +61,27 @@
       "snippets": [
         {
           "language": "json",
-          "ref": "https://ogcincubator.github.io/topo-feature/_sources/features/topo-ring/examples/ring-simple.json",
-          "url": "https://ogcincubator.github.io/topo-feature/build/tests/geo/topo/features/topo-ring/example_1_1.json",
+          "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-ring/examples/ring-simple.json",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-ring/example_1_1.json",
           "sizeBytes": 690,
           "code": "{\n  \"id\": \"uuid:ring-east-face-outer\",\n  \"type\": \"Feature\",\n  \"geometry\": null,\n  \"circumference\": 33.2,\n  \"topology\": {\n    \"type\": \"Ring\",\n    \"directed_references\": [\n      {\n        \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n        \"orientation\": \"+\"\n      },\n      {\n        \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\",\n        \"orientation\": \"+\"\n      },\n      {\n        \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\",\n        \"orientation\": \"+\"\n      },\n      {\n        \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\",\n        \"orientation\": \"+\"\n      }\n    ]\n  },\n  \"properties\": {\n    \"description\": \"Outer boundary ring of east face of upper section\"\n  }\n}"
         },
         {
           "language": "jsonld",
-          "url": "https://ogcincubator.github.io/topo-feature/build/tests/geo/topo/features/topo-ring/example_1_1.jsonld",
-          "sizeBytes": 810,
-          "code": "{\n  \"@context\": \"https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/context.jsonld\",\n  \"id\": \"uuid:ring-east-face-outer\",\n  \"type\": \"Feature\",\n  \"geometry\": null,\n  \"circumference\": 33.2,\n  \"topology\": {\n    \"type\": \"Ring\",\n    \"directed_references\": [\n      {\n        \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n        \"orientation\": \"+\"\n      },\n      {\n        \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\",\n        \"orientation\": \"+\"\n      },\n      {\n        \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\",\n        \"orientation\": \"+\"\n      },\n      {\n        \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\",\n        \"orientation\": \"+\"\n      }\n    ]\n  },\n  \"properties\": {\n    \"description\": \"Outer boundary ring of east face of upper section\"\n  }\n}"
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-ring/example_1_1.jsonld",
+          "sizeBytes": 815,
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/context.jsonld\",\n  \"id\": \"uuid:ring-east-face-outer\",\n  \"type\": \"Feature\",\n  \"geometry\": null,\n  \"circumference\": 33.2,\n  \"topology\": {\n    \"type\": \"Ring\",\n    \"directed_references\": [\n      {\n        \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n        \"orientation\": \"+\"\n      },\n      {\n        \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\",\n        \"orientation\": \"+\"\n      },\n      {\n        \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\",\n        \"orientation\": \"+\"\n      },\n      {\n        \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\",\n        \"orientation\": \"+\"\n      }\n    ]\n  },\n  \"properties\": {\n    \"description\": \"Outer boundary ring of east face of upper section\"\n  }\n}"
         },
         {
           "language": "ttl",
-          "url": "https://ogcincubator.github.io/topo-feature/build/tests/geo/topo/features/topo-ring/example_1_1.ttl",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-ring/example_1_1.ttl",
           "sizeBytes": 795,
           "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<uuid:ring-east-face-outer> a geojson:Feature ;\n    topo:circumference 3.32e+01 ;\n    geojson:topology [ a topo:Ring ;\n            topo:directedReferences ( [ topo:orientation \"+\" ;\n                        topo:ref <uuid:c60507ba-226b-4e49-a702-e9afef899b23> ] [ topo:orientation \"+\" ;\n                        topo:ref <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> ] [ topo:orientation \"+\" ;\n                        topo:ref <uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> ] [ topo:orientation \"+\" ;\n                        topo:ref <uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> ] ) ] .\n\n"
         }
       ]
     }
   ],
-  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: 'A Ring feature: an ordered closed loop of directed (oriented) Edge references\n  forming a boundary. geometry must be null. Uses directed_references (not references)\n  in its topology.'\nallOf:\n- $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml\n- properties:\n    geometry:\n      type: 'null'\n    circumference:\n      type: number\n      x-jsonld-id: topo:circumference\n    topology:\n      properties:\n        type:\n          type: string\n          const: Ring\n        directed_references:\n          type: array\n          description: Ordered list of oriented Edge references forming the closed\n            ring boundary\n          items:\n            $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml\n          minItems: 3\n      required:\n      - type\n      - directed_references\n      not:\n        required:\n        - references\n  required:\n  - topology\n",
-  "gitRepository": "https://github.com/ogcincubator/topo-feature",
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: 'A Ring feature: an ordered closed loop of directed (oriented) Edge references\n  forming a boundary. geometry must be null. Uses directed_references (not references)\n  in its topology.'\nallOf:\n- $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml\n- properties:\n    geometry:\n      type: 'null'\n    circumference:\n      type: number\n      x-jsonld-id: topo:circumference\n    topology:\n      properties:\n        type:\n          type: string\n          const: Ring\n        directed_references:\n          type: array\n          description: Ordered list of oriented Edge references forming the closed\n            ring boundary\n          items:\n            $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml\n          minItems: 3\n      required:\n      - type\n      - directed_references\n      not:\n        required:\n        - references\n  required:\n  - topology\n",
+  "gitRepository": "https://github.com/surroundaustralia/topo-feature",
   "gitPath": "_sources/features/topo-ring"
 }

@@ -31,12 +31,6 @@ A datatype for referencing a topological object with an orientation indicator ('
 
 Demonstration of a schema using coordinates of points, withpout duplication
 
-### `ogc.geo.topo.features.topo-feature-collection` — TopoFeatureCollection
-
-**Type:** schema
-
-This building block defines a GeoJSON (or FG-JSON) Feature Collection for a set of features with geometries defined by topological relationships. From these it is possible to derive simplified geometries using coordinates for each feature.
-
 ### `ogc.geo.topo.features.topo-feature` — Feature with topology
 
 **Type:** schema
@@ -49,11 +43,11 @@ This building block defines a GeoJSON feature with topological relationships to 
 
 Defines options for describing Arcs, Circles, Splines using point features as canonical source of geometry coordinates
 
-### `ogc.geo.topo.features.topo-face` — Face Topology Feature
+### `ogc.geo.topo.features.topo-feature-collection` — TopoFeatureCollection
 
 **Type:** schema
 
-A feature representing a Face in topology: a bounded planar region described by an outer boundary Ring and zero or more inner boundary (hole) Rings. Faces are used as the surfaces of a Shell/Solid.
+This building block defines a GeoJSON (or FG-JSON) Feature Collection for a set of features with geometries defined by topological relationships. From these it is possible to derive simplified geometries using coordinates for each feature.
 
 ### `ogc.geo.topo.features.topo-line` — Line using Point References
 
@@ -61,17 +55,23 @@ A feature representing a Face in topology: a bounded planar region described by 
 
 Demonstration of a schema using coordinates of points, without duplication. Reuses context but constrains to Line types
 
-### `ogc.geo.topo.features.topo-polyhedron` — 3D (Polyhedron) using nested Polygons and Point topology
-
-**Type:** schema
-
-Typical 3D polyhedrons using features with Point geometry coordinates - note this does not support full topology of shared faces but matches many simplified geometry models.
-
 ### `ogc.geo.topo.features.topo-ring` — Ring Topology Feature
 
 **Type:** schema
 
 A feature representing a Ring in topology: an ordered, closed sequence of oriented Edge references that form a boundary loop. A Ring is used as the boundary of a Face.
+
+### `ogc.geo.topo.features.topo-face` — Face Topology Feature
+
+**Type:** schema
+
+A feature representing a Face in topology: a bounded planar region described by an outer boundary Ring and zero or more inner boundary (hole) Rings. Faces are used as the surfaces of a Shell/Solid.
+
+### `ogc.geo.topo.features.topo-polyhedron` — 3D (Polyhedron) using nested Polygons and Point topology
+
+**Type:** schema
+
+Typical 3D polyhedrons using features with Point geometry coordinates - note this does not support full topology of shared faces but matches many simplified geometry models.
 
 ### `ogc.geo.topo.features.topo-shell` — Shell Topology Feature
 

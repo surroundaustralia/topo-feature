@@ -28069,8 +28069,8 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
         <uuid:8a7f5e78-fcc3-4f6d-a19e-ece99b75234f> ;
     topo:faces ( <uuid:b877b36c-fa85-40c3-b254-fe4d8cbf637c> ) ;
     topo:rings ( <uuid:a212bf84-0fc3-4c11-b9ae-6324149206bf> ) ;
-    topo:shells ( <uuid:057e31e4-e48d-4690-85f5-7f9bee5503ec> ),
-        ( <uuid:4239e2e9-e975-4d03-9c5a-65321c4830b1> ) ;
+    topo:shells ( <uuid:4239e2e9-e975-4d03-9c5a-65321c4830b1> ),
+        ( <uuid:057e31e4-e48d-4690-85f5-7f9bee5503ec> ) ;
     geojson:collectionFeatureType "CSD" .
 
 <uuid:057e31e4-e48d-4690-85f5-7f9bee5503ec> a geojson:FeatureCollection ;

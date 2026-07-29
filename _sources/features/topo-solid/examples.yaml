@@ -1,0 +1,20 @@
+- title: Solid with full topological context (points + edges + rings + faces + shell)
+  content: |
+    A self-contained example of a Solid with its outer Shell, all 8 bounding Face features
+    (each with a Ring), and all supporting Edge and Point features. Demonstrates the full
+    topology hierarchy: solid → shell (directed_references to Faces) → faces (directed_references
+    to Rings) → rings (directed_references to Edges) → edges (references to Points) → points.
+    All geometry properties are null except on Point features.
+  snippets:
+    - language: json
+      ref: examples/solid-with-context.json
+      schema-ref: "#testCollection"
+
+- title: Solid bounding a volume with an interior void
+  content: |
+    A Solid feature referencing two Shells via directed_references. The first ('+') is the
+    outer boundary Shell; the second ('-') is an interior Shell enclosing a void within the
+    solid.
+  snippets:
+    - language: json
+      ref: examples/solid-simple.json

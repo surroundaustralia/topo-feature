@@ -12,7 +12,7 @@ This enables representation of a full topology hierarchy — from point nodes to
 | `rings`        | Ring (closed curve) topology    | `topo-ring`                      | `edge[].directed_references`: oriented Edge refs   |
 | `faces`        | Face (polygon surface) topology | `topo-face`                      | `rings[].directed_references`: oriented Ring refs  |
 | `shells`       | Shell (closed surface) topology | `topo-shell`                     | `face[].directed_references`: oriented Face refs   |
-| `solids`       | Solid (volumetric) topology     | `topo-feature` (Solid/Shell)     | `shells[].directed_references`: oriented Face refs |
+| `solids`       | Solid (volumetric) topology     | `topo-solid`                     | `solid[].directed_references`: oriented Shell refs |
 
 ## Reference models
 

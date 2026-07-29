@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "A Solid feature: a volumetric region bounded by one or more oriented Shell references. geometry must be null.",
+  "$defs": {
+    "testCollection": {
+      "$anchor": "testCollection",
+      "description": "A convenience ref to a complete, testable collection objects and references",
+      "$ref": "bblocks://ogc.geo.topo.features.topo-feature-collection"
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "bblocks://ogc.geo.topo.features.topo-feature"
+    },
+    {
+      "properties": {
+        "geometry": {
+          "type": "null"
+        },
+        "topology": {
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "Solid"
+            },
+            "directed_references": {
+              "type": "array",
+              "description": "Ordered list of oriented Shell references bounding the solid. The first entry is the outer boundary Shell; any additional entries describe interior void Shells.",
+              "items": {
+                "$ref": "bblocks://ogc.geo.topo.datatypes.oriented-ref"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "type",
+            "directed_references"
+          ],
+          "not": {
+            "required": [
+              "references"
+            ]
+          }
+        }
+      },
+      "required": [
+        "topology"
+      ]
+    }
+  ]
+}

@@ -2,126 +2,6 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "A structured topology dataset with named arrays for each topological dimension. Points carry explicit coordinates; all higher-order features (edges, faces, shells, solids) use null geometry with topology defined via references or directed_references. Each array is restricted to its corresponding building block schema.",
   "$defs": {
-    "SolidFeatures": {
-      "$anchor": "SolidFeatures",
-      "type": "array",
-      "items": {
-        "allOf": [
-          {
-            "$ref": "bblocks://ogc.geo.topo.features.topo-feature"
-          },
-          {
-            "properties": {
-              "geometry": {
-                "type": "null"
-              },
-              "topology": {
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "const": "Solid"
-                  }
-                },
-                "required": [
-                  "type",
-                  "references"
-                ]
-              }
-            }
-          }
-        ]
-      }
-    },
-    "ShellFeatures": {
-      "$anchor": "ShellFeatures",
-      "type": "array",
-      "items": {
-        "allOf": [
-          {
-            "$ref": "bblocks://ogc.geo.topo.features.topo-feature"
-          },
-          {
-            "properties": {
-              "geometry": {
-                "type": "null"
-              },
-              "topology": {
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "const": "Shell"
-                  }
-                },
-                "required": [
-                  "type",
-                  "directed_references"
-                ]
-              }
-            }
-          }
-        ]
-      }
-    },
-    "FaceFeatures": {
-      "$anchor": "FaceFeatures",
-      "type": "array",
-      "items": {
-        "allOf": [
-          {
-            "$ref": "bblocks://ogc.geo.topo.features.topo-feature"
-          },
-          {
-            "properties": {
-              "geometry": {
-                "type": "null"
-              },
-              "topology": {
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "const": "Face"
-                  }
-                },
-                "required": [
-                  "type",
-                  "directed_references"
-                ]
-              }
-            }
-          }
-        ]
-      }
-    },
-    "RingFeatures": {
-      "$anchor": "RingFeatures",
-      "type": "array",
-      "items": {
-        "allOf": [
-          {
-            "$ref": "bblocks://ogc.geo.topo.features.topo-feature"
-          },
-          {
-            "properties": {
-              "geometry": {
-                "type": "null"
-              },
-              "topology": {
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "const": "Ring"
-                  }
-                },
-                "required": [
-                  "type",
-                  "directed_references"
-                ]
-              }
-            }
-          }
-        ]
-      }
-    },
     "PointFeatures": {
       "$anchor": "PointFeatures",
       "type": "array",
@@ -237,88 +117,118 @@
           }
         }
       ]
-    }
-  },
-  "rings": {
-    "type": "array",
-    "description": "Rings connect edges in a directed",
-    "items": {
-      "allOf": [
-        {
-          "$ref": "bblocks://ogc.geo.topo.features.topo-feature-collection#FeatureCollectionOptions"
-        },
-        {
-          "properties": {
-            "features": {
-              "type": "array",
-              "items": {
-                "$ref": "bblocks://ogc.geo.topo.features.topo-ring"
+    },
+    "rings": {
+      "type": "array",
+      "description": "Ring features whose boundary segments reference edges via directed_references. geometry is null.",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "bblocks://ogc.geo.topo.features.topo-ring"
+          },
+          {
+            "allOf": [
+              {
+                "$ref": "bblocks://ogc.geo.topo.features.topo-feature-collection#FeatureCollectionOptions"
+              },
+              {
+                "properties": {
+                  "features": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "bblocks://ogc.geo.topo.features.topo-ring"
+                    }
+                  }
+                }
               }
-            }
+            ]
           }
-        }
-      ]
-    }
-  },
-  "faces": {
-    "type": "array",
-    "description": "Face features whose boundary rings reference edges via directed_references. geometry is null.",
-    "items": {
-      "allOf": [
-        {
-          "$ref": "bblocks://ogc.geo.topo.features.topo-feature-collection#FeatureCollectionOptions"
-        },
-        {
-          "properties": {
-            "features": {
-              "type": "array",
-              "items": {
-                "$ref": "bblocks://ogc.geo.topo.features.topo-face"
+        ]
+      }
+    },
+    "faces": {
+      "type": "array",
+      "description": "Face features whose boundary rings reference edges via directed_references. geometry is null.",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "bblocks://ogc.geo.topo.features.topo-face"
+          },
+          {
+            "allOf": [
+              {
+                "$ref": "bblocks://ogc.geo.topo.features.topo-feature-collection#FeatureCollectionOptions"
+              },
+              {
+                "properties": {
+                  "features": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "bblocks://ogc.geo.topo.features.topo-face"
+                    }
+                  }
+                }
               }
-            }
+            ]
           }
-        }
-      ]
-    }
-  },
-  "shells": {
-    "type": "array",
-    "description": "Shell features referencing faces via directed_references. geometry is null.",
-    "items": {
-      "allOf": [
-        {
-          "$ref": "bblocks://ogc.geo.topo.features.topo-feature-collection#FeatureCollectionOptions"
-        },
-        {
-          "properties": {
-            "features": {
-              "type": "array",
-              "items": {
-                "$ref": "bblocks://ogc.geo.topo.features.topo-shell"
+        ]
+      }
+    },
+    "shells": {
+      "type": "array",
+      "description": "Shell features referencing faces via directed_references. geometry is null.",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "bblocks://ogc.geo.topo.features.topo-shell"
+          },
+          {
+            "allOf": [
+              {
+                "$ref": "bblocks://ogc.geo.topo.features.topo-feature-collection#FeatureCollectionOptions"
+              },
+              {
+                "properties": {
+                  "features": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "bblocks://ogc.geo.topo.features.topo-shell"
+                    }
+                  }
+                }
               }
-            }
+            ]
           }
-        }
-      ]
-    }
-  },
-  "solids": {
-    "type": "array",
-    "description": "Solid features whose shells reference faces via directed_references. geometry is null.",
-    "items": {
-      "allOf": [
-        {
-          "$ref": "bblocks://ogc.geo.topo.features.topo-feature-collection#FeatureCollectionOptions"
-        },
-        {
-          "properties": {
-            "features": {
-              "$ref": "#SolidFeatures"
-            }
+        ]
+      }
+    },
+    "solids": {
+      "type": "array",
+      "description": "Solid features whose shells reference faces via directed_references. geometry is null.",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "bblocks://ogc.geo.topo.features.topo-solid"
+          },
+          {
+            "allOf": [
+              {
+                "$ref": "bblocks://ogc.geo.topo.features.topo-feature-collection#FeatureCollectionOptions"
+              },
+              {
+                "properties": {
+                  "features": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "bblocks://ogc.geo.topo.features.topo-solid"
+                    }
+                  }
+                }
+              }
+            ]
           }
-        }
-      ]
+        ]
+      }
     }
   }
 }
-

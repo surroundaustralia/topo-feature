@@ -79,9 +79,15 @@ Typical 3D polyhedrons using features with Point geometry coordinates - note thi
 
 A feature representing a Shell in topology: a closed set of oriented Face references forming the boundary surface of a Solid. A Shell is the 3D analog of a Ring — it bounds a volumetric region.
 
+### `ogc.geo.topo.features.topo-solid` — Solid Topology Feature
+
+**Type:** schema
+
+A feature representing a Solid in topology: a volumetric region bounded by one or more oriented Shell references. The first Shell is the outer boundary; any additional Shells describe interior voids. A Solid is the 3D analog of a Face — it is bounded by Shells the way a Face is bounded by Rings.
+
 ### `ogc.geo.topo.features.topo-feature-multi-collection` — Topo Feature Multi-Collection
 
 **Type:** schema
 
-A schema for a structured topology dataset containing typed Feature Collections for each topological dimension: points, edges (Line features), faces (Face features), and solids (Polyhedron features). Each collection is restricted to its specific building block type, enabling referential integrity across the topology hierarchy.
+A schema for a structured topology dataset containing typed Feature Collections for each topological dimension: points, edges (Line features), rings (Ring features), faces (Face features), shells (Shell features), and solids (Solid features). Each collection is restricted to its specific building block type, enabling referential integrity across the topology hierarchy.
 

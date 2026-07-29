@@ -3,7 +3,7 @@
 
 `ogc.geo.topo.features.topo-feature-multi-collection` *v0.1*
 
-A schema for a structured topology dataset containing typed Feature Collections for each topological dimension: points, edges (Line features), faces (Face features), and solids (Polyhedron features). Each collection is restricted to its specific building block type, enabling referential integrity across the topology hierarchy.
+A schema for a structured topology dataset containing typed Feature Collections for each topological dimension: points, edges (Line features), rings (Ring features), faces (Face features), shells (Shell features), and solids (Solid features). Each collection is restricted to its specific building block type, enabling referential integrity across the topology hierarchy.
 
 [*Status*](http://www.opengis.net/def/status): Under development
 
@@ -23,7 +23,7 @@ This enables representation of a full topology hierarchy — from point nodes to
 | `rings`        | Ring (closed curve) topology    | `topo-ring`                      | `edge[].directed_references`: oriented Edge refs   |
 | `faces`        | Face (polygon surface) topology | `topo-face`                      | `rings[].directed_references`: oriented Ring refs  |
 | `shells`       | Shell (closed surface) topology | `topo-shell`                     | `face[].directed_references`: oriented Face refs   |
-| `solids`       | Solid (volumetric) topology     | `topo-feature` (Solid/Shell)     | `shells[].directed_references`: oriented Face refs |
+| `solids`       | Solid (volumetric) topology     | `topo-solid`                     | `solid[].directed_references`: oriented Shell refs |
 
 ## Reference models
 
@@ -986,7 +986,7 @@ Dataset consists of eight points, 12 edges, six rings, six faces, one shell, and
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+           "directed_references": [
               {
                 "ref": "uuid:29246856-504f-48d4-9a72-a90fd0f5837b",
                 "orientation": "+"
@@ -1915,7 +1915,7 @@ Dataset consists of eight points, 12 edges, six rings, six faces, one shell, and
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:29246856-504f-48d4-9a72-a90fd0f5837b",
                 "orientation": "+"
@@ -1978,8 +1978,8 @@ Dataset consists of eight points, 12 edges, six rings, six faces, one shell, and
     topo:edges <uuid:f4aafb64-0512-46e6-aad9-d39ef1255674> ;
     topo:faces ( <uuid:b197eb9f-d623-4276-ab90-56deed4d70ee> ) ;
     topo:rings ( <uuid:0a7715d1-4087-447f-a83d-6bc4be1fea54> ) ;
-    topo:shells ( <uuid:2e3d3190-6b0f-48db-83e9-b8a47007bd30> ),
-        ( <uuid:22177114-a434-4a3e-bc39-b204a4c5b79a> ) ;
+    topo:shells ( <uuid:2e3d3190-6b0f-48db-83e9-b8a47007bd30> ) ;
+    topo:solids ( <uuid:22177114-a434-4a3e-bc39-b204a4c5b79a> ) ;
     geojson:collectionFeatureType "CSD" .
 
 <uuid:0a7715d1-4087-447f-a83d-6bc4be1fea54> a geojson:FeatureCollection ;
@@ -1994,22 +1994,12 @@ Dataset consists of eight points, 12 edges, six rings, six faces, one shell, and
 <uuid:1683a565-764a-47c7-94e6-bf07e790cbca> a geojson:Feature ;
     rdfs:label "Cube" ;
     geojson:topology [ a topo:Solid ;
-            topo:shells ( [ topo:orientation "+" ;
-                        topo:ref "uuid:29246856-504f-48d4-9a72-a90fd0f5837b" ] ) ] .
-
-<uuid:22177114-a434-4a3e-bc39-b204a4c5b79a> a geojson:FeatureCollection ;
-    geojson:collectionFeatureType "Solid" ;
-    geojson:features <uuid:1683a565-764a-47c7-94e6-bf07e790cbca> .
-
-<uuid:29246856-504f-48d4-9a72-a90fd0f5837b> a geojson:Feature ;
-    geojson:topology [ a topo:Shell ;
             topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:da2e85b6-5670-4759-a076-00a9225c7ca8> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:dc1da294-ce0e-4c6e-9819-98e040e74fe9> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:bfd7bbd1-94f1-4556-9336-2cd28f3b7bc8> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:4d1ae25a-0d3b-48f2-8169-b4c2451e95b3> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:4588ddd8-9939-44f0-8b20-cfd4b2c4afcf> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:bf405007-c6dd-4c9c-b4ff-29af5fd3edf7> ] ) ] .
+                        topo:ref <uuid:29246856-504f-48d4-9a72-a90fd0f5837b> ] ) ] .
+
+<uuid:22177114-a434-4a3e-bc39-b204a4c5b79a> a topo:Solid,
+        geojson:FeatureCollection ;
+    geojson:features <uuid:1683a565-764a-47c7-94e6-bf07e790cbca> .
 
 <uuid:2e3d3190-6b0f-48db-83e9-b8a47007bd30> a geojson:FeatureCollection ;
     geojson:collectionFeatureType "Shell" ;
@@ -2065,6 +2055,16 @@ Dataset consists of eight points, 12 edges, six rings, six faces, one shell, and
                         topo:ref <uuid:83fd28da-ab41-46e6-a64f-1bf82d822b57> ] [ topo:orientation "-" ;
                         topo:ref <uuid:4e92f321-24c2-44ac-a908-a8d19e6b019f> ] [ topo:orientation "-" ;
                         topo:ref <uuid:e71295e4-7595-4711-abac-70f172f42c03> ] ) ] .
+
+<uuid:29246856-504f-48d4-9a72-a90fd0f5837b> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:da2e85b6-5670-4759-a076-00a9225c7ca8> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:dc1da294-ce0e-4c6e-9819-98e040e74fe9> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:bfd7bbd1-94f1-4556-9336-2cd28f3b7bc8> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:4d1ae25a-0d3b-48f2-8169-b4c2451e95b3> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:4588ddd8-9939-44f0-8b20-cfd4b2c4afcf> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:bf405007-c6dd-4c9c-b4ff-29af5fd3edf7> ] ) ] .
 
 <uuid:2c21efab-db80-4dd0-96c0-59a63f956d5b> a geojson:Feature ;
     geojson:topology [ a topo:Ring ;
@@ -2851,7 +2851,7 @@ Dataset consists of four points, six edges, four rings, four faces, one shell, a
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:2fba8c41-56fd-4ca2-9924-65b61e2fe2e3",
                 "orientation": "+"
@@ -3424,7 +3424,7 @@ Dataset consists of four points, six edges, four rings, four faces, one shell, a
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:2fba8c41-56fd-4ca2-9924-65b61e2fe2e3",
                 "orientation": "+"
@@ -3487,12 +3487,12 @@ Dataset consists of four points, six edges, four rings, four faces, one shell, a
     topo:edges <uuid:dbe9315f-41ea-48b3-9307-a636d71be4a5> ;
     topo:faces ( <uuid:f6081e8b-46f0-4cfa-a97a-ebc3d9f45756> ) ;
     topo:rings ( <uuid:7ee1cf56-6075-480a-a5bc-d877b9fae2c7> ) ;
-    topo:shells ( <uuid:09532c2c-5144-4c58-b8ee-0b8082b479a1> ),
-        ( <uuid:51326c6a-b938-4c83-8b6a-e2ffe6afd839> ) ;
+    topo:shells ( <uuid:51326c6a-b938-4c83-8b6a-e2ffe6afd839> ) ;
+    topo:solids ( <uuid:09532c2c-5144-4c58-b8ee-0b8082b479a1> ) ;
     geojson:collectionFeatureType "CSD" .
 
-<uuid:09532c2c-5144-4c58-b8ee-0b8082b479a1> a geojson:FeatureCollection ;
-    geojson:collectionFeatureType "Solid" ;
+<uuid:09532c2c-5144-4c58-b8ee-0b8082b479a1> a topo:Solid,
+        geojson:FeatureCollection ;
     geojson:features <uuid:9a493db7-be97-4d66-a799-f591854d5162> .
 
 <uuid:18e0a7c9-e36e-48e1-a7db-fd0a14e070d3> a geojson:FeatureCollection ;
@@ -3501,14 +3501,6 @@ Dataset consists of four points, six edges, four rings, four faces, one shell, a
         <uuid:9f19f896-9878-46dd-b769-c714f5ba017a>,
         <uuid:c01a36a2-8d25-4aca-a2eb-3439608611be>,
         <uuid:cf012f5a-5407-4b5e-869c-c6e2d9115c8f> .
-
-<uuid:2fba8c41-56fd-4ca2-9924-65b61e2fe2e3> a geojson:Feature ;
-    geojson:topology [ a topo:Shell ;
-            topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:32503cfd-0e69-40a6-9ba2-c2e98306d2d4> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:fd02ba9d-dd79-4d9d-bf6d-1b40e09b41ee> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:5957cb32-5d38-45ff-98c6-3a2bde4276c1> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:be6a3497-57b2-4e5b-8bfd-01fc4dd64d21> ] ) ] .
 
 <uuid:51326c6a-b938-4c83-8b6a-e2ffe6afd839> a geojson:FeatureCollection ;
     geojson:collectionFeatureType "Shell" ;
@@ -3524,8 +3516,8 @@ Dataset consists of four points, six edges, four rings, four faces, one shell, a
 <uuid:9a493db7-be97-4d66-a799-f591854d5162> a geojson:Feature ;
     rdfs:label "Tetrahedron" ;
     geojson:topology [ a topo:Solid ;
-            topo:shells ( [ topo:orientation "+" ;
-                        topo:ref "uuid:2fba8c41-56fd-4ca2-9924-65b61e2fe2e3" ] ) ] .
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:2fba8c41-56fd-4ca2-9924-65b61e2fe2e3> ] ) ] .
 
 <uuid:dbe9315f-41ea-48b3-9307-a636d71be4a5> a geojson:FeatureCollection ;
     geojson:collectionFeatureType "Edge" ;
@@ -3542,6 +3534,14 @@ Dataset consists of four points, six edges, four rings, four faces, one shell, a
         <uuid:5957cb32-5d38-45ff-98c6-3a2bde4276c1>,
         <uuid:be6a3497-57b2-4e5b-8bfd-01fc4dd64d21>,
         <uuid:fd02ba9d-dd79-4d9d-bf6d-1b40e09b41ee> .
+
+<uuid:2fba8c41-56fd-4ca2-9924-65b61e2fe2e3> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:32503cfd-0e69-40a6-9ba2-c2e98306d2d4> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:fd02ba9d-dd79-4d9d-bf6d-1b40e09b41ee> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:5957cb32-5d38-45ff-98c6-3a2bde4276c1> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:be6a3497-57b2-4e5b-8bfd-01fc4dd64d21> ] ) ] .
 
 <uuid:32503cfd-0e69-40a6-9ba2-c2e98306d2d4> a geojson:Feature ;
     geojson:topology [ a topo:Face ;
@@ -4948,7 +4948,7 @@ Dataset consists of 12 points, 18 edges, eight rings, eight faces, one shell, an
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+           "directed_references": [
               {
                 "ref": "uuid:3202c775-4918-49b4-92bd-ea6236e0dcac",
                 "orientation": "+"
@@ -6237,7 +6237,7 @@ Dataset consists of 12 points, 18 edges, eight rings, eight faces, one shell, an
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:3202c775-4918-49b4-92bd-ea6236e0dcac",
                 "orientation": "+"
@@ -6300,8 +6300,8 @@ Dataset consists of 12 points, 18 edges, eight rings, eight faces, one shell, an
     topo:edges <uuid:0e096965-f363-4b3e-9e04-643b5fb0d042> ;
     topo:faces ( <uuid:5ea35606-e9fc-4db3-8935-35be81feaade> ) ;
     topo:rings ( <uuid:e1be1058-cea4-4bd7-a9a7-ce1e4a1ddc51> ) ;
-    topo:shells ( <uuid:ca3c28b2-7bfa-44b5-8129-da1e3f1723c3> ),
-        ( <uuid:4dea63f9-8deb-4736-8c4b-7d2534a5b40e> ) ;
+    topo:shells ( <uuid:ca3c28b2-7bfa-44b5-8129-da1e3f1723c3> ) ;
+    topo:solids ( <uuid:4dea63f9-8deb-4736-8c4b-7d2534a5b40e> ) ;
     geojson:collectionFeatureType "CSD" .
 
 <uuid:0e096965-f363-4b3e-9e04-643b5fb0d042> a geojson:FeatureCollection ;
@@ -6328,23 +6328,11 @@ Dataset consists of 12 points, 18 edges, eight rings, eight faces, one shell, an
 <uuid:1db24b69-c82c-4db1-b6a1-b8ecc1f69a6f> a geojson:Feature ;
     rdfs:label "Polyhedron" ;
     geojson:topology [ a topo:Solid ;
-            topo:shells ( [ topo:orientation "+" ;
-                        topo:ref "uuid:3202c775-4918-49b4-92bd-ea6236e0dcac" ] ) ] .
-
-<uuid:3202c775-4918-49b4-92bd-ea6236e0dcac> a geojson:Feature ;
-    geojson:topology [ a topo:Shell ;
             topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:68ef5314-791b-40ae-ad1f-da5267ec322b> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:99641eac-e3db-4503-bb15-37373b25a69c> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:74de6dde-504f-4f50-9c7c-9ea1e7d1d6e2> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:a83f334b-52c1-42d8-ab0a-7c407bf25e9c> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:f81b90f4-ddc1-476b-8a7c-cb087587796f> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:e99f73fd-e8b0-4e89-9b06-a2a8adde818b> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:ecc7e04d-cdfc-449c-8ef2-f624a733e156> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:67605c03-cb95-40d2-bb9d-30b3b112497c> ] ) ] .
+                        topo:ref <uuid:3202c775-4918-49b4-92bd-ea6236e0dcac> ] ) ] .
 
-<uuid:4dea63f9-8deb-4736-8c4b-7d2534a5b40e> a geojson:FeatureCollection ;
-    geojson:collectionFeatureType "Solid" ;
+<uuid:4dea63f9-8deb-4736-8c4b-7d2534a5b40e> a topo:Solid,
+        geojson:FeatureCollection ;
     geojson:features <uuid:1db24b69-c82c-4db1-b6a1-b8ecc1f69a6f> .
 
 <uuid:5ea35606-e9fc-4db3-8935-35be81feaade> a geojson:FeatureCollection ;
@@ -6387,6 +6375,18 @@ Dataset consists of 12 points, 18 edges, eight rings, eight faces, one shell, an
         <uuid:cb6b4076-6a5e-4b2d-9574-6e6ef067a699>,
         <uuid:cfc8782a-2d89-4fda-a240-79bdd635c69f>,
         <uuid:e4fe7e8d-50b9-4020-9d1a-3466d398210b> .
+
+<uuid:3202c775-4918-49b4-92bd-ea6236e0dcac> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:68ef5314-791b-40ae-ad1f-da5267ec322b> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:99641eac-e3db-4503-bb15-37373b25a69c> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:74de6dde-504f-4f50-9c7c-9ea1e7d1d6e2> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:a83f334b-52c1-42d8-ab0a-7c407bf25e9c> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:f81b90f4-ddc1-476b-8a7c-cb087587796f> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:e99f73fd-e8b0-4e89-9b06-a2a8adde818b> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:ecc7e04d-cdfc-449c-8ef2-f624a733e156> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:67605c03-cb95-40d2-bb9d-30b3b112497c> ] ) ] .
 
 <uuid:447902d5-2207-4821-af8e-df0b7c672713> a geojson:Feature ;
     geojson:topology [ a topo:Ring ;
@@ -11295,7 +11295,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+           "directed_references": [
               {
                 "ref": "uuid:31dcf84a-98c6-48b1-8ba6-14d7a5ff6749",
                 "orientation": "+"
@@ -11316,7 +11316,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+           "directed_references": [
               {
                 "ref": "uuid:f44d98c1-fc4e-45da-a233-6e63e58bd560",
                 "orientation": "+"
@@ -11337,7 +11337,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+           "directed_references": [
               {
                 "ref": "uuid:26bd463c-0433-4510-8ba8-074f5cdd1e64",
                 "orientation": "+"
@@ -11358,7 +11358,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+           "directed_references": [
               {
                 "ref": "uuid:3e5f9429-9bfb-498b-9624-e667f2e7b281",
                 "orientation": "+"
@@ -11379,7 +11379,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+           "directed_references": [
               {
                 "ref": "uuid:9d4e9985-3788-4e70-a2ec-a809aba7c7e8",
                 "orientation": "+"
@@ -15947,7 +15947,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:31dcf84a-98c6-48b1-8ba6-14d7a5ff6749",
                 "orientation": "+"
@@ -15968,7 +15968,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:f44d98c1-fc4e-45da-a233-6e63e58bd560",
                 "orientation": "+"
@@ -15989,7 +15989,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:26bd463c-0433-4510-8ba8-074f5cdd1e64",
                 "orientation": "+"
@@ -16010,7 +16010,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:3e5f9429-9bfb-498b-9624-e667f2e7b281",
                 "orientation": "+"
@@ -16031,7 +16031,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:9d4e9985-3788-4e70-a2ec-a809aba7c7e8",
                 "orientation": "+"
@@ -16095,6 +16095,11 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
 <uuid:0cc9dbeb-9ae4-429b-80d5-a637d54f9bc4> a geojson:Feature ;
     geojson:topology [ a topo:Edge ;
             topo:relatedFeatures ( <uuid:b25fa8ee-bbe6-4fad-a662-4fea8a7b5e7f> <uuid:987e2a90-2ce3-4836-9a36-04d08031c7bd> ) ] .
+
+<uuid:113658a0-e13f-4abd-8a2b-f02f215d70f8> a geojson:Feature ;
+    geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:9d4e9985-3788-4e70-a2ec-a809aba7c7e8> ] ) ] .
 
 <uuid:17fa2c1e-5416-443b-b263-2f47cb514aa6> a geojson:Feature ;
     geojson:topology [ a topo:Edge ;
@@ -16196,6 +16201,11 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
     geojson:topology [ a topo:Edge ;
             topo:relatedFeatures ( <uuid:2f1070ed-9bae-47f5-a856-7f4db788c010> <uuid:f84d09ba-e7af-48a7-bd47-30ca9265214c> ) ] .
 
+<uuid:799663c8-0a92-4852-921c-7a0230e91398> a geojson:Feature ;
+    geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:31dcf84a-98c6-48b1-8ba6-14d7a5ff6749> ] ) ] .
+
 <uuid:8103a475-c12f-4664-ac95-50afbd4c782d> a geojson:Feature ;
     geojson:topology [ a topo:Edge ;
             topo:relatedFeatures ( <uuid:1bb5fd50-9be1-4456-8ce6-ddc6f8d0a1cd> <uuid:06bd85c9-c7ae-42b1-9cde-efd91489c35a> ) ] .
@@ -16203,6 +16213,11 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
 <uuid:8a34c9fb-e3d6-45d3-817e-93d0c58be464> a geojson:Feature ;
     geojson:topology [ a topo:Edge ;
             topo:relatedFeatures ( <uuid:f84d09ba-e7af-48a7-bd47-30ca9265214c> <uuid:4a09ba87-445c-4146-b687-97ab6e9f4bca> ) ] .
+
+<uuid:8b285c1f-d701-4a8e-ab33-499c70ddffc7> a geojson:Feature ;
+    geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:f44d98c1-fc4e-45da-a233-6e63e58bd560> ] ) ] .
 
 <uuid:8e931595-7a01-4678-a20e-5607229a0d01> a geojson:Feature ;
     geojson:topology [ a topo:Edge ;
@@ -16271,6 +16286,11 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
 <uuid:c795e6d9-0f44-4b1c-bc01-686d5e2acaa3> a geojson:Feature ;
     geojson:topology [ a topo:Edge ;
             topo:relatedFeatures ( <uuid:fa551002-6466-46f1-a2f3-f433334447e6> <uuid:83d45b42-d9bb-48cb-9777-fbb2525083f9> ) ] .
+
+<uuid:cbda787e-1805-4c86-94b1-de73e1534766> a geojson:Feature ;
+    geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:3e5f9429-9bfb-498b-9624-e667f2e7b281> ] ) ] .
 
 <uuid:cc9ce047-61a1-4bf9-a366-bfc5b43092c2> a geojson:Feature ;
     geojson:topology [ a topo:Edge ;
@@ -16364,6 +16384,14 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
     geojson:topology [ a topo:Edge ;
             topo:relatedFeatures ( <uuid:9ccc8672-7244-42a9-8d65-1b40a637a603> <uuid:9d786d21-169c-459e-a354-4eeee65bf8a3> ) ] .
 
+<uuid:dca59cc5-b097-4aec-8fb3-e7c839e50f09> a topo:Solid,
+        geojson:FeatureCollection ;
+    geojson:features <uuid:113658a0-e13f-4abd-8a2b-f02f215d70f8>,
+        <uuid:799663c8-0a92-4852-921c-7a0230e91398>,
+        <uuid:8b285c1f-d701-4a8e-ab33-499c70ddffc7>,
+        <uuid:cbda787e-1805-4c86-94b1-de73e1534766>,
+        <uuid:fd11dcb1-cdf6-43b6-b1de-92c296d21ffc> .
+
 <uuid:e3c87c26-8a6a-4889-923c-d87562d2dde9> a geojson:Feature ;
     geojson:topology [ a topo:Edge ;
             topo:relatedFeatures ( <uuid:9d786d21-169c-459e-a354-4eeee65bf8a3> <uuid:52e158fb-6ec0-489c-8592-db1d6e180c8e> ) ] .
@@ -16399,6 +16427,11 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
 <uuid:f83f26bd-63dc-4a5e-959c-e90a7640d8a2> a geojson:Feature ;
     geojson:topology [ a topo:Edge ;
             topo:relatedFeatures ( <uuid:48b7ec92-e7ff-468f-8dff-d03483468e97> <uuid:e7478b99-0d1e-4a1f-b958-c6a4b1719e96> ) ] .
+
+<uuid:fd11dcb1-cdf6-43b6-b1de-92c296d21ffc> a geojson:Feature ;
+    geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:26bd463c-0433-4510-8ba8-074f5cdd1e64> ] ) ] .
 
 <uuid:016ea44a-df91-462a-9a7e-5b8e2e950fd8> a <file:///github/workspace/BoundaryMark>,
         geojson:Feature ;
@@ -16806,13 +16839,8 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
                     [ a geojson:Feature ],
                     [ a geojson:Feature ],
                     [ a geojson:Feature ],
-                    [ a geojson:Feature ] ] ),
-        ( [ a geojson:FeatureCollection ;
-                geojson:features [ a geojson:Feature ],
-                    [ a geojson:Feature ],
-                    [ a geojson:Feature ],
-                    [ a geojson:Feature ],
-                    [ a geojson:Feature ] ] ) .
+                    [ a geojson:Feature ] ] ) ;
+    topo:solids ( <uuid:dca59cc5-b097-4aec-8fb3-e7c839e50f09> ) .
 
 
 ```
@@ -22268,7 +22296,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+           "directed_references": [
               {
                 "ref": "uuid:26924195-da93-43af-946d-237910710449",
                 "orientation": "+"
@@ -22276,7 +22304,9 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
             ],
             "relationships": [
               {
-                "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6","type": "within",
+                "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
+                "rel": "topology",
+                "role": "within",
 
                 "targetRole": "containingPrimaryParcel",
                 "targetFeatureType": "PrimaryParcel"
@@ -22297,7 +22327,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+           "directed_references": [
               {
                 "ref": "uuid:89957e86-89d5-459d-a170-0c7c916f2382",
                 "orientation": "+"
@@ -22326,7 +22356,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+           "directed_references": [
               {
                 "ref": "uuid:9a31a4bf-8d83-4876-8bc3-df640512418a",
                 "orientation": "+"
@@ -22355,7 +22385,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+           "directed_references": [
               {
                 "ref": "uuid:ddbbed6c-5a7d-4405-9d41-59677b9484ee",
                 "orientation": "+"
@@ -22384,7 +22414,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+           "directed_references": [
               {
                 "ref": "uuid:1e877d2e-b9b0-4152-b693-fc4d76843142",
                 "orientation": "+"
@@ -27872,7 +27902,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:26924195-da93-43af-946d-237910710449",
                 "orientation": "+"
@@ -27881,7 +27911,8 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
             "relationships": [
               {
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
-                "type": "within",
+                "rel": "topology",
+                "role": "within",
                 "targetRole": "containingPrimaryParcel",
                 "targetFeatureType": "PrimaryParcel"
               }
@@ -27901,7 +27932,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:89957e86-89d5-459d-a170-0c7c916f2382",
                 "orientation": "+"
@@ -27930,7 +27961,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:9a31a4bf-8d83-4876-8bc3-df640512418a",
                 "orientation": "+"
@@ -27959,7 +27990,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:ddbbed6c-5a7d-4405-9d41-59677b9484ee",
                 "orientation": "+"
@@ -27988,7 +28019,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:1e877d2e-b9b0-4152-b693-fc4d76843142",
                 "orientation": "+"
@@ -28069,12 +28100,12 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
         <uuid:8a7f5e78-fcc3-4f6d-a19e-ece99b75234f> ;
     topo:faces ( <uuid:b877b36c-fa85-40c3-b254-fe4d8cbf637c> ) ;
     topo:rings ( <uuid:a212bf84-0fc3-4c11-b9ae-6324149206bf> ) ;
-    topo:shells ( <uuid:4239e2e9-e975-4d03-9c5a-65321c4830b1> ),
-        ( <uuid:057e31e4-e48d-4690-85f5-7f9bee5503ec> ) ;
+    topo:shells ( <uuid:4239e2e9-e975-4d03-9c5a-65321c4830b1> ) ;
+    topo:solids ( <uuid:057e31e4-e48d-4690-85f5-7f9bee5503ec> ) ;
     geojson:collectionFeatureType "CSD" .
 
-<uuid:057e31e4-e48d-4690-85f5-7f9bee5503ec> a geojson:FeatureCollection ;
-    geojson:collectionFeatureType "Solid" ;
+<uuid:057e31e4-e48d-4690-85f5-7f9bee5503ec> a topo:Solid,
+        geojson:FeatureCollection ;
     geojson:features <uuid:1c7bd760-43d5-46ad-9a6b-3b8f3e558b11>,
         <uuid:59df3615-f39c-4cbb-a911-5f7d80b9034b>,
         <uuid:950966fc-0c0e-4546-b5c6-41f73fa57be1>,
@@ -28084,28 +28115,11 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
 <uuid:1c7bd760-43d5-46ad-9a6b-3b8f3e558b11> a geojson:Feature ;
     rdfs:label "Upper West" ;
     geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:89957e86-89d5-459d-a170-0c7c916f2382> ] ) ;
             topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
                         prof:hasRole <file:///github/workspace/containingPrimaryParcel> ;
-                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ;
-            topo:shells ( [ topo:orientation "+" ;
-                        topo:ref "uuid:89957e86-89d5-459d-a170-0c7c916f2382" ] ) ] .
-
-<uuid:1e877d2e-b9b0-4152-b693-fc4d76843142> a geojson:Feature ;
-    geojson:topology [ a topo:Shell ;
-            topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:fa9fc866-8b5d-4056-9afb-a5294b52eea3> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:afa0638d-9d57-4b2a-ad58-af68daa3726a> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:e2dd1def-1a2e-4e60-9db0-5e4c4095e4c7> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:cace1bee-957e-4b24-8343-47cd6827a09e> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:7385f01e-11f8-4811-bab6-3abca0b2c6f7> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:5635ffda-d1a0-463c-93e4-2c256e049f6e> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:2a36d343-55e4-4ddb-8c44-f7612baa99ce> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:09582fa5-0931-481b-9203-0dba27308ddd> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:d8f2444f-769d-4fe5-bfb7-96c75eb21aa3> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:c45f774d-8ba2-41a8-8edd-a08921a630b9> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:608c4fbe-df28-4c78-bec6-f7560f6a40ca> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:335305a1-d6a4-499f-8105-8b5e2f9a7383> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:6ae1d5a0-8bf8-4675-a048-f92b7704c482> ] ) ] .
+                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ] .
 
 <uuid:20ac1c64-b5d9-407a-91ae-f241cb3b4d4e> a geojson:FeatureCollection ;
     geojson:collectionFeatureType "surv:ObservedVector" ;
@@ -28129,18 +28143,6 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
         <uuid:fd23e6be-fb9a-44fd-8ad1-55df298d506a>,
         <uuid:ff22d8d8-5d2e-4fdd-97ce-d80e2b48b5de> .
 
-<uuid:26924195-da93-43af-946d-237910710449> a geojson:Feature ;
-    geojson:topology [ a topo:Shell ;
-            topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:509fb96a-ed61-4418-a897-1cc9a394d7d6> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:2f59c9a6-1cd7-4cc0-86df-cc3c44d22286> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:79feb69f-05d4-4ef0-b880-44276e524854> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:41901fb2-753b-4b9f-8687-ae11d6f69439> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:2ec797d0-35d9-46fc-a4ab-52794d397416> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:608c4fbe-df28-4c78-bec6-f7560f6a40ca> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:2baad9ae-e5b4-48eb-81c6-736fd1500fb9> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:5635ffda-d1a0-463c-93e4-2c256e049f6e> ] ) ] .
-
 <uuid:4239e2e9-e975-4d03-9c5a-65321c4830b1> a geojson:FeatureCollection ;
     geojson:collectionFeatureType "Shell" ;
     geojson:features <uuid:1e877d2e-b9b0-4152-b693-fc4d76843142>,
@@ -28152,10 +28154,11 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
 <uuid:59df3615-f39c-4cbb-a911-5f7d80b9034b> a geojson:Feature ;
     rdfs:label "Upper East" ;
     geojson:topology [ a topo:Solid ;
-            topo:relatedFeatures ( [ dct:type "within" ;
-                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ;
-            topo:shells ( [ topo:orientation "+" ;
-                        topo:ref "uuid:26924195-da93-43af-946d-237910710449" ] ) ] .
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:26924195-da93-43af-946d-237910710449> ] ) ;
+            topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
+                        prof:hasRole <file:///github/workspace/within> ;
+                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ] .
 
 <uuid:6ae2b7e0-a540-40c7-81bc-45c2cac1d3e6> a geojson:FeatureCollection ;
     geojson:collectionFeatureType "CadastralMark" ;
@@ -28214,18 +28217,6 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
         <uuid:fa85407d-b02e-4d8b-ba7f-f1643968bdfb>,
         <uuid:fbebc23c-cdef-4d02-bced-5b5bb7686b1f>,
         <uuid:fc45a8b6-848f-46b9-b079-a0ebba08f96e> .
-
-<uuid:89957e86-89d5-459d-a170-0c7c916f2382> a geojson:Feature ;
-    geojson:topology [ a topo:Shell ;
-            topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:200595fe-9d0a-4fa0-a16f-374b28cb0ad0> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:9ce5b406-dab7-4afa-8fbd-2d5101aec77d> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:bd5ceea7-ea06-4191-9b3c-2905569f3035> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:05d0ee6b-baed-4a58-8c57-14c12cfe9fe0> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:2ec797d0-35d9-46fc-a4ab-52794d397416> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:6ae1d5a0-8bf8-4675-a048-f92b7704c482> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:f2f50332-6f50-47ab-868f-fdc520e68848> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:2a36d343-55e4-4ddb-8c44-f7612baa99ce> ] ) ] .
 
 <uuid:8a7f5e78-fcc3-4f6d-a19e-ece99b75234f> a geojson:FeatureCollection ;
     geojson:collectionFeatureType "Edge" ;
@@ -28298,24 +28289,11 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
 <uuid:950966fc-0c0e-4546-b5c6-41f73fa57be1> a geojson:Feature ;
     rdfs:label "Lower West" ;
     geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:ddbbed6c-5a7d-4405-9d41-59677b9484ee> ] ) ;
             topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
                         prof:hasRole <file:///github/workspace/containingPrimaryParcel> ;
-                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ;
-            topo:shells ( [ topo:orientation "+" ;
-                        topo:ref "uuid:ddbbed6c-5a7d-4405-9d41-59677b9484ee" ] ) ] .
-
-<uuid:9a31a4bf-8d83-4876-8bc3-df640512418a> a geojson:Feature ;
-    geojson:topology [ a topo:Shell ;
-            topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:741587b8-5d4f-4921-979e-92cebc0bc61a> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:c6a3d176-abfb-4f53-a6d8-cc594118b214> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:ce095212-8b35-48bf-b77d-57ba8bcf9882> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:a6c01635-707b-4359-8eb5-23d324d7a7a8> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:6837ca1f-41c3-4002-9251-7113835def85> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:c45f774d-8ba2-41a8-8edd-a08921a630b9> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:335305a1-d6a4-499f-8105-8b5e2f9a7383> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:2baad9ae-e5b4-48eb-81c6-736fd1500fb9> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:f55c0e40-89fe-4a23-8d11-aff91c754214> ] ) ] .
+                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ] .
 
 <uuid:a212bf84-0fc3-4c11-b9ae-6324149206bf> a geojson:FeatureCollection ;
     geojson:collectionFeatureType "Ring" ;
@@ -28396,33 +28374,20 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
 <uuid:b9b03d9f-fe75-4ec5-8696-294aefafe145> a geojson:Feature ;
     rdfs:label "Stairwell" ;
     geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:1e877d2e-b9b0-4152-b693-fc4d76843142> ] ) ;
             topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
                         prof:hasRole <file:///github/workspace/containingPrimaryParcel> ;
-                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ;
-            topo:shells ( [ topo:orientation "+" ;
-                        topo:ref "uuid:1e877d2e-b9b0-4152-b693-fc4d76843142" ] ) ] .
+                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ] .
 
 <uuid:dc91b809-03bf-49f2-849f-1e8071fad1d9> a geojson:Feature ;
     rdfs:label "Lower East" ;
     geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:9a31a4bf-8d83-4876-8bc3-df640512418a> ] ) ;
             topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
                         prof:hasRole <file:///github/workspace/containingPrimaryParcel> ;
-                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ;
-            topo:shells ( [ topo:orientation "+" ;
-                        topo:ref "uuid:9a31a4bf-8d83-4876-8bc3-df640512418a" ] ) ] .
-
-<uuid:ddbbed6c-5a7d-4405-9d41-59677b9484ee> a geojson:Feature ;
-    geojson:topology [ a topo:Shell ;
-            topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:933a6a7d-dfe4-4bae-ae48-3385e9f22916> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:287abc0b-28ad-41ec-a7ff-eec8d4192c2b> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:079558dc-5401-4bbb-ae7a-b3e566a6737d> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:d5f598a6-8c7b-4254-a710-5a0238368a6b> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:d8f2444f-769d-4fe5-bfb7-96c75eb21aa3> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:09582fa5-0931-481b-9203-0dba27308ddd> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:6837ca1f-41c3-4002-9251-7113835def85> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:b3470cac-a616-4768-a74b-182208496ee1> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:f2f50332-6f50-47ab-868f-fdc520e68848> ] ) ] .
+                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ] .
 
 <uuid:f6235c7a-8ada-499d-9574-067ccd370949> a parcel:PrimaryParcel,
         geojson:FeatureCollection ;
@@ -28482,6 +28447,23 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     geojson:topology [ a geojson:LineString ;
             topo:relatedFeatures ( <uuid:3cf6b3c0-3acc-4720-a643-d885d6951b2a> <uuid:67c660f1-0e49-4ee4-996d-4d453fe6209b> ) ] .
 
+<uuid:1e877d2e-b9b0-4152-b693-fc4d76843142> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:fa9fc866-8b5d-4056-9afb-a5294b52eea3> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:afa0638d-9d57-4b2a-ad58-af68daa3726a> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:e2dd1def-1a2e-4e60-9db0-5e4c4095e4c7> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:cace1bee-957e-4b24-8343-47cd6827a09e> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:7385f01e-11f8-4811-bab6-3abca0b2c6f7> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:5635ffda-d1a0-463c-93e4-2c256e049f6e> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:2a36d343-55e4-4ddb-8c44-f7612baa99ce> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:09582fa5-0931-481b-9203-0dba27308ddd> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:d8f2444f-769d-4fe5-bfb7-96c75eb21aa3> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:c45f774d-8ba2-41a8-8edd-a08921a630b9> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:608c4fbe-df28-4c78-bec6-f7560f6a40ca> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:335305a1-d6a4-499f-8105-8b5e2f9a7383> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:6ae1d5a0-8bf8-4675-a048-f92b7704c482> ] ) ] .
+
 <uuid:200595fe-9d0a-4fa0-a16f-374b28cb0ad0> a geojson:Feature ;
     geojson:topology [ a topo:Face ;
             topo:directedReferences ( [ topo:orientation "+" ;
@@ -28494,6 +28476,18 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
                         topo:ref <uuid:7985a7eb-88fb-4f9d-8220-5d6804305f52> ] [ topo:orientation "-" ;
                         topo:ref <uuid:24d38d5c-3824-4088-8ab6-284a451e4ae5> ] [ topo:orientation "-" ;
                         topo:ref <uuid:d001066e-9581-4f45-880e-4810c005aeb4> ] ) ] .
+
+<uuid:26924195-da93-43af-946d-237910710449> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:509fb96a-ed61-4418-a897-1cc9a394d7d6> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:2f59c9a6-1cd7-4cc0-86df-cc3c44d22286> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:79feb69f-05d4-4ef0-b880-44276e524854> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:41901fb2-753b-4b9f-8687-ae11d6f69439> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:2ec797d0-35d9-46fc-a4ab-52794d397416> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:608c4fbe-df28-4c78-bec6-f7560f6a40ca> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:2baad9ae-e5b4-48eb-81c6-736fd1500fb9> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:5635ffda-d1a0-463c-93e4-2c256e049f6e> ] ) ] .
 
 <uuid:287abc0b-28ad-41ec-a7ff-eec8d4192c2b> a geojson:Feature ;
     geojson:topology [ a topo:Face ;
@@ -28700,6 +28694,18 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
                         topo:ref <uuid:d377883b-98a1-43bf-a10f-bffeeb530993> ] [ topo:orientation "-" ;
                         topo:ref <uuid:a475a79b-06a2-400c-9460-6de8a6772ac6> ] ) ] .
 
+<uuid:89957e86-89d5-459d-a170-0c7c916f2382> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:200595fe-9d0a-4fa0-a16f-374b28cb0ad0> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:9ce5b406-dab7-4afa-8fbd-2d5101aec77d> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:bd5ceea7-ea06-4191-9b3c-2905569f3035> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:05d0ee6b-baed-4a58-8c57-14c12cfe9fe0> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:2ec797d0-35d9-46fc-a4ab-52794d397416> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:6ae1d5a0-8bf8-4675-a048-f92b7704c482> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:f2f50332-6f50-47ab-868f-fdc520e68848> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:2a36d343-55e4-4ddb-8c44-f7612baa99ce> ] ) ] .
+
 <uuid:89e58766-afab-4d1f-8775-1311275c857a> a geojson:Feature ;
     geojson:topology [ a topo:Ring ;
             topo:directedReferences ( [ topo:orientation "-" ;
@@ -28714,6 +28720,19 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     geojson:topology [ a topo:Face ;
             topo:directedReferences ( [ topo:orientation "+" ;
                         topo:ref <uuid:cb6708a2-df56-4993-9699-9542c85c4f86> ] ) ] .
+
+<uuid:9a31a4bf-8d83-4876-8bc3-df640512418a> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:741587b8-5d4f-4921-979e-92cebc0bc61a> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:c6a3d176-abfb-4f53-a6d8-cc594118b214> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:ce095212-8b35-48bf-b77d-57ba8bcf9882> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:a6c01635-707b-4359-8eb5-23d324d7a7a8> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:6837ca1f-41c3-4002-9251-7113835def85> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:c45f774d-8ba2-41a8-8edd-a08921a630b9> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:335305a1-d6a4-499f-8105-8b5e2f9a7383> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:2baad9ae-e5b4-48eb-81c6-736fd1500fb9> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:f55c0e40-89fe-4a23-8d11-aff91c754214> ] ) ] .
 
 <uuid:9ca25210-c370-4b91-b92f-33f5e1921889> a geojson:Feature ;
     geojson:topology [ a topo:Ring ;
@@ -28872,6 +28891,19 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     surv:vectorPurpose wa-vector-purpose:I ;
     geojson:topology [ a geojson:LineString ;
             topo:relatedFeatures ( <uuid:be40befb-8498-4793-9ed6-d0e72c1a1d5b> <uuid:7023d838-169a-4b01-a85f-e2b270751a7c> ) ] .
+
+<uuid:ddbbed6c-5a7d-4405-9d41-59677b9484ee> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:933a6a7d-dfe4-4bae-ae48-3385e9f22916> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:287abc0b-28ad-41ec-a7ff-eec8d4192c2b> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:079558dc-5401-4bbb-ae7a-b3e566a6737d> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:d5f598a6-8c7b-4254-a710-5a0238368a6b> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:d8f2444f-769d-4fe5-bfb7-96c75eb21aa3> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:09582fa5-0931-481b-9203-0dba27308ddd> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:6837ca1f-41c3-4002-9251-7113835def85> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:b3470cac-a616-4768-a74b-182208496ee1> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:f2f50332-6f50-47ab-868f-fdc520e68848> ] ) ] .
 
 <uuid:e2dd1def-1a2e-4e60-9db0-5e4c4095e4c7> a geojson:Feature ;
     geojson:topology [ a topo:Face ;
@@ -30003,10 +30035,10 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
 
 <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> a geojson:Feature ;
     parcel:appellation [ rdfs:label "Lot 1" ;
-            dct:hasPart [ rdfs:label "1" ;
-                    commonpatterns:namePartType <https://linked.data.gov.au/def/csdm/names/localPartType/ParcelIdentifier> ],
-                [ rdfs:label "Lot" ;
-                    commonpatterns:namePartType <https://linked.data.gov.au/def/csdm/names/localPartType/ParcelType> ] ] ;
+            dct:hasPart [ rdfs:label "Lot" ;
+                    commonpatterns:namePartType <https://linked.data.gov.au/def/csdm/names/localPartType/ParcelType> ],
+                [ rdfs:label "1" ;
+                    commonpatterns:namePartType <https://linked.data.gov.au/def/csdm/names/localPartType/ParcelIdentifier> ] ] ;
     parcel:purpose wa-parcel-purpose:lot ;
     parcel:state wa-parcel-state:created ;
     parcel:surfaceArea 2829 ;
@@ -31779,7 +31811,7 @@ Dataset consists of 16 points, 24 edges, 12 rings, 12 faces, two shells, and one
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+           "directed_references": [
               {
                 "ref": "uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568",
                 "orientation": "+"
@@ -33523,7 +33555,7 @@ Dataset consists of 16 points, 24 edges, 12 rings, 12 faces, two shells, and one
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568",
                 "orientation": "+"
@@ -33590,8 +33622,8 @@ Dataset consists of 16 points, 24 edges, 12 rings, 12 faces, two shells, and one
     topo:edges <uuid:696ce04d-ecba-46ed-8d11-95a17f490933> ;
     topo:faces ( <uuid:66682266-e880-42c1-a61f-d92a48267c90> ) ;
     topo:rings ( <uuid:ec6d63b8-c842-4560-8e08-1c6d5d041ae9> ) ;
-    topo:shells ( <uuid:bff4a861-5f47-4bcb-a803-5441d2dc7e92> ),
-        ( <uuid:dcf03c4e-dd72-4d79-89e0-6a254806b438> ) ;
+    topo:shells ( <uuid:bff4a861-5f47-4bcb-a803-5441d2dc7e92> ) ;
+    topo:solids ( <uuid:dcf03c4e-dd72-4d79-89e0-6a254806b438> ) ;
     geojson:collectionFeatureType "CSD" .
 
 <uuid:349c28e4-021d-492e-b9fb-e120f614bc04> a geojson:FeatureCollection ;
@@ -33658,38 +33690,18 @@ Dataset consists of 16 points, 24 edges, 12 rings, 12 faces, two shells, and one
 <uuid:7c9bc347-8ba2-48fb-97e6-cc3e223e1ae9> a geojson:Feature ;
     rdfs:label "Cube with Void" ;
     geojson:topology [ a topo:Solid ;
-            topo:shells ( [ topo:orientation "+" ;
-                        topo:ref "uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568" ] [ topo:orientation "-" ;
-                        topo:ref "uuid:97a089af-4929-4d36-8e01-74f573343edb" ] ) ] .
-
-<uuid:97a089af-4929-4d36-8e01-74f573343edb> a geojson:Feature ;
-    geojson:topology [ a topo:Shell ;
             topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:be4fb1b1-74f2-44ce-893e-d824dcc36f2e> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:9d955daa-c431-4007-a977-3a63510446ba> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:ece9f6ce-f93a-4f47-9c9e-513e83505ae5> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:293b4aab-a1c2-47e1-9a55-6b3409041efe> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:f9a9982b-b19c-48b5-bf3a-8de757299494> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:9eb1cfc1-5ae5-4de9-80a9-5c1b23360efb> ] ) ] .
+                        topo:ref <uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:97a089af-4929-4d36-8e01-74f573343edb> ] ) ] .
 
 <uuid:bff4a861-5f47-4bcb-a803-5441d2dc7e92> a geojson:FeatureCollection ;
     geojson:collectionFeatureType "Shell" ;
     geojson:features <uuid:97a089af-4929-4d36-8e01-74f573343edb>,
         <uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568> .
 
-<uuid:dcf03c4e-dd72-4d79-89e0-6a254806b438> a geojson:FeatureCollection ;
-    geojson:collectionFeatureType "Solid" ;
+<uuid:dcf03c4e-dd72-4d79-89e0-6a254806b438> a topo:Solid,
+        geojson:FeatureCollection ;
     geojson:features <uuid:7c9bc347-8ba2-48fb-97e6-cc3e223e1ae9> .
-
-<uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568> a geojson:Feature ;
-    geojson:topology [ a topo:Shell ;
-            topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:7e2af30d-0b06-49ff-bac1-145211cddd27> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:05c94a8c-f507-42b4-b4b7-16ee622b45fe> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:56e5283a-3fb0-45f0-acb3-3cd0c24a0394> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:bef31bc5-ec7f-455b-8839-1357fb26462b> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:6349ce8f-e3a8-4a2d-b496-b4f040743793> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:7022dc11-0ed8-4caa-9935-5abc3a8dd4a6> ] ) ] .
 
 <uuid:ec6d63b8-c842-4560-8e08-1c6d5d041ae9> a geojson:FeatureCollection ;
     geojson:collectionFeatureType "Ring" ;
@@ -33792,6 +33804,16 @@ Dataset consists of 16 points, 24 edges, 12 rings, 12 faces, two shells, and one
                         topo:ref <uuid:0b4a0beb-9f17-4b03-8ee7-a53366ff2575> ] [ topo:orientation "+" ;
                         topo:ref <uuid:c246401e-8028-4446-bd18-60d5025bc4fe> ] ) ] .
 
+<uuid:97a089af-4929-4d36-8e01-74f573343edb> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:be4fb1b1-74f2-44ce-893e-d824dcc36f2e> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:9d955daa-c431-4007-a977-3a63510446ba> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:ece9f6ce-f93a-4f47-9c9e-513e83505ae5> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:293b4aab-a1c2-47e1-9a55-6b3409041efe> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:f9a9982b-b19c-48b5-bf3a-8de757299494> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:9eb1cfc1-5ae5-4de9-80a9-5c1b23360efb> ] ) ] .
+
 <uuid:9b0462a4-17da-4cc3-afb8-5b3456c1f64d> a geojson:Feature ;
     geojson:topology [ a topo:Ring ;
             topo:directedReferences ( [ topo:orientation "+" ;
@@ -33851,6 +33873,16 @@ Dataset consists of 16 points, 24 edges, 12 rings, 12 faces, two shells, and one
                         topo:ref <uuid:97889c20-8e0c-478c-887c-c5f79f07610d> ] [ topo:orientation "-" ;
                         topo:ref <uuid:ff79a0ca-ccf6-4b63-b0b4-fb8224c5a07e> ] [ topo:orientation "-" ;
                         topo:ref <uuid:15c3acaf-9d17-4e76-9143-5b5bee68ad6d> ] ) ] .
+
+<uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:7e2af30d-0b06-49ff-bac1-145211cddd27> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:05c94a8c-f507-42b4-b4b7-16ee622b45fe> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:56e5283a-3fb0-45f0-acb3-3cd0c24a0394> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:bef31bc5-ec7f-455b-8839-1357fb26462b> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:6349ce8f-e3a8-4a2d-b496-b4f040743793> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:7022dc11-0ed8-4caa-9935-5abc3a8dd4a6> ] ) ] .
 
 <uuid:ece9f6ce-f93a-4f47-9c9e-513e83505ae5> a geojson:Feature ;
     geojson:topology [ a topo:Face ;
@@ -35880,7 +35912,7 @@ Dataset consists of 16 points, 24 edges, 12 rings, 11 faces, one shell, and one 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+           "directed_references": [
               {
                 "ref": "uuid:c1c50d16-4ae4-4b00-8df3-169a51b37aad",
                 "orientation": "+"
@@ -37584,7 +37616,7 @@ Dataset consists of 16 points, 24 edges, 12 rings, 11 faces, one shell, and one 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:c1c50d16-4ae4-4b00-8df3-169a51b37aad",
                 "orientation": "+"
@@ -37647,8 +37679,8 @@ Dataset consists of 16 points, 24 edges, 12 rings, 11 faces, one shell, and one 
     topo:edges <uuid:a1cff144-27d7-46e8-9d19-2957c0d14193> ;
     topo:faces ( <uuid:a78b491a-9cf9-4dc8-b195-519601b38cff> ) ;
     topo:rings ( <uuid:394e96e4-c335-49f4-916b-47593774cb5b> ) ;
-    topo:shells ( <uuid:08f3c7cd-4b9b-4bdd-a77f-1032c29bd3be> ),
-        ( <uuid:53011530-7534-4cc4-b4cb-21be6a4ccea7> ) ;
+    topo:shells ( <uuid:08f3c7cd-4b9b-4bdd-a77f-1032c29bd3be> ) ;
+    topo:solids ( <uuid:53011530-7534-4cc4-b4cb-21be6a4ccea7> ) ;
     geojson:collectionFeatureType "CSD" .
 
 <uuid:08f3c7cd-4b9b-4bdd-a77f-1032c29bd3be> a geojson:FeatureCollection ;
@@ -37670,8 +37702,8 @@ Dataset consists of 16 points, 24 edges, 12 rings, 11 faces, one shell, and one 
         <uuid:e0452825-9a9e-4422-a3fa-21ee220c5d40>,
         <uuid:f9ccef4f-1d39-4430-8ba3-4fb7ebd1c528> .
 
-<uuid:53011530-7534-4cc4-b4cb-21be6a4ccea7> a geojson:FeatureCollection ;
-    geojson:collectionFeatureType "Solid" ;
+<uuid:53011530-7534-4cc4-b4cb-21be6a4ccea7> a topo:Solid,
+        geojson:FeatureCollection ;
     geojson:features <uuid:ae57392f-b8f3-412f-bb7a-351a39659606> .
 
 <uuid:7a9002f6-8e9f-46ec-b0bd-302955bfbd38> a geojson:FeatureCollection ;
@@ -37737,23 +37769,8 @@ Dataset consists of 16 points, 24 edges, 12 rings, 11 faces, one shell, and one 
 <uuid:ae57392f-b8f3-412f-bb7a-351a39659606> a geojson:Feature ;
     rdfs:label "Cube with Protrusion" ;
     geojson:topology [ a topo:Solid ;
-            topo:shells ( [ topo:orientation "+" ;
-                        topo:ref "uuid:c1c50d16-4ae4-4b00-8df3-169a51b37aad" ] ) ] .
-
-<uuid:c1c50d16-4ae4-4b00-8df3-169a51b37aad> a geojson:Feature ;
-    geojson:topology [ a topo:Shell ;
             topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:2ca00a69-cccb-408f-924a-8cb54ddb9fe8> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:88fedfec-2cb7-41f7-8948-dc5a5a2ecf55> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:3b3cd92a-5778-408d-8b6f-04b390c7f6fc> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:4f371f0a-c9e0-4f4e-bdcc-d74d495b434f> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:113f902b-349b-4e42-98ac-65dc5bfc1e8d> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:b4afb1e1-8688-4be8-9e58-e0fe573ba896> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:e67afa7f-cf0c-4201-a066-9c5a23a961fa> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:c8d5a816-1012-40de-b696-aacf763e9be4> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:da87be42-6980-4503-925d-a61b27eded57> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:5c11a64f-3b16-45b1-97b5-23e825d38402> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:1de8896f-a293-4c4b-90f6-3670fe0cd761> ] ) ] .
+                        topo:ref <uuid:c1c50d16-4ae4-4b00-8df3-169a51b37aad> ] ) ] .
 
 <uuid:0451532d-168c-4f08-83cc-d94629b744a7> a geojson:Feature ;
     geojson:topology [ a topo:Ring ;
@@ -37867,6 +37884,21 @@ Dataset consists of 16 points, 24 edges, 12 rings, 11 faces, one shell, and one 
     geojson:topology [ a topo:Face ;
             topo:directedReferences ( [ topo:orientation "+" ;
                         topo:ref <uuid:9558f5c8-06f7-44ba-bf0b-907bc441ef83> ] ) ] .
+
+<uuid:c1c50d16-4ae4-4b00-8df3-169a51b37aad> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:2ca00a69-cccb-408f-924a-8cb54ddb9fe8> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:88fedfec-2cb7-41f7-8948-dc5a5a2ecf55> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:3b3cd92a-5778-408d-8b6f-04b390c7f6fc> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:4f371f0a-c9e0-4f4e-bdcc-d74d495b434f> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:113f902b-349b-4e42-98ac-65dc5bfc1e8d> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:b4afb1e1-8688-4be8-9e58-e0fe573ba896> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:e67afa7f-cf0c-4201-a066-9c5a23a961fa> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:c8d5a816-1012-40de-b696-aacf763e9be4> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:da87be42-6980-4503-925d-a61b27eded57> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:5c11a64f-3b16-45b1-97b5-23e825d38402> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:1de8896f-a293-4c4b-90f6-3670fe0cd761> ] ) ] .
 
 <uuid:c8d5a816-1012-40de-b696-aacf763e9be4> a geojson:Feature ;
     geojson:topology [ a topo:Face ;
@@ -44718,7 +44750,7 @@ All supporting points, edges, and faces are included to make the example self-co
       "geometry": null,
       "topology": {
         "type": "Solid",
-        "shells": [
+       "directed_references": [
           {
             "ref": "uuid:0669e377-8200-4405-8e0a-151451189d9d",
             "orientation": "+"
@@ -48180,7 +48212,7 @@ All supporting points, edges, and faces are included to make the example self-co
       "geometry": null,
       "topology": {
         "type": "Solid",
-        "shells": [
+        "directed_references": [
           {
             "ref": "uuid:0669e377-8200-4405-8e0a-151451189d9d",
             "orientation": "+"
@@ -49468,6 +49500,11 @@ All supporting points, edges, and faces are included to make the example self-co
     geojson:topology [ a topo:Edge ;
             topo:relatedFeatures ( <uuid:e7300a01-f8c1-4351-9511-02790a5376b0> <uuid:1e20237c-9dfa-4251-9f3f-cc5e56a5becd> ) ] .
 
+<uuid:758590d2-8cc6-4ff7-8fcc-d7ecd01b3498> a geojson:Feature ;
+    geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:0669e377-8200-4405-8e0a-151451189d9d> ] ) ] .
+
 <uuid:79205d80-72e5-4bd8-9c03-9503e4e690cc> a geojson:Feature ;
     geojson:topology [ a topo:Edge ;
             topo:relatedFeatures ( <uuid:92bd9ed9-c138-45c3-b72c-a9ecb7f7cfe9> <uuid:20d3c864-4a8c-4440-b600-a1d424e92f51> ) ] .
@@ -49797,8 +49834,8 @@ All supporting points, edges, and faces are included to make the example self-co
                     <uuid:fad324b9-801f-40f4-b65b-91f8753e9698>,
                     <uuid:ff685e16-64f8-4f41-8a9e-7d8e83312fd6> ] ) ;
     topo:rings ( [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] [ a geojson:Feature ] ) ;
-    topo:shells ( [ a geojson:Feature ] ),
-        ( [ a geojson:Feature ] ) .
+    topo:shells ( [ a geojson:Feature ] ) ;
+    topo:solids ( <uuid:758590d2-8cc6-4ff7-8fcc-d7ecd01b3498> ) .
 
 
 ```
@@ -49813,74 +49850,6 @@ description: A structured topology dataset with named arrays for each topologica
   directed_references. Each array is restricted to its corresponding building block
   schema.
 $defs:
-  SolidFeatures:
-    $anchor: SolidFeatures
-    type: array
-    items:
-      allOf:
-      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
-      - properties:
-          geometry:
-            type: 'null'
-          topology:
-            properties:
-              type:
-                type: string
-                const: Solid
-            required:
-            - type
-            - references
-  ShellFeatures:
-    $anchor: ShellFeatures
-    type: array
-    items:
-      allOf:
-      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
-      - properties:
-          geometry:
-            type: 'null'
-          topology:
-            properties:
-              type:
-                type: string
-                const: Shell
-            required:
-            - type
-            - directed_references
-  FaceFeatures:
-    $anchor: FaceFeatures
-    type: array
-    items:
-      allOf:
-      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
-      - properties:
-          geometry:
-            type: 'null'
-          topology:
-            properties:
-              type:
-                type: string
-                const: Face
-            required:
-            - type
-            - directed_references
-  RingFeatures:
-    $anchor: RingFeatures
-    type: array
-    items:
-      allOf:
-      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
-      - properties:
-          geometry:
-            type: 'null'
-          topology:
-            properties:
-              type:
-                type: string
-                const: Ring
-            required:
-            - type
-            - directed_references
   PointFeatures:
     $anchor: PointFeatures
     type: array
@@ -49950,71 +49919,66 @@ properties:
               $ref: '#EdgeFeatures'
     x-jsonld-id: https://purl.org/geojson/topo#edges
     x-jsonld-container: '@list'
-rings:
-  type: array
-  description: Rings connect edges in a directed
-  items:
-    allOf:
-    - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
-    - properties:
-        features:
-          type: array
-          items:
-            $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml
-faces:
-  type: array
-  description: Face features whose boundary rings reference edges via directed_references.
-    geometry is null.
-  items:
-    allOf:
-    - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
-    - properties:
-        features:
-          type: array
-          items:
-            $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml
-shells:
-  type: array
-  description: Shell features referencing faces via directed_references. geometry
-    is null.
-  items:
-    allOf:
-    - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
-    - properties:
-        features:
-          type: array
-          items:
-            $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.yaml
-solids:
-  type: array
-  description: Solid features whose shells reference faces via directed_references.
-    geometry is null.
-  items:
-    allOf:
-    - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
-    - properties:
-        features:
-          $ref: '#SolidFeatures'
-x-jsonld-extra-terms:
-  Face: https://purl.org/geojson/topo#Face
-  Ring: https://purl.org/geojson/topo#Ring
-  Shell: https://purl.org/geojson/topo#Shell
-  Solid: https://purl.org/geojson/topo#Solid
-  faces:
-    x-jsonld-id: https://purl.org/geojson/topo#faces
-    x-jsonld-container: '@list'
   rings:
-    x-jsonld-id: https://purl.org/geojson/topo#rings
-    x-jsonld-container: '@list'
+    type: array
+    description: Ring features whose boundary segments reference edges via directed_references.
+      geometry is null.
+    items:
+      oneOf:
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml
+      - allOf:
+        - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
+        - properties:
+            features:
+              type: array
+              items:
+                $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml
+  faces:
+    type: array
+    description: Face features whose boundary rings reference edges via directed_references.
+      geometry is null.
+    items:
+      oneOf:
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml
+      - allOf:
+        - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
+        - properties:
+            features:
+              type: array
+              items:
+                $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml
   shells:
-    x-jsonld-id: https://purl.org/geojson/topo#shells
-    x-jsonld-container: '@list'
+    type: array
+    description: Shell features referencing faces via directed_references. geometry
+      is null.
+    items:
+      oneOf:
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.yaml
+      - allOf:
+        - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
+        - properties:
+            features:
+              type: array
+              items:
+                $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.yaml
   solids:
-    x-jsonld-id: https://purl.org/geojson/topo#shells
+    type: array
+    description: Solid features whose shells reference faces via directed_references.
+      geometry is null.
+    items:
+      oneOf:
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.yaml
+      - allOf:
+        - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
+        - properties:
+            features:
+              type: array
+              items:
+                $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.yaml
+    x-jsonld-id: https://purl.org/geojson/topo#solids
     x-jsonld-container: '@list'
 x-jsonld-prefixes:
   topo: https://purl.org/geojson/topo#
-  geojson: https://purl.org/geojson/vocab#
 
 ```
 
@@ -50029,26 +49993,6 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
-    "Face": "topo:Face",
-    "Ring": "topo:Ring",
-    "Shell": "topo:Shell",
-    "Solid": "topo:Solid",
-    "faces": {
-      "@id": "topo:faces",
-      "@container": "@list"
-    },
-    "rings": {
-      "@id": "topo:rings",
-      "@container": "@list"
-    },
-    "shells": {
-      "@id": "topo:shells",
-      "@container": "@list"
-    },
-    "solids": {
-      "@id": "topo:shells",
-      "@container": "@list"
-    },
     "points": {
       "@context": {
         "features": {
@@ -50223,6 +50167,105 @@ Links to the schema:
       "@id": "topo:edges",
       "@container": "@list"
     },
+    "solids": {
+      "@context": {
+        "id": "@id",
+        "geometry": "geojson:geometry",
+        "links": {
+          "@context": {
+            "href": {
+              "@type": "@id",
+              "@id": "oa:hasTarget"
+            },
+            "rel": {
+              "@context": {
+                "@base": "http://www.iana.org/assignments/relation/"
+              },
+              "@id": "http://www.iana.org/assignments/relation",
+              "@type": "@id"
+            },
+            "type": "dct:type",
+            "hreflang": "dct:language",
+            "title": "rdfs:label",
+            "length": "dct:extent"
+          },
+          "@id": "rdfs:seeAlso"
+        },
+        "featureType": "@type",
+        "time": {
+          "@context": {
+            "date": {
+              "@id": "owlTime:hasTime",
+              "@type": "xsd:date"
+            },
+            "timestamp": {
+              "@id": "owlTime:hasTime",
+              "@type": "xsd:dateTime"
+            },
+            "interval": {
+              "@id": "owlTime:hasTime",
+              "@container": "@list"
+            }
+          },
+          "@id": "dct:time"
+        },
+        "coordRefSys": "http://www.opengis.net/def/glossary/term/CoordinateReferenceSystemCRS",
+        "place": "dct:spatial",
+        "topology": {
+          "@context": {
+            "references": {
+              "@id": "topo:relatedFeatures",
+              "@type": "@id",
+              "@container": "@list"
+            },
+            "directed_references": {
+              "@context": {
+                "ref": {
+                  "@type": "@id",
+                  "@id": "topo:ref"
+                }
+              },
+              "@id": "topo:directedReferences",
+              "@container": "@list"
+            },
+            "relationships": {
+              "@context": {
+                "href": {
+                  "@type": "@id",
+                  "@id": "oa:hasTarget"
+                },
+                "rel": {
+                  "@context": {
+                    "@base": "http://www.iana.org/assignments/relation/"
+                  },
+                  "@id": "http://www.iana.org/assignments/relation",
+                  "@type": "@id"
+                },
+                "type": "dct:type",
+                "hreflang": "dct:language",
+                "title": "rdfs:label",
+                "length": "dct:extent",
+                "role": {
+                  "@id": "prof:hasRole",
+                  "@type": "@id"
+                },
+                "conformsTo": {
+                  "@id": "dct:conformsTo",
+                  "@type": "@id"
+                }
+              },
+              "@id": "topo:relatedFeatures",
+              "@type": "@id",
+              "@container": "@list"
+            }
+          },
+          "@type": "@id",
+          "@id": "geojson:topology"
+        }
+      },
+      "@id": "topo:solids",
+      "@container": "@list"
+    },
     "properties": "@nest",
     "type": "@type",
     "Feature": "geojson:Feature",
@@ -50278,9 +50321,29 @@ Links to the schema:
     "ref": "topo:ref",
     "orientation": "topo:orientation",
     "Edge": "topo:Edge",
+    "Face": "topo:Face",
+    "Ring": "topo:Ring",
+    "Shell": "topo:Shell",
+    "Solid": "topo:Solid",
+    "rings": {
+      "@id": "topo:rings",
+      "@container": "@list"
+    },
+    "shells": {
+      "@id": "topo:shells",
+      "@container": "@list"
+    },
+    "faces": {
+      "@id": "topo:faces",
+      "@container": "@list"
+    },
+    "directed_references": {
+      "@id": "topo:directedReferences",
+      "@container": "@list"
+    },
     "topo": "https://purl.org/geojson/topo#",
-    "geojson": "https://purl.org/geojson/vocab#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "geojson": "https://purl.org/geojson/vocab#",
     "oa": "http://www.w3.org/ns/oa#",
     "dct": "http://purl.org/dc/terms/",
     "owlTime": "http://www.w3.org/2006/time#",

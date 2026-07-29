@@ -37,12 +37,12 @@
         <uuid:8a7f5e78-fcc3-4f6d-a19e-ece99b75234f> ;
     topo:faces ( <uuid:b877b36c-fa85-40c3-b254-fe4d8cbf637c> ) ;
     topo:rings ( <uuid:a212bf84-0fc3-4c11-b9ae-6324149206bf> ) ;
-    topo:shells ( <uuid:4239e2e9-e975-4d03-9c5a-65321c4830b1> ),
-        ( <uuid:057e31e4-e48d-4690-85f5-7f9bee5503ec> ) ;
+    topo:shells ( <uuid:4239e2e9-e975-4d03-9c5a-65321c4830b1> ) ;
+    topo:solids ( <uuid:057e31e4-e48d-4690-85f5-7f9bee5503ec> ) ;
     geojson:collectionFeatureType "CSD" .
 
-<uuid:057e31e4-e48d-4690-85f5-7f9bee5503ec> a geojson:FeatureCollection ;
-    geojson:collectionFeatureType "Solid" ;
+<uuid:057e31e4-e48d-4690-85f5-7f9bee5503ec> a topo:Solid,
+        geojson:FeatureCollection ;
     geojson:features <uuid:1c7bd760-43d5-46ad-9a6b-3b8f3e558b11>,
         <uuid:59df3615-f39c-4cbb-a911-5f7d80b9034b>,
         <uuid:950966fc-0c0e-4546-b5c6-41f73fa57be1>,
@@ -52,28 +52,11 @@
 <uuid:1c7bd760-43d5-46ad-9a6b-3b8f3e558b11> a geojson:Feature ;
     rdfs:label "Upper West" ;
     geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:89957e86-89d5-459d-a170-0c7c916f2382> ] ) ;
             topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
                         prof:hasRole <file:///github/workspace/containingPrimaryParcel> ;
-                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ;
-            topo:shells ( [ topo:orientation "+" ;
-                        topo:ref "uuid:89957e86-89d5-459d-a170-0c7c916f2382" ] ) ] .
-
-<uuid:1e877d2e-b9b0-4152-b693-fc4d76843142> a geojson:Feature ;
-    geojson:topology [ a topo:Shell ;
-            topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:fa9fc866-8b5d-4056-9afb-a5294b52eea3> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:afa0638d-9d57-4b2a-ad58-af68daa3726a> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:e2dd1def-1a2e-4e60-9db0-5e4c4095e4c7> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:cace1bee-957e-4b24-8343-47cd6827a09e> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:7385f01e-11f8-4811-bab6-3abca0b2c6f7> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:5635ffda-d1a0-463c-93e4-2c256e049f6e> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:2a36d343-55e4-4ddb-8c44-f7612baa99ce> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:09582fa5-0931-481b-9203-0dba27308ddd> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:d8f2444f-769d-4fe5-bfb7-96c75eb21aa3> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:c45f774d-8ba2-41a8-8edd-a08921a630b9> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:608c4fbe-df28-4c78-bec6-f7560f6a40ca> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:335305a1-d6a4-499f-8105-8b5e2f9a7383> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:6ae1d5a0-8bf8-4675-a048-f92b7704c482> ] ) ] .
+                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ] .
 
 <uuid:20ac1c64-b5d9-407a-91ae-f241cb3b4d4e> a geojson:FeatureCollection ;
     geojson:collectionFeatureType "surv:ObservedVector" ;
@@ -97,18 +80,6 @@
         <uuid:fd23e6be-fb9a-44fd-8ad1-55df298d506a>,
         <uuid:ff22d8d8-5d2e-4fdd-97ce-d80e2b48b5de> .
 
-<uuid:26924195-da93-43af-946d-237910710449> a geojson:Feature ;
-    geojson:topology [ a topo:Shell ;
-            topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:509fb96a-ed61-4418-a897-1cc9a394d7d6> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:2f59c9a6-1cd7-4cc0-86df-cc3c44d22286> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:79feb69f-05d4-4ef0-b880-44276e524854> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:41901fb2-753b-4b9f-8687-ae11d6f69439> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:2ec797d0-35d9-46fc-a4ab-52794d397416> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:608c4fbe-df28-4c78-bec6-f7560f6a40ca> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:2baad9ae-e5b4-48eb-81c6-736fd1500fb9> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:5635ffda-d1a0-463c-93e4-2c256e049f6e> ] ) ] .
-
 <uuid:4239e2e9-e975-4d03-9c5a-65321c4830b1> a geojson:FeatureCollection ;
     geojson:collectionFeatureType "Shell" ;
     geojson:features <uuid:1e877d2e-b9b0-4152-b693-fc4d76843142>,
@@ -120,10 +91,11 @@
 <uuid:59df3615-f39c-4cbb-a911-5f7d80b9034b> a geojson:Feature ;
     rdfs:label "Upper East" ;
     geojson:topology [ a topo:Solid ;
-            topo:relatedFeatures ( [ dct:type "within" ;
-                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ;
-            topo:shells ( [ topo:orientation "+" ;
-                        topo:ref "uuid:26924195-da93-43af-946d-237910710449" ] ) ] .
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:26924195-da93-43af-946d-237910710449> ] ) ;
+            topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
+                        prof:hasRole <file:///github/workspace/within> ;
+                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ] .
 
 <uuid:6ae2b7e0-a540-40c7-81bc-45c2cac1d3e6> a geojson:FeatureCollection ;
     geojson:collectionFeatureType "CadastralMark" ;
@@ -182,18 +154,6 @@
         <uuid:fa85407d-b02e-4d8b-ba7f-f1643968bdfb>,
         <uuid:fbebc23c-cdef-4d02-bced-5b5bb7686b1f>,
         <uuid:fc45a8b6-848f-46b9-b079-a0ebba08f96e> .
-
-<uuid:89957e86-89d5-459d-a170-0c7c916f2382> a geojson:Feature ;
-    geojson:topology [ a topo:Shell ;
-            topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:200595fe-9d0a-4fa0-a16f-374b28cb0ad0> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:9ce5b406-dab7-4afa-8fbd-2d5101aec77d> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:bd5ceea7-ea06-4191-9b3c-2905569f3035> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:05d0ee6b-baed-4a58-8c57-14c12cfe9fe0> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:2ec797d0-35d9-46fc-a4ab-52794d397416> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:6ae1d5a0-8bf8-4675-a048-f92b7704c482> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:f2f50332-6f50-47ab-868f-fdc520e68848> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:2a36d343-55e4-4ddb-8c44-f7612baa99ce> ] ) ] .
 
 <uuid:8a7f5e78-fcc3-4f6d-a19e-ece99b75234f> a geojson:FeatureCollection ;
     geojson:collectionFeatureType "Edge" ;
@@ -266,24 +226,11 @@
 <uuid:950966fc-0c0e-4546-b5c6-41f73fa57be1> a geojson:Feature ;
     rdfs:label "Lower West" ;
     geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:ddbbed6c-5a7d-4405-9d41-59677b9484ee> ] ) ;
             topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
                         prof:hasRole <file:///github/workspace/containingPrimaryParcel> ;
-                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ;
-            topo:shells ( [ topo:orientation "+" ;
-                        topo:ref "uuid:ddbbed6c-5a7d-4405-9d41-59677b9484ee" ] ) ] .
-
-<uuid:9a31a4bf-8d83-4876-8bc3-df640512418a> a geojson:Feature ;
-    geojson:topology [ a topo:Shell ;
-            topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:741587b8-5d4f-4921-979e-92cebc0bc61a> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:c6a3d176-abfb-4f53-a6d8-cc594118b214> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:ce095212-8b35-48bf-b77d-57ba8bcf9882> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:a6c01635-707b-4359-8eb5-23d324d7a7a8> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:6837ca1f-41c3-4002-9251-7113835def85> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:c45f774d-8ba2-41a8-8edd-a08921a630b9> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:335305a1-d6a4-499f-8105-8b5e2f9a7383> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:2baad9ae-e5b4-48eb-81c6-736fd1500fb9> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:f55c0e40-89fe-4a23-8d11-aff91c754214> ] ) ] .
+                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ] .
 
 <uuid:a212bf84-0fc3-4c11-b9ae-6324149206bf> a geojson:FeatureCollection ;
     geojson:collectionFeatureType "Ring" ;
@@ -364,33 +311,20 @@
 <uuid:b9b03d9f-fe75-4ec5-8696-294aefafe145> a geojson:Feature ;
     rdfs:label "Stairwell" ;
     geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:1e877d2e-b9b0-4152-b693-fc4d76843142> ] ) ;
             topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
                         prof:hasRole <file:///github/workspace/containingPrimaryParcel> ;
-                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ;
-            topo:shells ( [ topo:orientation "+" ;
-                        topo:ref "uuid:1e877d2e-b9b0-4152-b693-fc4d76843142" ] ) ] .
+                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ] .
 
 <uuid:dc91b809-03bf-49f2-849f-1e8071fad1d9> a geojson:Feature ;
     rdfs:label "Lower East" ;
     geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:9a31a4bf-8d83-4876-8bc3-df640512418a> ] ) ;
             topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
                         prof:hasRole <file:///github/workspace/containingPrimaryParcel> ;
-                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ;
-            topo:shells ( [ topo:orientation "+" ;
-                        topo:ref "uuid:9a31a4bf-8d83-4876-8bc3-df640512418a" ] ) ] .
-
-<uuid:ddbbed6c-5a7d-4405-9d41-59677b9484ee> a geojson:Feature ;
-    geojson:topology [ a topo:Shell ;
-            topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:933a6a7d-dfe4-4bae-ae48-3385e9f22916> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:287abc0b-28ad-41ec-a7ff-eec8d4192c2b> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:079558dc-5401-4bbb-ae7a-b3e566a6737d> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:d5f598a6-8c7b-4254-a710-5a0238368a6b> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:d8f2444f-769d-4fe5-bfb7-96c75eb21aa3> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:09582fa5-0931-481b-9203-0dba27308ddd> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:6837ca1f-41c3-4002-9251-7113835def85> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:b3470cac-a616-4768-a74b-182208496ee1> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:f2f50332-6f50-47ab-868f-fdc520e68848> ] ) ] .
+                        oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ] .
 
 <uuid:f6235c7a-8ada-499d-9574-067ccd370949> a parcel:PrimaryParcel,
         geojson:FeatureCollection ;
@@ -450,6 +384,23 @@
     geojson:topology [ a geojson:LineString ;
             topo:relatedFeatures ( <uuid:3cf6b3c0-3acc-4720-a643-d885d6951b2a> <uuid:67c660f1-0e49-4ee4-996d-4d453fe6209b> ) ] .
 
+<uuid:1e877d2e-b9b0-4152-b693-fc4d76843142> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:fa9fc866-8b5d-4056-9afb-a5294b52eea3> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:afa0638d-9d57-4b2a-ad58-af68daa3726a> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:e2dd1def-1a2e-4e60-9db0-5e4c4095e4c7> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:cace1bee-957e-4b24-8343-47cd6827a09e> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:7385f01e-11f8-4811-bab6-3abca0b2c6f7> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:5635ffda-d1a0-463c-93e4-2c256e049f6e> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:2a36d343-55e4-4ddb-8c44-f7612baa99ce> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:09582fa5-0931-481b-9203-0dba27308ddd> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:d8f2444f-769d-4fe5-bfb7-96c75eb21aa3> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:c45f774d-8ba2-41a8-8edd-a08921a630b9> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:608c4fbe-df28-4c78-bec6-f7560f6a40ca> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:335305a1-d6a4-499f-8105-8b5e2f9a7383> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:6ae1d5a0-8bf8-4675-a048-f92b7704c482> ] ) ] .
+
 <uuid:200595fe-9d0a-4fa0-a16f-374b28cb0ad0> a geojson:Feature ;
     geojson:topology [ a topo:Face ;
             topo:directedReferences ( [ topo:orientation "+" ;
@@ -462,6 +413,18 @@
                         topo:ref <uuid:7985a7eb-88fb-4f9d-8220-5d6804305f52> ] [ topo:orientation "-" ;
                         topo:ref <uuid:24d38d5c-3824-4088-8ab6-284a451e4ae5> ] [ topo:orientation "-" ;
                         topo:ref <uuid:d001066e-9581-4f45-880e-4810c005aeb4> ] ) ] .
+
+<uuid:26924195-da93-43af-946d-237910710449> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:509fb96a-ed61-4418-a897-1cc9a394d7d6> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:2f59c9a6-1cd7-4cc0-86df-cc3c44d22286> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:79feb69f-05d4-4ef0-b880-44276e524854> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:41901fb2-753b-4b9f-8687-ae11d6f69439> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:2ec797d0-35d9-46fc-a4ab-52794d397416> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:608c4fbe-df28-4c78-bec6-f7560f6a40ca> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:2baad9ae-e5b4-48eb-81c6-736fd1500fb9> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:5635ffda-d1a0-463c-93e4-2c256e049f6e> ] ) ] .
 
 <uuid:287abc0b-28ad-41ec-a7ff-eec8d4192c2b> a geojson:Feature ;
     geojson:topology [ a topo:Face ;
@@ -668,6 +631,18 @@
                         topo:ref <uuid:d377883b-98a1-43bf-a10f-bffeeb530993> ] [ topo:orientation "-" ;
                         topo:ref <uuid:a475a79b-06a2-400c-9460-6de8a6772ac6> ] ) ] .
 
+<uuid:89957e86-89d5-459d-a170-0c7c916f2382> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:200595fe-9d0a-4fa0-a16f-374b28cb0ad0> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:9ce5b406-dab7-4afa-8fbd-2d5101aec77d> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:bd5ceea7-ea06-4191-9b3c-2905569f3035> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:05d0ee6b-baed-4a58-8c57-14c12cfe9fe0> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:2ec797d0-35d9-46fc-a4ab-52794d397416> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:6ae1d5a0-8bf8-4675-a048-f92b7704c482> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:f2f50332-6f50-47ab-868f-fdc520e68848> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:2a36d343-55e4-4ddb-8c44-f7612baa99ce> ] ) ] .
+
 <uuid:89e58766-afab-4d1f-8775-1311275c857a> a geojson:Feature ;
     geojson:topology [ a topo:Ring ;
             topo:directedReferences ( [ topo:orientation "-" ;
@@ -682,6 +657,19 @@
     geojson:topology [ a topo:Face ;
             topo:directedReferences ( [ topo:orientation "+" ;
                         topo:ref <uuid:cb6708a2-df56-4993-9699-9542c85c4f86> ] ) ] .
+
+<uuid:9a31a4bf-8d83-4876-8bc3-df640512418a> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:741587b8-5d4f-4921-979e-92cebc0bc61a> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:c6a3d176-abfb-4f53-a6d8-cc594118b214> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:ce095212-8b35-48bf-b77d-57ba8bcf9882> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:a6c01635-707b-4359-8eb5-23d324d7a7a8> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:6837ca1f-41c3-4002-9251-7113835def85> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:c45f774d-8ba2-41a8-8edd-a08921a630b9> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:335305a1-d6a4-499f-8105-8b5e2f9a7383> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:2baad9ae-e5b4-48eb-81c6-736fd1500fb9> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:f55c0e40-89fe-4a23-8d11-aff91c754214> ] ) ] .
 
 <uuid:9ca25210-c370-4b91-b92f-33f5e1921889> a geojson:Feature ;
     geojson:topology [ a topo:Ring ;
@@ -840,6 +828,19 @@
     surv:vectorPurpose wa-vector-purpose:I ;
     geojson:topology [ a geojson:LineString ;
             topo:relatedFeatures ( <uuid:be40befb-8498-4793-9ed6-d0e72c1a1d5b> <uuid:7023d838-169a-4b01-a85f-e2b270751a7c> ) ] .
+
+<uuid:ddbbed6c-5a7d-4405-9d41-59677b9484ee> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:933a6a7d-dfe4-4bae-ae48-3385e9f22916> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:287abc0b-28ad-41ec-a7ff-eec8d4192c2b> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:079558dc-5401-4bbb-ae7a-b3e566a6737d> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:d5f598a6-8c7b-4254-a710-5a0238368a6b> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:d8f2444f-769d-4fe5-bfb7-96c75eb21aa3> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:09582fa5-0931-481b-9203-0dba27308ddd> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:6837ca1f-41c3-4002-9251-7113835def85> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:b3470cac-a616-4768-a74b-182208496ee1> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:f2f50332-6f50-47ab-868f-fdc520e68848> ] ) ] .
 
 <uuid:e2dd1def-1a2e-4e60-9db0-5e4c4095e4c7> a geojson:Feature ;
     geojson:topology [ a topo:Face ;
@@ -1971,10 +1972,10 @@
 
 <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> a geojson:Feature ;
     parcel:appellation [ rdfs:label "Lot 1" ;
-            dct:hasPart [ rdfs:label "1" ;
-                    commonpatterns:namePartType <https://linked.data.gov.au/def/csdm/names/localPartType/ParcelIdentifier> ],
-                [ rdfs:label "Lot" ;
-                    commonpatterns:namePartType <https://linked.data.gov.au/def/csdm/names/localPartType/ParcelType> ] ] ;
+            dct:hasPart [ rdfs:label "Lot" ;
+                    commonpatterns:namePartType <https://linked.data.gov.au/def/csdm/names/localPartType/ParcelType> ],
+                [ rdfs:label "1" ;
+                    commonpatterns:namePartType <https://linked.data.gov.au/def/csdm/names/localPartType/ParcelIdentifier> ] ] ;
     parcel:purpose wa-parcel-purpose:lot ;
     parcel:state wa-parcel-state:created ;
     parcel:surfaceArea 2829 ;

@@ -1,0 +1,23 @@
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix topo: <https://purl.org/geojson/topo#> .
+
+<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> a geojson:Feature ;
+    geojson:topology [ a topo:Face ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:c60507ba-226b-4e49-a702-e9afef899b23> ] ) ] .
+
+<uuid:c60507ba-226b-4e49-a702-e9afef899b23> a geojson:Feature ;
+    geojson:topology [ a topo:Ring ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:3af6ffd3-355f-48a4-badf-dcc136d547f3> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:cdf01952-2518-4523-a3a7-363be4b8bc3f> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:23641631-470f-4c4b-981d-23ccb35d6a51> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:23141631-470f-4c4b-981d-23ccb35d6a51> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:23641631-470f-4d4b-981d-23ccb35d6a51> ] ) ] .
+
+[] a geojson:FeatureCollection ;
+    topo:faces ( <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> ) ;
+    topo:rings ( <uuid:c60507ba-226b-4e49-a702-e9afef899b23> ) .
+

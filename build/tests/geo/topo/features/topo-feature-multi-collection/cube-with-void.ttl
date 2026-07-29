@@ -28,8 +28,8 @@
     topo:edges <uuid:696ce04d-ecba-46ed-8d11-95a17f490933> ;
     topo:faces ( <uuid:66682266-e880-42c1-a61f-d92a48267c90> ) ;
     topo:rings ( <uuid:ec6d63b8-c842-4560-8e08-1c6d5d041ae9> ) ;
-    topo:shells ( <uuid:bff4a861-5f47-4bcb-a803-5441d2dc7e92> ),
-        ( <uuid:dcf03c4e-dd72-4d79-89e0-6a254806b438> ) ;
+    topo:shells ( <uuid:bff4a861-5f47-4bcb-a803-5441d2dc7e92> ) ;
+    topo:solids ( <uuid:dcf03c4e-dd72-4d79-89e0-6a254806b438> ) ;
     geojson:collectionFeatureType "CSD" .
 
 <uuid:349c28e4-021d-492e-b9fb-e120f614bc04> a geojson:FeatureCollection ;
@@ -96,38 +96,18 @@
 <uuid:7c9bc347-8ba2-48fb-97e6-cc3e223e1ae9> a geojson:Feature ;
     rdfs:label "Cube with Void" ;
     geojson:topology [ a topo:Solid ;
-            topo:shells ( [ topo:orientation "+" ;
-                        topo:ref "uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568" ] [ topo:orientation "-" ;
-                        topo:ref "uuid:97a089af-4929-4d36-8e01-74f573343edb" ] ) ] .
-
-<uuid:97a089af-4929-4d36-8e01-74f573343edb> a geojson:Feature ;
-    geojson:topology [ a topo:Shell ;
             topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:be4fb1b1-74f2-44ce-893e-d824dcc36f2e> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:9d955daa-c431-4007-a977-3a63510446ba> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:ece9f6ce-f93a-4f47-9c9e-513e83505ae5> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:293b4aab-a1c2-47e1-9a55-6b3409041efe> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:f9a9982b-b19c-48b5-bf3a-8de757299494> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:9eb1cfc1-5ae5-4de9-80a9-5c1b23360efb> ] ) ] .
+                        topo:ref <uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:97a089af-4929-4d36-8e01-74f573343edb> ] ) ] .
 
 <uuid:bff4a861-5f47-4bcb-a803-5441d2dc7e92> a geojson:FeatureCollection ;
     geojson:collectionFeatureType "Shell" ;
     geojson:features <uuid:97a089af-4929-4d36-8e01-74f573343edb>,
         <uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568> .
 
-<uuid:dcf03c4e-dd72-4d79-89e0-6a254806b438> a geojson:FeatureCollection ;
-    geojson:collectionFeatureType "Solid" ;
+<uuid:dcf03c4e-dd72-4d79-89e0-6a254806b438> a topo:Solid,
+        geojson:FeatureCollection ;
     geojson:features <uuid:7c9bc347-8ba2-48fb-97e6-cc3e223e1ae9> .
-
-<uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568> a geojson:Feature ;
-    geojson:topology [ a topo:Shell ;
-            topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:7e2af30d-0b06-49ff-bac1-145211cddd27> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:05c94a8c-f507-42b4-b4b7-16ee622b45fe> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:56e5283a-3fb0-45f0-acb3-3cd0c24a0394> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:bef31bc5-ec7f-455b-8839-1357fb26462b> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:6349ce8f-e3a8-4a2d-b496-b4f040743793> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:7022dc11-0ed8-4caa-9935-5abc3a8dd4a6> ] ) ] .
 
 <uuid:ec6d63b8-c842-4560-8e08-1c6d5d041ae9> a geojson:FeatureCollection ;
     geojson:collectionFeatureType "Ring" ;
@@ -230,6 +210,16 @@
                         topo:ref <uuid:0b4a0beb-9f17-4b03-8ee7-a53366ff2575> ] [ topo:orientation "+" ;
                         topo:ref <uuid:c246401e-8028-4446-bd18-60d5025bc4fe> ] ) ] .
 
+<uuid:97a089af-4929-4d36-8e01-74f573343edb> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:be4fb1b1-74f2-44ce-893e-d824dcc36f2e> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:9d955daa-c431-4007-a977-3a63510446ba> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:ece9f6ce-f93a-4f47-9c9e-513e83505ae5> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:293b4aab-a1c2-47e1-9a55-6b3409041efe> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:f9a9982b-b19c-48b5-bf3a-8de757299494> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:9eb1cfc1-5ae5-4de9-80a9-5c1b23360efb> ] ) ] .
+
 <uuid:9b0462a4-17da-4cc3-afb8-5b3456c1f64d> a geojson:Feature ;
     geojson:topology [ a topo:Ring ;
             topo:directedReferences ( [ topo:orientation "+" ;
@@ -289,6 +279,16 @@
                         topo:ref <uuid:97889c20-8e0c-478c-887c-c5f79f07610d> ] [ topo:orientation "-" ;
                         topo:ref <uuid:ff79a0ca-ccf6-4b63-b0b4-fb8224c5a07e> ] [ topo:orientation "-" ;
                         topo:ref <uuid:15c3acaf-9d17-4e76-9143-5b5bee68ad6d> ] ) ] .
+
+<uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:7e2af30d-0b06-49ff-bac1-145211cddd27> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:05c94a8c-f507-42b4-b4b7-16ee622b45fe> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:56e5283a-3fb0-45f0-acb3-3cd0c24a0394> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:bef31bc5-ec7f-455b-8839-1357fb26462b> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:6349ce8f-e3a8-4a2d-b496-b4f040743793> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:7022dc11-0ed8-4caa-9935-5abc3a8dd4a6> ] ) ] .
 
 <uuid:ece9f6ce-f93a-4f47-9c9e-513e83505ae5> a geojson:Feature ;
     geojson:topology [ a topo:Face ;

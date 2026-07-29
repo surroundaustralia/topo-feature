@@ -1,0 +1,18 @@
+transforms:
+
+  - id: Points-n-Edges
+    description: GeoJSON points and a line approximation (chord) of each arc/circle/spline
+    type: topo2geojson
+    metadata:
+      ttl: [ _sources/examples/referenced-objects.ttl ]
+      mode: points,edges
+    code: |
+      Extracts a 2D "smoke test" view of the point references used by each
+      ArcWithCenter/Arc/ArcByChord/CircleByCenter/CubicSpline example.
+
+      topo2geojson does not compute true arc/circle/spline geometry — it
+      resolves the topology's point references directly, so the output is a
+      straight-line (chord) approximation, not the actual curved geometry.
+
+      Invokes a reusable utility library supporting an OGC Building Blocks
+      transformer interface.

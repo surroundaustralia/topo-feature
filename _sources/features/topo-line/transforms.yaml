@@ -1,0 +1,15 @@
+transforms:
+
+  - id: Points-n-Edges
+    description: GeoJSON points, LineStrings and MultiLineStrings
+    type: topo2geojson
+    metadata:
+      ttl: [ _sources/examples/referenced-objects.ttl ]
+      mode: points,edges,rings
+    code: |
+      Extracts a 2D view of the point references used by each LineString/
+      MultiLineString example.
+
+      Invokes a reusable utility library supporting an OGC Building Blocks
+      transformer interface. Resolved MultiLineString geometries are
+      surfaced under the "rings" mode bucket alongside points/edges.

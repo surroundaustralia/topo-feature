@@ -4,17 +4,19 @@ transforms:
     description: GeoJSON points and Edges
     type: topo2geojson
     metadata:
+      ttl: [ _sources/examples/referenced-objects.ttl ]
       mode: "points,edges"
     code: |
       Extracts a 2D view of point and edge geometries from 2 or 3D topology models.
-      
+
       Invokes a reusable utility library supporting an OGC Building Blocks transformer interface.
-      
+
       Format output type (application/geo+json) triggers viewer availability for results.
 
   - id: Faces-as-Polygons
     description: GeoJSON Polygons for faces
     type: topo2geojson
     metadata:
+      ttl: [ _sources/examples/referenced-objects.ttl ]
       mode: "faces"
     code: Extracts a 2D view of polygon geometries from 2 or 3D topology models

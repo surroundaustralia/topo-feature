@@ -22,27 +22,27 @@
   "shaclClosures": [],
   "shaclShapes": {
     "ogc.geo.topo.features.topo-arc": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
     "ogc.geo.topo.features.topo-feature": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
     "ogc.geo.topo.features.topo-feature-collection": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
-    ],
-    "ogc.geo.features.featureCollection": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
     "ogc.geo.features.feature": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+    ],
+    "ogc.geo.features.featureCollection": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
     ]
   },
   "dependsOn": [
-    "ogc.geo.topo.features.topo-feature",
-    "ogc.geo.topo.datatypes.topology"
+    "ogc.geo.topo.datatypes.topology",
+    "ogc.geo.topo.features.topo-feature"
   ],
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld",
   "schema": {
@@ -55,6 +55,38 @@
   "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/",
   "validationPassed": true,
   "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-arc/",
+  "transforms": [
+    {
+      "id": "Points-n-Edges",
+      "description": "GeoJSON points and a line approximation (chord) of each arc/circle/spline",
+      "type": "topo2geojson",
+      "metadata": {
+        "ttl": [
+          "_sources/examples/referenced-objects.ttl"
+        ],
+        "mode": "points,edges"
+      },
+      "code": "Extracts a 2D \"smoke test\" view of the point references used by each\nArcWithCenter/Arc/ArcByChord/CircleByCenter/CubicSpline example.\n\ntopo2geojson does not compute true arc/circle/spline geometry \u2014 it\nresolves the topology's point references directly, so the output is a\nstraight-line (chord) approximation, not the actual curved geometry.\n\nInvokes a reusable utility library supporting an OGC Building Blocks\ntransformer interface.\n",
+      "inputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/json",
+            "label": "JSON",
+            "defaultExtension": "json"
+          }
+        ]
+      },
+      "outputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/geo+json",
+            "label": "GeoJSON",
+            "defaultExtension": "geojson"
+          }
+        ]
+      }
+    }
+  ],
   "description": "## Topology defining Arcs, Circles, Splines\n\nA feature type using a topology property to reference points defining non-linear curves.\n\nEach geometry type has a specific number of references to \"features\" defining point geometries.\n\n![Example](assets/arc.png)\n\nWhere additional properties are required to define the geometry these are included as sub-properties of the topology property.\n\nAdditional properties \"radius\" and \"arcLength\" are defined for optional use as feature properties.\n\nNote: the geojson: namespace is used for semantic annotations - this may be replaced with a more suitable namespace when a target ontology is available (such as the planned Geosparql version 1.3)\n\n\n",
   "examples": [
     {
@@ -70,6 +102,13 @@
             "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/arc-with-centre.json",
+          "transformResults": {
+            "Points-n-Edges": {
+              "success": true,
+              "sizeBytes": 449,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/arc-with-centre.Points-n-Edges.geojson"
+            }
+          },
           "sizeBytes": 408,
           "code": "{\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:ArcFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"ArcWithCenter\",\n    \"x-description\": \"References is an ordered list of features with point geometries Start,End,Center\",\n    \"references\": [\n      \"P1\",\n      \"P2\",\n      \"PC\"\n    ],\n    \"orientation\": \"ccw\"\n  },\n  \"properties\": {\n    \"arcLength\": 25.615,\n    \"radius\": 105.438\n  }\n}"
         },
@@ -100,6 +139,13 @@
             "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/arc.json",
+          "transformResults": {
+            "Points-n-Edges": {
+              "success": true,
+              "sizeBytes": 446,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/arc.Points-n-Edges.geojson"
+            }
+          },
           "sizeBytes": 367,
           "code": "{\n  \"id\": \"arc1\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:ArcFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Arc\",\n    \"x-description\": \"References is an ordered list of 3 features with point geometries defining Arc\",\n    \"references\": [\n      \"P1\",\n      \"P3\",\n      \"P2\"\n    ]\n  },\n  \"properties\": {\n    \"arcLength\": 25.615,\n    \"radius\": 105.438\n  }\n}"
         },
@@ -130,6 +176,13 @@
             "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/arc-by-chord.json",
+          "transformResults": {
+            "Points-n-Edges": {
+              "success": true,
+              "sizeBytes": 381,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/arc-by-chord.Points-n-Edges.geojson"
+            }
+          },
           "sizeBytes": 417,
           "code": "{\n  \"id\": \"chord1\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:ArcChordFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"ArcByChord\",\n    \"x-description\": \"References is an ordered list of features with for an Arc Chord, radius and length determine geometry\",\n    \"references\": [\n      \"P1\",\n      \"P2\"\n    ],\n    \"radius\": 105.438,\n    \"orientation\": \"cw\"\n  },\n  \"properties\": {\n    \"arcLength\": 25.615\n  }\n}"
         },
@@ -162,6 +215,13 @@
             "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/circle.json",
+          "transformResults": {
+            "Points-n-Edges": {
+              "success": true,
+              "sizeBytes": 288,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/circle.Points-n-Edges.geojson"
+            }
+          },
           "sizeBytes": 347,
           "code": "{\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:CircleFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"CircleByCenter\",\n    \"x-description\": \"Reference is the feature defining the centre point of a circle - it must have a Point geometry.\",\n    \"references\": [\n      \"PC\"\n    ],\n    \"radius\": 10\n  },\n  \"properties\": null\n}"
         },
@@ -194,6 +254,13 @@
             "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/spline.json",
+          "transformResults": {
+            "Points-n-Edges": {
+              "success": true,
+              "sizeBytes": 445,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/spline.Points-n-Edges.geojson"
+            }
+          },
           "sizeBytes": 332,
           "code": "{\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:SplineFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"CubicSpline\",\n    \"x-description\": \"References is an ordered list of features with point geometries\",\n    \"references\": [\n      \"P1\",\n      \"Px1\",\n      \"Px2\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}"
         },
@@ -224,6 +291,13 @@
             "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/spline-with-tangents.json",
+          "transformResults": {
+            "Points-n-Edges": {
+              "success": true,
+              "sizeBytes": 357,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/spline-with-tangents.Points-n-Edges.geojson"
+            }
+          },
           "sizeBytes": 543,
           "code": "{\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:SplineFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"CubicSpline\",\n    \"x-description\": \"References is an ordered list of features with point geometries, with tangent vectors defining entry and exit angles\",\n    \"startTangentVector\": {\n      \"references\": [\n        \"PVS\",\n        \"P1\"\n      ]\n    },\n    \"endTangentVector\": {\n      \"references\": [\n        \"P2\",\n        \"PVE\"\n      ]\n    },\n    \"references\": [\n      \"P1\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}"
         },

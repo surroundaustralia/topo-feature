@@ -23,23 +23,23 @@
   ],
   "shaclShapes": {
     "ogc.geo.topo.features.topo-feature": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
     "ogc.geo.topo.features.topo-feature-collection": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
-    ],
-    "ogc.geo.features.featureCollection": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
     "ogc.geo.features.feature": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+    ],
+    "ogc.geo.features.featureCollection": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
     ]
   },
   "dependsOn": [
-    "ogc.geo.topo.features.topo-feature",
-    "ogc.geo.topo.datatypes.topology"
+    "ogc.geo.topo.datatypes.topology",
+    "ogc.geo.topo.features.topo-feature"
   ],
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/context.jsonld",
   "schema": {
@@ -52,6 +52,38 @@
   "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-line/",
   "validationPassed": true,
   "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-line/",
+  "transforms": [
+    {
+      "id": "Points-n-Edges",
+      "description": "GeoJSON points, LineStrings and MultiLineStrings",
+      "type": "topo2geojson",
+      "metadata": {
+        "ttl": [
+          "_sources/examples/referenced-objects.ttl"
+        ],
+        "mode": "points,edges,rings"
+      },
+      "code": "Extracts a 2D view of the point references used by each LineString/\nMultiLineString example.\n\nInvokes a reusable utility library supporting an OGC Building Blocks\ntransformer interface. Resolved MultiLineString geometries are\nsurfaced under the \"rings\" mode bucket alongside points/edges.\n",
+      "inputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/json",
+            "label": "JSON",
+            "defaultExtension": "json"
+          }
+        ]
+      },
+      "outputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/geo+json",
+            "label": "GeoJSON",
+            "defaultExtension": "geojson"
+          }
+        ]
+      }
+    }
+  ],
   "description": "## Topology defined Line\n\n%definition% \n\nA feature type using a topology property to reference an ordered list of points.\n\nThe topology property has an ordered array, defining the direction of the line from the first to second and subsequent points.\n\nThis is a generalisation of the TopoJSON concept using inline data, and hence not limited to linestrings.\n\n",
   "examples": [
     {
@@ -65,6 +97,13 @@
             "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-line/example_1_1.json",
+          "transformResults": {
+            "Points-n-Edges": {
+              "success": true,
+              "sizeBytes": 358,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-line/transforms/example_1_1.Points-n-Edges.geojson"
+            }
+          },
           "sizeBytes": 175,
           "code": "{\n  \"type\": \"Feature\",\n  \"id\": \"LineP1P2\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Edge\",\n    \"references\": [\n      \"P1\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}"
         },
@@ -93,6 +132,13 @@
             "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-line/example_2_1.json",
+          "transformResults": {
+            "Points-n-Edges": {
+              "success": true,
+              "sizeBytes": 522,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-line/transforms/example_2_1.Points-n-Edges.geojson"
+            }
+          },
           "sizeBytes": 257,
           "code": "{\n  \"type\": \"Feature\",\n  \"id\": \"MultiLineP1P2P3\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"MultiLineString\",\n    \"references\": [\n      [\n        \"P1\",\n        \"P2\"\n      ],\n      [\n        \"P2\",\n        \"P3\"\n      ]\n    ]\n  },\n  \"properties\": null\n}"
         },

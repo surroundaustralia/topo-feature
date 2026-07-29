@@ -3,7 +3,7 @@
 
 `ogc.geo.topo.features.topo-feature-multi-collection` *v0.1*
 
-A schema for a structured topology dataset containing typed Feature Collections for each topological dimension: points, edges (Line features), rings (Ring features), faces (Face features), shells (Shell features), and solids (Solid features). Each collection is restricted to its specific building block type, enabling referential integrity across the topology hierarchy.
+A schema for a structured topology dataset containing typed Feature Collections for each topological dimension: points, edges (Line features), rings (Ring features), faces (Face features), shells (Shell features), and solids (Solid features). Each collection is restricted to its specific building block type, enabling referential integrity across the topology hierarchy. Testing and visualisation of its examples draw on a common set of referenced objects (points, edges, faces) shared across the topo-* building blocks, at `_sources/examples/referenced-objects.ttl`.
 
 [*Status*](http://www.opengis.net/def/status): Under development
 
@@ -30035,10 +30035,10 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
 
 <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> a geojson:Feature ;
     parcel:appellation [ rdfs:label "Lot 1" ;
-            dct:hasPart [ rdfs:label "Lot" ;
-                    commonpatterns:namePartType <https://linked.data.gov.au/def/csdm/names/localPartType/ParcelType> ],
-                [ rdfs:label "1" ;
-                    commonpatterns:namePartType <https://linked.data.gov.au/def/csdm/names/localPartType/ParcelIdentifier> ] ] ;
+            dct:hasPart [ rdfs:label "1" ;
+                    commonpatterns:namePartType <https://linked.data.gov.au/def/csdm/names/localPartType/ParcelIdentifier> ],
+                [ rdfs:label "Lot" ;
+                    commonpatterns:namePartType <https://linked.data.gov.au/def/csdm/names/localPartType/ParcelType> ] ] ;
     parcel:purpose wa-parcel-purpose:lot ;
     parcel:state wa-parcel-state:created ;
     parcel:surfaceArea 2829 ;

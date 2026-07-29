@@ -4,7 +4,7 @@
   "itemIdentifier": "ogc.geo.topo.features.topo-arc",
   "name": "Non-linear Arc and Spline Descriptions using Point topology",
   "highlighted": true,
-  "abstract": "Defines options for describing Arcs, Circles, Splines using point features as canonical source of geometry coordinates",
+  "abstract": "Defines options for describing Arcs, Circles, Splines using point features as canonical source of geometry coordinates. Testing and visualisation of its examples draw on a common set of referenced objects (points, edges, faces) shared across the topo-* building blocks, at `_sources/examples/referenced-objects.ttl`.",
   "status": "under-development",
   "dateTimeAddition": "2023-11-01T00:00:00Z",
   "itemClass": "schema",
@@ -33,16 +33,16 @@
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ],
-    "ogc.geo.features.feature": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-    ],
     "ogc.geo.features.featureCollection": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+    ],
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ]
   },
   "dependsOn": [
-    "ogc.geo.topo.datatypes.topology",
-    "ogc.geo.topo.features.topo-feature"
+    "ogc.geo.topo.features.topo-feature",
+    "ogc.geo.topo.datatypes.topology"
   ],
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld",
   "schema": {
@@ -67,7 +67,7 @@
           "base-uri": "http://www.example.com/features/",
           "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/examples/arc_by_center.json",
           "shacl-closure": [
-            "../topo-feature/examples/points.ttl"
+            "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/arc-with-centre.json",
           "sizeBytes": 408,
@@ -97,7 +97,7 @@
           "base-uri": "http://www.example.com/features/",
           "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/examples/arc.json",
           "shacl-closure": [
-            "../topo-feature/examples/points.ttl"
+            "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/arc.json",
           "sizeBytes": 367,
@@ -127,7 +127,7 @@
           "base-uri": "http://www.example.com/features/",
           "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/examples/arc_chord.json",
           "shacl-closure": [
-            "../topo-feature/examples/points.ttl"
+            "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/arc-by-chord.json",
           "sizeBytes": 417,
@@ -159,7 +159,7 @@
           "base-uri": "http://www.example.com/features/",
           "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/examples/circle.json",
           "shacl-closure": [
-            "../topo-feature/examples/points.ttl"
+            "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/circle.json",
           "sizeBytes": 347,
@@ -191,7 +191,7 @@
           "base-uri": "http://www.example.com/features/",
           "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/examples/spline.json",
           "shacl-closure": [
-            "../topo-feature/examples/points.ttl"
+            "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/spline.json",
           "sizeBytes": 332,
@@ -221,7 +221,7 @@
           "base-uri": "http://www.example.com/features/",
           "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/examples/spline_with_tangents.json",
           "shacl-closure": [
-            "../topo-feature/examples/points.ttl"
+            "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/spline-with-tangents.json",
           "sizeBytes": 543,

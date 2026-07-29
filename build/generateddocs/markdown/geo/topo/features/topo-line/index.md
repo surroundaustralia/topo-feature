@@ -3,7 +3,7 @@
 
 `ogc.geo.topo.features.topo-line` *v0.1*
 
-Demonstration of a schema using coordinates of points, without duplication. Reuses context but constrains to Line types
+Demonstration of a schema using coordinates of points, without duplication. Reuses context but constrains to Line types. Testing and visualisation of its examples draw on a common set of referenced objects (points, edges, faces) shared across the topo-* building blocks, at `_sources/examples/referenced-objects.ttl`.
 
 [*Status*](http://www.opengis.net/def/status): Under development
 

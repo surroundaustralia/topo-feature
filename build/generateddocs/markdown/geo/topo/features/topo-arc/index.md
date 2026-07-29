@@ -3,7 +3,7 @@
 
 `ogc.geo.topo.features.topo-arc` *v0.1*
 
-Defines options for describing Arcs, Circles, Splines using point features as canonical source of geometry coordinates
+Defines options for describing Arcs, Circles, Splines using point features as canonical source of geometry coordinates. Testing and visualisation of its examples draw on a common set of referenced objects (points, edges, faces) shared across the topo-* building blocks, at `_sources/examples/referenced-objects.ttl`.
 
 [*Status*](http://www.opengis.net/def/status): Under development
 

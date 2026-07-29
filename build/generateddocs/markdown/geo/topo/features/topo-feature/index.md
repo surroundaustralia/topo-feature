@@ -3,7 +3,7 @@
 
 `ogc.geo.topo.features.topo-feature` *v0.1*
 
-This building block defines a GeoJSON feature with topological relationships to point nodes, or other to TopoFeatures
+This building block defines a GeoJSON feature with topological relationships to point nodes, or other to TopoFeatures. Testing and visualisation of its examples draw on a common set of referenced objects (points, edges, faces) shared across the topo-* building blocks, at `_sources/examples/referenced-objects.ttl`.
 
 [*Status*](http://www.opengis.net/def/status): Under development
 

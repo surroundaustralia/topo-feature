@@ -4,7 +4,7 @@
   "itemIdentifier": "ogc.geo.topo.features.topo-line",
   "name": "Line using Point References",
   "highlighted": true,
-  "abstract": "Demonstration of a schema using coordinates of points, without duplication. Reuses context but constrains to Line types",
+  "abstract": "Demonstration of a schema using coordinates of points, without duplication. Reuses context but constrains to Line types. Testing and visualisation of its examples draw on a common set of referenced objects (points, edges, faces) shared across the topo-* building blocks, at `_sources/examples/referenced-objects.ttl`.",
   "status": "under-development",
   "dateTimeAddition": "2023-04-05T00:00:00Z",
   "itemClass": "schema",
@@ -30,16 +30,16 @@
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ],
-    "ogc.geo.features.feature": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-    ],
     "ogc.geo.features.featureCollection": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+    ],
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ]
   },
   "dependsOn": [
-    "ogc.geo.topo.datatypes.topology",
-    "ogc.geo.topo.features.topo-feature"
+    "ogc.geo.topo.features.topo-feature",
+    "ogc.geo.topo.datatypes.topology"
   ],
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/context.jsonld",
   "schema": {
@@ -62,7 +62,7 @@
           "base-uri": "http://www.example.com/features/",
           "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-line/examples/linestring.json",
           "shacl-closure": [
-            "../topo-feature/examples/points.ttl"
+            "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-line/example_1_1.json",
           "sizeBytes": 175,
@@ -90,7 +90,7 @@
           "base-uri": "http://www.example.com/features/",
           "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-line/examples/multilinestring.json",
           "shacl-closure": [
-            "../topo-feature/examples/points.ttl"
+            "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-line/example_2_1.json",
           "sizeBytes": 257,

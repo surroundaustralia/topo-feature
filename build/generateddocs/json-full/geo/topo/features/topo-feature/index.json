@@ -4,7 +4,7 @@
   "itemIdentifier": "ogc.geo.topo.features.topo-feature",
   "name": "Feature with topology",
   "highlighted": true,
-  "abstract": "This building block defines a GeoJSON feature with topological relationships to point nodes, or other to TopoFeatures",
+  "abstract": "This building block defines a GeoJSON feature with topological relationships to point nodes, or other to TopoFeatures. Testing and visualisation of its examples draw on a common set of referenced objects (points, edges, faces) shared across the topo-* building blocks, at `_sources/examples/referenced-objects.ttl`.",
   "status": "under-development",
   "dateTimeAddition": "2023-07-05T00:00:00Z",
   "itemClass": "schema",
@@ -32,11 +32,11 @@
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ],
-    "ogc.geo.features.feature": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-    ],
     "ogc.geo.features.featureCollection": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+    ],
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ]
   },
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/context.jsonld",
@@ -57,9 +57,7 @@
       "type": "topo2geojson",
       "metadata": {
         "ttl": [
-          "_sources/features/topo-feature/examples/lines.ttl",
-          "_sources/features/topo-feature/examples/points.ttl",
-          "_sources/features/topo-feature/examples/points2.ttl"
+          "_sources/examples/referenced-objects.ttl"
         ],
         "mode": "points,edges"
       },
@@ -89,9 +87,7 @@
       "type": "topo2geojson",
       "metadata": {
         "ttl": [
-          "_sources/features/topo-feature/examples/lines.ttl",
-          "_sources/features/topo-feature/examples/points.ttl",
-          "_sources/features/topo-feature/examples/points2.ttl"
+          "_sources/examples/referenced-objects.ttl"
         ],
         "mode": "faces"
       },
@@ -127,7 +123,7 @@
           "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/examples/linestring.json",
           "base-uri": "http://www.example.com/features/",
           "shacl-closure": [
-            "examples/points.ttl"
+            "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature/LineString.json",
           "transformResults": {
@@ -168,19 +164,18 @@
           "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/examples/polygon.json",
           "base-uri": "http://www.example.com/features/",
           "shacl-closure": [
-            "examples/points.ttl",
-            "examples/lines.ttl"
+            "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature/Polygon.json",
           "transformResults": {
             "Points-n-Edges": {
               "success": true,
-              "sizeBytes": 2,
+              "sizeBytes": 1676,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature/transforms/Polygon.Points-n-Edges.geojson"
             },
             "Faces-as-Polygons": {
               "success": true,
-              "sizeBytes": 2,
+              "sizeBytes": 497,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature/transforms/Polygon.Faces-as-Polygons.geojson"
             }
           },
@@ -211,7 +206,7 @@
           "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/examples/edge-vertex-refs.json",
           "base-uri": "http://www.example.com/features/",
           "shacl-closure": [
-            "examples/points2.ttl"
+            "../../examples/referenced-objects.ttl"
           ],
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature/edge-feature.json",
           "transformResults": {

@@ -35,13 +35,13 @@ Demonstration of a schema using coordinates of points, withpout duplication
 
 **Type:** schema
 
-This building block defines a GeoJSON feature with topological relationships to point nodes, or other to TopoFeatures
+This building block defines a GeoJSON feature with topological relationships to point nodes, or other to TopoFeatures. Testing and visualisation of its examples draw on a common set of referenced objects (points, edges, faces) shared across the topo-* building blocks, at `_sources/examples/referenced-objects.ttl`.
 
 ### `ogc.geo.topo.features.topo-arc` — Non-linear Arc and Spline Descriptions using Point topology
 
 **Type:** schema
 
-Defines options for describing Arcs, Circles, Splines using point features as canonical source of geometry coordinates
+Defines options for describing Arcs, Circles, Splines using point features as canonical source of geometry coordinates. Testing and visualisation of its examples draw on a common set of referenced objects (points, edges, faces) shared across the topo-* building blocks, at `_sources/examples/referenced-objects.ttl`.
 
 ### `ogc.geo.topo.features.topo-feature-collection` — TopoFeatureCollection
 
@@ -53,7 +53,7 @@ This building block defines a GeoJSON (or FG-JSON) Feature Collection for a set 
 
 **Type:** schema
 
-Demonstration of a schema using coordinates of points, without duplication. Reuses context but constrains to Line types
+Demonstration of a schema using coordinates of points, without duplication. Reuses context but constrains to Line types. Testing and visualisation of its examples draw on a common set of referenced objects (points, edges, faces) shared across the topo-* building blocks, at `_sources/examples/referenced-objects.ttl`.
 
 ### `ogc.geo.topo.features.topo-ring` — Ring Topology Feature
 
@@ -89,5 +89,5 @@ A feature representing a Solid in topology: a volumetric region bounded by one o
 
 **Type:** schema
 
-A schema for a structured topology dataset containing typed Feature Collections for each topological dimension: points, edges (Line features), rings (Ring features), faces (Face features), shells (Shell features), and solids (Solid features). Each collection is restricted to its specific building block type, enabling referential integrity across the topology hierarchy.
+A schema for a structured topology dataset containing typed Feature Collections for each topological dimension: points, edges (Line features), rings (Ring features), faces (Face features), shells (Shell features), and solids (Solid features). Each collection is restricted to its specific building block type, enabling referential integrity across the topology hierarchy. Testing and visualisation of its examples draw on a common set of referenced objects (points, edges, faces) shared across the topo-* building blocks, at `_sources/examples/referenced-objects.ttl`.
 

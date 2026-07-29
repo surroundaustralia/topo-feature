@@ -4,7 +4,7 @@
   "itemIdentifier": "ogc.geo.topo.features.topo-feature-multi-collection",
   "name": "Topo Feature Multi-Collection",
   "highlighted": true,
-  "abstract": "A schema for a structured topology dataset containing typed Feature Collections for each topological dimension: points, edges (Line features), rings (Ring features), faces (Face features), shells (Shell features), and solids (Solid features). Each collection is restricted to its specific building block type, enabling referential integrity across the topology hierarchy.",
+  "abstract": "A schema for a structured topology dataset containing typed Feature Collections for each topological dimension: points, edges (Line features), rings (Ring features), faces (Face features), shells (Shell features), and solids (Solid features). Each collection is restricted to its specific building block type, enabling referential integrity across the topology hierarchy. Testing and visualisation of its examples draw on a common set of referenced objects (points, edges, faces) shared across the topo-* building blocks, at `_sources/examples/referenced-objects.ttl`.",
   "status": "under-development",
   "dateTimeAddition": "2024-01-01T00:00:00Z",
   "itemClass": "schema",
@@ -26,24 +26,24 @@
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ],
-    "ogc.geo.features.feature": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+    "ogc.geo.topo.features.topo-feature": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ],
     "ogc.geo.features.featureCollection": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
     ],
-    "ogc.geo.topo.features.topo-feature": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ]
   },
   "dependsOn": [
-    "ogc.geo.topo.features.topo-feature-collection",
+    "ogc.geo.topo.features.topo-face",
+    "ogc.geo.topo.features.topo-ring",
     "ogc.geo.topo.features.topo-line",
     "ogc.geo.topo.features.topo-solid",
-    "ogc.geo.topo.features.topo-ring",
-    "ogc.geo.topo.features.topo-shell",
-    "ogc.geo.topo.features.topo-face"
+    "ogc.geo.topo.features.topo-feature-collection",
+    "ogc.geo.topo.features.topo-shell"
   ],
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
   "schema": {
@@ -62,6 +62,9 @@
       "description": "GeoJSON points and Edges",
       "type": "topo2geojson",
       "metadata": {
+        "ttl": [
+          "_sources/examples/referenced-objects.ttl"
+        ],
         "mode": "points,edges"
       },
       "code": "Extracts a 2D view of point and edge geometries from 2 or 3D topology models.\n\nInvokes a reusable utility library supporting an OGC Building Blocks transformer interface.\n\nFormat output type (application/geo+json) triggers viewer availability for results.\n",
@@ -89,6 +92,9 @@
       "description": "GeoJSON Polygons for faces",
       "type": "topo2geojson",
       "metadata": {
+        "ttl": [
+          "_sources/examples/referenced-objects.ttl"
+        ],
         "mode": "faces"
       },
       "code": "Extracts a 2D view of polygon geometries from 2 or 3D topology models",

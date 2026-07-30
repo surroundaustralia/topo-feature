@@ -31,15 +31,15 @@
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ],
-    "ogc.geo.topo.features.topo-feature": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
-    ],
     "ogc.geo.features.featureCollection": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
     ],
     "ogc.geo.features.feature": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+    ],
+    "ogc.geo.topo.features.topo-feature": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ]
   },
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/context.jsonld",
@@ -53,6 +53,68 @@
   "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-face/",
   "validationPassed": true,
   "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-face/",
+  "transforms": [
+    {
+      "id": "Points-n-Edges",
+      "description": "GeoJSON points and Edges",
+      "type": "topo2geojson",
+      "metadata": {
+        "ttl": [
+          "_sources/examples/referenced-objects.ttl"
+        ],
+        "mode": "points,edges"
+      },
+      "code": "This uses a reusable code library for 2 and 3D topology",
+      "inputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/json",
+            "label": "JSON",
+            "defaultExtension": "json"
+          }
+        ]
+      },
+      "outputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/geo+json",
+            "label": "GeoJSON",
+            "defaultExtension": "geojson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "Faces-as-Polygons",
+      "description": "GeoJSON Polygons for faces",
+      "type": "topo2geojson",
+      "metadata": {
+        "ttl": [
+          "_sources/examples/referenced-objects.ttl"
+        ],
+        "mode": "faces"
+      },
+      "code": "This uses a reusable code library for 2 and 3D topology",
+      "inputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/json",
+            "label": "JSON",
+            "defaultExtension": "json"
+          }
+        ]
+      },
+      "outputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/geo+json",
+            "label": "GeoJSON",
+            "defaultExtension": "geojson"
+          }
+        ]
+      }
+    }
+  ],
   "description": "# Face Topology Feature\n\nA **Face** is a topological feature representing a bounded planar region (a polygon surface) described by an outer boundary Ring and zero or more inner boundary Rings (holes).\n\n## Topology Model\n\nA Face's topology consists of:\n\n- `type`: `\"Face\"`\n- `rings`: an ordered array of Ring topology objects\n  - The **first** ring is the **outer boundary**\n  - Any **subsequent** rings are **inner boundaries** (holes)\n\nEach Ring contains a `directed_references` array \u2014 an ordered list of [Oriented Object References](../../datatypes/oriented-ref/) that reference Edge features, with orientation (`+` or `-`) indicating direction of traversal.\n\nThe `geometry` property is `null` \u2014 actual coordinates are derived from the referenced Edge and Point features.\n\n## Relationship to other types\n\n| Lower dimension                                            | Face dimension                                    | Higher dimension                                    |\n|:-----------------------------------------------------------|---------------------------------------------------|:----------------------------------------------------|\n| **Edge** <br/>(referenced in **Ring** directed_references) | **Face** <br/> (directed_references to **Rings**) | **Shell** <br/>(directed_references to  **Faces** ) |\n\nNote **directed references** are required for 3D, whereas 2D may use **ordered references**, and directions can be calculated if required. For 3D this calculation burden is much greater and explicit directions are required.",
   "examples": [
     {
@@ -65,6 +127,18 @@
           "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-face/examples/face-with-context.json",
           "schema-ref": "#testCollection",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-face/face.json",
+          "transformResults": {
+            "Points-n-Edges": {
+              "success": true,
+              "sizeBytes": 1765,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-face/transforms/face.Points-n-Edges.geojson"
+            },
+            "Faces-as-Polygons": {
+              "success": true,
+              "sizeBytes": 1390,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-face/transforms/face.Faces-as-Polygons.geojson"
+            }
+          },
           "sizeBytes": 3988,
           "code": "{\n  \"type\": \"FeatureCollection\",\n  \"comment\": \"Self-contained example: a single Face with all supporting edges and points included\",\n  \"features\": [],\n  \"points\": [\n    {\n      \"id\": \"uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38\",\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          10.0,\n          0.0,\n          0.0\n        ]\n      },\n      \"properties\": null\n    },\n    {\n      \"id\": \"uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0\",\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          10.0,\n          10.0,\n          0.0\n        ]\n      },\n      \"properties\": null\n    },\n    {\n      \"id\": \"uuid:c611f840-2829-44b2-b367-3915ca7875a4\",\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          10.0,\n          10.0,\n          10.0\n        ]\n      },\n      \"properties\": null\n    },\n    {\n      \"id\": \"uuid:fad324b9-801f-40f4-b65b-91f8753e9698\",\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          18.0,\n          0.0,\n          10.0\n        ]\n      },\n      \"properties\": null\n    }\n  ],\n  \"edges\": [\n    {\n      \"id\": \"uuid:3af6ffd3-355f-48a4-badf-dcc136d547f3\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Edge\",\n        \"references\": [\n          \"uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38\",\n          \"uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0\"\n        ]\n      },\n      \"properties\": {\n        \"length\": 10.0\n      }\n    },\n    {\n      \"id\": \"uuid:cdf01952-2518-4523-a3a7-363be4b8bc3f\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Edge\",\n        \"references\": [\n          \"uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0\",\n          \"uuid:c611f840-2829-44b2-b367-3915ca7875a4\"\n        ]\n      },\n      \"properties\": {\n        \"length\": 10.0\n      }\n    },\n    {\n      \"id\": \"uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Edge\",\n        \"references\": [\n          \"uuid:c611f840-2829-44b2-b367-3915ca7875a4\",\n          \"uuid:fad324b9-801f-40f4-b65b-91f8753e9698\"\n        ]\n      },\n      \"properties\": {\n        \"length\": 10.0\n      }\n    },\n    {\n      \"id\": \"uuid:23641631-470f-4c4b-981d-23ccb35d6a51\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Edge\",\n        \"references\": [\n          \"uuid:fad324b9-801f-40f4-b65b-91f8753e9698\",\n          \"uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38\"\n        ]\n      },\n      \"properties\": {\n        \"length\": 10.0\n      }\n    }\n  ],\n  \"rings\": [\n    {\n      \"id\": \"uuid:fbcc1a1e-5e9a-47c4-b3b0-d7812f585ab8\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Ring\",\n        \"directed_references\": [\n          {\n            \"ref\": \"uuid:3af6ffd3-355f-48a4-badf-dcc136d547f3\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:cdf01952-2518-4523-a3a7-363be4b8bc3f\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:23641631-470f-4c4b-981d-23ccb35d6a51\",\n            \"orientation\": \"+\"\n          }\n        ]\n      },\n      \"properties\": {\n        \"circumference\": 40.00\n      }\n    }\n  ],\n  \"faces\": [\n    {\n      \"id\": \"uuid:2c21efab-db80-4dd0-96c0-59a63f956d5b\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Face\",\n        \"directed_references\": [\n          {\n            \"ref\": \"uuid:fbcc1a1e-5e9a-47c4-b3b0-d7812f585ab8\",\n            \"orientation\": \"+\"\n          }\n        ]\n      },\n      \"properties\": {\n        \"normal\": [\n          1.0,\n          0.0,\n          0.0\n        ],\n        \"area\": 100.0,\n        \"description\": \"East-facing boundary face, [Cube]\"\n      }\n    }\n  ]\n}"
         },
@@ -92,6 +166,18 @@
           "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-face/examples/face-simple.json",
           "schema-ref": "#testCollection",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-face/4-edge-face.json",
+          "transformResults": {
+            "Points-n-Edges": {
+              "success": true,
+              "sizeBytes": 2,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-face/transforms/4-edge-face.Points-n-Edges.geojson"
+            },
+            "Faces-as-Polygons": {
+              "success": true,
+              "sizeBytes": 1402,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-face/transforms/4-edge-face.Faces-as-Polygons.geojson"
+            }
+          },
           "sizeBytes": 1301,
           "code": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [],\n  \"rings\": [\n    {\n      \"id\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Ring\",\n        \"directed_references\": [\n          {\n            \"ref\": \"uuid:3af6ffd3-355f-48a4-badf-dcc136d547f3\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:cdf01952-2518-4523-a3a7-363be4b8bc3f\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:23641631-470f-4c4b-981d-23ccb35d6a51\",\n            \"orientation\": \"+\"\n          }\n        ]\n      },\n      \"properties\": {\n        \"circumference\": 40.0\n      }\n    }\n  ],\n  \"faces\": [\n    {\n      \"id\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Face\",\n        \"directed_references\": [\n          {\n            \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n            \"orientation\": \"+\"\n          }\n        ]\n      },\n      \"properties\": {\n        \"normal\": [\n          1.0,\n          0.0,\n          0.0\n        ],\n        \"area\": 100.0\n      }\n    }\n  ]\n}\n"
         },
@@ -119,6 +205,18 @@
           "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-face/examples/face-6edge.json",
           "schema-ref": "#testCollection",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-face/6-edge-face.json",
+          "transformResults": {
+            "Points-n-Edges": {
+              "success": true,
+              "sizeBytes": 2,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-face/transforms/6-edge-face.Points-n-Edges.geojson"
+            },
+            "Faces-as-Polygons": {
+              "success": true,
+              "sizeBytes": 1402,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-face/transforms/6-edge-face.Faces-as-Polygons.geojson"
+            }
+          },
           "sizeBytes": 1540,
           "code": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [],\n  \"rings\": [\n    {\n      \"id\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Ring\",\n        \"directed_references\": [\n          {\n            \"ref\": \"uuid:3af6ffd3-355f-48a4-badf-dcc136d547f3\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:cdf01952-2518-4523-a3a7-363be4b8bc3f\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:23641631-470f-4c4b-981d-23ccb35d6a51\",\n            \"orientation\": \"+\"\n          },\n          {\n            \"ref\": \"uuid:23141631-470f-4c4b-981d-23ccb35d6a51\",\n            \"orientation\": \"-\"\n          },\n          {\n            \"ref\": \"uuid:23641631-470f-4d4b-981d-23ccb35d6a51\",\n            \"orientation\": \"-\"\n          }\n        ]\n      },\n      \"properties\": {\n        \"circumference\": 60.0\n      }\n    }\n  ],\n  \"faces\": [\n    {\n      \"id\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Face\",\n        \"directed_references\": [\n          {\n            \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n            \"orientation\": \"+\"\n          }\n        ]\n      },\n      \"properties\": {\n        \"normal\": [\n          1.0,\n          0.0,\n          0.0\n        ],\n        \"area\": 260.0\n      }\n    }\n  ]\n}"
         },

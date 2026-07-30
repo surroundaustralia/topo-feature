@@ -2,7 +2,7 @@
   "name": "Topo-Feature",
   "abstract": "Features with 2 or 3D geometry defined via generalised topology between identified objects (Features).",
   "description": "Defines Feature (object) topology using a _topology_ property containing an ordered list of references to other features. \\n\\nOther features may be either features with topology properties or GeoJSON (or FG-JSON) geometry properties.\\n\\nTopo-Feature defined objects can be solids, swept volumes or any other concept. \\n\\nTopo-Feature allows for general topology to be described between independent features (objects) with any geometry dimensions. \\n\\nTopo-Feature-Collections define a self-contained set of such objects with referential integrity (all elements are present to fully define geometry coordinates.\\n\\nNote: This is a generalisation of the TopoJSON concept using inline, nested arrays of coordinates - but not limited to self-contained geometries per feature, duplicated between topologically related features..\n\nUsing JSON-FG allows for explicit CRS.\n\nSupports transformation \"smoke tests\" from 2 and 3D topology to simple geojson views.\n\nIf desired coordinate compaction transformations could be defined as per TopoJSON functionality, using specialised CRS definition._\n",
-  "modified": "2026-07-29T09:26:18.879115",
+  "modified": "2026-07-29T23:37:39.126206",
   "tooling": {
     "bblocks-postprocess": {
       "commitId": "\"782e6be7338edb48ec5ec9a0c1d7f8df22df5ca0",
@@ -211,9 +211,9 @@
       ],
       "shaclShapes": {},
       "dependsOn": [
-        "bblocks://ogc.ogc-utils.iri-or-curie",
+        "bblocks://ogc.geo.json-fg.link-role",
         "bblocks://ogc.geo.topo.datatypes.oriented-ref",
-        "bblocks://ogc.geo.json-fg.link-role"
+        "bblocks://ogc.ogc-utils.iri-or-curie"
       ],
       "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld",
       "schema": {
@@ -256,8 +256,8 @@
       "maturity": "development",
       "scope": "unstable",
       "dependsOn": [
-        "bblocks://ogc.geo.topo.features.topo-feature-collection",
-        "bblocks://ogc.geo.topo.datatypes.topology"
+        "bblocks://ogc.geo.topo.datatypes.topology",
+        "bblocks://ogc.geo.topo.features.topo-feature-collection"
       ],
       "tags": [
         "topology",
@@ -409,8 +409,8 @@
         ]
       },
       "dependsOn": [
-        "bblocks://ogc.geo.topo.features.topo-feature",
-        "bblocks://ogc.geo.topo.datatypes.topology"
+        "bblocks://ogc.geo.topo.datatypes.topology",
+        "bblocks://ogc.geo.topo.features.topo-feature"
       ],
       "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld",
       "schema": {
@@ -423,6 +423,38 @@
       "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/",
       "validationPassed": true,
       "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-arc/",
+      "transforms": [
+        {
+          "id": "Points-n-Edges",
+          "description": "GeoJSON points and a line approximation (chord) of each arc/circle/spline",
+          "type": "topo2geojson",
+          "metadata": {
+            "ttl": [
+              "_sources/examples/referenced-objects.ttl"
+            ],
+            "mode": "points,edges"
+          },
+          "code": "Extracts a 2D \"smoke test\" view of the point references used by each\nArcWithCenter/Arc/ArcByChord/CircleByCenter/CubicSpline example.\n\ntopo2geojson does not compute true arc/circle/spline geometry \u2014 it\nresolves the topology's point references directly, so the output is a\nstraight-line (chord) approximation, not the actual curved geometry.\n\nInvokes a reusable utility library supporting an OGC Building Blocks\ntransformer interface.\n",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ]
+          }
+        }
+      ],
       "documentation": {
         "json-full": {
           "mediatype": "application/json",
@@ -453,13 +485,13 @@
       "maturity": "development",
       "scope": "unstable",
       "dependsOn": [
-        "bblocks://ogc.geo.topo.features.topo-feature",
         "bblocks://ogc.geo.features.featureCollection",
+        "bblocks://ogc.geo.topo.features.topo-feature",
         "bblocks://ogc.geo.json-fg.featureCollection",
-        "bblocks://ogc.geo.json-fg.feature",
-        "bblocks://ogc.geo.json-fg.featureCollection-lenient",
         "bblocks://ogc.geo.json-fg.feature-lenient",
-        "bblocks://ogc.geo.features.feature"
+        "bblocks://ogc.geo.features.feature",
+        "bblocks://ogc.geo.json-fg.featureCollection-lenient",
+        "bblocks://ogc.geo.json-fg.feature"
       ],
       "tags": [
         "topology",
@@ -471,15 +503,15 @@
           "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
           "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
         ],
-        "ogc.geo.topo.features.topo-feature": [
-          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
-          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
-        ],
         "ogc.geo.features.featureCollection": [
           "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
         ],
         "ogc.geo.features.feature": [
           "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
+        "ogc.geo.topo.features.topo-feature": [
+          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
         ]
       },
       "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld",
@@ -493,6 +525,68 @@
       "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/",
       "validationPassed": true,
       "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-feature-collection/",
+      "transforms": [
+        {
+          "id": "Points-n-Edges",
+          "description": "GeoJSON points and Edges",
+          "type": "topo2geojson",
+          "metadata": {
+            "ttl": [
+              "_sources/examples/referenced-objects.ttl"
+            ],
+            "mode": "points,edges"
+          },
+          "code": "This uses a reusable code library for 2 and 3D topology",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ]
+          }
+        },
+        {
+          "id": "Faces-as-Polygons",
+          "description": "GeoJSON Polygons for faces",
+          "type": "topo2geojson",
+          "metadata": {
+            "ttl": [
+              "_sources/examples/referenced-objects.ttl"
+            ],
+            "mode": "faces"
+          },
+          "code": "This uses a reusable code library for 2 and 3D topology",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ]
+          }
+        }
+      ],
       "documentation": {
         "json-full": {
           "mediatype": "application/json",
@@ -546,8 +640,8 @@
         ]
       },
       "dependsOn": [
-        "bblocks://ogc.geo.topo.features.topo-feature",
-        "bblocks://ogc.geo.topo.datatypes.topology"
+        "bblocks://ogc.geo.topo.datatypes.topology",
+        "bblocks://ogc.geo.topo.features.topo-feature"
       ],
       "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/context.jsonld",
       "schema": {
@@ -560,6 +654,38 @@
       "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-line/",
       "validationPassed": true,
       "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-line/",
+      "transforms": [
+        {
+          "id": "Points-n-Edges",
+          "description": "GeoJSON points, LineStrings and MultiLineStrings",
+          "type": "topo2geojson",
+          "metadata": {
+            "ttl": [
+              "_sources/examples/referenced-objects.ttl"
+            ],
+            "mode": "points,edges,rings"
+          },
+          "code": "Extracts a 2D view of the point references used by each LineString/\nMultiLineString example.\n\nInvokes a reusable utility library supporting an OGC Building Blocks\ntransformer interface. Resolved MultiLineString geometries are\nsurfaced under the \"rings\" mode bucket alongside points/edges.\n",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ]
+          }
+        }
+      ],
       "documentation": {
         "json-full": {
           "mediatype": "application/json",
@@ -590,9 +716,9 @@
       "maturity": "development",
       "scope": "unstable",
       "dependsOn": [
+        "bblocks://ogc.geo.topo.datatypes.topology",
         "bblocks://ogc.geo.topo.datatypes.oriented-ref",
-        "bblocks://ogc.geo.topo.features.topo-feature",
-        "bblocks://ogc.geo.topo.datatypes.topology"
+        "bblocks://ogc.geo.topo.features.topo-feature"
       ],
       "tags": [
         "topology",
@@ -628,6 +754,68 @@
       "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-ring/",
       "validationPassed": true,
       "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-ring/",
+      "transforms": [
+        {
+          "id": "Points-n-Edges",
+          "description": "GeoJSON points and Edges",
+          "type": "topo2geojson",
+          "metadata": {
+            "ttl": [
+              "_sources/examples/referenced-objects.ttl"
+            ],
+            "mode": "points,edges"
+          },
+          "code": "This uses a reusable code library for 2 and 3D topology",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ]
+          }
+        },
+        {
+          "id": "Faces-as-Polygons",
+          "description": "GeoJSON Polygon for the ring boundary",
+          "type": "topo2geojson",
+          "metadata": {
+            "ttl": [
+              "_sources/examples/referenced-objects.ttl"
+            ],
+            "mode": "faces"
+          },
+          "code": "This uses a reusable code library for 2 and 3D topology",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ]
+          }
+        }
+      ],
       "documentation": {
         "json-full": {
           "mediatype": "application/json",
@@ -674,15 +862,15 @@
           "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
           "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
         ],
-        "ogc.geo.topo.features.topo-feature": [
-          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
-          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
-        ],
         "ogc.geo.features.featureCollection": [
           "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
         ],
         "ogc.geo.features.feature": [
           "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
+        "ogc.geo.topo.features.topo-feature": [
+          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
         ]
       },
       "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/context.jsonld",
@@ -696,6 +884,68 @@
       "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-face/",
       "validationPassed": true,
       "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-face/",
+      "transforms": [
+        {
+          "id": "Points-n-Edges",
+          "description": "GeoJSON points and Edges",
+          "type": "topo2geojson",
+          "metadata": {
+            "ttl": [
+              "_sources/examples/referenced-objects.ttl"
+            ],
+            "mode": "points,edges"
+          },
+          "code": "This uses a reusable code library for 2 and 3D topology",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ]
+          }
+        },
+        {
+          "id": "Faces-as-Polygons",
+          "description": "GeoJSON Polygons for faces",
+          "type": "topo2geojson",
+          "metadata": {
+            "ttl": [
+              "_sources/examples/referenced-objects.ttl"
+            ],
+            "mode": "faces"
+          },
+          "code": "This uses a reusable code library for 2 and 3D topology",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ]
+          }
+        }
+      ],
       "documentation": {
         "json-full": {
           "mediatype": "application/json",
@@ -733,10 +983,6 @@
       "shaclRules": [],
       "shaclClosures": [],
       "shaclShapes": {
-        "ogc.geo.topo.features.topo-feature": [
-          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
-          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
-        ],
         "ogc.geo.topo.features.topo-feature-collection": [
           "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
           "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
@@ -746,12 +992,16 @@
         ],
         "ogc.geo.features.feature": [
           "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
+        "ogc.geo.topo.features.topo-feature": [
+          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
         ]
       },
       "dependsOn": [
-        "bblocks://ogc.geo.topo.features.topo-feature",
+        "bblocks://ogc.geo.topo.datatypes.topology",
         "bblocks://ogc.geo.topo.features.topo-feature-collection",
-        "bblocks://ogc.geo.topo.datatypes.topology"
+        "bblocks://ogc.geo.topo.features.topo-feature"
       ],
       "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-polyhedron/context.jsonld",
       "schema": {
@@ -764,6 +1014,68 @@
       "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-polyhedron/",
       "validationPassed": true,
       "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-polyhedron/",
+      "transforms": [
+        {
+          "id": "Points-n-Edges",
+          "description": "GeoJSON points (the Polyhedron's own geometry does not resolve \u2014 see note)",
+          "type": "topo2geojson",
+          "metadata": {
+            "ttl": [
+              "_sources/examples/referenced-objects.ttl"
+            ],
+            "mode": "points,edges"
+          },
+          "code": "NOTE: topology.type \"Polyhedron\" (a nested shells-of-rings-of-point-\nreferences structure, as used in examples/building_topo.json) is not\nyet supported by topo2geojson \u2014 it resolves to no geometry rather\nthan erroring. This transform still surfaces the example's inline\nvertex Point features (they don't depend on Polyhedron support), but\nthe Polyhedron feature itself is omitted until that support is added.\n\nInvokes a reusable utility library supporting an OGC Building Blocks\ntransformer interface.\n",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ]
+          }
+        },
+        {
+          "id": "Faces-as-Polygons",
+          "description": "GeoJSON Polygons for faces (currently produces no output \u2014 see note)",
+          "type": "topo2geojson",
+          "metadata": {
+            "ttl": [
+              "_sources/examples/referenced-objects.ttl"
+            ],
+            "mode": "faces"
+          },
+          "code": "NOTE: see Points-n-Edges \u2014 topology.type \"Polyhedron\" is not yet\nsupported by topo2geojson, so this currently produces no output (the\nexample's only face-like feature is the unresolved Polyhedron).\n",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ]
+          }
+        }
+      ],
       "documentation": {
         "json-full": {
           "mediatype": "application/json",
@@ -810,15 +1122,15 @@
           "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
           "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
         ],
-        "ogc.geo.topo.features.topo-feature": [
-          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
-          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
-        ],
         "ogc.geo.features.featureCollection": [
           "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
         ],
         "ogc.geo.features.feature": [
           "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
+        "ogc.geo.topo.features.topo-feature": [
+          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
         ]
       },
       "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/context.jsonld",
@@ -832,6 +1144,68 @@
       "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-shell/",
       "validationPassed": true,
       "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-shell/",
+      "transforms": [
+        {
+          "id": "Points-n-Edges",
+          "description": "GeoJSON points and Edges",
+          "type": "topo2geojson",
+          "metadata": {
+            "ttl": [
+              "_sources/examples/referenced-objects.ttl"
+            ],
+            "mode": "points,edges"
+          },
+          "code": "This uses a reusable code library for 2 and 3D topology",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ]
+          }
+        },
+        {
+          "id": "Faces-as-Polygons",
+          "description": "GeoJSON (Multi)Polygon approximation of the shell's boundary faces",
+          "type": "topo2geojson",
+          "metadata": {
+            "ttl": [
+              "_sources/examples/referenced-objects.ttl"
+            ],
+            "mode": "faces"
+          },
+          "code": "This uses a reusable code library for 2 and 3D topology",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ]
+          }
+        }
+      ],
       "documentation": {
         "json-full": {
           "mediatype": "application/json",
@@ -872,15 +1246,15 @@
           "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
           "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
         ],
-        "ogc.geo.topo.features.topo-feature": [
-          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
-          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
-        ],
         "ogc.geo.features.featureCollection": [
           "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
         ],
         "ogc.geo.features.feature": [
           "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+        ],
+        "ogc.geo.topo.features.topo-feature": [
+          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+          "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
         ]
       },
       "dependsOn": [
@@ -899,6 +1273,68 @@
       "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-solid/",
       "validationPassed": true,
       "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-solid/",
+      "transforms": [
+        {
+          "id": "Points-n-Edges",
+          "description": "GeoJSON points and Edges",
+          "type": "topo2geojson",
+          "metadata": {
+            "ttl": [
+              "_sources/examples/referenced-objects.ttl"
+            ],
+            "mode": "points,edges"
+          },
+          "code": "This uses a reusable code library for 2 and 3D topology",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ]
+          }
+        },
+        {
+          "id": "Faces-as-Polygons",
+          "description": "GeoJSON (Multi)Polygon approximation of the solid's boundary faces",
+          "type": "topo2geojson",
+          "metadata": {
+            "ttl": [
+              "_sources/examples/referenced-objects.ttl"
+            ],
+            "mode": "faces"
+          },
+          "code": "This uses a reusable code library for 2 and 3D topology",
+          "inputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/json",
+                "label": "JSON",
+                "defaultExtension": "json"
+              }
+            ]
+          },
+          "outputs": {
+            "mediaTypes": [
+              {
+                "mimeType": "application/geo+json",
+                "label": "GeoJSON",
+                "defaultExtension": "geojson"
+              }
+            ]
+          }
+        }
+      ],
       "documentation": {
         "json-full": {
           "mediatype": "application/json",
@@ -936,11 +1372,11 @@
       ],
       "group": "OGC",
       "shaclShapes": {
-        "ogc.geo.topo.features.topo-feature-collection": [
+        "ogc.geo.topo.features.topo-feature": [
           "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
           "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
         ],
-        "ogc.geo.topo.features.topo-feature": [
+        "ogc.geo.topo.features.topo-feature-collection": [
           "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
           "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
         ],
@@ -952,12 +1388,12 @@
         ]
       },
       "dependsOn": [
-        "bblocks://ogc.geo.topo.features.topo-face",
         "bblocks://ogc.geo.topo.features.topo-ring",
+        "bblocks://ogc.geo.topo.features.topo-face",
         "bblocks://ogc.geo.topo.features.topo-line",
+        "bblocks://ogc.geo.topo.features.topo-shell",
         "bblocks://ogc.geo.topo.features.topo-solid",
-        "bblocks://ogc.geo.topo.features.topo-feature-collection",
-        "bblocks://ogc.geo.topo.features.topo-shell"
+        "bblocks://ogc.geo.topo.features.topo-feature-collection"
       ],
       "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
       "schema": {

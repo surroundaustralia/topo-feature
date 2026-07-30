@@ -1,3 +1,4 @@
+
 # Referenced-object ID conflicts
 
 This file documents ID collisions found while building
@@ -66,3 +67,15 @@ None of the above IDs were edited as part of generating `referenced-objects.ttl`
 means assigning fresh unique IDs (or correcting typos) in the affected example JSON files across
 `topo-face`, `topo-feature`, `topo-feature-multi-collection`, `topo-shell`, and `topo-solid`, which
 is a separate change best made deliberately rather than as a side effect of building a lookup file.
+
+# Resulting errors - missing references
+
+Topology references not found in their example file or referenced-objects.ttl                                                                                                                                  
+                                                                                                                                                                                                                 
+  1. topo-face/examples/face-6edge.json — 2 of its 6 ring edges (uuid:23141631-..., uuid:23641631-...4d4b...) don't exist anywhere; they look like typos of the real edge uuid:23641631-...4c4b...               
+  (single-character transpositions). Effect: they're silently skipped, so the "Face with 6 edges" example actually renders as the same 4-edge rectangle as the simple case — not an error, just silently wrong   
+  geometry.                                                                                                                                                                                                      
+  2. topo-feature/examples/face-edge-refs.json — its Ring ref uuid:2c21efab-db80-4dd0-96c0-59a63f956d5b is entirely fabricated (not in the TTL, not defined inline). Resolves to nothing.                        
+  3. topo-ring/examples/ring-simple.json — its edge ref uuid:c60507ba-226b-4e49-a702-e9afef899b23 isn't in the TTL. That exact UUID is defined, but only inline in two other blocks' own example files           
+  (topo-feature's edge-vertex-refs.json as an Edge, topo-face's examples as a Ring) — each block's examples are resolved independently, so this cross-reference doesn't work.                                    
+  4. topo-shell/examples/shell-simple.json — all 8 of its Face refs are fabricated placeholder UUIDs, none defined anywhere. The whole Shell fails to resolve.           

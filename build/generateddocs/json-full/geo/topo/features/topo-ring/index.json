@@ -15,9 +15,9 @@
   "maturity": "development",
   "scope": "unstable",
   "dependsOn": [
+    "ogc.geo.topo.datatypes.topology",
     "ogc.geo.topo.datatypes.oriented-ref",
-    "ogc.geo.topo.features.topo-feature",
-    "ogc.geo.topo.datatypes.topology"
+    "ogc.geo.topo.features.topo-feature"
   ],
   "tags": [
     "topology",
@@ -53,6 +53,68 @@
   "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-ring/",
   "validationPassed": true,
   "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-ring/",
+  "transforms": [
+    {
+      "id": "Points-n-Edges",
+      "description": "GeoJSON points and Edges",
+      "type": "topo2geojson",
+      "metadata": {
+        "ttl": [
+          "_sources/examples/referenced-objects.ttl"
+        ],
+        "mode": "points,edges"
+      },
+      "code": "This uses a reusable code library for 2 and 3D topology",
+      "inputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/json",
+            "label": "JSON",
+            "defaultExtension": "json"
+          }
+        ]
+      },
+      "outputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/geo+json",
+            "label": "GeoJSON",
+            "defaultExtension": "geojson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "Faces-as-Polygons",
+      "description": "GeoJSON Polygon for the ring boundary",
+      "type": "topo2geojson",
+      "metadata": {
+        "ttl": [
+          "_sources/examples/referenced-objects.ttl"
+        ],
+        "mode": "faces"
+      },
+      "code": "This uses a reusable code library for 2 and 3D topology",
+      "inputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/json",
+            "label": "JSON",
+            "defaultExtension": "json"
+          }
+        ]
+      },
+      "outputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/geo+json",
+            "label": "GeoJSON",
+            "defaultExtension": "geojson"
+          }
+        ]
+      }
+    }
+  ],
   "description": "# Ring Topology Feature\n\nA **Ring** is a topological feature representing an ordered, closed loop of oriented Edge references. \nIt forms the boundary of a Face.\n\n## Topology Model\n\nA Ring's topology consists of:\n\n- `type`: `\"Ring\"`\n- `directed_references`: an ordered array of [Oriented Object References](../../datatypes/oriented-ref/), each referencing an Edge feature with a `ref` (feature ID) and `orientation` (`+` or `-`)\n\nThe `directed_references` form a closed loop: the end vertex of each edge (considering orientation) must equal the start vertex of the next.\n\n## Orientation\n\nEach directed reference specifies an orientation (`+` or `-`) indicating whether the referenced Edge is traversed in its natural or reversed direction. \nThis allows edges to be shared between adjacent faces.\n\n## Example\n\n```json\n{\n  \"topology\": {\n    \"type\": \"Ring\",\n    \"directed_references\": [\n      { \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\", \"orientation\": \"+\" },\n      { \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\", \"orientation\": \"+\" },\n      { \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\", \"orientation\": \"+\" },\n      { \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\", \"orientation\": \"+\" }\n    ]\n  }\n}\n```\n",
   "examples": [
     {
@@ -63,6 +125,18 @@
           "language": "json",
           "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-ring/examples/ring-simple.json",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-ring/example_1_1.json",
+          "transformResults": {
+            "Points-n-Edges": {
+              "success": true,
+              "sizeBytes": 2266,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-ring/transforms/example_1_1.Points-n-Edges.geojson"
+            },
+            "Faces-as-Polygons": {
+              "success": true,
+              "sizeBytes": 638,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-ring/transforms/example_1_1.Faces-as-Polygons.geojson"
+            }
+          },
           "sizeBytes": 690,
           "code": "{\n  \"id\": \"uuid:ring-east-face-outer\",\n  \"type\": \"Feature\",\n  \"geometry\": null,\n  \"circumference\": 33.2,\n  \"topology\": {\n    \"type\": \"Ring\",\n    \"directed_references\": [\n      {\n        \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n        \"orientation\": \"+\"\n      },\n      {\n        \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\",\n        \"orientation\": \"+\"\n      },\n      {\n        \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\",\n        \"orientation\": \"+\"\n      },\n      {\n        \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\",\n        \"orientation\": \"+\"\n      }\n    ]\n  },\n  \"properties\": {\n    \"description\": \"Outer boundary ring of east face of upper section\"\n  }\n}"
         },

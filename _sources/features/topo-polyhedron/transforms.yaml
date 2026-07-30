@@ -1,0 +1,29 @@
+transforms:
+
+  - id: Points-n-Edges
+    description: GeoJSON points (the Polyhedron's own geometry does not resolve — see note)
+    type: topo2geojson
+    metadata:
+      ttl: [ _sources/examples/referenced-objects.ttl ]
+      mode: points,edges
+    code: |
+      NOTE: topology.type "Polyhedron" (a nested shells-of-rings-of-point-
+      references structure, as used in examples/building_topo.json) is not
+      yet supported by topo2geojson — it resolves to no geometry rather
+      than erroring. This transform still surfaces the example's inline
+      vertex Point features (they don't depend on Polyhedron support), but
+      the Polyhedron feature itself is omitted until that support is added.
+
+      Invokes a reusable utility library supporting an OGC Building Blocks
+      transformer interface.
+
+  - id: Faces-as-Polygons
+    description: GeoJSON Polygons for faces (currently produces no output — see note)
+    type: topo2geojson
+    metadata:
+      ttl: [ _sources/examples/referenced-objects.ttl ]
+      mode: faces
+    code: |
+      NOTE: see Points-n-Edges — topology.type "Polyhedron" is not yet
+      supported by topo2geojson, so this currently produces no output (the
+      example's only face-like feature is the unresolved Polyhedron).

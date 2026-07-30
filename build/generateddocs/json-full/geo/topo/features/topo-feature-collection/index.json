@@ -15,13 +15,13 @@
   "maturity": "development",
   "scope": "unstable",
   "dependsOn": [
-    "ogc.geo.topo.features.topo-feature",
     "ogc.geo.features.featureCollection",
+    "ogc.geo.topo.features.topo-feature",
     "ogc.geo.json-fg.featureCollection",
-    "ogc.geo.json-fg.feature",
-    "ogc.geo.json-fg.featureCollection-lenient",
     "ogc.geo.json-fg.feature-lenient",
-    "ogc.geo.features.feature"
+    "ogc.geo.features.feature",
+    "ogc.geo.json-fg.featureCollection-lenient",
+    "ogc.geo.json-fg.feature"
   ],
   "tags": [
     "topology",
@@ -33,15 +33,15 @@
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ],
-    "ogc.geo.topo.features.topo-feature": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
-    ],
     "ogc.geo.features.featureCollection": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
     ],
     "ogc.geo.features.feature": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+    ],
+    "ogc.geo.topo.features.topo-feature": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ]
   },
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld",
@@ -55,6 +55,68 @@
   "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/",
   "validationPassed": true,
   "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-feature-collection/",
+  "transforms": [
+    {
+      "id": "Points-n-Edges",
+      "description": "GeoJSON points and Edges",
+      "type": "topo2geojson",
+      "metadata": {
+        "ttl": [
+          "_sources/examples/referenced-objects.ttl"
+        ],
+        "mode": "points,edges"
+      },
+      "code": "This uses a reusable code library for 2 and 3D topology",
+      "inputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/json",
+            "label": "JSON",
+            "defaultExtension": "json"
+          }
+        ]
+      },
+      "outputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/geo+json",
+            "label": "GeoJSON",
+            "defaultExtension": "geojson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "Faces-as-Polygons",
+      "description": "GeoJSON Polygons for faces",
+      "type": "topo2geojson",
+      "metadata": {
+        "ttl": [
+          "_sources/examples/referenced-objects.ttl"
+        ],
+        "mode": "faces"
+      },
+      "code": "This uses a reusable code library for 2 and 3D topology",
+      "inputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/json",
+            "label": "JSON",
+            "defaultExtension": "json"
+          }
+        ]
+      },
+      "outputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/geo+json",
+            "label": "GeoJSON",
+            "defaultExtension": "geojson"
+          }
+        ]
+      }
+    }
+  ],
   "description": "## Feature Collection with Explicit Topology \n\n%definition% \n\nA Feature Collection where the set of TopoFeatures contained describes the full geometry of higher-dimension features by topology relationships, ultimately grounded in Point features with explicit coordinates.\n\nTopoFeature is a feature type using a topology property to reference an ordered list of references to other features. \n\nOther features may be either features with topology properties or GeoJSON (or FG-JSON) point objects.\n\nThis is a generalisation of the [TopoJSON](https://github.com/topojson/topojson) concept using inline data, but not limited to the LineStrings. \nTopological defined objects can be solids, swept volumes or any other concept.\n\n",
   "examples": [
     {
@@ -66,6 +128,18 @@
           "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/examples/example-points.json",
           "base-uri": "http://www.example.com/features/",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/points-only.json",
+          "transformResults": {
+            "Points-n-Edges": {
+              "success": true,
+              "sizeBytes": 579,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/transforms/points-only.Points-n-Edges.geojson"
+            },
+            "Faces-as-Polygons": {
+              "success": true,
+              "sizeBytes": 2,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/transforms/points-only.Faces-as-Polygons.geojson"
+            }
+          },
           "sizeBytes": 469,
           "code": "{\n  \"type\": \"FeatureCollection\",\n  \"id\": \"pointsonly\",\n  \"features\": [\n    {\n      \"type\": \"Feature\",\n      \"id\": \"P1\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          10,\n          10\n        ]\n      },\n      \"properties\": null\n    },\n    {\n      \"type\": \"Feature\",\n      \"id\": \"P2\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          20,\n          20\n        ]\n      },\n      \"properties\": null\n    }\n  ]\n}"
         },
@@ -92,6 +166,18 @@
           "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/examples/linestring.json",
           "base-uri": "http://www.example.com/features/",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/referenced-points.json",
+          "transformResults": {
+            "Points-n-Edges": {
+              "success": true,
+              "sizeBytes": 879,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/transforms/referenced-points.Points-n-Edges.geojson"
+            },
+            "Faces-as-Polygons": {
+              "success": true,
+              "sizeBytes": 2,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/transforms/referenced-points.Faces-as-Polygons.geojson"
+            }
+          },
           "sizeBytes": 692,
           "code": "{\n  \"type\": \"FeatureCollection\",\n  \"id\": \"line\",\n  \"features\": [\n    {\n      \"type\": \"Feature\",\n      \"id\": \"LineP1P2\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Edge\",\n        \"references\": [\n          \"P1\",\n          \"P2\"\n        ]\n      },\n      \"properties\": null\n    },\n    {\n      \"type\": \"Feature\",\n      \"id\": \"P1\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          10,\n          10\n        ]\n      },\n      \"properties\": null\n    },\n    {\n      \"type\": \"Feature\",\n      \"id\": \"P2\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          20,\n          20\n        ]\n      },\n      \"properties\": null\n    }\n  ]\n}"
         },
@@ -118,6 +204,18 @@
           "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/example.json",
           "base-uri": "http://www.example.com/features/",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/referenced-point-line-polygon.json",
+          "transformResults": {
+            "Points-n-Edges": {
+              "success": true,
+              "sizeBytes": 3167,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/transforms/referenced-point-line-polygon.Points-n-Edges.geojson"
+            },
+            "Faces-as-Polygons": {
+              "success": true,
+              "sizeBytes": 848,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/transforms/referenced-point-line-polygon.Faces-as-Polygons.geojson"
+            }
+          },
           "sizeBytes": 1636,
           "code": "{\n  \"type\": \"FeatureCollection\",\n  \"id\": \"TopoCollectionExample\",\n  \"features\": [\n    {\n      \"type\": \"Feature\",\n      \"id\": \"P1\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          10,\n          10\n        ]\n      },\n      \"properties\": null\n    },\n    {\n      \"type\": \"Feature\",\n      \"id\": \"P2\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          20,\n          20\n        ]\n      },\n      \"properties\": null\n    },\n    {\n      \"type\": \"Feature\",\n      \"id\": \"P3\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          10,\n          20\n        ]\n      },\n      \"properties\": null\n    },\n    {\n      \"type\": \"Feature\",\n      \"id\": \"LineP1P2\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Edge\",\n        \"references\": [\n          \"P1\",\n          \"P2\"\n        ]\n      },\n      \"properties\": null\n    },\n    {\n      \"type\": \"Feature\",\n      \"id\": \"LineP2P3\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Edge\",\n        \"references\": [\n          \"P2\",\n          \"P3\"\n        ]\n      },\n      \"properties\": null\n    },\n    {\n      \"type\": \"Feature\",\n      \"id\": \"LineP3P1\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Edge\",\n        \"references\": [\n          \"P3\",\n          \"P1\"\n        ]\n      },\n      \"properties\": null\n    },\n    {\n      \"type\": \"Feature\",\n      \"id\": \"TriangleP1P2P3\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Polygon\",\n        \"references\": [\n          \"LineP1P2\",\n          \"LineP2P3\",\n          \"LineP3P1\"\n        ]\n      },\n      \"properties\": null\n    }\n  ]\n}"
         },

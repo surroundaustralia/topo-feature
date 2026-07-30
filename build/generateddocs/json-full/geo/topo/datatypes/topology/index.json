@@ -10,7 +10,7 @@
   "itemClass": "schema",
   "register": "icsm-csdm",
   "version": "0.1",
-  "dateOfLastChange": "2026-07-29",
+  "dateOfLastChange": "2026-07-30",
   "link": "https://github.com/icsm-au/3d-csdm-schema",
   "sources": [],
   "maturity": "development",
@@ -89,7 +89,7 @@
           "language": "ttl",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/relationship.ttl",
           "sizeBytes": 571,
-          "code": "@prefix ns1: <http://www.iana.org/assignments/> .\n@prefix oa: <http://www.w3.org/ns/oa#> .\n@prefix prof: <http://www.w3.org/ns/dx/prof/> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n[] a topo:Edge ;\n    topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ),\n        ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;\n                prof:hasRole <geof:sfTouches> ;\n                oa:hasTarget <http://www.example.com/features/L2> ] ) .\n\n"
+          "code": "@prefix ns1: <http://www.iana.org/assignments/> .\n@prefix oa: <http://www.w3.org/ns/oa#> .\n@prefix prof: <http://www.w3.org/ns/dx/prof/> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n[] a topo:Edge ;\n    topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;\n                prof:hasRole <geof:sfTouches> ;\n                oa:hasTarget <http://www.example.com/features/L2> ] ),\n        ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) .\n\n"
         }
       ]
     },

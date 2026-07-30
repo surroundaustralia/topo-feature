@@ -42447,7 +42447,8 @@ are derived from the topological reference chain.
 
 ### Solid (Polyhedron) referencing faces via Shell directed_references
 A Solid feature referencing faces via a Shell topology. The solid's topology contains
-a 'shells' array; each Shell has a directed_references array of oriented Face references.
+a directed_references array of oriented Shell references; each Shell in turn has a
+directed_references array of oriented Face references.
 All supporting points, edges, and faces are included to make the example self-contained.
 
 #### json

@@ -172,7 +172,7 @@ export function needsTransparency(data) {
         .some(face => face.topology.directed_references.length > 1);
 
     const solidHasVoid = getFeatures(data.solids || [])
-        .some(solid => solid.topology.shells.length > 1);
+        .some(solid => solid.topology.directed_references.length > 1);
 
     return faceHasHole || solidHasVoid;
 }
@@ -291,7 +291,7 @@ function _triangulatePolygon(outerCoords, holeCoordsList, normal) {
 function _collectUniqueSolidEdgeIds(solid, shellMap, faceMap, ringMap) {
     const edgeIds = new Set();
 
-    solid.topology.shells.forEach(shellRef => {
+    solid.topology.directed_references.forEach(shellRef => {
         const shell = shellMap[shellRef.ref];
         if (!shell) return;
 
@@ -445,7 +445,7 @@ export function buildSolidGeometry(solid, shellMap, faceMap, ringMap, edgeMap, p
     const vertexNormals = [];
     let faceCount = 0;
 
-    for (const shellRef of solid.topology.shells) {
+    for (const shellRef of solid.topology.directed_references) {
         const shell = shellMap[shellRef.ref];
         if (!shell) continue;
 

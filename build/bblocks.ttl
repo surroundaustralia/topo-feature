@@ -28,12 +28,8 @@
         [ dct:format "application/json" ;
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/json-full/geo/topo/alignments/cityjson-transform/index.json> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
-<<<<<<< HEAD
+    dct:modified "2026-07-30"^^xsd:date ;
     skos:inScheme <https://surroundaustralia.github.io/topo-feature/> ;
-=======
-    skos:inScheme <https://ogcincubator.github.io/topo-feature/> ;
->>>>>>> upstream/master
     skos:prefLabel "CityJSON to TopoFeature transform" ;
     skos:topConceptOf <https://surroundaustralia.github.io/topo-feature/> ;
     dcat:keyword "3D",
@@ -50,26 +46,15 @@
     rdfs:label "Topo Feature Multi-Collection" ;
     dct:abstract "A schema for a structured topology dataset containing typed Feature Collections for each topological dimension: points, edges (Line features), rings (Ring features), faces (Face features), shells (Shell features), and solids (Solid features). Each collection is restricted to its specific building block type, enabling referential integrity across the topology hierarchy. Testing and visualisation of its examples draw on a common set of referenced objects (points, edges, faces) shared across the topo-* building blocks, at `_sources/examples/referenced-objects.ttl`."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2024-01-01T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "text/markdown" ;
-<<<<<<< HEAD
-            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-feature-multi-collection/index.md> ],
+    dct:description [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-feature-multi-collection/index.json> ],
         [ dct:format "text/html" ;
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-feature-multi-collection> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-feature-multi-collection/index.json> ] ;
+        [ dct:format "text/markdown" ;
+            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-feature-multi-collection/index.md> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
+    dct:modified "2026-07-30"^^xsd:date ;
     skos:inScheme <https://surroundaustralia.github.io/topo-feature/> ;
-=======
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-feature-multi-collection/index.md> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-feature-multi-collection/index.json> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-feature-multi-collection> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
-    skos:inScheme <https://ogcincubator.github.io/topo-feature/> ;
->>>>>>> upstream/master
     skos:prefLabel "Topo Feature Multi-Collection" ;
     skos:topConceptOf <https://surroundaustralia.github.io/topo-feature/> ;
     dcat:keyword "3D",
@@ -77,26 +62,25 @@
         "feature",
         "topology" ;
     prof:hasResource [ dct:conformsTo shacl: ;
-<<<<<<< HEAD
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
             prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
             prof:hasRole role:validation ],
         [ dct:conformsTo shacl: ;
-=======
->>>>>>> upstream/master
             dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature> ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
             prof:hasRole role:validation ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/yaml" ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/schema.yaml> ;
+            prof:hasRole role:schema ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/json" ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/schema.json> ;
             prof:hasRole role:schema ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-<<<<<<< HEAD
             rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
                 <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
@@ -105,40 +89,11 @@
             dct:format "application/ld+json" ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld> ;
             prof:hasRole role:mapping ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/schema.yaml> ;
-            prof:hasRole role:schema ],
-=======
-            rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld> ;
-            prof:hasRole role:mapping ],
->>>>>>> upstream/master
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-<<<<<<< HEAD
-=======
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
->>>>>>> upstream/master
+            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature> ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
+                <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
             prof:hasRole role:validation ] ;
     bblocks:dependsOn <bblocks://ogc.geo.topo.features.topo-face>,
         <bblocks://ogc.geo.topo.features.topo-feature-collection>,
@@ -158,34 +113,42 @@
     rdfs:label "3D (Polyhedron) using nested Polygons and Point topology" ;
     dct:abstract "Typical 3D polyhedrons using features with Point geometry coordinates - note this does not support full topology of shared faces but matches many simplified geometry models."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2023-11-01T00:00:00+00:00"^^xsd:dateTime ;
-<<<<<<< HEAD
-    dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-polyhedron> ],
-        [ dct:format "application/json" ;
+    dct:description [ dct:format "application/json" ;
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-polyhedron/index.json> ],
         [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-polyhedron/index.md> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
-    skos:inScheme <https://surroundaustralia.github.io/topo-feature/> ;
-=======
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-polyhedron/index.json> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-polyhedron/index.md> ],
+            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-polyhedron/index.md> ],
         [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-polyhedron> ] ;
+            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-polyhedron> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
-    skos:inScheme <https://ogcincubator.github.io/topo-feature/> ;
->>>>>>> upstream/master
+    dct:modified "2026-07-30"^^xsd:date ;
+    skos:inScheme <https://surroundaustralia.github.io/topo-feature/> ;
     skos:prefLabel "3D (Polyhedron) using nested Polygons and Point topology" ;
     skos:topConceptOf <https://surroundaustralia.github.io/topo-feature/> ;
     dcat:keyword "3D",
         "geometry",
         "topology" ;
-<<<<<<< HEAD
-    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+    prof:hasResource [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+            dct:format "application/ld+json" ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-polyhedron/context.jsonld> ;
+            prof:hasRole role:mapping ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature> ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
+                <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
+                <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/json" ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-polyhedron/schema.json> ;
             prof:hasRole role:schema ],
@@ -195,62 +158,9 @@
             prof:hasRole role:schema ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature> ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-=======
-    prof:hasResource [ dct:conformsTo shacl: ;
->>>>>>> upstream/master
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature> ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ],
-<<<<<<< HEAD
-=======
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-polyhedron/context.jsonld> ;
-            prof:hasRole role:mapping ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-polyhedron/schema.json> ;
-            prof:hasRole role:schema ],
->>>>>>> upstream/master
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
             prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ],
-<<<<<<< HEAD
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-polyhedron/context.jsonld> ;
-            prof:hasRole role:mapping ] ;
-=======
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-polyhedron/schema.yaml> ;
-            prof:hasRole role:schema ] ;
->>>>>>> upstream/master
+            prof:hasRole role:validation ] ;
     bblocks:dependsOn <bblocks://ogc.geo.topo.datatypes.topology>,
         <bblocks://ogc.geo.topo.features.topo-feature>,
         <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
@@ -261,31 +171,18 @@
 
 <https://surroundaustralia.github.io/topo-feature/build/bblocks.ttl> a prov:Entity ;
     dct:format "text/turtle" ;
-<<<<<<< HEAD
-    prov:wasAttributedTo _:Nc8f8967d66a944dba8601d365ff4fc6c ;
+    prov:wasAttributedTo _:Nfbc3a75c19264c20b0da74591b339382 ;
     prov:wasGeneratedBy [ a prov:Activity ;
-            prov:endedAtTime "2026-07-29T11:43:27.142558"^^xsd:dateTime ;
-            prov:startedAtTime "2026-07-29T11:43:26.922096"^^xsd:dateTime ;
-=======
-    prov:wasAttributedTo _:N83b6012120824a11a1e16d86f61771f0 ;
-    prov:wasGeneratedBy [ a prov:Activity ;
-            prov:endedAtTime "2026-07-29T15:54:02.001381"^^xsd:dateTime ;
-            prov:startedAtTime "2026-07-29T15:54:01.787255"^^xsd:dateTime ;
->>>>>>> upstream/master
+            prov:endedAtTime "2026-07-30T18:46:41.723334"^^xsd:dateTime ;
+            prov:startedAtTime "2026-07-30T18:46:41.491814"^^xsd:dateTime ;
             prov:used [ a prov:Entity ;
-                    dct:format "application/json" ;
-<<<<<<< HEAD
-                    dct:hasVersion "git:35a754b06a3c729f1d031f96f7c657b87e25a91c" ;
-                    rdfs:seeAlso <https://surroundaustralia.github.io/topo-feature/build/register.json> ],
-                [ a prov:Entity ;
                     dct:format "application/yaml" ;
-                    rdfs:seeAlso <file:///src/ogc/bblocks/register-context.yaml> ] ;
-            prov:wasAssociatedWith _:Nc8f8967d66a944dba8601d365ff4fc6c ] .
-=======
-                    dct:hasVersion "git:7f11e091153c71cd9d19a36a8b070a7ab695ae3c" ;
-                    rdfs:seeAlso <https://ogcincubator.github.io/topo-feature/build/register.json> ] ;
-            prov:wasAssociatedWith _:N83b6012120824a11a1e16d86f61771f0 ] .
->>>>>>> upstream/master
+                    rdfs:seeAlso <file:///src/ogc/bblocks/register-context.yaml> ],
+                [ a prov:Entity ;
+                    dct:format "application/json" ;
+                    dct:hasVersion "git:e37b2442be9a522f20f9982871fa6d414a645df1" ;
+                    rdfs:seeAlso <https://surroundaustralia.github.io/topo-feature/build/register.json> ] ;
+            prov:wasAssociatedWith _:Nfbc3a75c19264c20b0da74591b339382 ] .
 
 <bblocks://ogc.geo.topo.features.topo-arc> a skos:Concept,
         dcat:Dataset,
@@ -294,26 +191,15 @@
     rdfs:label "Non-linear Arc and Spline Descriptions using Point topology" ;
     dct:abstract "Defines options for describing Arcs, Circles, Splines using point features as canonical source of geometry coordinates. Testing and visualisation of its examples draw on a common set of referenced objects (points, edges, faces) shared across the topo-* building blocks, at `_sources/examples/referenced-objects.ttl`."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2023-11-01T00:00:00+00:00"^^xsd:dateTime ;
-<<<<<<< HEAD
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-arc/index.json> ],
-=======
-    dct:description [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-arc/index.md> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-arc/index.json> ],
->>>>>>> upstream/master
-        [ dct:format "text/html" ;
+    dct:description [ dct:format "text/html" ;
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-arc> ],
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-arc/index.json> ],
         [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-arc/index.md> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
-<<<<<<< HEAD
+    dct:modified "2026-07-30"^^xsd:date ;
     skos:inScheme <https://surroundaustralia.github.io/topo-feature/> ;
-=======
-    skos:inScheme <https://ogcincubator.github.io/topo-feature/> ;
->>>>>>> upstream/master
     skos:prefLabel "Non-linear Arc and Spline Descriptions using Point topology" ;
     skos:topConceptOf <https://surroundaustralia.github.io/topo-feature/> ;
     dcat:keyword "2D",
@@ -324,25 +210,16 @@
             rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
             prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
             prof:hasRole role:validation ],
-<<<<<<< HEAD
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld> ;
-            prof:hasRole role:mapping ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/schema.json> ;
-            prof:hasRole role:schema ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
                 <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
             prof:hasRole role:validation ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/schema.json> ;
+            prof:hasRole role:schema ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
@@ -359,43 +236,15 @@
             rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-arc> ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
                 <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ] ;
-=======
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-arc> ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
             prof:hasRole role:validation ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/schema.yaml> ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/schema.yaml> ;
             prof:hasRole role:schema ],
         [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
             dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld> ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld> ;
             prof:hasRole role:mapping ] ;
->>>>>>> upstream/master
     bblocks:dependsOn <bblocks://ogc.geo.topo.datatypes.topology>,
         <bblocks://ogc.geo.topo.features.topo-feature> ;
     bblocks:hasSourceJsonLdContext <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-arc/context.jsonld> ;
@@ -411,98 +260,54 @@
     dct:abstract "A feature representing a Face in topology: a bounded planar region described by an outer boundary Ring and zero or more inner boundary (hole) Rings. Faces are used as the surfaces of a Shell/Solid."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2024-01-01T00:00:00+00:00"^^xsd:dateTime ;
     dct:description [ dct:format "text/html" ;
-<<<<<<< HEAD
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-face> ],
         [ dct:format "application/json" ;
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-face/index.json> ],
         [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-face/index.md> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
+    dct:modified "2026-07-30"^^xsd:date ;
     skos:inScheme <https://surroundaustralia.github.io/topo-feature/> ;
-=======
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-face> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-face/index.md> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-face/index.json> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
-    skos:inScheme <https://ogcincubator.github.io/topo-feature/> ;
->>>>>>> upstream/master
     skos:prefLabel "Face Topology Feature" ;
     skos:topConceptOf <https://surroundaustralia.github.io/topo-feature/> ;
     dcat:keyword "3D",
         "face",
         "feature",
         "topology" ;
-<<<<<<< HEAD
-    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-=======
     prof:hasResource [ dct:conformsTo shacl: ;
->>>>>>> upstream/master
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature> ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
                 <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
             prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-<<<<<<< HEAD
-            rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.json> ;
-            prof:hasRole role:schema ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
                 <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
             prof:hasRole role:validation ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/yaml" ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml> ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.json> ;
+            prof:hasRole role:schema ],
         [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
             dct:format "application/ld+json" ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/context.jsonld> ;
             prof:hasRole role:mapping ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ] ;
-=======
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
             prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/context.jsonld> ;
-            prof:hasRole role:mapping ] ;
->>>>>>> upstream/master
+            prof:hasRole role:validation ] ;
     bblocks:dependsOn <bblocks://ogc.geo.topo.datatypes.topology>,
         <bblocks://ogc.geo.topo.features.topo-feature>,
         <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
@@ -518,34 +323,21 @@
     rdfs:label "Line using Point References" ;
     dct:abstract "Demonstration of a schema using coordinates of points, without duplication. Reuses context but constrains to Line types. Testing and visualisation of its examples draw on a common set of referenced objects (points, edges, faces) shared across the topo-* building blocks, at `_sources/examples/referenced-objects.ttl`."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2023-04-05T00:00:00+00:00"^^xsd:dateTime ;
-<<<<<<< HEAD
     dct:description [ dct:format "text/html" ;
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-line> ],
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-line/index.json> ],
         [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-line/index.md> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-line/index.json> ] ;
+            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-line/index.md> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
+    dct:modified "2026-07-30"^^xsd:date ;
     skos:inScheme <https://surroundaustralia.github.io/topo-feature/> ;
-=======
-    dct:description [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-line/index.md> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-line> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-line/index.json> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
-    skos:inScheme <https://ogcincubator.github.io/topo-feature/> ;
->>>>>>> upstream/master
     skos:prefLabel "Line using Point References" ;
     skos:topConceptOf <https://surroundaustralia.github.io/topo-feature/> ;
     dcat:keyword "3D",
         "geometry",
         "topology" ;
     prof:hasResource [ dct:conformsTo shacl: ;
-<<<<<<< HEAD
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
@@ -555,11 +347,6 @@
             dct:format "application/yaml" ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/schema.yaml> ;
             prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
-            prof:hasRole role:validation ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
@@ -578,42 +365,12 @@
         [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
             dct:format "application/ld+json" ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/context.jsonld> ;
-            prof:hasRole role:mapping ] ;
-=======
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature> ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ],
+            prof:hasRole role:mapping ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
             prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/context.jsonld> ;
-            prof:hasRole role:mapping ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
             prof:hasRole role:validation ] ;
->>>>>>> upstream/master
     bblocks:dependsOn <bblocks://ogc.geo.topo.datatypes.topology>,
         <bblocks://ogc.geo.topo.features.topo-feature> ;
     bblocks:hasSourceJsonLdContext <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-line/context.jsonld> ;
@@ -628,104 +385,55 @@
     rdfs:label "Ring Topology Feature" ;
     dct:abstract "A feature representing a Ring in topology: an ordered, closed sequence of oriented Edge references that form a boundary loop. A Ring is used as the boundary of a Face."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2024-01-01T00:00:00+00:00"^^xsd:dateTime ;
-<<<<<<< HEAD
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-ring/index.json> ],
-        [ dct:format "text/markdown" ;
+    dct:description [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-ring/index.md> ],
         [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-ring> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
-    skos:inScheme <https://surroundaustralia.github.io/topo-feature/> ;
-=======
-    dct:description [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-ring/index.md> ],
+            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-ring> ],
         [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-ring/index.json> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-ring> ] ;
+            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-ring/index.json> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
-    skos:inScheme <https://ogcincubator.github.io/topo-feature/> ;
->>>>>>> upstream/master
+    dct:modified "2026-07-30"^^xsd:date ;
+    skos:inScheme <https://surroundaustralia.github.io/topo-feature/> ;
     skos:prefLabel "Ring Topology Feature" ;
     skos:topConceptOf <https://surroundaustralia.github.io/topo-feature/> ;
     dcat:keyword "3D",
         "feature",
         "ring",
         "topology" ;
-<<<<<<< HEAD
-    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+    prof:hasResource [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
+                <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/json" ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.json> ;
             prof:hasRole role:schema ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
+            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature> ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
+                <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
             prof:hasRole role:validation ],
         [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
             dct:format "application/ld+json" ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/context.jsonld> ;
             prof:hasRole role:mapping ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
-            prof:hasRole role:validation ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature> ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ] ;
-=======
-    prof:hasResource [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/context.jsonld> ;
-            prof:hasRole role:mapping ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature> ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.json> ;
             prof:hasRole role:schema ] ;
->>>>>>> upstream/master
     bblocks:dependsOn <bblocks://ogc.geo.topo.datatypes.oriented-ref>,
         <bblocks://ogc.geo.topo.datatypes.topology>,
         <bblocks://ogc.geo.topo.features.topo-feature> ;
@@ -741,26 +449,15 @@
     rdfs:label "Shell Topology Feature" ;
     dct:abstract "A feature representing a Shell in topology: a closed set of oriented Face references forming the boundary surface of a Solid. A Shell is the 3D analog of a Ring — it bounds a volumetric region."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2024-01-01T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "application/json" ;
-<<<<<<< HEAD
-            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-shell/index.json> ],
+    dct:description [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-shell> ],
         [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-shell/index.md> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-shell> ] ;
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-shell/index.json> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
+    dct:modified "2026-07-30"^^xsd:date ;
     skos:inScheme <https://surroundaustralia.github.io/topo-feature/> ;
-=======
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-shell/index.json> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-shell/index.md> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-shell> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
-    skos:inScheme <https://ogcincubator.github.io/topo-feature/> ;
->>>>>>> upstream/master
     skos:prefLabel "Shell Topology Feature" ;
     skos:topConceptOf <https://surroundaustralia.github.io/topo-feature/> ;
     dcat:keyword "3D",
@@ -769,34 +466,16 @@
         "topology" ;
     prof:hasResource [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
-<<<<<<< HEAD
+            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature> ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
                 <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-=======
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
->>>>>>> upstream/master
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/context.jsonld> ;
-            prof:hasRole role:mapping ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
             prof:hasRole role:validation ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature> ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
+            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
+                <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
             prof:hasRole role:validation ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.json> ;
-            prof:hasRole role:schema ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.yaml> ;
@@ -806,24 +485,19 @@
             rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
             prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
             prof:hasRole role:validation ],
-<<<<<<< HEAD
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.json> ;
+            prof:hasRole role:schema ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
             prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
             prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature> ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ] ;
-=======
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.json> ;
-            prof:hasRole role:schema ] ;
->>>>>>> upstream/master
+        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+            dct:format "application/ld+json" ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/context.jsonld> ;
+            prof:hasRole role:mapping ] ;
     bblocks:dependsOn <bblocks://ogc.geo.topo.datatypes.oriented-ref>,
         <bblocks://ogc.geo.topo.datatypes.topology>,
         <bblocks://ogc.geo.topo.features.topo-feature>,
@@ -847,7 +521,7 @@
         [ dct:format "application/json" ;
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-solid/index.json> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
+    dct:modified "2026-07-30"^^xsd:date ;
     skos:inScheme <https://surroundaustralia.github.io/topo-feature/> ;
     skos:prefLabel "Solid Topology Feature" ;
     skos:topConceptOf <https://surroundaustralia.github.io/topo-feature/> ;
@@ -861,24 +535,14 @@
             prof:hasRole role:schema ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
+            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
+                <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
             prof:hasRole role:validation ],
         [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
             dct:format "application/ld+json" ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/context.jsonld> ;
             prof:hasRole role:mapping ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-            prof:hasRole role:validation ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature> ;
@@ -888,7 +552,17 @@
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.yaml> ;
-            prof:hasRole role:schema ] ;
+            prof:hasRole role:schema ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
+            prof:hasRole role:validation ] ;
     bblocks:dependsOn <bblocks://ogc.geo.topo.datatypes.oriented-ref>,
         <bblocks://ogc.geo.topo.features.topo-feature>,
         <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
@@ -904,7 +578,6 @@
     rdfs:label "Oriented Object Reference" ;
     dct:abstract "A datatype for referencing a topological object with an orientation indicator ('+' or '-'), used to define the sense (direction/orientation) of boundary elements such as edges in rings or faces in shells."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2024-01-01T00:00:00+00:00"^^xsd:dateTime ;
-<<<<<<< HEAD
     dct:description [ dct:format "text/html" ;
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/bblock/ogc.geo.topo.datatypes.oriented-ref> ],
         [ dct:format "application/json" ;
@@ -912,50 +585,25 @@
         [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/markdown/geo/topo/datatypes/oriented-ref/index.md> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
+    dct:modified "2026-07-30"^^xsd:date ;
     skos:inScheme <https://surroundaustralia.github.io/topo-feature/> ;
-=======
-    dct:description [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/json-full/geo/topo/datatypes/oriented-ref/index.json> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/bblock/ogc.geo.topo.datatypes.oriented-ref> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/markdown/geo/topo/datatypes/oriented-ref/index.md> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
-    skos:inScheme <https://ogcincubator.github.io/topo-feature/> ;
->>>>>>> upstream/master
     skos:prefLabel "Oriented Object Reference" ;
     skos:topConceptOf <https://surroundaustralia.github.io/topo-feature/> ;
     dcat:keyword "orientation",
         "reference",
         "topology" ;
-<<<<<<< HEAD
     prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml> ;
-            prof:hasRole role:schema ],
-=======
-    prof:hasResource [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/context.jsonld> ;
-            prof:hasRole role:mapping ],
->>>>>>> upstream/master
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/json" ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.json> ;
             prof:hasRole role:schema ],
-<<<<<<< HEAD
         [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
             dct:format "application/ld+json" ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/context.jsonld> ;
-            prof:hasRole role:mapping ] ;
-=======
+            prof:hasRole role:mapping ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml> ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml> ;
             prof:hasRole role:schema ] ;
->>>>>>> upstream/master
     bblocks:dependsOn <bblocks://ogc.ogc-utils.iri-or-curie> ;
     bblocks:hasSourceJsonLdContext <https://surroundaustralia.github.io/topo-feature/_sources/datatypes/oriented-ref/context.jsonld> ;
     bblocks:scope <http://www.opengis.net/def/bblocks/scope/unstable> ;
@@ -971,49 +619,30 @@
     dct:created "2023-04-05T00:00:00+00:00"^^xsd:dateTime ;
     dct:description [ dct:format "application/json" ;
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/json-full/geo/topo/datatypes/topology/index.json> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/bblock/ogc.geo.topo.datatypes.topology> ],
         [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/markdown/geo/topo/datatypes/topology/index.md> ] ;
+            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/markdown/geo/topo/datatypes/topology/index.md> ],
+        [ dct:format "text/html" ;
+            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/bblock/ogc.geo.topo.datatypes.topology> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
-<<<<<<< HEAD
+    dct:modified "2026-07-30"^^xsd:date ;
     skos:inScheme <https://surroundaustralia.github.io/topo-feature/> ;
-=======
-    skos:inScheme <https://ogcincubator.github.io/topo-feature/> ;
->>>>>>> upstream/master
     skos:prefLabel "Geometry using references" ;
     skos:topConceptOf <https://surroundaustralia.github.io/topo-feature/> ;
     dcat:keyword "3D",
         "geometry",
         "topology" ;
-<<<<<<< HEAD
-    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+    prof:hasResource [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+            dct:format "application/ld+json" ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld> ;
+            prof:hasRole role:mapping ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/json" ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.json> ;
             prof:hasRole role:schema ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld> ;
-            prof:hasRole role:mapping ] ;
-=======
-    prof:hasResource [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld> ;
-            prof:hasRole role:mapping ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.yaml> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.json> ;
             prof:hasRole role:schema ] ;
->>>>>>> upstream/master
     bblocks:dependsOn <bblocks://ogc.geo.json-fg.link-role>,
         <bblocks://ogc.geo.topo.datatypes.oriented-ref>,
         <bblocks://ogc.ogc-utils.iri-or-curie> ;
@@ -1029,89 +658,53 @@
     rdfs:label "TopoFeatureCollection" ;
     dct:abstract "This building block defines a GeoJSON (or FG-JSON) Feature Collection for a set of features with geometries defined by topological relationships. From these it is possible to derive simplified geometries using coordinates for each feature."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2023-07-05T00:00:00+00:00"^^xsd:dateTime ;
-    dct:description [ dct:format "application/json" ;
-<<<<<<< HEAD
-            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-feature-collection/index.json> ],
-        [ dct:format "text/html" ;
+    dct:description [ dct:format "text/html" ;
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-feature-collection> ],
+        [ dct:format "application/json" ;
+            rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-feature-collection/index.json> ],
         [ dct:format "text/markdown" ;
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-feature-collection/index.md> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
+    dct:modified "2026-07-30"^^xsd:date ;
     skos:inScheme <https://surroundaustralia.github.io/topo-feature/> ;
-=======
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-feature-collection/index.json> ],
-        [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-feature-collection> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-feature-collection/index.md> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
-    skos:inScheme <https://ogcincubator.github.io/topo-feature/> ;
->>>>>>> upstream/master
     skos:prefLabel "TopoFeatureCollection" ;
     skos:topConceptOf <https://surroundaustralia.github.io/topo-feature/> ;
     dcat:keyword "feature",
         "topology" ;
-    prof:hasResource [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.json> ;
-            prof:hasRole role:schema ],
+    prof:hasResource [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
+            prof:hasRole role:validation ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-<<<<<<< HEAD
+            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature> ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
+                <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
             prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
-=======
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
->>>>>>> upstream/master
             prof:hasRole role:validation ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
             dct:format "application/yaml" ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml> ;
             prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature> ;
-<<<<<<< HEAD
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ],
+        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+            dct:format "application/ld+json" ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld> ;
+            prof:hasRole role:mapping ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.json> ;
+            prof:hasRole role:schema ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
                 <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ],
-=======
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld> ;
-            prof:hasRole role:mapping ],
->>>>>>> upstream/master
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.feature> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl> ;
-<<<<<<< HEAD
-            prof:hasRole role:validation ],
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld> ;
-            prof:hasRole role:mapping ] ;
-=======
             prof:hasRole role:validation ] ;
->>>>>>> upstream/master
     bblocks:dependsOn <bblocks://ogc.geo.features.feature>,
         <bblocks://ogc.geo.features.featureCollection>,
         <bblocks://ogc.geo.json-fg.feature>,
@@ -1131,7 +724,6 @@
     rdfs:label "Feature with topology" ;
     dct:abstract "This building block defines a GeoJSON feature with topological relationships to point nodes, or other to TopoFeatures. Testing and visualisation of its examples draw on a common set of referenced objects (points, edges, faces) shared across the topo-* building blocks, at `_sources/examples/referenced-objects.ttl`."^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
     dct:created "2023-07-05T00:00:00+00:00"^^xsd:dateTime ;
-<<<<<<< HEAD
     dct:description [ dct:format "application/json" ;
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-feature/index.json> ],
         [ dct:format "text/markdown" ;
@@ -1139,42 +731,30 @@
         [ dct:format "text/html" ;
             rdfs:isDefinedBy <https://surroundaustralia.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-feature> ] ;
     dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
+    dct:modified "2026-07-30"^^xsd:date ;
     skos:inScheme <https://surroundaustralia.github.io/topo-feature/> ;
-=======
-    dct:description [ dct:format "text/html" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/bblock/ogc.geo.topo.features.topo-feature> ],
-        [ dct:format "text/markdown" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/markdown/geo/topo/features/topo-feature/index.md> ],
-        [ dct:format "application/json" ;
-            rdfs:isDefinedBy <https://ogcincubator.github.io/topo-feature/build/generateddocs/json-full/geo/topo/features/topo-feature/index.json> ] ;
-    dct:hasVersion "0.1" ;
-    dct:modified "2026-07-29"^^xsd:date ;
-    skos:inScheme <https://ogcincubator.github.io/topo-feature/> ;
->>>>>>> upstream/master
     skos:prefLabel "Feature with topology" ;
     skos:topConceptOf <https://surroundaustralia.github.io/topo-feature/> ;
     dcat:keyword "feature",
         "topology" ;
-    prof:hasResource [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
+    prof:hasResource [ dct:conformsTo shacl: ;
+            dct:format "text/turtle" ;
+            rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
+            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
             dct:format "application/ld+json" ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/context.jsonld> ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/context.jsonld> ;
             prof:hasRole role:mapping ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature> ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
-            prof:hasArtifact <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
+                <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
             prof:hasRole role:validation ],
         [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/yaml" ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml> ;
+            dct:format "application/json" ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.json> ;
             prof:hasRole role:schema ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
@@ -1183,32 +763,14 @@
             prof:hasRole role:validation ],
         [ dct:conformsTo shacl: ;
             dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.features.featureCollection> ;
-            prof:hasArtifact <https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl> ;
-            prof:hasRole role:validation ],
-<<<<<<< HEAD
-        [ dct:conformsTo <https://www.w3.org/TR/json-ld11/> ;
-            dct:format "application/ld+json" ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/context.jsonld> ;
-            prof:hasRole role:mapping ],
-=======
->>>>>>> upstream/master
-        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
-            dct:format "application/json" ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.json> ;
-            prof:hasRole role:schema ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
-            rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature> ;
-            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
-                <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ],
-        [ dct:conformsTo shacl: ;
-            dct:format "text/turtle" ;
             rdfs:seeAlso <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
             prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl>,
                 <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl> ;
-            prof:hasRole role:validation ] ;
+            prof:hasRole role:validation ],
+        [ dct:conformsTo <https://json-schema.org/draft/2020-12/schema> ;
+            dct:format "application/yaml" ;
+            prof:hasArtifact <https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml> ;
+            prof:hasRole role:schema ] ;
     bblocks:dependsOn <bblocks://ogc.geo.topo.datatypes.topology>,
         <bblocks://ogc.geo.topo.features.topo-feature-collection> ;
     bblocks:hasSourceJsonLdContext <https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/context.jsonld> ;
@@ -1229,11 +791,7 @@ Supports transformation "smoke tests" from 2 and 3D topology to simple geojson v
 
 If desired coordinate compaction transformations could be defined as per TopoJSON functionality, using specialised CRS definition._
 """^^<https://www.w3.org/ns/iana/media-types/text/markdown> ;
-<<<<<<< HEAD
-    dct:modified "2026-07-29T11:41:53.895910"^^xsd:dateTime ;
-=======
-    dct:modified "2026-07-29T15:53:04.888723"^^xsd:dateTime ;
->>>>>>> upstream/master
+    dct:modified "2026-07-30T18:45:04.469787"^^xsd:dateTime ;
     owl:imports <https://opengeospatial.github.io/bblocks/register.json> ;
     skos:hasTopConcept <bblocks://ogc.geo.topo.alignments.cityjson-transform>,
         <bblocks://ogc.geo.topo.datatypes.oriented-ref>,
@@ -1249,41 +807,22 @@ If desired coordinate compaction transformations could be defined as per TopoJSO
         <bblocks://ogc.geo.topo.features.topo-shell>,
         <bblocks://ogc.geo.topo.features.topo-solid> ;
     skos:prefLabel "Building Blocks - Topo-Feature" ;
-<<<<<<< HEAD
-    prof:hasResource [ rdfs:label "This Building Blocks Register in JSON-LD format" ;
+    prof:hasResource [ rdfs:label "This Building Blocks Register in RDF Turtle format" ;
+            dct:type "text/turtle" ;
+            ns1:relation <http://www.iana.org/assignments/relation/self> ;
+            ns2:hasTarget <https://surroundaustralia.github.io/topo-feature/build/bblocks.ttl> ],
+        [ rdfs:label "This Building Blocks Register in JSON-LD format" ;
             dct:type "application/ld+json" ;
             ns1:relation <http://www.iana.org/assignments/relation/self> ;
             ns2:hasTarget <https://surroundaustralia.github.io/topo-feature/build/bblocks.jsonld> ],
         [ rdfs:label "This Building Blocks Register in JSON format" ;
             dct:type "application/json" ;
             ns1:relation <http://www.iana.org/assignments/relation/self> ;
-            ns2:hasTarget <https://surroundaustralia.github.io/topo-feature/build/register.json> ],
-        [ rdfs:label "This Building Blocks Register in RDF Turtle format" ;
-            dct:type "text/turtle" ;
-            ns1:relation <http://www.iana.org/assignments/relation/self> ;
-            ns2:hasTarget <https://surroundaustralia.github.io/topo-feature/build/bblocks.ttl> ] ;
+            ns2:hasTarget <https://surroundaustralia.github.io/topo-feature/build/register.json> ] ;
     foaf:homepage <https://surroundaustralia.github.io/topo-feature/> ;
     bblocks:hasValidationReport <https://surroundaustralia.github.io/topo-feature/build/tests/report.html> .
 
-_:Nc8f8967d66a944dba8601d365ff4fc6c a prov:Agent,
-=======
-    prof:hasResource [ rdfs:label "This Building Blocks Register in RDF Turtle format" ;
-            dct:type "text/turtle" ;
-            ns1:relation <http://www.iana.org/assignments/relation/self> ;
-            ns2:hasTarget <https://ogcincubator.github.io/topo-feature/build/bblocks.ttl> ],
-        [ rdfs:label "This Building Blocks Register in JSON-LD format" ;
-            dct:type "application/ld+json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/self> ;
-            ns2:hasTarget <https://ogcincubator.github.io/topo-feature/build/bblocks.jsonld> ],
-        [ rdfs:label "This Building Blocks Register in JSON format" ;
-            dct:type "application/json" ;
-            ns1:relation <http://www.iana.org/assignments/relation/self> ;
-            ns2:hasTarget <https://ogcincubator.github.io/topo-feature/build/register.json> ] ;
-    foaf:homepage <https://ogcincubator.github.io/topo-feature/> ;
-    bblocks:hasValidationReport <https://ogcincubator.github.io/topo-feature/build/tests/report.html> .
-
-_:N83b6012120824a11a1e16d86f61771f0 a prov:Agent,
->>>>>>> upstream/master
+_:Nfbc3a75c19264c20b0da74591b339382 a prov:Agent,
         schema:SoftwareApplication ;
     rdfs:label "OGC-NA tools" ;
     dct:hasVersion "0.5.31" ;

@@ -1,0 +1,11 @@
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix topo: <https://purl.org/geojson/topo#> .
+
+<http://www.example.com/features/1853004> a geojson:Feature,
+        <my:SplineFeature> ;
+    geojson:topology [ a geojson:CubicSpline ;
+            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ;
+            geojson:endTangentVector [ topo:relatedFeatures ( <http://www.example.com/features/P2> <http://www.example.com/features/PVE> ) ] ;
+            geojson:startTangentVector [ topo:relatedFeatures ( <http://www.example.com/features/PVS> <http://www.example.com/features/P1> ) ] ] .
+

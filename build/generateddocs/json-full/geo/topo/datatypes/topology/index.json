@@ -1,0 +1,200 @@
+
+
+{
+  "itemIdentifier": "ogc.geo.topo.datatypes.topology",
+  "name": "Geometry using references",
+  "highlighted": true,
+  "abstract": "Demonstration of a schema using coordinates of points, withpout duplication",
+  "status": "under-development",
+  "dateTimeAddition": "2023-04-05T00:00:00Z",
+  "itemClass": "schema",
+  "register": "icsm-csdm",
+  "version": "0.1",
+  "dateOfLastChange": "2026-07-30",
+  "link": "https://github.com/icsm-au/3d-csdm-schema",
+  "sources": [],
+  "maturity": "development",
+  "scope": "unstable",
+  "tags": [
+    "3D",
+    "geometry",
+    "topology"
+  ],
+  "shaclShapes": {},
+  "dependsOn": [
+    "ogc.geo.json-fg.link-role",
+    "ogc.geo.topo.datatypes.oriented-ref",
+    "ogc.ogc-utils.iri-or-curie"
+  ],
+  "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld",
+  "schema": {
+    "application/yaml": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.yaml",
+    "application/json": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.json"
+  },
+  "sourceSchema": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/topology/schema.json",
+  "sourceLdContext": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/topology/context.jsonld",
+  "resolvedSchemaProperties": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/resolvedProperties.json",
+  "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/topology/",
+  "validationPassed": true,
+  "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/datatypes/topology/",
+  "description": "## Topology\n\nA datatype defining topological relationships between features using references (IDs) rather than inline coordinates.\n\n### Reference Styles\n\nTwo mutually exclusive reference styles are supported \u2014 exactly one must be present in each topology object:\n\n**`references`** \u2014 a plain ordered array of string feature IDs (or nested arrays thereof). Used for positional references where traversal direction is not meaningful, e.g. a LineString naming its vertex point features:\n\n```json\n{ \"type\": \"Edge\", \"references\": [\"uuid:point-a\", \"uuid:point-b\"] }\n```\n\n**`directed_references`** \u2014 an ordered array of oriented object references, each with `ref` (feature ID) and `orientation` (`\"+\"` or `\"-\"`). Used where traversal direction matters, e.g. Ring boundaries and Shell boundaries:\n\n```json\n{\n  \"type\": \"Ring\",\n  \"directed_references\": [\n    { \"ref\": \"uuid:edge-1\", \"orientation\": \"+\" },\n    { \"ref\": \"uuid:edge-2\", \"orientation\": \"-\" }\n  ]\n}\n```\n\n### Structured sub-object styles\n\nFor higher-order topology, structured arrays group directed_references:\n\n- **Face** topology uses a `rings` array, each ring being a `{ type: \"Ring\", directed_references: [...] }` object\n- **Solid** topology uses a `shells` array, each shell being a `{ type: \"Shell\", directed_references: [...] }` object\n\n### geometry is null\n\nWhen topology is used, the feature's `geometry` property should be `null`. Actual coordinates are resolved by following the reference chain from the feature down to Point features that carry explicit coordinates.\n\n### Hierarchy\n\n```\nSolid  \u2192 shells[].directed_references \u2192 Face IDs\nFace   \u2192 rings[].directed_references  \u2192 Edge IDs\nEdge   \u2192 references                   \u2192 Point IDs\nPoint  \u2192 geometry.coordinates         \u2192 [x, y, z]\n```\n",
+  "examples": [
+    {
+      "title": "LineString topology (references style)",
+      "content": "A topology object for an edge feature using plain string ID references.\nThe 'references' array names the two point features that form the line's endpoints.\n",
+      "base-output-filename": "line",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/topology/examples/line.json",
+          "base-uri": "http://www.example.com/features/",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/line.json",
+          "sizeBytes": 62,
+          "code": "{\n  \"type\": \"Edge\",\n  \"references\": [\n    \"P1\",\n    \"P2\"\n  ]\n}"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/line.jsonld",
+          "sizeBytes": 187,
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld\",\n  \"type\": \"Edge\",\n  \"references\": [\n    \"P1\",\n    \"P2\"\n  ]\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/line.ttl",
+          "sizeBytes": 234,
+          "code": "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n[] a topo:Edge ;\n    topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) .\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Topology Relationships",
+      "content": "A topology object for an edge feature using plain string ID references.\nThe 'references' array names the two point features that form the line's endpoints.\n",
+      "base-output-filename": "relationship",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://surroundaustralia.github.io/topo-feature/_sources/datatypes/topology/examples/relationship.json",
+          "base-uri": "http://www.example.com/features/",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/relationship.json",
+          "sizeBytes": 176,
+          "code": "{\n  \"type\": \"Edge\",\n  \"references\": [\n    \"P1\",\n    \"P2\"\n  ],\n  \"relationships\": [\n    {\n      \"rel\": \"topology\",\n      \"href\": \"L2\",\n      \"role\": \"geof:sfTouches\"\n    }\n  ]\n}"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/relationship.jsonld",
+          "sizeBytes": 301,
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld\",\n  \"type\": \"Edge\",\n  \"references\": [\n    \"P1\",\n    \"P2\"\n  ],\n  \"relationships\": [\n    {\n      \"rel\": \"topology\",\n      \"href\": \"L2\",\n      \"role\": \"geof:sfTouches\"\n    }\n  ]\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/relationship.ttl",
+          "sizeBytes": 571,
+          "code": "@prefix ns1: <http://www.iana.org/assignments/> .\n@prefix oa: <http://www.w3.org/ns/oa#> .\n@prefix prof: <http://www.w3.org/ns/dx/prof/> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n[] a topo:Edge ;\n    topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;\n                prof:hasRole <geof:sfTouches> ;\n                oa:hasTarget <http://www.example.com/features/L2> ] ),\n        ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) .\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Ring topology (directed_references style)",
+      "content": "A Ring topology object uses directed_references \u2014 each element has a 'ref' (Edge feature ID)\nand an 'orientation' ('+' or '-'). Mutually exclusive with 'references'.\n",
+      "base-output-filename": "ring-topology",
+      "snippets": [
+        {
+          "language": "json",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/ring-topology.json",
+          "sizeBytes": 372,
+          "code": "{\n  \"type\": \"Ring\",\n  \"directed_references\": [\n    { \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\", \"orientation\": \"+\" },\n    { \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\", \"orientation\": \"+\" },\n    { \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\", \"orientation\": \"+\" },\n    { \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\", \"orientation\": \"+\" }\n  ]\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/ring-topology.jsonld",
+          "sizeBytes": 560,
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld\",\n  \"type\": \"Ring\",\n  \"directed_references\": [\n    {\n      \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n      \"orientation\": \"+\"\n    },\n    {\n      \"ref\": \"uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac\",\n      \"orientation\": \"+\"\n    },\n    {\n      \"ref\": \"uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569\",\n      \"orientation\": \"+\"\n    },\n    {\n      \"ref\": \"uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8\",\n      \"orientation\": \"+\"\n    }\n  ]\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/ring-topology.ttl",
+          "sizeBytes": 547,
+          "code": "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n[] a topo:Ring ;\n    topo:directedReferences ( [ topo:orientation \"+\" ;\n                topo:ref <uuid:c60507ba-226b-4e49-a702-e9afef899b23> ] [ topo:orientation \"+\" ;\n                topo:ref <uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> ] [ topo:orientation \"+\" ;\n                topo:ref <uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> ] [ topo:orientation \"+\" ;\n                topo:ref <uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> ] ) .\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Face topology (directed_references to Ring features)",
+      "content": "A Face topology object uses directed_references to reference Ring features.\nEach element has a 'ref' (Ring feature ID) and an 'orientation' ('+' or '-').\nMutually exclusive with 'references'.\n",
+      "base-output-filename": "face-topology",
+      "snippets": [
+        {
+          "language": "json",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/face-topology.json",
+          "sizeBytes": 132,
+          "code": "{\n  \"type\": \"Face\",\n  \"directed_references\": [\n    { \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\", \"orientation\": \"+\" }\n  ]\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/face-topology.jsonld",
+          "sizeBytes": 272,
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld\",\n  \"type\": \"Face\",\n  \"directed_references\": [\n    {\n      \"ref\": \"uuid:c60507ba-226b-4e49-a702-e9afef899b23\",\n      \"orientation\": \"+\"\n    }\n  ]\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/face-topology.ttl",
+          "sizeBytes": 259,
+          "code": "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n[] a topo:Face ;\n    topo:directedReferences ( [ topo:orientation \"+\" ;\n                topo:ref <uuid:c60507ba-226b-4e49-a702-e9afef899b23> ] ) .\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Shell topology (directed_references to Face features)",
+      "content": "A Shell topology object uses directed_references to reference Face features.\nEach element has a 'ref' (Face feature ID) and an 'orientation' ('+' or '-').\nMutually exclusive with 'references'.\n",
+      "base-output-filename": "shell-topology",
+      "snippets": [
+        {
+          "language": "json",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/shell-topology.json",
+          "sizeBytes": 373,
+          "code": "{\n  \"type\": \"Shell\",\n  \"directed_references\": [\n    { \"ref\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a2f0998ae\", \"orientation\": \"+\" },\n    { \"ref\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae\", \"orientation\": \"+\" },\n    { \"ref\": \"uuid:4ac3b91b-eeb7-428c-b7e9-7e8a3f0998ae\", \"orientation\": \"-\" },\n    { \"ref\": \"uuid:4ac4b91b-eeb7-428c-b5e9-7e8a3f0998ae\", \"orientation\": \"+\" }\n  ]\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/shell-topology.jsonld",
+          "sizeBytes": 561,
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld\",\n  \"type\": \"Shell\",\n  \"directed_references\": [\n    {\n      \"ref\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a2f0998ae\",\n      \"orientation\": \"+\"\n    },\n    {\n      \"ref\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae\",\n      \"orientation\": \"+\"\n    },\n    {\n      \"ref\": \"uuid:4ac3b91b-eeb7-428c-b7e9-7e8a3f0998ae\",\n      \"orientation\": \"-\"\n    },\n    {\n      \"ref\": \"uuid:4ac4b91b-eeb7-428c-b5e9-7e8a3f0998ae\",\n      \"orientation\": \"+\"\n    }\n  ]\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/shell-topology.ttl",
+          "sizeBytes": 548,
+          "code": "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n[] a topo:Shell ;\n    topo:directedReferences ( [ topo:orientation \"+\" ;\n                topo:ref <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a2f0998ae> ] [ topo:orientation \"+\" ;\n                topo:ref <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> ] [ topo:orientation \"-\" ;\n                topo:ref <uuid:4ac3b91b-eeb7-428c-b7e9-7e8a3f0998ae> ] [ topo:orientation \"+\" ;\n                topo:ref <uuid:4ac4b91b-eeb7-428c-b5e9-7e8a3f0998ae> ] ) .\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Solid topology (directed_references to Shell features)",
+      "content": "A Solid topology object uses directed_references to reference Shell features.\nEach element has a 'ref' (Shell feature ID) and an 'orientation' ('+' or '-').\nMutually exclusive with 'references'.\n",
+      "base-output-filename": "solid-topology",
+      "snippets": [
+        {
+          "language": "json",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/solid-topology.json",
+          "sizeBytes": 133,
+          "code": "{\n  \"type\": \"Solid\",\n  \"directed_references\": [\n    { \"ref\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae\", \"orientation\": \"+\" }\n  ]\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/solid-topology.jsonld",
+          "sizeBytes": 273,
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld\",\n  \"type\": \"Solid\",\n  \"directed_references\": [\n    {\n      \"ref\": \"uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae\",\n      \"orientation\": \"+\"\n    }\n  ]\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/datatypes/topology/solid-topology.ttl",
+          "sizeBytes": 260,
+          "code": "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n[] a topo:Solid ;\n    topo:directedReferences ( [ topo:orientation \"+\" ;\n                topo:ref <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> ] ) .\n\n"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: 'Topology datatype for topo-features. Supports two reference styles:\n  ''references'' (array of string IDs) for simple positional references, and ''directed_references''\n  (array of oriented object references with ref+orientation) for references where\n  traversal direction matters. Exactly one of the two must be present.'\n$defs:\n  simpleRefs:\n    description: Plain string ID references (e.g. LineString referencing point nodes)\n    properties:\n      type:\n        not:\n          enum:\n          - Face\n          - Ring\n          - Shell\n          - Solid\n        x-jsonld-id: '@type'\n      references:\n        type: array\n        items:\n          $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml\n        x-jsonld-id: https://purl.org/geojson/topo#relatedFeatures\n        x-jsonld-type: '@id'\n        x-jsonld-container: '@list'\n    required:\n    - references\n    not:\n      required:\n      - directed_references\n  nestedRefs:\n    description: Plain string ID references (e.g. LineString referencing point nodes)\n    properties:\n      type:\n        enum:\n        - MultiLineString\n        - Polygon\n        - Polyhedron\n        - Solid\n        x-jsonld-id: '@type'\n      references:\n        type: array\n        items:\n          type: array\n          items:\n            oneOf:\n            - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml\n            - description: wont check contents deeper\n              type: array\n        x-jsonld-id: https://purl.org/geojson/topo#relatedFeatures\n        x-jsonld-type: '@id'\n        x-jsonld-container: '@list'\n    required:\n    - references\n    not:\n      required:\n      - directed_references\n  directedRefs:\n    description: \"Oriented (directed) references \\u2014 each with 'ref' and 'orientation'.\n      Used for Ring, Shell.\"\n    properties:\n      type:\n        enum:\n        - Face\n        - Ring\n        - Shell\n        - Solid\n        x-jsonld-id: '@type'\n      directed_references:\n        type: array\n        items:\n          $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml\n        x-jsonld-id: https://purl.org/geojson/topo#directedReferences\n        x-jsonld-container: '@list'\n    required:\n    - directed_references\n    not:\n      required:\n      - references\nallOf:\n- oneOf:\n  - $ref: '#/$defs/simpleRefs'\n  - $ref: '#/$defs/nestedRefs'\n  - $ref: '#/$defs/directedRefs'\n- properties:\n    type:\n      type: string\n      x-jsonld-id: '@type'\n    relationships:\n      type: array\n      items:\n        allOf:\n        - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/json-fg/link-role/schema.yaml\n        - properties:\n            rel:\n              const: topology\n          required:\n          - rel\n      x-jsonld-id: https://purl.org/geojson/topo#relatedFeatures\n      x-jsonld-type: '@id'\n      x-jsonld-container: '@list'\n  required:\n  - type\nx-jsonld-extra-terms:\n  LineString: https://purl.org/geojson/vocab#LineString\n  MultiLineString: https://purl.org/geojson/vocab#MultiLineString\n  MultiPolygon: https://purl.org/geojson/vocab#MultiPolygon\n  Polygon: https://purl.org/geojson/vocab#Polygon\n  Arc: https://purl.org/geojson/vocab#Arc\n  ArcWithCenter: https://purl.org/geojson/vocab#ArcWithCenter\n  ArcByChord: https://purl.org/geojson/vocab#ArcByChord\n  CircleByCenter: https://purl.org/geojson/vocab#CircleByCenter\n  CubicSpline: https://purl.org/geojson/vocab#CubicSpline\n  radius: https://purl.org/geojson/vocab#radius\n  arcLength: https://purl.org/geojson/vocab#arcLength\n  startTangentVector: https://purl.org/geojson/vocab#startTangentVector\n  endTangentVector: https://purl.org/geojson/vocab#endTangentVector\n  ref:\n    x-jsonld-id: https://purl.org/geojson/topo#ref\n  orientation: https://purl.org/geojson/topo#orientation\n  Edge: https://purl.org/geojson/topo#Edge\n  Face: https://purl.org/geojson/topo#Face\n  Ring: https://purl.org/geojson/topo#Ring\n  Shell: https://purl.org/geojson/topo#Shell\n  Solid: https://purl.org/geojson/topo#Solid\n  rings:\n    x-jsonld-id: https://purl.org/geojson/topo#rings\n    x-jsonld-container: '@list'\n  shells:\n    x-jsonld-id: https://purl.org/geojson/topo#shells\n    x-jsonld-container: '@list'\n  faces:\n    x-jsonld-id: https://purl.org/geojson/topo#faces\n    x-jsonld-container: '@list'\nx-jsonld-prefixes:\n  geojson: https://purl.org/geojson/vocab#\n  topo: https://purl.org/geojson/topo#\n  dct: http://purl.org/dc/terms/\n",
+  "gitRepository": "https://github.com/surroundaustralia/topo-feature",
+  "gitPath": "_sources/datatypes/topology"
+}

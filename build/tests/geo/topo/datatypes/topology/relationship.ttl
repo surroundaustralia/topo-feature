@@ -1,0 +1,12 @@
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix prof: <http://www.w3.org/ns/dx/prof/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix topo: <https://purl.org/geojson/topo#> .
+
+[] a topo:Edge ;
+    topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
+                prof:hasRole <geof:sfTouches> ;
+                oa:hasTarget <http://www.example.com/features/L2> ] ),
+        ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) .
+

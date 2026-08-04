@@ -4,7 +4,9 @@ transforms:
     description: GeoJSON points and Edges
     type: topo2geojson
     metadata:
+      # lean examples can look at this graph to locate referenced objects by id
       ttl: [ _sources/examples/referenced-objects.ttl ]
+      # all points and edges defined using generic container patterns
       mode: "points,edges"
     code: |
       Extracts a 2D view of point and edge geometries from 2 or 3D topology models.
@@ -17,6 +19,19 @@ transforms:
     description: GeoJSON Polygons for faces
     type: topo2geojson
     metadata:
+      # lean examples can look at this graph to locate referenced objects by id
       ttl: [ _sources/examples/referenced-objects.ttl ]
+      # all faces defined using generic container patterns - wont show 2D Polygons unless described as a directed face
       mode: "faces"
+    code: Extracts a 2D view of polygon geometries from faces in 3D topology models
+
+  - id: Polygons-2D
+    description: GeoJSON Polygons from bounded 2D topology
+    type: topo2geojson
+    metadata:
+      ttl: [ _sources/examples/referenced-objects.ttl ]
+      # tells generic topo parser to look in specific container for objects, and the target mapping type of the objects
+      objects: "parcels:Polygon"
+      # tells the parser to only output the target object - not any components needed to build the geometry
+      mode: "parcels"
     code: Extracts a 2D view of polygon geometries from 2 or 3D topology models

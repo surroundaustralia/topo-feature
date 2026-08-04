@@ -10,7 +10,7 @@
   "itemClass": "schema",
   "register": "ogcincubator",
   "version": "0.1",
-  "dateOfLastChange": "2026-07-30",
+  "dateOfLastChange": "2026-08-04",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
@@ -38,12 +38,12 @@
     ]
   },
   "dependsOn": [
-    "ogc.geo.topo.features.topo-solid",
     "ogc.geo.topo.features.topo-face",
     "ogc.geo.topo.features.topo-feature-collection",
-    "ogc.geo.topo.features.topo-line",
+    "ogc.geo.topo.features.topo-shell",
+    "ogc.geo.topo.features.topo-solid",
     "ogc.geo.topo.features.topo-ring",
-    "ogc.geo.topo.features.topo-shell"
+    "ogc.geo.topo.features.topo-line"
   ],
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
   "schema": {
@@ -97,6 +97,37 @@
         ],
         "mode": "faces"
       },
+      "code": "Extracts a 2D view of polygon geometries from faces in 3D topology models",
+      "inputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/json",
+            "label": "JSON",
+            "defaultExtension": "json"
+          }
+        ]
+      },
+      "outputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/geo+json",
+            "label": "GeoJSON",
+            "defaultExtension": "geojson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "Polygons-2D",
+      "description": "GeoJSON Polygons from bounded 2D topology",
+      "type": "topo2geojson",
+      "metadata": {
+        "ttl": [
+          "_sources/examples/referenced-objects.ttl"
+        ],
+        "objects": "parcels:Polygon",
+        "mode": "parcels"
+      },
       "code": "Extracts a 2D view of polygon geometries from 2 or 3D topology models",
       "inputs": {
         "mediaTypes": [
@@ -139,6 +170,11 @@
               "success": true,
               "sizeBytes": 9225,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/cube.Faces-as-Polygons.geojson"
+            },
+            "Polygons-2D": {
+              "success": true,
+              "sizeBytes": 2,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/cube.Polygons-2D.geojson"
             }
           },
           "sizeBytes": 26996,
@@ -177,6 +213,11 @@
               "success": true,
               "sizeBytes": 5275,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/tetrahedron.Faces-as-Polygons.geojson"
+            },
+            "Polygons-2D": {
+              "success": true,
+              "sizeBytes": 2,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/tetrahedron.Polygons-2D.geojson"
             }
           },
           "sizeBytes": 16252,
@@ -215,6 +256,11 @@
               "success": true,
               "sizeBytes": 13376,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/polyhedron.Faces-as-Polygons.geojson"
+            },
+            "Polygons-2D": {
+              "success": true,
+              "sizeBytes": 2,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/polyhedron.Polygons-2D.geojson"
             }
           },
           "sizeBytes": 38014,
@@ -253,6 +299,11 @@
               "success": true,
               "sizeBytes": 60019,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/four-unit.Faces-as-Polygons.geojson"
+            },
+            "Polygons-2D": {
+              "success": true,
+              "sizeBytes": 2,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/four-unit.Polygons-2D.geojson"
             }
           },
           "sizeBytes": 140191
@@ -289,6 +340,11 @@
               "success": true,
               "sizeBytes": 58010,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/four-unit-parcel.Faces-as-Polygons.geojson"
+            },
+            "Polygons-2D": {
+              "success": true,
+              "sizeBytes": 2656,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/four-unit-parcel.Polygons-2D.geojson"
             }
           },
           "sizeBytes": 168546
@@ -324,6 +380,11 @@
               "success": true,
               "sizeBytes": 18267,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/cube-with-void.Faces-as-Polygons.geojson"
+            },
+            "Polygons-2D": {
+              "success": true,
+              "sizeBytes": 2,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/cube-with-void.Polygons-2D.geojson"
             }
           },
           "sizeBytes": 51633,
@@ -362,6 +423,11 @@
               "success": true,
               "sizeBytes": 17906,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/cube-with-protrusion.Faces-as-Polygons.geojson"
+            },
+            "Polygons-2D": {
+              "success": true,
+              "sizeBytes": 2,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/cube-with-protrusion.Polygons-2D.geojson"
             }
           },
           "sizeBytes": 50581,
@@ -400,6 +466,11 @@
               "success": true,
               "sizeBytes": 2,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/points.Faces-as-Polygons.geojson"
+            },
+            "Polygons-2D": {
+              "success": true,
+              "sizeBytes": 2,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/points.Polygons-2D.geojson"
             }
           },
           "sizeBytes": 1671,
@@ -438,6 +509,11 @@
               "success": true,
               "sizeBytes": 2,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/edges.Faces-as-Polygons.geojson"
+            },
+            "Polygons-2D": {
+              "success": true,
+              "sizeBytes": 2,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/edges.Polygons-2D.geojson"
             }
           },
           "sizeBytes": 3156,
@@ -475,6 +551,11 @@
               "success": true,
               "sizeBytes": 2478,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/faces.Faces-as-Polygons.geojson"
+            },
+            "Polygons-2D": {
+              "success": true,
+              "sizeBytes": 2,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/faces.Polygons-2D.geojson"
             }
           },
           "sizeBytes": 37734,
@@ -513,6 +594,11 @@
               "success": true,
               "sizeBytes": 46867,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/solids.Faces-as-Polygons.geojson"
+            },
+            "Polygons-2D": {
+              "success": true,
+              "sizeBytes": 2,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/solids.Polygons-2D.geojson"
             }
           },
           "sizeBytes": 83676,

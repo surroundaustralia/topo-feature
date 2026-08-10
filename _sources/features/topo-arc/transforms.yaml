@@ -1,7 +1,7 @@
 transforms:
 
   - id: Points-n-Edges
-    description: GeoJSON points and a line approximation (chord) of each arc/circle/spline
+    description: GeoJSON points and a line approximation of each arc/circle (chord) and spline (fitted curve)
     type: topo2geojson
     metadata:
       ttl: [ _sources/examples/referenced-objects.ttl ]
@@ -10,9 +10,52 @@ transforms:
       Extracts a 2D "smoke test" view of the point references used by each
       ArcWithCenter/Arc/ArcByChord/CircleByCenter/CubicSpline example.
 
-      topo2geojson does not compute true arc/circle/spline geometry — it
-      resolves the topology's point references directly, so the output is a
-      straight-line (chord) approximation, not the actual curved geometry.
+      For Arc/ArcWithCenter/ArcByChord/CircleByCenter the topology's point
+      references are resolved directly, so the output is a straight-line
+      (chord) approximation rather than the true circular geometry (use the
+      Densified-Curves transform for that).
+
+      CubicSpline topology is always fitted as a proper spline curve (via the
+      `splines` package), using the start/end tangent vectors when supplied —
+      a spline's defining shape is the fitted curve, not a chord through its
+      control points.
+
+      Invokes a reusable utility library supporting an OGC Building Blocks
+      transformer interface.
+
+  - id: Densified-Curves
+    description: True curved geometry — each Arc/Circle densified into chord vertices within a sagitta tolerance
+    type: topo2geojson
+    metadata:
+      ttl: [ _sources/examples/referenced-objects.ttl ]
+      mode: edges,faces
+      densify: true
+      max_offset: 0.02
+    code: |
+      Computes the *actual* curved geometry of each Arc/ArcWithCenter/
+      ArcByChord/CircleByCenter example, rather than the straight-chord
+      approximation produced by the Points-n-Edges transform.
+
+      Each arc's point references are resolved to coordinates and handed to
+      the arc_densify library (via arc_geometry), which returns a sequence of
+      chord vertices whose maximum offset from the true circular arc (the
+      sagitta) does not exceed `max_offset` (0.02 in the coordinate units of
+      the referenced points). Arcs become GeoJSON LineStrings; a
+      CircleByCenter becomes a closed Polygon ring.
+
+      Geometry is derived per topology type:
+        - Arc            centre = circumcircle of its 3 points; sweep direction
+                         inferred from the mid point
+        - ArcWithCenter  centre and endpoints given directly; `orientation`
+                         gives the sweep direction
+        - ArcByChord     centre derived from the chord endpoints, `radius` and
+                         `orientation`
+        - CircleByCenter full sweep about the centre at `radius`
+
+      CubicSpline is not a circular arc, so it is interpolated with the
+      `splines` package (a natural cubic spline through the control points,
+      clamped to the start/end tangent vectors when supplied) and sampled to
+      the same `max_offset` tolerance.
 
       Invokes a reusable utility library supporting an OGC Building Blocks
       transformer interface.

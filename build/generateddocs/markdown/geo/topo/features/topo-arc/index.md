@@ -192,11 +192,11 @@ Arc by Chord example.
       "P1",
       "P2"
     ],
-    "radius": 105.438,
+    "radius": 10,
     "orientation": "cw"
   },
   "properties": {
-    "arcLength": 25.615
+    "arcLength": 15.25
   }
 }
 ```
@@ -216,11 +216,11 @@ Arc by Chord example.
       "P1",
       "P2"
     ],
-    "radius": 105.438,
+    "radius": 10,
     "orientation": "cw"
   },
   "properties": {
-    "arcLength": 25.615
+    "arcLength": 15.25
   }
 }
 ```
@@ -234,11 +234,11 @@ Arc by Chord example.
 
 <http://www.example.com/features/chord1> a geojson:Feature,
         <my:ArcChordFeature> ;
-    geojson:arcLength 2.5615e+01 ;
+    geojson:arcLength 1.525e+01 ;
     geojson:topology [ a geojson:ArcByChord ;
             topo:orientation "cw" ;
             topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ;
-            geojson:radius 1.05438e+02 ] .
+            geojson:radius 10 ] .
 
 
 ```
@@ -248,8 +248,6 @@ Arc by Chord example.
 Circle with Center example.
 
 ![Example](assets/circle-with-center.png)
-
-### Example 5
 #### json
 ```json
 {
@@ -310,8 +308,6 @@ Circle with Center example.
 Cubic Spline example.
 
 ![Example](assets/spline.png)
-
-### Example 7
 #### json
 ```json
 {
@@ -326,6 +322,9 @@ Cubic Spline example.
       "P1",
       "Px1",
       "Px2",
+      "Px3",
+      "Px4",
+      "Px5",
       "P2"
     ]
   },
@@ -348,6 +347,9 @@ Cubic Spline example.
       "P1",
       "Px1",
       "Px2",
+      "Px3",
+      "Px4",
+      "Px5",
       "P2"
     ]
   },
@@ -364,7 +366,7 @@ Cubic Spline example.
 <http://www.example.com/features/1853004> a geojson:Feature,
         <my:SplineFeature> ;
     geojson:topology [ a geojson:CubicSpline ;
-            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/Px1> <http://www.example.com/features/Px2> <http://www.example.com/features/P2> ) ] .
+            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/Px1> <http://www.example.com/features/Px2> <http://www.example.com/features/Px3> <http://www.example.com/features/Px4> <http://www.example.com/features/Px5> <http://www.example.com/features/P2> ) ] .
 
 
 ```
@@ -396,6 +398,9 @@ Cubic Spline with Tangents example.
     },
     "references": [
       "P1",
+      "Px1",
+      "Px2",
+      "Px3",
       "P2"
     ]
   },
@@ -428,6 +433,9 @@ Cubic Spline with Tangents example.
     },
     "references": [
       "P1",
+      "Px1",
+      "Px2",
+      "Px3",
       "P2"
     ]
   },
@@ -444,7 +452,7 @@ Cubic Spline with Tangents example.
 <http://www.example.com/features/1853004> a geojson:Feature,
         <my:SplineFeature> ;
     geojson:topology [ a geojson:CubicSpline ;
-            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ;
+            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/Px1> <http://www.example.com/features/Px2> <http://www.example.com/features/Px3> <http://www.example.com/features/P2> ) ;
             geojson:endTangentVector [ topo:relatedFeatures ( <http://www.example.com/features/P2> <http://www.example.com/features/PVE> ) ] ;
             geojson:startTangentVector [ topo:relatedFeatures ( <http://www.example.com/features/PVS> <http://www.example.com/features/P1> ) ] ] .
 

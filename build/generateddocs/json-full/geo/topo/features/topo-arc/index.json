@@ -10,7 +10,7 @@
   "itemClass": "schema",
   "register": "ogcincubator",
   "version": "0.1",
-  "dateOfLastChange": "2026-08-04",
+  "dateOfLastChange": "2026-08-11",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
@@ -33,11 +33,11 @@
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
-    "ogc.geo.features.feature": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
-    ],
     "ogc.geo.features.featureCollection": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+    ],
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ]
   },
   "dependsOn": [
@@ -58,7 +58,7 @@
   "transforms": [
     {
       "id": "Points-n-Edges",
-      "description": "GeoJSON points and a line approximation (chord) of each arc/circle/spline",
+      "description": "GeoJSON points and a line approximation of each arc/circle (chord) and spline (fitted curve)",
       "type": "topo2geojson",
       "metadata": {
         "ttl": [
@@ -66,7 +66,39 @@
         ],
         "mode": "points,edges"
       },
-      "code": "Extracts a 2D \"smoke test\" view of the point references used by each\nArcWithCenter/Arc/ArcByChord/CircleByCenter/CubicSpline example.\n\ntopo2geojson does not compute true arc/circle/spline geometry \u2014 it\nresolves the topology's point references directly, so the output is a\nstraight-line (chord) approximation, not the actual curved geometry.\n\nInvokes a reusable utility library supporting an OGC Building Blocks\ntransformer interface.\n",
+      "code": "Extracts a 2D \"smoke test\" view of the point references used by each\nArcWithCenter/Arc/ArcByChord/CircleByCenter/CubicSpline example.\n\nFor Arc/ArcWithCenter/ArcByChord/CircleByCenter the topology's point\nreferences are resolved directly, so the output is a straight-line\n(chord) approximation rather than the true circular geometry (use the\nDensified-Curves transform for that).\n\nCubicSpline topology is always fitted as a proper spline curve (via the\n`splines` package), using the start/end tangent vectors when supplied \u2014\na spline's defining shape is the fitted curve, not a chord through its\ncontrol points.\n\nInvokes a reusable utility library supporting an OGC Building Blocks\ntransformer interface.\n",
+      "inputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/json",
+            "label": "JSON",
+            "defaultExtension": "json"
+          }
+        ]
+      },
+      "outputs": {
+        "mediaTypes": [
+          {
+            "mimeType": "application/geo+json",
+            "label": "GeoJSON",
+            "defaultExtension": "geojson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "Densified-Curves",
+      "description": "True curved geometry \u2014 each Arc/Circle densified into chord vertices within a sagitta tolerance",
+      "type": "topo2geojson",
+      "metadata": {
+        "ttl": [
+          "_sources/examples/referenced-objects.ttl"
+        ],
+        "mode": "edges,faces",
+        "densify": true,
+        "max_offset": 0.02
+      },
+      "code": "Computes the *actual* curved geometry of each Arc/ArcWithCenter/\nArcByChord/CircleByCenter example, rather than the straight-chord\napproximation produced by the Points-n-Edges transform.\n\nEach arc's point references are resolved to coordinates and handed to\nthe arc_densify library (via arc_geometry), which returns a sequence of\nchord vertices whose maximum offset from the true circular arc (the\nsagitta) does not exceed `max_offset` (0.02 in the coordinate units of\nthe referenced points). Arcs become GeoJSON LineStrings; a\nCircleByCenter becomes a closed Polygon ring.\n\nGeometry is derived per topology type:\n  - Arc            centre = circumcircle of its 3 points; sweep direction\n                   inferred from the mid point\n  - ArcWithCenter  centre and endpoints given directly; `orientation`\n                   gives the sweep direction\n  - ArcByChord     centre derived from the chord endpoints, `radius` and\n                   `orientation`\n  - CircleByCenter full sweep about the centre at `radius`\n\nCubicSpline is not a circular arc, so it is interpolated with the\n`splines` package (a natural cubic spline through the control points,\nclamped to the start/end tangent vectors when supplied) and sampled to\nthe same `max_offset` tolerance.\n\nInvokes a reusable utility library supporting an OGC Building Blocks\ntransformer interface.\n",
       "inputs": {
         "mediaTypes": [
           {
@@ -107,6 +139,11 @@
               "success": true,
               "sizeBytes": 449,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/arc-with-centre.Points-n-Edges.geojson"
+            },
+            "Densified-Curves": {
+              "success": true,
+              "sizeBytes": 1261,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/arc-with-centre.Densified-Curves.geojson"
             }
           },
           "sizeBytes": 408,
@@ -144,6 +181,11 @@
               "success": true,
               "sizeBytes": 446,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/arc.Points-n-Edges.geojson"
+            },
+            "Densified-Curves": {
+              "success": true,
+              "sizeBytes": 1259,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/arc.Densified-Curves.geojson"
             }
           },
           "sizeBytes": 367,
@@ -179,32 +221,35 @@
           "transformResults": {
             "Points-n-Edges": {
               "success": true,
-              "sizeBytes": 381,
+              "sizeBytes": 380,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/arc-by-chord.Points-n-Edges.geojson"
+            },
+            "Densified-Curves": {
+              "success": true,
+              "sizeBytes": 1234,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/arc-by-chord.Densified-Curves.geojson"
             }
           },
-          "sizeBytes": 417,
-          "code": "{\n  \"id\": \"chord1\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:ArcChordFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"ArcByChord\",\n    \"x-description\": \"References is an ordered list of features with for an Arc Chord, radius and length determine geometry\",\n    \"references\": [\n      \"P1\",\n      \"P2\"\n    ],\n    \"radius\": 105.438,\n    \"orientation\": \"cw\"\n  },\n  \"properties\": {\n    \"arcLength\": 25.615\n  }\n}"
+          "sizeBytes": 411,
+          "code": "{\n  \"id\": \"chord1\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:ArcChordFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"ArcByChord\",\n    \"x-description\": \"References is an ordered list of features with for an Arc Chord, radius and length determine geometry\",\n    \"references\": [\n      \"P1\",\n      \"P2\"\n    ],\n    \"radius\": 10,\n    \"orientation\": \"cw\"\n  },\n  \"properties\": {\n    \"arcLength\": 15.25\n  }\n}"
         },
         {
           "language": "jsonld",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/arc-by-chord.jsonld",
-          "sizeBytes": 541,
-          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld\",\n  \"id\": \"chord1\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:ArcChordFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"ArcByChord\",\n    \"x-description\": \"References is an ordered list of features with for an Arc Chord, radius and length determine geometry\",\n    \"references\": [\n      \"P1\",\n      \"P2\"\n    ],\n    \"radius\": 105.438,\n    \"orientation\": \"cw\"\n  },\n  \"properties\": {\n    \"arcLength\": 25.615\n  }\n}"
+          "sizeBytes": 535,
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld\",\n  \"id\": \"chord1\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:ArcChordFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"ArcByChord\",\n    \"x-description\": \"References is an ordered list of features with for an Arc Chord, radius and length determine geometry\",\n    \"references\": [\n      \"P1\",\n      \"P2\"\n    ],\n    \"radius\": 10,\n    \"orientation\": \"cw\"\n  },\n  \"properties\": {\n    \"arcLength\": 15.25\n  }\n}"
         },
         {
           "language": "ttl",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/arc-by-chord.ttl",
-          "sizeBytes": 580,
-          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<http://www.example.com/features/chord1> a geojson:Feature,\n        <my:ArcChordFeature> ;\n    geojson:arcLength 2.5615e+01 ;\n    geojson:topology [ a geojson:ArcByChord ;\n            topo:orientation \"cw\" ;\n            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ;\n            geojson:radius 1.05438e+02 ] .\n\n"
+          "sizeBytes": 570,
+          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n<http://www.example.com/features/chord1> a geojson:Feature,\n        <my:ArcChordFeature> ;\n    geojson:arcLength 1.525e+01 ;\n    geojson:topology [ a geojson:ArcByChord ;\n            topo:orientation \"cw\" ;\n            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ;\n            geojson:radius 10 ] .\n\n"
         }
       ]
     },
     {
       "title": "Example GeoJSON feature using  CircleWithCenter topology",
-      "content": "Circle with Center example.\n\n![Example](assets/circle-with-center.png)"
-    },
-    {
+      "content": "Circle with Center example.\n\n![Example](assets/circle-with-center.png)",
       "base-output-filename": "circle",
       "snippets": [
         {
@@ -220,6 +265,11 @@
               "success": true,
               "sizeBytes": 288,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/circle.Points-n-Edges.geojson"
+            },
+            "Densified-Curves": {
+              "success": true,
+              "sizeBytes": 4248,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/circle.Densified-Curves.geojson"
             }
           },
           "sizeBytes": 347,
@@ -241,9 +291,7 @@
     },
     {
       "title": "Example GeoJSON feature using Cubic Spline topology",
-      "content": "Cubic Spline example.\n\n![Example](assets/spline.png)"
-    },
-    {
+      "content": "Cubic Spline example.\n\n![Example](assets/spline.png)",
       "base-output-filename": "spline",
       "snippets": [
         {
@@ -257,24 +305,29 @@
           "transformResults": {
             "Points-n-Edges": {
               "success": true,
-              "sizeBytes": 445,
+              "sizeBytes": 5553,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/spline.Points-n-Edges.geojson"
+            },
+            "Densified-Curves": {
+              "success": true,
+              "sizeBytes": 2895,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/spline.Densified-Curves.geojson"
             }
           },
-          "sizeBytes": 332,
-          "code": "{\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:SplineFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"CubicSpline\",\n    \"x-description\": \"References is an ordered list of features with point geometries\",\n    \"references\": [\n      \"P1\",\n      \"Px1\",\n      \"Px2\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}"
+          "sizeBytes": 371,
+          "code": "{\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:SplineFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"CubicSpline\",\n    \"x-description\": \"References is an ordered list of features with point geometries\",\n    \"references\": [\n      \"P1\",\n      \"Px1\",\n      \"Px2\",\n      \"Px3\",\n      \"Px4\",\n      \"Px5\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}"
         },
         {
           "language": "jsonld",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/spline.jsonld",
-          "sizeBytes": 456,
-          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld\",\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:SplineFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"CubicSpline\",\n    \"x-description\": \"References is an ordered list of features with point geometries\",\n    \"references\": [\n      \"P1\",\n      \"Px1\",\n      \"Px2\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}"
+          "sizeBytes": 495,
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld\",\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:SplineFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"CubicSpline\",\n    \"x-description\": \"References is an ordered list of features with point geometries\",\n    \"references\": [\n      \"P1\",\n      \"Px1\",\n      \"Px2\",\n      \"Px3\",\n      \"Px4\",\n      \"Px5\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}"
         },
         {
           "language": "ttl",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/spline.ttl",
-          "sizeBytes": 493,
-          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n<http://www.example.com/features/1853004> a geojson:Feature,\n        <my:SplineFeature> ;\n    geojson:topology [ a geojson:CubicSpline ;\n            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/Px1> <http://www.example.com/features/Px2> <http://www.example.com/features/P2> ) ] .\n\n"
+          "sizeBytes": 607,
+          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n<http://www.example.com/features/1853004> a geojson:Feature,\n        <my:SplineFeature> ;\n    geojson:topology [ a geojson:CubicSpline ;\n            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/Px1> <http://www.example.com/features/Px2> <http://www.example.com/features/Px3> <http://www.example.com/features/Px4> <http://www.example.com/features/Px5> <http://www.example.com/features/P2> ) ] .\n\n"
         }
       ]
     },
@@ -294,24 +347,29 @@
           "transformResults": {
             "Points-n-Edges": {
               "success": true,
-              "sizeBytes": 357,
+              "sizeBytes": 4621,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/spline-with-tangents.Points-n-Edges.geojson"
+            },
+            "Densified-Curves": {
+              "success": true,
+              "sizeBytes": 3248,
+              "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/spline-with-tangents.Densified-Curves.geojson"
             }
           },
-          "sizeBytes": 543,
-          "code": "{\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:SplineFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"CubicSpline\",\n    \"x-description\": \"References is an ordered list of features with point geometries, with tangent vectors defining entry and exit angles\",\n    \"startTangentVector\": {\n      \"references\": [\n        \"PVS\",\n        \"P1\"\n      ]\n    },\n    \"endTangentVector\": {\n      \"references\": [\n        \"P2\",\n        \"PVE\"\n      ]\n    },\n    \"references\": [\n      \"P1\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}"
+          "sizeBytes": 582,
+          "code": "{\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:SplineFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"CubicSpline\",\n    \"x-description\": \"References is an ordered list of features with point geometries, with tangent vectors defining entry and exit angles\",\n    \"startTangentVector\": {\n      \"references\": [\n        \"PVS\",\n        \"P1\"\n      ]\n    },\n    \"endTangentVector\": {\n      \"references\": [\n        \"P2\",\n        \"PVE\"\n      ]\n    },\n    \"references\": [\n      \"P1\",\n      \"Px1\",\n      \"Px2\",\n      \"Px3\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}"
         },
         {
           "language": "jsonld",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/spline-with-tangents.jsonld",
-          "sizeBytes": 667,
-          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld\",\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:SplineFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"CubicSpline\",\n    \"x-description\": \"References is an ordered list of features with point geometries, with tangent vectors defining entry and exit angles\",\n    \"startTangentVector\": {\n      \"references\": [\n        \"PVS\",\n        \"P1\"\n      ]\n    },\n    \"endTangentVector\": {\n      \"references\": [\n        \"P2\",\n        \"PVE\"\n      ]\n    },\n    \"references\": [\n      \"P1\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}"
+          "sizeBytes": 706,
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld\",\n  \"id\": \"1853004\",\n  \"type\": \"Feature\",\n  \"featureType\": \"my:SplineFeature\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"CubicSpline\",\n    \"x-description\": \"References is an ordered list of features with point geometries, with tangent vectors defining entry and exit angles\",\n    \"startTangentVector\": {\n      \"references\": [\n        \"PVS\",\n        \"P1\"\n      ]\n    },\n    \"endTangentVector\": {\n      \"references\": [\n        \"P2\",\n        \"PVE\"\n      ]\n    },\n    \"references\": [\n      \"P1\",\n      \"Px1\",\n      \"Px2\",\n      \"Px3\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}"
         },
         {
           "language": "ttl",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/spline-with-tangents.ttl",
-          "sizeBytes": 705,
-          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n<http://www.example.com/features/1853004> a geojson:Feature,\n        <my:SplineFeature> ;\n    geojson:topology [ a geojson:CubicSpline ;\n            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ;\n            geojson:endTangentVector [ topo:relatedFeatures ( <http://www.example.com/features/P2> <http://www.example.com/features/PVE> ) ] ;\n            geojson:startTangentVector [ topo:relatedFeatures ( <http://www.example.com/features/PVS> <http://www.example.com/features/P1> ) ] ] .\n\n"
+          "sizeBytes": 819,
+          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n<http://www.example.com/features/1853004> a geojson:Feature,\n        <my:SplineFeature> ;\n    geojson:topology [ a geojson:CubicSpline ;\n            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/Px1> <http://www.example.com/features/Px2> <http://www.example.com/features/Px3> <http://www.example.com/features/P2> ) ;\n            geojson:endTangentVector [ topo:relatedFeatures ( <http://www.example.com/features/P2> <http://www.example.com/features/PVE> ) ] ;\n            geojson:startTangentVector [ topo:relatedFeatures ( <http://www.example.com/features/PVS> <http://www.example.com/features/P1> ) ] ] .\n\n"
         }
       ]
     }

@@ -193,3 +193,15 @@
       ref: examples/solids-example.json
   base-output-filename: solids
 
+- title: Aggregate Polygon (MultiPolygon from aggregated parcels)
+  content: |
+    Two Polygon parcels (each a ring of edges) aggregated into a single
+    MultiPolygon via an AggregatePolygon feature whose `references` list the
+    ids of the polygons to combine. The Polygons-2D transform renders the
+    AggregatePolygon as a GeoJSON MultiPolygon and the referenced parcels as
+    Polygons. Self-contained: all points, edges and parcels are inline.
+  snippets:
+    - language: json
+      ref: examples/aggregate-polygon.json
+  base-output-filename: aggregate-polygon
+

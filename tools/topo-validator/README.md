@@ -1,6 +1,7 @@
 # Topology Boundary-Block Validator
 
-`topo-validator` validates `topo-feature` / WA 3D CSDM topology data against a set of boundary-block topology rules. It checks whether points, curves, surfaces, shells, solids, and solid relationships form a coherent 3D topological model.
+`topo-validator` validates `topo-feature` / WA 3D CSDM topology data against a set of boundary-block topology rules. 
+It checks whether points, curves, surfaces, shells, solids, and solid relationships form a coherent 3D topological model.
 
 The validator can be used:
 
@@ -23,7 +24,8 @@ The validator runs structural checks first, then topology conformance checks gro
 | `CC-06`           | Solid relationship topology   | `TR-08`, `TR-10`                                     |
 | `CC-07`           | Containment and host topology | `TR-09`, `TR-20`, `TR-21`                            |
 
-Structural validation checks that required collections and fields are present and safe to process. If structural errors are found, topology rules are not run.
+Structural validation checks that required collections and fields are present and safe to process. 
+If structural errors are found, topology rules are not run.
 
 ## Supported input
 
@@ -82,18 +84,32 @@ For shells:
 
 ## Installation / setup
 
-From the repository root, ensure Python can import the `topo_validator` package.
-
-For local development, run commands from the repository root, for example:
+The `topo_validator` package lives in `tools/topo-validator/`. Python must be able to import it, so run all commands from that directory:
 
 ```bash 
-python -m topo_validator.cli topo-validator/tests/tetrahedron.json
+cd tools/topo-validator
+python -m topo_validator.cli tests/fixtures/tr01-duplicate-point-fail.json
 ```
+
+Note that the directory is `topo-validator` (hyphen) but the importable package inside it is `topo_validator` (underscore). 
+`python -m` takes the dotted module name, never a file path.
+
+To run from the repository root instead, put the package directory on `PYTHONPATH`:
+
+```bash 
+PYTHONPATH=tools/topo-validator python -m topo_validator.cli tools/topo-validator/tests/fixtures/tr01-duplicate-point-fail.json
+```
+
+In PowerShell, set `$env:PYTHONPATH = "tools/topo-validator"` first.
+
+Alternatively, install the package (`pip install -e tools/topo-validator`) and use the `topo-validate` console script from any directory.
 
 If your environment requires dependencies, install the project/test requirements used by the wider repository before running validation.
 
 
 ## Command-line usage
+
+All commands below assume the working directory is `tools/topo-validator`, as described under [Installation / setup](#installation--setup).
 
 ### Validate a CSDM JSON file and print a text report
 
@@ -112,9 +128,7 @@ By default, the CLI:
    - `1` when validation errors are found,
    - `2` when input/CLI processing fails.
 
-
-
-### Choose report format
+### Choose a report format
 
 Supported formats are:
 
@@ -131,12 +145,11 @@ python -m topo_validator.cli path/to/model.json --format html
 ### Save a report to a file
 
 ```bash 
-python -m topo_validator.cli path/to/model.json
---format html
---output reports/model-validation-report.html
+python -m topo_validator.cli path/to/model.json --format html --output reports/model-validation-report.html
 ```
 
-For HTML reports, if `--output` is omitted, the CLI writes to the package's default reports directory using the input filename stem.
+For HTML reports, if `--output` is omitted, the CLI writes to a `reports/` directory beside the input file, named after the input filename stem. 
+So validating `tests/fixtures/tr01-duplicate-point-fail.json` writes `tests/fixtures/reports/tr01-duplicate-point-fail-validation-report.html`.
 
 
 
@@ -288,9 +301,7 @@ The JSON report includes:
 For review.
 
 ```bash 
-python -m topo_validator.cli path/to/model.json
---format html
---output validation-report.html
+python -m topo_validator.cli path/to/model.json --format html --output validation-report.html
 ```
 
 The HTML report includes:
@@ -319,13 +330,12 @@ Before topology validation runs, the validator checks:
 If structural errors exist, topology validation stops early.
 
 
-
 ### Point topology — `CC-01`
 
-| Rule | Name | Checks |
-|---|---|---|
-| `TR-01` | UniquePoints | Points are not coincident within tolerance |
-| `TR-11` | PointFabricConsistency | Curve vertices reference known points |
+| Rule    | Name                   | Checks                                     |
+|---------|------------------------|--------------------------------------------|
+| `TR-01` | UniquePoints           | Points are not coincident within tolerance |
+| `TR-11` | PointFabricConsistency | Curve vertices reference known points      |
 
 Common issue codes:
 
@@ -336,14 +346,14 @@ Common issue codes:
 
 ### Curve topology — `CC-02`
 
-| Rule | Name | Checks |
-|---|---|---|
-| `TR-02` | CurveNoSelfIntersection | Curves do not cross themselves |
-| `TR-03` | NoDanglingCurves | Curves are referenced by surface rings unless exempt as observations |
-| `TR-12` | MinimumCurveLength | Curves exceed the minimum length tolerance |
-| `TR-13` | NoDuplicateCurves | Curves are not duplicate forward/reverse vertex sequences |
-| `TR-14` | CurveIntersectionAtNodesOnly | Curves only intersect at shared point nodes |
-| `TR-22` | CurveOrientation | Curves are not repeated within the same ring |
+| Rule    | Name                         | Checks                                                               |
+|---------|------------------------------|----------------------------------------------------------------------|
+| `TR-02` | CurveNoSelfIntersection      | Curves do not cross themselves                                       |
+| `TR-03` | NoDanglingCurves             | Curves are referenced by surface rings unless exempt as observations |
+| `TR-12` | MinimumCurveLength           | Curves exceed the minimum length tolerance                           |
+| `TR-13` | NoDuplicateCurves            | Curves are not duplicate forward/reverse vertex sequences            |
+| `TR-14` | CurveIntersectionAtNodesOnly | Curves only intersect at shared point nodes                          |
+| `TR-22` | CurveOrientation             | Curves are not repeated within the same ring                         |
 
 Common issue codes:
 
@@ -358,14 +368,14 @@ Common issue codes:
 
 ### Surface topology — `CC-03`
 
-| Rule | Name | Checks |
-|---|---|---|
-| `TR-04` | SurfaceClosedRing | Ring members connect end-to-start and close |
-| `TR-05` | SharedSurfaceEdges | Shared curves use opposite orientations |
-| `TR-15` | NoSurfaceSelfIntersection | Surface rings do not self-intersect |
-| `TR-16` | NoDuplicateSurfaces | Surfaces do not reference identical curve sets |
-| `TR-17` | SurfaceCurveConsistency | Surface ring members reference known curves |
-| `TR-23` | ConnectedInterior | Rings do not revisit directed start vertices |
+| Rule    | Name                      | Checks                                         |
+|---------|---------------------------|------------------------------------------------|
+| `TR-04` | SurfaceClosedRing         | Ring members connect end-to-start and close    |
+| `TR-05` | SharedSurfaceEdges        | Shared curves use opposite orientations        |
+| `TR-15` | NoSurfaceSelfIntersection | Surface rings do not self-intersect            |
+| `TR-16` | NoDuplicateSurfaces       | Surfaces do not reference identical curve sets |
+| `TR-17` | SurfaceCurveConsistency   | Surface ring members reference known curves    |
+| `TR-23` | ConnectedInterior         | Rings do not revisit directed start vertices   |
 
 Common issue codes:
 
@@ -380,9 +390,9 @@ Common issue codes:
 
 ### Shell topology — `CC-04`
 
-| Rule | Name | Checks |
-|---|---|---|
-| `TR-06` | ClosedSolid | Shell curves appear exactly twice |
+| Rule    | Name            | Checks                                        |
+|---------|-----------------|-----------------------------------------------|
+| `TR-06` | ClosedSolid     | Shell curves appear exactly twice             |
 | `TR-18` | NoDanglingFaces | Surfaces are referenced by at least one solid |
 
 Common issue codes:
@@ -394,12 +404,12 @@ Common issue codes:
 
 ### Solid topology — `CC-05`
 
-| Rule | Name | Checks |
-|---|---|---|
-| `TR-07` | PositiveVolume | Declared solid volume is positive |
-| `TR-19` | MinimumSolidThickness | Solid bounding box exceeds minimum thickness |
-| `TR-24` | SolidNonSelfIntersection | Cross-face segments do not intersect |
-| `TR-25` | ShellOrientation | Outer shells are outward; inner shells are inward |
+| Rule    | Name                     | Checks                                            |
+|---------|--------------------------|---------------------------------------------------|
+| `TR-07` | PositiveVolume           | Declared solid volume is positive                 |
+| `TR-19` | MinimumSolidThickness    | Solid bounding box exceeds minimum thickness      |
+| `TR-24` | SolidNonSelfIntersection | Cross-face segments do not intersect              |
+| `TR-25` | ShellOrientation         | Outer shells are outward; inner shells are inward |
 
 Common issue codes:
 
@@ -413,10 +423,10 @@ Common issue codes:
 
 ### Solid relationship topology — `CC-06`
 
-| Rule | Name | Checks |
-|---|---|---|
-| `TR-08` | NoSolidOverlap | Solids in the same theme do not overlap, with allowed exemptions |
-| `TR-10` | SharedSolidFace | A face is referenced by no more than two solids |
+| Rule    | Name            | Checks                                                           |
+|---------|-----------------|------------------------------------------------------------------|
+| `TR-08` | NoSolidOverlap  | Solids in the same theme do not overlap, with allowed exemptions |
+| `TR-10` | SharedSolidFace | A face is referenced by no more than two solids                  |
 
 Common issue codes:
 
@@ -433,11 +443,11 @@ Common issue codes:
 
 ### Containment and host topology — `CC-07`
 
-| Rule | Name | Checks |
-|---|---|---|
-| `TR-09` | ParentContainment | Child solids are contained in their parent |
-| `TR-20` | EasementContainment | Secondary/easement solids are contained in their burdened parcel |
-| `TR-21` | ThematicHostRelationship | Thematic solids reference a known host |
+| Rule    | Name                     | Checks                                                           |
+|---------|--------------------------|------------------------------------------------------------------|
+| `TR-09` | ParentContainment        | Child solids are contained in their parent                       |
+| `TR-20` | EasementContainment      | Secondary/easement solids are contained in their burdened parcel |
+| `TR-21` | ThematicHostRelationship | Thematic solids reference a known host                           |
 
 Common issue codes:
 
@@ -455,7 +465,9 @@ Common issue codes:
 
 ### 1. Validate structure first
 
-The tool does this automatically. If you see structural issues, fix those before investigating topology issues. Invalid structure can hide or distort topology rule results.
+The tool does this automatically. 
+If you see structural issues, fix those before investigating topology issues. 
+Invalid structure can hide or distort topology rule results.
 
 ### 2. Use HTML reports for manual review
 
@@ -467,7 +479,8 @@ Use JSON output in CI or scripts so issue codes can be parsed reliably.
 
 ### 4. Pay attention to object ids
 
-Most topology issues include `object_id`. Use this to locate the affected point, curve, surface, or solid in your source model.
+Most topology issues include `object_id`. 
+Use this to locate the affected point, curve, surface, or solid in your source model.
 
 ### 5. Treat cascading errors carefully
 
@@ -486,51 +499,83 @@ Curves used only as supporting survey observations can be exempt from dangling-c
 
 ### 7. Keep shared boundaries topological
 
-Adjacent solids should share boundary topology rather than duplicate equivalent points, curves, and surfaces. Duplicate shared geometry can cause duplicate point, duplicate curve, duplicate surface, or overlap issues.
+Adjacent solids should share boundary topology rather than duplicate equivalent points, curves, and surfaces. 
+Duplicate shared geometry can cause duplicate point, duplicate curve, duplicate surface, or overlap issues.
 
 ### 8. Check levels for multi-storey models
 
-For stacked parcels or building-level solids, populate `levels` consistently. Solids with disjoint levels are exempt from some overlap checks.
+For stacked parcels or building-level solids, populate `levels` consistently. 
+Solids with disjoint levels are exempt from some overlap checks.
 
 ### 9. Use `burdened_id` for secondary/easement containment
 
-For secondary/easement parcels, prefer `burdened_id` to identify the burdened parcel. Legacy `servient_id` is also recognised by the containment check.
+For secondary/easement parcels, prefer `burdened_id` to identify the burdened parcel. 
+Legacy `servient_id` is also recognised by the containment check.
 
 ### 10. Validate after every transformation
 
-Run the validator after generating, converting, simplifying, or deduplicating topology. Many topology errors are introduced during conversion rather than manual modelling.
+Run the validator after generating, converting, simplifying, or deduplicating topology. 
+Many topology errors are introduced during conversion rather than manual modelling.
 
 
 
 ## Running tests
 
-The package includes fixtures and report examples under `topo_validator/tests`.
+The `tools/topo-validator/tests` directory holds the test modules, JSON fixtures under `tests/fixtures/`, and generated report examples under `tests/reports/`.
 
-Run package tests from the repository root:
+Run package tests from `tools/topo-validator`:
 
 ```bash 
-pytest topo_validator/tests -v
+cd tools/topo-validator
+python -m pytest -v
 ```
 
 Validate a specific fixture through the CLI:
 
 ```bash 
-python -m topo_validator.cli
-topo_validator/tests/tetrahedron.json
---format html
---output topo_validator/tests/reports/tetrahedron-validation-report.html
+python -m topo_validator.cli tests/fixtures/tr01-duplicate-point-fail.json --format html --output tests/reports/tr01-duplicate-point-fail-validation-report.html
 ```
 
-Example fixtures include:
+The fixtures in `tests/fixtures/` are all deliberate failure cases, each named after the rule it violates:
 
-- `tetrahedron.json` — expected to pass,
-- `4-unit-up-down.json` — multi-solid example,
-- `tr01-duplicate-point-fail.json` — duplicate point failure example,
-- `tr11-point-missing-fail.json` — missing point reference failure example.
+- `tr01-duplicate-point-fail.json` — duplicate point,
+- `tr02-curve-self-intersection-fail.json` — self-intersecting curve,
+- `tr03-no-dangling-fail.json` — dangling curve,
+- `tr04-surface-closed-ring-fail.json` — unclosed surface ring,
+- `tr11-point-missing-fail.json` — missing point reference,
+- `tr12-minimum-length-fail.json` — curve below minimum length,
+- `tr13-no-duplicate-curve-fail.json` — duplicate curve,
+- `tr14-curve-intersection-fail.json` — curve intersection away from a node,
+- `tr22-curve-orientation-fail.json` — curve repeated within a ring.
+
+Passing models come from two places rather than from `tests/fixtures/`: the standard building-block examples described below, and in-memory models built by `tests/conftest.py` (see the pytest fixtures section below).
+
+### Standard building-block examples
+
+`tetrahedron.json`, `cube.json`, and `4-unit-up-down.json` are the canonical WA examples forming part of the `topo-feature` building block. So they live with the building block rather than in this tool's test tree:
+
+```text
+_sources/features/topology-validator/examples/
+   tetrahedron.json        # minimal valid solid
+   cube.json               # single valid unit cube
+   4-unit-up-down.json     # multi-solid stacked example
+```
+
+All three are expected to validate cleanly (exit code `0`). From `tools/topo-validator`:
+
+```bash 
+python -m topo_validator.cli ../../_sources/features/topology-validator/examples/tetrahedron.json
+python -m topo_validator.cli ../../_sources/features/topology-validator/examples/cube.json
+python -m topo_validator.cli ../../_sources/features/topology-validator/examples/4-unit-up-down.json
+```
+
+`tests/test_transform_report_output.py` also reads `cube.json` from this directory to exercise the building block's `transforms/validate_topology.py` transform, so the examples are covered by the test suite as well as usable directly from the CLI.
+
+The pre-generated HTML reports for these examples are checked in under `tests/reports/`.
 
 ### pytest fixtures
 
-`conftest.py` has two kinds of data sources: normal helper functions like `cube_data(...)`, and pytest fixtures like `unit_cube`.
+`tests/conftest.py` has two kinds of data sources: normal helper functions like `cube_data(...)`, and pytest fixtures like `unit_cube`.
 The normal builder names are `cube_data`, `merge_datasets`, and `hollow_cube_data`; the named pytest fixtures are `unit_cube`, `two_adjacent_cubes`, `nested_cubes`, and `hollow_cube`. 
 `pytest` can be used to validate the pytest named fixtures.
 
@@ -540,6 +585,8 @@ Run pytest as follows:
 cd tools/topo-validator
 python -m pytest
 ```
+
+`testpaths` in `pyproject.toml` is set to `tests`, so a bare `python -m pytest` from `tools/topo-validator` collects the suite without needing an explicit path.
 
 ## Exit codes
 
@@ -565,15 +612,18 @@ In CI, a non-zero exit code should fail the job.
 
 ### `Input error: Expected JSON object`
 
-The input file is valid JSON but the top-level value is not an object. The validator expects a JSON object, not an array or scalar.
+The input file is valid JSON, but the top-level value is not an object. 
+The validator expects a JSON object, not an array or scalar.
 
 ### Many rules fail at once
 
-Look for structural errors or early reference errors first. For example, one missing point can cause multiple curve, surface, and shell issues.
+Look for structural errors or early reference errors first. 
+For example, one missing point can cause multiple curve, surface, and shell issues.
 
 ### HTML report was written somewhere unexpected
 
-If `--format html` is used without `--output`, the CLI writes to the package default reports directory. Pass `--output` explicitly to control the path.
+If `--format html` is used without `--output`, the CLI writes to a `reports/` directory beside the input file, not to the current working directory. 
+Pass `--output` explicitly to control the path.
 
 ### CSDM input produces empty topology collections
 
@@ -586,32 +636,54 @@ Check that the input uses the expected feature collection names:
 - `shells`
 - `solids`
 
-Also ensure features have string `id` values and topology references in the expected fields.
+Also, ensure features have string `id` values and topology references in the expected fields.
 
 ### Curves on different levels are reported as intersecting
 
-The validator uses a 3D segment intersection test with a coplanarity guard. If an intersection is reported, check whether the coordinates are actually coplanar or whether level/elevation values were lost during conversion.
+The validator uses a 3D segment intersection test with a coplanarity guard. 
+If an intersection is reported, check whether the coordinates are actually coplanar or whether level/elevation values were lost during conversion.
 
 ## Developer notes
 
 The package is organised as follows:
 
 ```text 
-topo_validator/ 
-   conformance/ 
-      cc01_points.py 
-      cc02_curves.py 
-      cc03_surfaces.py 
-      cc04_shells.py 
-      cc05_solids.py 
-      cc06_relationships.py 
-      cc07_containment.py 
-   cli.py 
-   geometry.py 
-   loader.py 
-   model.py 
-   report.py 
-   validator.py
+tools/topo-validator/
+   pyproject.toml
+   README.md
+   topo_validator/ 
+      conformance/ 
+         cc01_points.py 
+         cc02_curves.py 
+         cc03_surfaces.py 
+         cc04_shells.py 
+         cc05_solids.py 
+         cc06_relationships.py 
+         cc07_containment.py 
+      cli.py 
+      geometry.py 
+      loader.py 
+      model.py 
+      report.py 
+      validator.py
+   tests/
+      conftest.py
+      test_in_memory_samples.py
+      test_transform_report_output.py
+      fixtures/                    # deliberate rule-failure JSON cases
+      reports/                     # generated HTML report examples
+```
+
+Related building-block content lives outside this tool, under the `topo-feature` building block:
+
+```text 
+_sources/features/topology-validator/
+   bblock.json
+   description.md
+   examples/                       # tetrahedron.json, cube.json, 4-unit-up-down.json
+   examples.yaml
+   transforms/                     # validate_topology.py, validate_topology_html.py
+   transforms.yaml
 ```
 
 Key modules:
@@ -650,18 +722,18 @@ Known areas for future extension include:
 
 ## Quick command reference
 
+Run these from `tools/topo-validator`:
+
 ```bash
-Text report to stdout
+# Text report to stdout
 python -m topo_validator.cli model.json
-JSON report to file
-python -m topo_validator.cli model.json
---format json
---output validation-report.json
-HTML report to file
-python -m topo_validator.cli model.json
---format html
---output validation-report.html
-Validate internal topology JSON directly
-python -m topo_validator.cli internal-topology.json
---raw-internal
+
+# JSON report to file
+python -m topo_validator.cli model.json --format json --output validation-report.json
+
+# HTML report to file
+python -m topo_validator.cli model.json --format html --output validation-report.html
+
+# Validate internal topology JSON directly
+python -m topo_validator.cli internal-topology.json --raw-internal
 ```

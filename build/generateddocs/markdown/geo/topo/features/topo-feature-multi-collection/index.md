@@ -986,7 +986,7 @@ Dataset consists of eight points, 12 edges, six rings, six faces, one shell, and
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:29246856-504f-48d4-9a72-a90fd0f5837b",
                 "orientation": "+"
@@ -1573,7 +1573,7 @@ Dataset consists of four points, six edges, four rings, four faces, one shell, a
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:2fba8c41-56fd-4ca2-9924-65b61e2fe2e3",
                 "orientation": "+"
@@ -2146,7 +2146,7 @@ Dataset consists of four points, six edges, four rings, four faces, one shell, a
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:2fba8c41-56fd-4ca2-9924-65b61e2fe2e3",
                 "orientation": "+"
@@ -3670,7 +3670,7 @@ Dataset consists of 12 points, 18 edges, eight rings, eight faces, one shell, an
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:3202c775-4918-49b4-92bd-ea6236e0dcac",
                 "orientation": "+"
@@ -4959,7 +4959,7 @@ Dataset consists of 12 points, 18 edges, eight rings, eight faces, one shell, an
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:3202c775-4918-49b4-92bd-ea6236e0dcac",
                 "orientation": "+"
@@ -10017,7 +10017,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:31dcf84a-98c6-48b1-8ba6-14d7a5ff6749",
                 "orientation": "+"
@@ -10038,7 +10038,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:f44d98c1-fc4e-45da-a233-6e63e58bd560",
                 "orientation": "+"
@@ -10059,7 +10059,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:26bd463c-0433-4510-8ba8-074f5cdd1e64",
                 "orientation": "+"
@@ -10080,7 +10080,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:3e5f9429-9bfb-498b-9624-e667f2e7b281",
                 "orientation": "+"
@@ -10101,7 +10101,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:9d4e9985-3788-4e70-a2ec-a809aba7c7e8",
                 "orientation": "+"
@@ -14669,7 +14669,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:31dcf84a-98c6-48b1-8ba6-14d7a5ff6749",
                 "orientation": "+"
@@ -14690,7 +14690,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:f44d98c1-fc4e-45da-a233-6e63e58bd560",
                 "orientation": "+"
@@ -14711,7 +14711,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:26bd463c-0433-4510-8ba8-074f5cdd1e64",
                 "orientation": "+"
@@ -14732,7 +14732,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:3e5f9429-9bfb-498b-9624-e667f2e7b281",
                 "orientation": "+"
@@ -14753,7 +14753,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:9d4e9985-3788-4e70-a2ec-a809aba7c7e8",
                 "orientation": "+"
@@ -20990,7 +20990,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:26924195-da93-43af-946d-237910710449",
                 "orientation": "+"
@@ -21019,7 +21019,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:89957e86-89d5-459d-a170-0c7c916f2382",
                 "orientation": "+"
@@ -21048,7 +21048,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:9a31a4bf-8d83-4876-8bc3-df640512418a",
                 "orientation": "+"
@@ -21077,7 +21077,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:ddbbed6c-5a7d-4405-9d41-59677b9484ee",
                 "orientation": "+"
@@ -21106,7 +21106,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:1e877d2e-b9b0-4152-b693-fc4d76843142",
                 "orientation": "+"
@@ -26594,7 +26594,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:26924195-da93-43af-946d-237910710449",
                 "orientation": "+"
@@ -26623,7 +26623,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:89957e86-89d5-459d-a170-0c7c916f2382",
                 "orientation": "+"
@@ -26652,7 +26652,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:9a31a4bf-8d83-4876-8bc3-df640512418a",
                 "orientation": "+"
@@ -26681,7 +26681,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:ddbbed6c-5a7d-4405-9d41-59677b9484ee",
                 "orientation": "+"
@@ -26710,7 +26710,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:1e877d2e-b9b0-4152-b693-fc4d76843142",
                 "orientation": "+"
@@ -30501,7 +30501,7 @@ Dataset consists of 16 points, 24 edges, 12 rings, 12 faces, two shells, and one
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568",
                 "orientation": "+"
@@ -32245,7 +32245,7 @@ Dataset consists of 16 points, 24 edges, 12 rings, 12 faces, two shells, and one
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568",
                 "orientation": "+"
@@ -34602,7 +34602,7 @@ Dataset consists of 16 points, 24 edges, 12 rings, 11 faces, one shell, and one 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:c1c50d16-4ae4-4b00-8df3-169a51b37aad",
                 "orientation": "+"
@@ -36306,7 +36306,7 @@ Dataset consists of 16 points, 24 edges, 12 rings, 11 faces, one shell, and one 
           "geometry": null,
           "topology": {
             "type": "Solid",
-            "shells": [
+            "directed_references": [
               {
                 "ref": "uuid:c1c50d16-4ae4-4b00-8df3-169a51b37aad",
                 "orientation": "+"

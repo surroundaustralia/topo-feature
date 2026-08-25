@@ -51,7 +51,7 @@ The loader maps CSDM feature collections into the validator's internal model:
 | `rings[].features[].topology.directed_references`                 | `surfaces[].rings[].members` |
 | `faces[].features[].topology.directed_references`                 | `surfaces[]` via ring lookup |
 | `shells[].features[].topology.directed_references`                | `solids[].shells[].faces`    |
-| `solids[].features[].topology.shells`                             | `solids[]` via shell lookup  |
+| `solids[].features[].topology.directed_references`                | `solids[]` via shell lookup  |
 
 You can also validate an "internal" topology dictionary by using the `--raw-internal` CLI flag or calling `validate_topology()` directly.
 

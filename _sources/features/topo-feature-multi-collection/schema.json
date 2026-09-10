@@ -52,6 +52,30 @@
           }
         ]
       }
+    },
+    "SolidOrAggregate": {
+      "$anchor": "SolidOrAggregate",
+      "description": "A solids-array entry: either a Solid bounded by its own Shells, or a SolidAggregate combining a set of member Solids by plain reference.",
+      "oneOf": [
+        {
+          "$ref": "bblocks://ogc.geo.topo.features.topo-solid"
+        },
+        {
+          "$ref": "bblocks://ogc.geo.topo.features.topo-solid-aggregate"
+        }
+      ]
+    },
+    "RingFeature": {
+      "$anchor": "RingFeature",
+      "$ref": "bblocks://ogc.geo.topo.features.topo-ring"
+    },
+    "FaceFeature": {
+      "$anchor": "FaceFeature",
+      "$ref": "bblocks://ogc.geo.topo.features.topo-face"
+    },
+    "ShellFeature": {
+      "$anchor": "ShellFeature",
+      "$ref": "bblocks://ogc.geo.topo.features.topo-shell"
     }
   },
   "type": "object",
@@ -124,7 +148,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "bblocks://ogc.geo.topo.features.topo-ring"
+            "$ref": "#RingFeature"
           },
           {
             "allOf": [
@@ -136,7 +160,7 @@
                   "features": {
                     "type": "array",
                     "items": {
-                      "$ref": "bblocks://ogc.geo.topo.features.topo-ring"
+                      "$ref": "#RingFeature"
                     }
                   }
                 }
@@ -152,7 +176,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "bblocks://ogc.geo.topo.features.topo-face"
+            "$ref": "#FaceFeature"
           },
           {
             "allOf": [
@@ -164,7 +188,7 @@
                   "features": {
                     "type": "array",
                     "items": {
-                      "$ref": "bblocks://ogc.geo.topo.features.topo-face"
+                      "$ref": "#FaceFeature"
                     }
                   }
                 }
@@ -180,7 +204,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "bblocks://ogc.geo.topo.features.topo-shell"
+            "$ref": "#ShellFeature"
           },
           {
             "allOf": [
@@ -192,7 +216,7 @@
                   "features": {
                     "type": "array",
                     "items": {
-                      "$ref": "bblocks://ogc.geo.topo.features.topo-shell"
+                      "$ref": "#ShellFeature"
                     }
                   }
                 }
@@ -204,11 +228,11 @@
     },
     "solids": {
       "type": "array",
-      "description": "Solid features whose shells reference faces via directed_references. geometry is null.",
+      "description": "Solid features whose shells reference faces via directed_references, or SolidAggregate features combining a set of member Solids by plain reference. geometry is null.",
       "items": {
         "oneOf": [
           {
-            "$ref": "bblocks://ogc.geo.topo.features.topo-solid"
+            "$ref": "#SolidOrAggregate"
           },
           {
             "allOf": [
@@ -220,7 +244,7 @@
                   "features": {
                     "type": "array",
                     "items": {
-                      "$ref": "bblocks://ogc.geo.topo.features.topo-solid"
+                      "$ref": "#SolidOrAggregate"
                     }
                   }
                 }

@@ -71,17 +71,7 @@
   content: |
     Self-contained collection of topology objects defining a Four Unit Up/Down example with stairwell. 
     Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and five solids.
-    
-    <iframe
-      title="Interactive 3D viewer for the four unit up/down with stairwell example"
-      src="assets/topo_viewer_embed.html?example=4-unit-up-down.json"
-      width="100%"
-      height="400"
-      loading="lazy"
-      style="border:1px solid #ddd; border-radius:8px;"
-      sandbox="allow-scripts allow-same-origin">
-    </iframe>
-    
+
     [Open the interactive viewer](assets/topo_viewer.html?example=4-unit-up-down.json)
 
   base-output-filename: four-unit
@@ -204,4 +194,19 @@
     - language: json
       ref: examples/aggregate-polygon.json
   base-output-filename: aggregate-polygon
+
+- title: Aggregate Solids (combined volume via SolidAggregate)
+  content: |
+    Two Solid cuboids — each a full 3D volumetric solid built from points,
+    edges, rings, faces and a closed shell — combined into a single volume
+    via a SolidAggregate feature in the same `solids` array, whose plain
+    `references` list the ids of the member Solids. The two solids adjoin
+    along a shared vertical wall plane, each with its own independently-closed
+    shell (the shared wall's outward normals point in opposite directions, as
+    verified by the ring winding order). Self-contained: all points, edges,
+    rings, faces, shells and solids are inline.
+  snippets:
+    - language: json
+      ref: examples/aggregate-solids.json
+  base-output-filename: aggregate-solids
 

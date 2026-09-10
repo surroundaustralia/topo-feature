@@ -52,6 +52,30 @@
           }
         ]
       }
+    },
+    "SolidOrAggregate": {
+      "$anchor": "SolidOrAggregate",
+      "description": "A solids-array entry: either a Solid bounded by its own Shells, or a SolidAggregate combining a set of member Solids by plain reference.",
+      "oneOf": [
+        {
+          "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.json"
+        },
+        {
+          "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid-aggregate/schema.json"
+        }
+      ]
+    },
+    "RingFeature": {
+      "$anchor": "RingFeature",
+      "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.json"
+    },
+    "FaceFeature": {
+      "$anchor": "FaceFeature",
+      "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.json"
+    },
+    "ShellFeature": {
+      "$anchor": "ShellFeature",
+      "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.json"
     }
   },
   "type": "object",
@@ -128,7 +152,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.json"
+            "$ref": "#RingFeature"
           },
           {
             "allOf": [
@@ -140,7 +164,7 @@
                   "features": {
                     "type": "array",
                     "items": {
-                      "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.json"
+                      "$ref": "#RingFeature"
                     }
                   }
                 }
@@ -156,7 +180,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.json"
+            "$ref": "#FaceFeature"
           },
           {
             "allOf": [
@@ -168,7 +192,7 @@
                   "features": {
                     "type": "array",
                     "items": {
-                      "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.json"
+                      "$ref": "#FaceFeature"
                     }
                   }
                 }
@@ -184,7 +208,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.json"
+            "$ref": "#ShellFeature"
           },
           {
             "allOf": [
@@ -196,7 +220,7 @@
                   "features": {
                     "type": "array",
                     "items": {
-                      "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.json"
+                      "$ref": "#ShellFeature"
                     }
                   }
                 }
@@ -208,11 +232,11 @@
     },
     "solids": {
       "type": "array",
-      "description": "Solid features whose shells reference faces via directed_references. geometry is null.",
+      "description": "Solid features whose shells reference faces via directed_references, or SolidAggregate features combining a set of member Solids by plain reference. geometry is null.",
       "items": {
         "oneOf": [
           {
-            "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.json"
+            "$ref": "#SolidOrAggregate"
           },
           {
             "allOf": [
@@ -224,7 +248,7 @@
                   "features": {
                     "type": "array",
                     "items": {
-                      "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.json"
+                      "$ref": "#SolidOrAggregate"
                     }
                   }
                 }

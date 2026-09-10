@@ -1,0 +1,90 @@
+
+
+{
+  "itemIdentifier": "ogc.geo.topo.features.topo-solid-aggregate",
+  "name": "Solid Aggregate Topology Feature",
+  "abstract": "A feature representing an aggregation of Solid features into a single combined volumetric object, referencing its member Solids by id. Analogous to AggregatePolygon for Faces/Rings, but one dimension up.",
+  "status": "under-development",
+  "dateTimeAddition": "2024-01-01T00:00:00Z",
+  "itemClass": "schema",
+  "register": "ogcincubator",
+  "version": "0.1",
+  "dateOfLastChange": "2026-09-10",
+  "sources": [],
+  "maturity": "development",
+  "scope": "unstable",
+  "dependsOn": [
+    "ogc.geo.topo.features.topo-solid",
+    "ogc.geo.topo.features.topo-feature-collection",
+    "ogc.geo.topo.features.topo-feature",
+    "ogc.geo.topo.datatypes.topology",
+    "ogc.ogc-utils.iri-or-curie"
+  ],
+  "tags": [
+    "topology",
+    "solid",
+    "aggregate",
+    "feature",
+    "3D"
+  ],
+  "group": "OGC",
+  "shaclShapes": {
+    "ogc.geo.topo.features.topo-feature-collection": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
+    ],
+    "ogc.geo.features.feature": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+    ],
+    "ogc.geo.features.featureCollection": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+    ],
+    "ogc.geo.topo.features.topo-feature": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
+    ]
+  },
+  "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid-aggregate/context.jsonld",
+  "schema": {
+    "application/yaml": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid-aggregate/schema.yaml",
+    "application/json": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid-aggregate/schema.json"
+  },
+  "sourceSchema": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-solid-aggregate/schema.json",
+  "sourceLdContext": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-solid-aggregate/context.jsonld",
+  "resolvedSchemaProperties": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid-aggregate/resolvedProperties.json",
+  "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-solid-aggregate/",
+  "validationPassed": true,
+  "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-solid-aggregate/",
+  "description": "# Solid Aggregate Topology Feature\n\nA **SolidAggregate** is a topological feature representing a single combined volumetric object\nformed by aggregating a set of existing Solid features, referenced by id.\n\nUnlike a Solid \u2014 which is bounded by an ordered, oriented set of Shell references\n(`directed_references`) describing its own boundary \u2014 a SolidAggregate describes no boundary\ngeometry of its own. It is a plain, unordered list of member Solid ids in its `references`\narray, mirroring how [AggregatePolygon](../../../features/topo-feature-multi-collection/) combines\nPolygon-topology parcels one dimension down.\n\n## Topology Model\n\nA SolidAggregate's topology consists of:\n\n- `type`: `\"SolidAggregate\"`\n- `references`: an array of feature ids, each referencing a member Solid feature\n\nThe `geometry` property is `null` \u2014 a renderer resolves the aggregate's extent by resolving each\nreferenced Solid in turn, the same as it would for those Solids individually.\n\n## Relationship to other types\n\n| Lower dimension                          | SolidAggregate       | Higher dimension |\n|-------------------------------------------|----------------------|-------------------|\n| Solid (referenced in `references`)        | **SolidAggregate**   | \u2014 |\n\n## Example\n\n```json\n{\n  \"topology\": {\n    \"type\": \"SolidAggregate\",\n    \"references\": [\n      \"uuid:758590d2-8cc6-4ff7-8fcc-d7ecd01b3498\",\n      \"uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568\"\n    ]\n  }\n}\n```\n",
+  "examples": [
+    {
+      "title": "SolidAggregate combining two Solids, with full context",
+      "content": "A SolidAggregate feature referencing two Solid features by id in its plain\n(non-directed) `references` array. Describes no boundary geometry of its own \u2014 a\nrenderer resolves the combined volume by resolving each referenced Solid. Wrapped\nin a FeatureCollection together with its two member Solids so the references\nresolve within the example's own graph closure.\n",
+      "snippets": [
+        {
+          "language": "json",
+          "ref": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-solid-aggregate/examples/solid-aggregate-with-context.json",
+          "schema-ref": "#testCollection",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-solid-aggregate/example_1_1.json",
+          "sizeBytes": 1365,
+          "code": "{\n  \"id\": \"uuid:1c2d3e4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f\",\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"id\": \"uuid:2a9e6b1a-6a3e-4b8a-9b0a-1a2b3c4d5e6f\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Solid\",\n        \"directed_references\": [\n          { \"ref\": \"uuid:97a089af-4929-4d36-8e01-74f573343edb\", \"orientation\": \"+\" }\n        ]\n      },\n      \"properties\": {\n        \"description\": \"Member Solid A\",\n        \"volume\": 1000.0\n      }\n    },\n    {\n      \"id\": \"uuid:3b8f7c2b-7b4f-4c9b-8c1b-2b3c4d5e6f70\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Solid\",\n        \"directed_references\": [\n          { \"ref\": \"uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568\", \"orientation\": \"+\" }\n        ]\n      },\n      \"properties\": {\n        \"description\": \"Member Solid B\",\n        \"volume\": 1000.0\n      }\n    },\n    {\n      \"id\": \"uuid:4a5c6e8f-1b2d-4e3f-9a0b-c1d2e3f4a5b6\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"SolidAggregate\",\n        \"references\": [\n          \"uuid:2a9e6b1a-6a3e-4b8a-9b0a-1a2b3c4d5e6f\",\n          \"uuid:3b8f7c2b-7b4f-4c9b-8c1b-2b3c4d5e6f70\"\n        ]\n      },\n      \"properties\": {\n        \"description\": \"Combined volume formed by aggregating Solid A and Solid B\",\n        \"volume\": 2000.0\n      }\n    }\n  ]\n}\n"
+        },
+        {
+          "language": "jsonld",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-solid-aggregate/example_1_1.jsonld",
+          "sizeBytes": 1568,
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid-aggregate/context.jsonld\",\n  \"id\": \"uuid:1c2d3e4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f\",\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"id\": \"uuid:2a9e6b1a-6a3e-4b8a-9b0a-1a2b3c4d5e6f\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Solid\",\n        \"directed_references\": [\n          {\n            \"ref\": \"uuid:97a089af-4929-4d36-8e01-74f573343edb\",\n            \"orientation\": \"+\"\n          }\n        ]\n      },\n      \"properties\": {\n        \"description\": \"Member Solid A\",\n        \"volume\": 1000.0\n      }\n    },\n    {\n      \"id\": \"uuid:3b8f7c2b-7b4f-4c9b-8c1b-2b3c4d5e6f70\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"Solid\",\n        \"directed_references\": [\n          {\n            \"ref\": \"uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568\",\n            \"orientation\": \"+\"\n          }\n        ]\n      },\n      \"properties\": {\n        \"description\": \"Member Solid B\",\n        \"volume\": 1000.0\n      }\n    },\n    {\n      \"id\": \"uuid:4a5c6e8f-1b2d-4e3f-9a0b-c1d2e3f4a5b6\",\n      \"type\": \"Feature\",\n      \"geometry\": null,\n      \"topology\": {\n        \"type\": \"SolidAggregate\",\n        \"references\": [\n          \"uuid:2a9e6b1a-6a3e-4b8a-9b0a-1a2b3c4d5e6f\",\n          \"uuid:3b8f7c2b-7b4f-4c9b-8c1b-2b3c4d5e6f70\"\n        ]\n      },\n      \"properties\": {\n        \"description\": \"Combined volume formed by aggregating Solid A and Solid B\",\n        \"volume\": 2000.0\n      }\n    }\n  ]\n}"
+        },
+        {
+          "language": "ttl",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-solid-aggregate/example_1_1.ttl",
+          "sizeBytes": 1155,
+          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n<uuid:1c2d3e4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f> a geojson:FeatureCollection ;\n    geojson:features <uuid:2a9e6b1a-6a3e-4b8a-9b0a-1a2b3c4d5e6f>,\n        <uuid:3b8f7c2b-7b4f-4c9b-8c1b-2b3c4d5e6f70>,\n        <uuid:4a5c6e8f-1b2d-4e3f-9a0b-c1d2e3f4a5b6> .\n\n<uuid:4a5c6e8f-1b2d-4e3f-9a0b-c1d2e3f4a5b6> a geojson:Feature ;\n    geojson:topology [ a topo:SolidAggregate ;\n            topo:relatedFeatures ( <uuid:2a9e6b1a-6a3e-4b8a-9b0a-1a2b3c4d5e6f> <uuid:3b8f7c2b-7b4f-4c9b-8c1b-2b3c4d5e6f70> ) ] .\n\n<uuid:2a9e6b1a-6a3e-4b8a-9b0a-1a2b3c4d5e6f> a geojson:Feature ;\n    geojson:topology [ a topo:Solid ;\n            topo:directedReferences ( [ topo:orientation \"+\" ;\n                        topo:ref <uuid:97a089af-4929-4d36-8e01-74f573343edb> ] ) ] .\n\n<uuid:3b8f7c2b-7b4f-4c9b-8c1b-2b3c4d5e6f70> a geojson:Feature ;\n    geojson:topology [ a topo:Solid ;\n            topo:directedReferences ( [ topo:orientation \"+\" ;\n                        topo:ref <uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568> ] ) ] .\n\n"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: 'A SolidAggregate feature: a single combined volumetric object formed\n  by referencing a set of member Solid features by id, without describing any new\n  boundary geometry of its own. geometry must be null.'\n$defs:\n  testCollection:\n    $anchor: testCollection\n    description: A convenience ref to a complete, testable collection objects and\n      references\n    $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml\nallOf:\n- $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml\n- properties:\n    geometry:\n      type: 'null'\n    topology:\n      properties:\n        type:\n          type: string\n          const: SolidAggregate\n        references:\n          type: array\n          description: Ids of the member Solid features aggregated into this combined\n            volume.\n          items:\n            $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml\n          minItems: 1\n      required:\n      - type\n      - references\n      not:\n        required:\n        - directed_references\n  required:\n  - topology\n",
+  "gitRepository": "https://github.com/surroundaustralia/topo-feature",
+  "gitPath": "_sources/features/topo-solid-aggregate"
+}

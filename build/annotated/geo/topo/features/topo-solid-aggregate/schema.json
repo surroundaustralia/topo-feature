@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "A SolidAggregate feature: a single combined volumetric object formed by referencing a set of member Solid features by id, without describing any new boundary geometry of its own. geometry must be null.",
+  "$defs": {
+    "testCollection": {
+      "$anchor": "testCollection",
+      "description": "A convenience ref to a complete, testable collection objects and references",
+      "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.json"
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.json"
+    },
+    {
+      "properties": {
+        "geometry": {
+          "type": "null"
+        },
+        "topology": {
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "SolidAggregate"
+            },
+            "references": {
+              "type": "array",
+              "description": "Ids of the member Solid features aggregated into this combined volume.",
+              "items": {
+                "$ref": "https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.json"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "type",
+            "references"
+          ],
+          "not": {
+            "required": [
+              "directed_references"
+            ]
+          }
+        }
+      },
+      "required": [
+        "topology"
+      ]
+    }
+  ]
+}

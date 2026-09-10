@@ -6750,16 +6750,6 @@ Dataset consists of 12 points, 18 edges, eight rings, eight faces, one shell, an
 Self-contained collection of topology objects defining a Four Unit Up/Down example with stairwell. 
 Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and five solids.
 
-<iframe
-  title="Interactive 3D viewer for the four unit up/down with stairwell example"
-  src="assets/topo_viewer_embed.html?example=4-unit-up-down.json"
-  width="100%"
-  height="400"
-  loading="lazy"
-  style="border:1px solid #ddd; border-radius:8px;"
-  sandbox="allow-scripts allow-same-origin">
-</iframe>
-
 [Open the interactive viewer](assets/topo_viewer.html?example=4-unit-up-down.json)
 
 #### json
@@ -50190,6 +50180,1705 @@ Polygons. Self-contained: all points, edges and parcels are inline.
 
 ```
 
+
+### Aggregate Solids (combined volume via SolidAggregate)
+Two Solid cuboids — each a full 3D volumetric solid built from points,
+edges, rings, faces and a closed shell — combined into a single volume
+via a SolidAggregate feature in the same `solids` array, whose plain
+`references` list the ids of the member Solids. The two solids adjoin
+along a shared vertical wall plane, each with its own independently-closed
+shell (the shared wall's outward normals point in opposite directions, as
+verified by the ring winding order). Self-contained: all points, edges,
+rings, faces, shells and solids are inline.
+
+#### json
+```json
+{
+  "type": "FeatureCollection",
+  "id": "aggregate-solids-example",
+  "description": "Two adjoining Solid cuboids combined into a single volume via a SolidAggregate feature whose `references` list the ids of the member Solids. Self-contained: all points, edges, rings, faces, shells and solids are inline.",
+  "features": [],
+  "points": [
+    {
+      "id": "uuid:aggregate-solids-points",
+      "type": "FeatureCollection",
+      "featureType": "BoundaryMark",
+      "features": [
+        { "id": "uuid:SP1",  "type": "Feature", "geometry": { "type": "Point", "coordinates": [0.0, 0.0, 0.0] },   "properties": {} },
+        { "id": "uuid:SP2",  "type": "Feature", "geometry": { "type": "Point", "coordinates": [0.0, 0.0, 10.0] },  "properties": {} },
+        { "id": "uuid:SP3",  "type": "Feature", "geometry": { "type": "Point", "coordinates": [0.0, 10.0, 10.0] }, "properties": {} },
+        { "id": "uuid:SP4",  "type": "Feature", "geometry": { "type": "Point", "coordinates": [0.0, 10.0, 0.0] },  "properties": {} },
+        { "id": "uuid:SP5",  "type": "Feature", "geometry": { "type": "Point", "coordinates": [10.0, 0.0, 0.0] },  "properties": {} },
+        { "id": "uuid:SP6",  "type": "Feature", "geometry": { "type": "Point", "coordinates": [10.0, 0.0, 10.0] }, "properties": {} },
+        { "id": "uuid:SP7",  "type": "Feature", "geometry": { "type": "Point", "coordinates": [10.0, 10.0, 10.0] },"properties": {} },
+        { "id": "uuid:SP8",  "type": "Feature", "geometry": { "type": "Point", "coordinates": [10.0, 10.0, 0.0] }, "properties": {} },
+        { "id": "uuid:SP9",  "type": "Feature", "geometry": { "type": "Point", "coordinates": [20.0, 0.0, 0.0] },  "properties": {} },
+        { "id": "uuid:SP10", "type": "Feature", "geometry": { "type": "Point", "coordinates": [20.0, 0.0, 10.0] }, "properties": {} },
+        { "id": "uuid:SP11", "type": "Feature", "geometry": { "type": "Point", "coordinates": [20.0, 10.0, 10.0] },"properties": {} },
+        { "id": "uuid:SP12", "type": "Feature", "geometry": { "type": "Point", "coordinates": [20.0, 10.0, 0.0] }, "properties": {} }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "uuid:aggregate-solids-edges",
+      "type": "FeatureCollection",
+      "featureType": "Edge",
+      "features": [
+        { "id": "uuid:WE1", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP1", "uuid:SP2"] },  "properties": {} },
+        { "id": "uuid:WE2", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP2", "uuid:SP3"] },  "properties": {} },
+        { "id": "uuid:WE3", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP3", "uuid:SP4"] },  "properties": {} },
+        { "id": "uuid:WE4", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP4", "uuid:SP1"] },  "properties": {} },
+
+        { "id": "uuid:ME1", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP5", "uuid:SP6"] },  "properties": {} },
+        { "id": "uuid:ME2", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP6", "uuid:SP7"] },  "properties": {} },
+        { "id": "uuid:ME3", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP7", "uuid:SP8"] },  "properties": {} },
+        { "id": "uuid:ME4", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP8", "uuid:SP5"] },  "properties": {} },
+
+        { "id": "uuid:EE1", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP9", "uuid:SP10"] }, "properties": {} },
+        { "id": "uuid:EE2", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP10", "uuid:SP11"] },"properties": {} },
+        { "id": "uuid:EE3", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP11", "uuid:SP12"] },"properties": {} },
+        { "id": "uuid:EE4", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP12", "uuid:SP9"] }, "properties": {} },
+
+        { "id": "uuid:CA1", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP1", "uuid:SP5"] },  "properties": {} },
+        { "id": "uuid:CA2", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP2", "uuid:SP6"] },  "properties": {} },
+        { "id": "uuid:CA3", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP3", "uuid:SP7"] },  "properties": {} },
+        { "id": "uuid:CA4", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP4", "uuid:SP8"] },  "properties": {} },
+
+        { "id": "uuid:CB1", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP5", "uuid:SP9"] },  "properties": {} },
+        { "id": "uuid:CB2", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP6", "uuid:SP10"] }, "properties": {} },
+        { "id": "uuid:CB3", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP7", "uuid:SP11"] }, "properties": {} },
+        { "id": "uuid:CB4", "type": "Feature", "geometry": null, "topology": { "type": "Edge", "references": ["uuid:SP8", "uuid:SP12"] }, "properties": {} }
+      ]
+    }
+  ],
+  "rings": [
+    {
+      "id": "uuid:aggregate-solids-rings",
+      "type": "FeatureCollection",
+      "featureType": "Ring",
+      "features": [
+        {
+          "id": "uuid:RA-West", "type": "Feature", "geometry": null,
+          "topology": { "type": "Ring", "directed_references": [
+            { "ref": "uuid:WE1", "orientation": "+" },
+            { "ref": "uuid:WE2", "orientation": "+" },
+            { "ref": "uuid:WE3", "orientation": "+" },
+            { "ref": "uuid:WE4", "orientation": "+" }
+          ]},
+          "properties": { "description": "Solid A west (outer) wall" }
+        },
+        {
+          "id": "uuid:RA-Mid", "type": "Feature", "geometry": null,
+          "topology": { "type": "Ring", "directed_references": [
+            { "ref": "uuid:ME4", "orientation": "-" },
+            { "ref": "uuid:ME3", "orientation": "-" },
+            { "ref": "uuid:ME2", "orientation": "-" },
+            { "ref": "uuid:ME1", "orientation": "-" }
+          ]},
+          "properties": { "description": "Solid A east wall, adjoining Solid B" }
+        },
+        {
+          "id": "uuid:RA-Bottom", "type": "Feature", "geometry": null,
+          "topology": { "type": "Ring", "directed_references": [
+            { "ref": "uuid:WE4", "orientation": "-" },
+            { "ref": "uuid:CA4", "orientation": "+" },
+            { "ref": "uuid:ME4", "orientation": "+" },
+            { "ref": "uuid:CA1", "orientation": "-" }
+          ]},
+          "properties": { "description": "Solid A floor" }
+        },
+        {
+          "id": "uuid:RA-Top", "type": "Feature", "geometry": null,
+          "topology": { "type": "Ring", "directed_references": [
+            { "ref": "uuid:CA2", "orientation": "+" },
+            { "ref": "uuid:ME2", "orientation": "+" },
+            { "ref": "uuid:CA3", "orientation": "-" },
+            { "ref": "uuid:WE2", "orientation": "-" }
+          ]},
+          "properties": { "description": "Solid A ceiling" }
+        },
+        {
+          "id": "uuid:RA-South", "type": "Feature", "geometry": null,
+          "topology": { "type": "Ring", "directed_references": [
+            { "ref": "uuid:CA1", "orientation": "+" },
+            { "ref": "uuid:ME1", "orientation": "+" },
+            { "ref": "uuid:CA2", "orientation": "-" },
+            { "ref": "uuid:WE1", "orientation": "-" }
+          ]},
+          "properties": { "description": "Solid A south wall" }
+        },
+        {
+          "id": "uuid:RA-North", "type": "Feature", "geometry": null,
+          "topology": { "type": "Ring", "directed_references": [
+            { "ref": "uuid:WE3", "orientation": "-" },
+            { "ref": "uuid:CA3", "orientation": "+" },
+            { "ref": "uuid:ME3", "orientation": "+" },
+            { "ref": "uuid:CA4", "orientation": "-" }
+          ]},
+          "properties": { "description": "Solid A north wall" }
+        },
+        {
+          "id": "uuid:RB-Mid", "type": "Feature", "geometry": null,
+          "topology": { "type": "Ring", "directed_references": [
+            { "ref": "uuid:ME1", "orientation": "+" },
+            { "ref": "uuid:ME2", "orientation": "+" },
+            { "ref": "uuid:ME3", "orientation": "+" },
+            { "ref": "uuid:ME4", "orientation": "+" }
+          ]},
+          "properties": { "description": "Solid B west wall, adjoining Solid A" }
+        },
+        {
+          "id": "uuid:RB-East", "type": "Feature", "geometry": null,
+          "topology": { "type": "Ring", "directed_references": [
+            { "ref": "uuid:EE4", "orientation": "-" },
+            { "ref": "uuid:EE3", "orientation": "-" },
+            { "ref": "uuid:EE2", "orientation": "-" },
+            { "ref": "uuid:EE1", "orientation": "-" }
+          ]},
+          "properties": { "description": "Solid B east (outer) wall" }
+        },
+        {
+          "id": "uuid:RB-Bottom", "type": "Feature", "geometry": null,
+          "topology": { "type": "Ring", "directed_references": [
+            { "ref": "uuid:ME4", "orientation": "-" },
+            { "ref": "uuid:CB4", "orientation": "+" },
+            { "ref": "uuid:EE4", "orientation": "+" },
+            { "ref": "uuid:CB1", "orientation": "-" }
+          ]},
+          "properties": { "description": "Solid B floor" }
+        },
+        {
+          "id": "uuid:RB-Top", "type": "Feature", "geometry": null,
+          "topology": { "type": "Ring", "directed_references": [
+            { "ref": "uuid:CB2", "orientation": "+" },
+            { "ref": "uuid:EE2", "orientation": "+" },
+            { "ref": "uuid:CB3", "orientation": "-" },
+            { "ref": "uuid:ME2", "orientation": "-" }
+          ]},
+          "properties": { "description": "Solid B ceiling" }
+        },
+        {
+          "id": "uuid:RB-South", "type": "Feature", "geometry": null,
+          "topology": { "type": "Ring", "directed_references": [
+            { "ref": "uuid:CB1", "orientation": "+" },
+            { "ref": "uuid:EE1", "orientation": "+" },
+            { "ref": "uuid:CB2", "orientation": "-" },
+            { "ref": "uuid:ME1", "orientation": "-" }
+          ]},
+          "properties": { "description": "Solid B south wall" }
+        },
+        {
+          "id": "uuid:RB-North", "type": "Feature", "geometry": null,
+          "topology": { "type": "Ring", "directed_references": [
+            { "ref": "uuid:ME3", "orientation": "-" },
+            { "ref": "uuid:CB3", "orientation": "+" },
+            { "ref": "uuid:EE3", "orientation": "+" },
+            { "ref": "uuid:CB4", "orientation": "-" }
+          ]},
+          "properties": { "description": "Solid B north wall" }
+        }
+      ]
+    }
+  ],
+  "faces": [
+    {
+      "id": "uuid:aggregate-solids-faces",
+      "type": "FeatureCollection",
+      "featureType": "Face",
+      "features": [
+        { "id": "uuid:FA-West",   "type": "Feature", "geometry": null, "topology": { "type": "Face", "directed_references": [{ "ref": "uuid:RA-West",   "orientation": "+" }] }, "properties": { "area": 100.0 } },
+        { "id": "uuid:FA-Mid",    "type": "Feature", "geometry": null, "topology": { "type": "Face", "directed_references": [{ "ref": "uuid:RA-Mid",    "orientation": "+" }] }, "properties": { "area": 100.0 } },
+        { "id": "uuid:FA-Bottom", "type": "Feature", "geometry": null, "topology": { "type": "Face", "directed_references": [{ "ref": "uuid:RA-Bottom", "orientation": "+" }] }, "properties": { "area": 100.0 } },
+        { "id": "uuid:FA-Top",    "type": "Feature", "geometry": null, "topology": { "type": "Face", "directed_references": [{ "ref": "uuid:RA-Top",    "orientation": "+" }] }, "properties": { "area": 100.0 } },
+        { "id": "uuid:FA-South",  "type": "Feature", "geometry": null, "topology": { "type": "Face", "directed_references": [{ "ref": "uuid:RA-South",  "orientation": "+" }] }, "properties": { "area": 100.0 } },
+        { "id": "uuid:FA-North",  "type": "Feature", "geometry": null, "topology": { "type": "Face", "directed_references": [{ "ref": "uuid:RA-North",  "orientation": "+" }] }, "properties": { "area": 100.0 } },
+
+        { "id": "uuid:FB-Mid",    "type": "Feature", "geometry": null, "topology": { "type": "Face", "directed_references": [{ "ref": "uuid:RB-Mid",    "orientation": "+" }] }, "properties": { "area": 100.0 } },
+        { "id": "uuid:FB-East",   "type": "Feature", "geometry": null, "topology": { "type": "Face", "directed_references": [{ "ref": "uuid:RB-East",   "orientation": "+" }] }, "properties": { "area": 100.0 } },
+        { "id": "uuid:FB-Bottom", "type": "Feature", "geometry": null, "topology": { "type": "Face", "directed_references": [{ "ref": "uuid:RB-Bottom", "orientation": "+" }] }, "properties": { "area": 100.0 } },
+        { "id": "uuid:FB-Top",    "type": "Feature", "geometry": null, "topology": { "type": "Face", "directed_references": [{ "ref": "uuid:RB-Top",    "orientation": "+" }] }, "properties": { "area": 100.0 } },
+        { "id": "uuid:FB-South",  "type": "Feature", "geometry": null, "topology": { "type": "Face", "directed_references": [{ "ref": "uuid:RB-South",  "orientation": "+" }] }, "properties": { "area": 100.0 } },
+        { "id": "uuid:FB-North",  "type": "Feature", "geometry": null, "topology": { "type": "Face", "directed_references": [{ "ref": "uuid:RB-North",  "orientation": "+" }] }, "properties": { "area": 100.0 } }
+      ]
+    }
+  ],
+  "shells": [
+    {
+      "id": "uuid:aggregate-solids-shells",
+      "type": "FeatureCollection",
+      "featureType": "Shell",
+      "features": [
+        {
+          "id": "uuid:ShellA", "type": "Feature", "geometry": null,
+          "topology": { "type": "Shell", "directed_references": [
+            { "ref": "uuid:FA-West",   "orientation": "+" },
+            { "ref": "uuid:FA-Mid",    "orientation": "+" },
+            { "ref": "uuid:FA-Bottom", "orientation": "+" },
+            { "ref": "uuid:FA-Top",    "orientation": "+" },
+            { "ref": "uuid:FA-South",  "orientation": "+" },
+            { "ref": "uuid:FA-North",  "orientation": "+" }
+          ]},
+          "properties": { "description": "Exterior shell of Solid A" }
+        },
+        {
+          "id": "uuid:ShellB", "type": "Feature", "geometry": null,
+          "topology": { "type": "Shell", "directed_references": [
+            { "ref": "uuid:FB-Mid",    "orientation": "+" },
+            { "ref": "uuid:FB-East",   "orientation": "+" },
+            { "ref": "uuid:FB-Bottom", "orientation": "+" },
+            { "ref": "uuid:FB-Top",    "orientation": "+" },
+            { "ref": "uuid:FB-South",  "orientation": "+" },
+            { "ref": "uuid:FB-North",  "orientation": "+" }
+          ]},
+          "properties": { "description": "Exterior shell of Solid B" }
+        }
+      ]
+    }
+  ],
+  "solids": [
+    {
+      "id": "uuid:aggregate-solids-solids",
+      "type": "FeatureCollection",
+      "featureType": "Solid",
+      "features": [
+        {
+          "id": "uuid:SolidA",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Solid",
+            "directed_references": [
+              { "ref": "uuid:ShellA", "orientation": "+" }
+            ]
+          },
+          "properties": {
+            "name": "Solid A",
+            "volume": 1000.0
+          }
+        },
+        {
+          "id": "uuid:SolidB",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Solid",
+            "directed_references": [
+              { "ref": "uuid:ShellB", "orientation": "+" }
+            ]
+          },
+          "properties": {
+            "name": "Solid B",
+            "volume": 1000.0
+          }
+        },
+        {
+          "id": "uuid:SolidAggregateAB",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "SolidAggregate",
+            "references": ["uuid:SolidA", "uuid:SolidB"]
+          },
+          "properties": {
+            "name": "Solid A + B combined",
+            "volume": 2000.0
+          }
+        }
+      ]
+    }
+  ]
+}
+
+```
+
+#### jsonld
+```jsonld
+{
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
+  "type": "FeatureCollection",
+  "id": "aggregate-solids-example",
+  "description": "Two adjoining Solid cuboids combined into a single volume via a SolidAggregate feature whose `references` list the ids of the member Solids. Self-contained: all points, edges, rings, faces, shells and solids are inline.",
+  "features": [],
+  "points": [
+    {
+      "id": "uuid:aggregate-solids-points",
+      "type": "FeatureCollection",
+      "featureType": "BoundaryMark",
+      "features": [
+        {
+          "id": "uuid:SP1",
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:SP2",
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              0.0,
+              0.0,
+              10.0
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:SP3",
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              0.0,
+              10.0,
+              10.0
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:SP4",
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              0.0,
+              10.0,
+              0.0
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:SP5",
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              10.0,
+              0.0,
+              0.0
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:SP6",
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              10.0,
+              0.0,
+              10.0
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:SP7",
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              10.0,
+              10.0,
+              10.0
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:SP8",
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              10.0,
+              10.0,
+              0.0
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:SP9",
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              20.0,
+              0.0,
+              0.0
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:SP10",
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              20.0,
+              0.0,
+              10.0
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:SP11",
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              20.0,
+              10.0,
+              10.0
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:SP12",
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              20.0,
+              10.0,
+              0.0
+            ]
+          },
+          "properties": {}
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "uuid:aggregate-solids-edges",
+      "type": "FeatureCollection",
+      "featureType": "Edge",
+      "features": [
+        {
+          "id": "uuid:WE1",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP1",
+              "uuid:SP2"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:WE2",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP2",
+              "uuid:SP3"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:WE3",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP3",
+              "uuid:SP4"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:WE4",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP4",
+              "uuid:SP1"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:ME1",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP5",
+              "uuid:SP6"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:ME2",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP6",
+              "uuid:SP7"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:ME3",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP7",
+              "uuid:SP8"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:ME4",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP8",
+              "uuid:SP5"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:EE1",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP9",
+              "uuid:SP10"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:EE2",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP10",
+              "uuid:SP11"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:EE3",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP11",
+              "uuid:SP12"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:EE4",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP12",
+              "uuid:SP9"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:CA1",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP1",
+              "uuid:SP5"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:CA2",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP2",
+              "uuid:SP6"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:CA3",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP3",
+              "uuid:SP7"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:CA4",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP4",
+              "uuid:SP8"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:CB1",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP5",
+              "uuid:SP9"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:CB2",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP6",
+              "uuid:SP10"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:CB3",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP7",
+              "uuid:SP11"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "uuid:CB4",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "uuid:SP8",
+              "uuid:SP12"
+            ]
+          },
+          "properties": {}
+        }
+      ]
+    }
+  ],
+  "rings": [
+    {
+      "id": "uuid:aggregate-solids-rings",
+      "type": "FeatureCollection",
+      "featureType": "Ring",
+      "features": [
+        {
+          "id": "uuid:RA-West",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Ring",
+            "directed_references": [
+              {
+                "ref": "uuid:WE1",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:WE2",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:WE3",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:WE4",
+                "orientation": "+"
+              }
+            ]
+          },
+          "properties": {
+            "description": "Solid A west (outer) wall"
+          }
+        },
+        {
+          "id": "uuid:RA-Mid",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Ring",
+            "directed_references": [
+              {
+                "ref": "uuid:ME4",
+                "orientation": "-"
+              },
+              {
+                "ref": "uuid:ME3",
+                "orientation": "-"
+              },
+              {
+                "ref": "uuid:ME2",
+                "orientation": "-"
+              },
+              {
+                "ref": "uuid:ME1",
+                "orientation": "-"
+              }
+            ]
+          },
+          "properties": {
+            "description": "Solid A east wall, adjoining Solid B"
+          }
+        },
+        {
+          "id": "uuid:RA-Bottom",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Ring",
+            "directed_references": [
+              {
+                "ref": "uuid:WE4",
+                "orientation": "-"
+              },
+              {
+                "ref": "uuid:CA4",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:ME4",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:CA1",
+                "orientation": "-"
+              }
+            ]
+          },
+          "properties": {
+            "description": "Solid A floor"
+          }
+        },
+        {
+          "id": "uuid:RA-Top",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Ring",
+            "directed_references": [
+              {
+                "ref": "uuid:CA2",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:ME2",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:CA3",
+                "orientation": "-"
+              },
+              {
+                "ref": "uuid:WE2",
+                "orientation": "-"
+              }
+            ]
+          },
+          "properties": {
+            "description": "Solid A ceiling"
+          }
+        },
+        {
+          "id": "uuid:RA-South",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Ring",
+            "directed_references": [
+              {
+                "ref": "uuid:CA1",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:ME1",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:CA2",
+                "orientation": "-"
+              },
+              {
+                "ref": "uuid:WE1",
+                "orientation": "-"
+              }
+            ]
+          },
+          "properties": {
+            "description": "Solid A south wall"
+          }
+        },
+        {
+          "id": "uuid:RA-North",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Ring",
+            "directed_references": [
+              {
+                "ref": "uuid:WE3",
+                "orientation": "-"
+              },
+              {
+                "ref": "uuid:CA3",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:ME3",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:CA4",
+                "orientation": "-"
+              }
+            ]
+          },
+          "properties": {
+            "description": "Solid A north wall"
+          }
+        },
+        {
+          "id": "uuid:RB-Mid",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Ring",
+            "directed_references": [
+              {
+                "ref": "uuid:ME1",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:ME2",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:ME3",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:ME4",
+                "orientation": "+"
+              }
+            ]
+          },
+          "properties": {
+            "description": "Solid B west wall, adjoining Solid A"
+          }
+        },
+        {
+          "id": "uuid:RB-East",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Ring",
+            "directed_references": [
+              {
+                "ref": "uuid:EE4",
+                "orientation": "-"
+              },
+              {
+                "ref": "uuid:EE3",
+                "orientation": "-"
+              },
+              {
+                "ref": "uuid:EE2",
+                "orientation": "-"
+              },
+              {
+                "ref": "uuid:EE1",
+                "orientation": "-"
+              }
+            ]
+          },
+          "properties": {
+            "description": "Solid B east (outer) wall"
+          }
+        },
+        {
+          "id": "uuid:RB-Bottom",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Ring",
+            "directed_references": [
+              {
+                "ref": "uuid:ME4",
+                "orientation": "-"
+              },
+              {
+                "ref": "uuid:CB4",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:EE4",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:CB1",
+                "orientation": "-"
+              }
+            ]
+          },
+          "properties": {
+            "description": "Solid B floor"
+          }
+        },
+        {
+          "id": "uuid:RB-Top",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Ring",
+            "directed_references": [
+              {
+                "ref": "uuid:CB2",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:EE2",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:CB3",
+                "orientation": "-"
+              },
+              {
+                "ref": "uuid:ME2",
+                "orientation": "-"
+              }
+            ]
+          },
+          "properties": {
+            "description": "Solid B ceiling"
+          }
+        },
+        {
+          "id": "uuid:RB-South",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Ring",
+            "directed_references": [
+              {
+                "ref": "uuid:CB1",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:EE1",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:CB2",
+                "orientation": "-"
+              },
+              {
+                "ref": "uuid:ME1",
+                "orientation": "-"
+              }
+            ]
+          },
+          "properties": {
+            "description": "Solid B south wall"
+          }
+        },
+        {
+          "id": "uuid:RB-North",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Ring",
+            "directed_references": [
+              {
+                "ref": "uuid:ME3",
+                "orientation": "-"
+              },
+              {
+                "ref": "uuid:CB3",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:EE3",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:CB4",
+                "orientation": "-"
+              }
+            ]
+          },
+          "properties": {
+            "description": "Solid B north wall"
+          }
+        }
+      ]
+    }
+  ],
+  "faces": [
+    {
+      "id": "uuid:aggregate-solids-faces",
+      "type": "FeatureCollection",
+      "featureType": "Face",
+      "features": [
+        {
+          "id": "uuid:FA-West",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Face",
+            "directed_references": [
+              {
+                "ref": "uuid:RA-West",
+                "orientation": "+"
+              }
+            ]
+          },
+          "properties": {
+            "area": 100.0
+          }
+        },
+        {
+          "id": "uuid:FA-Mid",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Face",
+            "directed_references": [
+              {
+                "ref": "uuid:RA-Mid",
+                "orientation": "+"
+              }
+            ]
+          },
+          "properties": {
+            "area": 100.0
+          }
+        },
+        {
+          "id": "uuid:FA-Bottom",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Face",
+            "directed_references": [
+              {
+                "ref": "uuid:RA-Bottom",
+                "orientation": "+"
+              }
+            ]
+          },
+          "properties": {
+            "area": 100.0
+          }
+        },
+        {
+          "id": "uuid:FA-Top",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Face",
+            "directed_references": [
+              {
+                "ref": "uuid:RA-Top",
+                "orientation": "+"
+              }
+            ]
+          },
+          "properties": {
+            "area": 100.0
+          }
+        },
+        {
+          "id": "uuid:FA-South",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Face",
+            "directed_references": [
+              {
+                "ref": "uuid:RA-South",
+                "orientation": "+"
+              }
+            ]
+          },
+          "properties": {
+            "area": 100.0
+          }
+        },
+        {
+          "id": "uuid:FA-North",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Face",
+            "directed_references": [
+              {
+                "ref": "uuid:RA-North",
+                "orientation": "+"
+              }
+            ]
+          },
+          "properties": {
+            "area": 100.0
+          }
+        },
+        {
+          "id": "uuid:FB-Mid",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Face",
+            "directed_references": [
+              {
+                "ref": "uuid:RB-Mid",
+                "orientation": "+"
+              }
+            ]
+          },
+          "properties": {
+            "area": 100.0
+          }
+        },
+        {
+          "id": "uuid:FB-East",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Face",
+            "directed_references": [
+              {
+                "ref": "uuid:RB-East",
+                "orientation": "+"
+              }
+            ]
+          },
+          "properties": {
+            "area": 100.0
+          }
+        },
+        {
+          "id": "uuid:FB-Bottom",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Face",
+            "directed_references": [
+              {
+                "ref": "uuid:RB-Bottom",
+                "orientation": "+"
+              }
+            ]
+          },
+          "properties": {
+            "area": 100.0
+          }
+        },
+        {
+          "id": "uuid:FB-Top",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Face",
+            "directed_references": [
+              {
+                "ref": "uuid:RB-Top",
+                "orientation": "+"
+              }
+            ]
+          },
+          "properties": {
+            "area": 100.0
+          }
+        },
+        {
+          "id": "uuid:FB-South",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Face",
+            "directed_references": [
+              {
+                "ref": "uuid:RB-South",
+                "orientation": "+"
+              }
+            ]
+          },
+          "properties": {
+            "area": 100.0
+          }
+        },
+        {
+          "id": "uuid:FB-North",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Face",
+            "directed_references": [
+              {
+                "ref": "uuid:RB-North",
+                "orientation": "+"
+              }
+            ]
+          },
+          "properties": {
+            "area": 100.0
+          }
+        }
+      ]
+    }
+  ],
+  "shells": [
+    {
+      "id": "uuid:aggregate-solids-shells",
+      "type": "FeatureCollection",
+      "featureType": "Shell",
+      "features": [
+        {
+          "id": "uuid:ShellA",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Shell",
+            "directed_references": [
+              {
+                "ref": "uuid:FA-West",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:FA-Mid",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:FA-Bottom",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:FA-Top",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:FA-South",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:FA-North",
+                "orientation": "+"
+              }
+            ]
+          },
+          "properties": {
+            "description": "Exterior shell of Solid A"
+          }
+        },
+        {
+          "id": "uuid:ShellB",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Shell",
+            "directed_references": [
+              {
+                "ref": "uuid:FB-Mid",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:FB-East",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:FB-Bottom",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:FB-Top",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:FB-South",
+                "orientation": "+"
+              },
+              {
+                "ref": "uuid:FB-North",
+                "orientation": "+"
+              }
+            ]
+          },
+          "properties": {
+            "description": "Exterior shell of Solid B"
+          }
+        }
+      ]
+    }
+  ],
+  "solids": [
+    {
+      "id": "uuid:aggregate-solids-solids",
+      "type": "FeatureCollection",
+      "featureType": "Solid",
+      "features": [
+        {
+          "id": "uuid:SolidA",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Solid",
+            "directed_references": [
+              {
+                "ref": "uuid:ShellA",
+                "orientation": "+"
+              }
+            ]
+          },
+          "properties": {
+            "name": "Solid A",
+            "volume": 1000.0
+          }
+        },
+        {
+          "id": "uuid:SolidB",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Solid",
+            "directed_references": [
+              {
+                "ref": "uuid:ShellB",
+                "orientation": "+"
+              }
+            ]
+          },
+          "properties": {
+            "name": "Solid B",
+            "volume": 1000.0
+          }
+        },
+        {
+          "id": "uuid:SolidAggregateAB",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "SolidAggregate",
+            "references": [
+              "uuid:SolidA",
+              "uuid:SolidB"
+            ]
+          },
+          "properties": {
+            "name": "Solid A + B combined",
+            "volume": 2000.0
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+#### ttl
+```ttl
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix topo: <https://purl.org/geojson/topo#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<uuid:CA1> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP1> <uuid:SP5> ) ] .
+
+<uuid:CA2> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP2> <uuid:SP6> ) ] .
+
+<uuid:CA3> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP3> <uuid:SP7> ) ] .
+
+<uuid:CA4> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP4> <uuid:SP8> ) ] .
+
+<uuid:CB1> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP5> <uuid:SP9> ) ] .
+
+<uuid:CB2> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP6> <uuid:SP10> ) ] .
+
+<uuid:CB3> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP7> <uuid:SP11> ) ] .
+
+<uuid:CB4> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP8> <uuid:SP12> ) ] .
+
+<uuid:EE1> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP9> <uuid:SP10> ) ] .
+
+<uuid:EE2> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP10> <uuid:SP11> ) ] .
+
+<uuid:EE3> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP11> <uuid:SP12> ) ] .
+
+<uuid:EE4> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP12> <uuid:SP9> ) ] .
+
+<uuid:ME1> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP5> <uuid:SP6> ) ] .
+
+<uuid:ME2> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP6> <uuid:SP7> ) ] .
+
+<uuid:ME3> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP7> <uuid:SP8> ) ] .
+
+<uuid:ME4> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP8> <uuid:SP5> ) ] .
+
+<uuid:SolidAggregateAB> a geojson:Feature ;
+    geojson:topology [ a topo:SolidAggregate ;
+            topo:relatedFeatures ( <uuid:SolidA> <uuid:SolidB> ) ] .
+
+<uuid:WE1> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP1> <uuid:SP2> ) ] .
+
+<uuid:WE2> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP2> <uuid:SP3> ) ] .
+
+<uuid:WE3> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP3> <uuid:SP4> ) ] .
+
+<uuid:WE4> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP4> <uuid:SP1> ) ] .
+
+<uuid:aggregate-solids-edges> a topo:Edge,
+        geojson:FeatureCollection ;
+    geojson:features <uuid:CA1>,
+        <uuid:CA2>,
+        <uuid:CA3>,
+        <uuid:CA4>,
+        <uuid:CB1>,
+        <uuid:CB2>,
+        <uuid:CB3>,
+        <uuid:CB4>,
+        <uuid:EE1>,
+        <uuid:EE2>,
+        <uuid:EE3>,
+        <uuid:EE4>,
+        <uuid:ME1>,
+        <uuid:ME2>,
+        <uuid:ME3>,
+        <uuid:ME4>,
+        <uuid:WE1>,
+        <uuid:WE2>,
+        <uuid:WE3>,
+        <uuid:WE4> .
+
+<uuid:aggregate-solids-solids> a topo:Solid,
+        geojson:FeatureCollection ;
+    geojson:features <uuid:SolidA>,
+        <uuid:SolidAggregateAB>,
+        <uuid:SolidB> .
+
+<uuid:SolidA> a geojson:Feature ;
+    geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:ShellA> ] ) ] .
+
+<uuid:SolidB> a geojson:Feature ;
+    geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:ShellB> ] ) ] .
+
+<uuid:SP1> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 0e+00 0e+00 ) ] .
+
+<uuid:SP10> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 0e+00 1e+01 ) ] .
+
+<uuid:SP11> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 1e+01 1e+01 ) ] .
+
+<uuid:SP12> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 1e+01 0e+00 ) ] .
+
+<uuid:SP2> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 0e+00 1e+01 ) ] .
+
+<uuid:SP3> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 1e+01 1e+01 ) ] .
+
+<uuid:SP4> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 1e+01 0e+00 ) ] .
+
+<uuid:SP9> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 0e+00 0e+00 ) ] .
+
+<uuid:SP5> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 0e+00 0e+00 ) ] .
+
+<uuid:SP6> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 0e+00 1e+01 ) ] .
+
+<uuid:SP7> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 1e+01 ) ] .
+
+<uuid:SP8> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 0e+00 ) ] .
+
+[] a geojson:FeatureCollection ;
+    topo:edges ( <uuid:aggregate-solids-edges> ) ;
+    topo:faces ( [ a geojson:FeatureCollection ;
+                geojson:features [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ] ] ) ;
+    topo:points ( [ a geojson:FeatureCollection ;
+                geojson:collectionFeatureType "BoundaryMark" ;
+                geojson:features <uuid:SP1>,
+                    <uuid:SP10>,
+                    <uuid:SP11>,
+                    <uuid:SP12>,
+                    <uuid:SP2>,
+                    <uuid:SP3>,
+                    <uuid:SP4>,
+                    <uuid:SP5>,
+                    <uuid:SP6>,
+                    <uuid:SP7>,
+                    <uuid:SP8>,
+                    <uuid:SP9> ] ) ;
+    topo:rings ( [ a geojson:FeatureCollection ;
+                geojson:features [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ] ] ) ;
+    topo:shells ( [ a geojson:FeatureCollection ;
+                geojson:features [ a geojson:Feature ],
+                    [ a geojson:Feature ] ] ) ;
+    topo:solids ( <uuid:aggregate-solids-solids> ) .
+
+
+```
+
 ## Schema
 
 ```yaml
@@ -50231,6 +51920,22 @@ $defs:
               references:
                 minItems: 2
                 maxItems: 2
+  SolidOrAggregate:
+    $anchor: SolidOrAggregate
+    description: 'A solids-array entry: either a Solid bounded by its own Shells,
+      or a SolidAggregate combining a set of member Solids by plain reference.'
+    oneOf:
+    - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.yaml
+    - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid-aggregate/schema.yaml
+  RingFeature:
+    $anchor: RingFeature
+    $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml
+  FaceFeature:
+    $anchor: FaceFeature
+    $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml
+  ShellFeature:
+    $anchor: ShellFeature
+    $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.yaml
 type: object
 required:
 - type
@@ -50275,56 +51980,57 @@ properties:
       geometry is null.
     items:
       oneOf:
-      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml
+      - $ref: '#RingFeature'
       - allOf:
         - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
         - properties:
             features:
               type: array
               items:
-                $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml
+                $ref: '#RingFeature'
   faces:
     type: array
     description: Face features whose boundary rings reference edges via directed_references.
       geometry is null.
     items:
       oneOf:
-      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml
+      - $ref: '#FaceFeature'
       - allOf:
         - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
         - properties:
             features:
               type: array
               items:
-                $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml
+                $ref: '#FaceFeature'
   shells:
     type: array
     description: Shell features referencing faces via directed_references. geometry
       is null.
     items:
       oneOf:
-      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.yaml
+      - $ref: '#ShellFeature'
       - allOf:
         - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
         - properties:
             features:
               type: array
               items:
-                $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.yaml
+                $ref: '#ShellFeature'
   solids:
     type: array
-    description: Solid features whose shells reference faces via directed_references.
+    description: Solid features whose shells reference faces via directed_references,
+      or SolidAggregate features combining a set of member Solids by plain reference.
       geometry is null.
     items:
       oneOf:
-      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.yaml
+      - $ref: '#SolidOrAggregate'
       - allOf:
         - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
         - properties:
             features:
               type: array
               items:
-                $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.yaml
+                $ref: '#SolidOrAggregate'
     x-jsonld-id: https://purl.org/geojson/topo#solids
     x-jsonld-container: '@list'
 x-jsonld-prefixes:
@@ -50675,6 +52381,7 @@ Links to the schema:
     "Ring": "topo:Ring",
     "Shell": "topo:Shell",
     "Solid": "topo:Solid",
+    "SolidAggregate": "topo:SolidAggregate",
     "rings": {
       "@id": "topo:rings",
       "@container": "@list"

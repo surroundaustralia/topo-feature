@@ -32,8 +32,8 @@ This is a generalisation of the TopoJSON concept using inline data, and hence no
   "topology": {
     "type": "Edge",
     "references": [
-      "P1",
-      "P2"
+      "arcP1",
+      "arcP2"
     ]
   },
   "properties": null
@@ -50,8 +50,8 @@ This is a generalisation of the TopoJSON concept using inline data, and hence no
   "topology": {
     "type": "Edge",
     "references": [
-      "P1",
-      "P2"
+      "arcP1",
+      "arcP2"
     ]
   },
   "properties": null
@@ -66,7 +66,7 @@ This is a generalisation of the TopoJSON concept using inline data, and hence no
 
 <http://www.example.com/features/LineP1P2> a geojson:Feature ;
     geojson:topology [ a topo:Edge ;
-            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ] .
+            topo:relatedFeatures ( <http://www.example.com/features/arcP1> <http://www.example.com/features/arcP2> ) ] .
 
 
 ```
@@ -83,12 +83,12 @@ This is a generalisation of the TopoJSON concept using inline data, and hence no
     "type": "MultiLineString",
     "references": [
       [
-        "P1",
-        "P2"
+        "arcP1",
+        "arcP2"
       ],
       [
-        "P2",
-        "P3"
+        "arcP2",
+        "arcP3"
       ]
     ]
   },
@@ -107,12 +107,12 @@ This is a generalisation of the TopoJSON concept using inline data, and hence no
     "type": "MultiLineString",
     "references": [
       [
-        "P1",
-        "P2"
+        "arcP1",
+        "arcP2"
       ],
       [
-        "P2",
-        "P3"
+        "arcP2",
+        "arcP3"
       ]
     ]
   },
@@ -128,7 +128,7 @@ This is a generalisation of the TopoJSON concept using inline data, and hence no
 
 <http://www.example.com/features/MultiLineP1P2P3> a geojson:Feature ;
     geojson:topology [ a geojson:MultiLineString ;
-            topo:relatedFeatures ( ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ( <http://www.example.com/features/P2> <http://www.example.com/features/P3> ) ) ] .
+            topo:relatedFeatures ( ( <http://www.example.com/features/arcP1> <http://www.example.com/features/arcP2> ) ( <http://www.example.com/features/arcP2> <http://www.example.com/features/arcP3> ) ) ] .
 
 
 ```
@@ -317,6 +317,7 @@ Links to the schema:
     "Ring": "topo:Ring",
     "Shell": "topo:Shell",
     "Solid": "topo:Solid",
+    "SolidAggregate": "topo:SolidAggregate",
     "rings": {
       "@id": "topo:rings",
       "@container": "@list"

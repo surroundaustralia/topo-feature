@@ -146,10 +146,10 @@ The 'references' array names the two point features that form the line's endpoin
 @prefix topo: <https://purl.org/geojson/topo#> .
 
 [] a topo:Edge ;
-    topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ),
-        ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
+    topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
                 prof:hasRole <geof:sfTouches> ;
-                oa:hasTarget <http://www.example.com/features/L2> ] ) .
+                oa:hasTarget <http://www.example.com/features/L2> ] ),
+        ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) .
 
 
 ```
@@ -488,6 +488,7 @@ x-jsonld-extra-terms:
   Ring: https://purl.org/geojson/topo#Ring
   Shell: https://purl.org/geojson/topo#Shell
   Solid: https://purl.org/geojson/topo#Solid
+  SolidAggregate: https://purl.org/geojson/topo#SolidAggregate
   rings:
     x-jsonld-id: https://purl.org/geojson/topo#rings
     x-jsonld-container: '@list'
@@ -581,6 +582,7 @@ Links to the schema:
     "Ring": "topo:Ring",
     "Shell": "topo:Shell",
     "Solid": "topo:Solid",
+    "SolidAggregate": "topo:SolidAggregate",
     "rings": {
       "@id": "topo:rings",
       "@container": "@list"

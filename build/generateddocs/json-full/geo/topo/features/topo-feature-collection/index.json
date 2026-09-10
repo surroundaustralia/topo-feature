@@ -10,17 +10,17 @@
   "itemClass": "schema",
   "register": "ogc-building-block-register",
   "version": "0.1",
-  "dateOfLastChange": "2026-08-24",
+  "dateOfLastChange": "2026-09-10",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
   "dependsOn": [
+    "ogc.geo.json-fg.feature",
+    "ogc.geo.json-fg.feature-lenient",
     "ogc.geo.features.featureCollection",
+    "ogc.geo.topo.features.topo-feature",
     "ogc.geo.json-fg.featureCollection",
     "ogc.geo.json-fg.featureCollection-lenient",
-    "ogc.geo.json-fg.feature",
-    "ogc.geo.topo.features.topo-feature",
-    "ogc.geo.json-fg.feature-lenient",
     "ogc.geo.features.feature"
   ],
   "tags": [
@@ -33,11 +33,11 @@
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ],
-    "ogc.geo.features.featureCollection": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
-    ],
     "ogc.geo.features.feature": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+    ],
+    "ogc.geo.features.featureCollection": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
     ],
     "ogc.geo.topo.features.topo-feature": [
       "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
@@ -207,7 +207,7 @@
           "transformResults": {
             "Points-n-Edges": {
               "success": true,
-              "sizeBytes": 3143,
+              "sizeBytes": 3152,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/transforms/referenced-point-line-polygon.Points-n-Edges.geojson"
             },
             "Faces-as-Polygons": {

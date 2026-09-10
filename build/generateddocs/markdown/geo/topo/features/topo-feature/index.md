@@ -47,8 +47,8 @@ It supports explicit CRS and is not limited to LineStrings — topologically def
   "topology": {
     "type": "Edge",
     "references": [
-      "P1",
-      "P2"
+      "arcP1",
+      "arcP2"
     ]
   },
   "properties": null
@@ -65,8 +65,8 @@ It supports explicit CRS and is not limited to LineStrings — topologically def
   "topology": {
     "type": "Edge",
     "references": [
-      "P1",
-      "P2"
+      "arcP1",
+      "arcP2"
     ]
   },
   "properties": null
@@ -81,7 +81,7 @@ It supports explicit CRS and is not limited to LineStrings — topologically def
 
 <http://www.example.com/features/LineP1P2> a geojson:Feature ;
     geojson:topology [ a topo:Edge ;
-            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ] .
+            topo:relatedFeatures ( <http://www.example.com/features/arcP1> <http://www.example.com/features/arcP2> ) ] .
 
 
 ```
@@ -473,6 +473,7 @@ Links to the schema:
     "Ring": "topo:Ring",
     "Shell": "topo:Shell",
     "Solid": "topo:Solid",
+    "SolidAggregate": "topo:SolidAggregate",
     "rings": {
       "@id": "topo:rings",
       "@container": "@list"

@@ -1,0 +1,223 @@
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix topo: <https://purl.org/geojson/topo#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<uuid:CA1> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP1> <uuid:SP5> ) ] .
+
+<uuid:CA2> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP2> <uuid:SP6> ) ] .
+
+<uuid:CA3> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP3> <uuid:SP7> ) ] .
+
+<uuid:CA4> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP4> <uuid:SP8> ) ] .
+
+<uuid:CB1> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP5> <uuid:SP9> ) ] .
+
+<uuid:CB2> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP6> <uuid:SP10> ) ] .
+
+<uuid:CB3> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP7> <uuid:SP11> ) ] .
+
+<uuid:CB4> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP8> <uuid:SP12> ) ] .
+
+<uuid:EE1> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP9> <uuid:SP10> ) ] .
+
+<uuid:EE2> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP10> <uuid:SP11> ) ] .
+
+<uuid:EE3> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP11> <uuid:SP12> ) ] .
+
+<uuid:EE4> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP12> <uuid:SP9> ) ] .
+
+<uuid:ME1> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP5> <uuid:SP6> ) ] .
+
+<uuid:ME2> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP6> <uuid:SP7> ) ] .
+
+<uuid:ME3> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP7> <uuid:SP8> ) ] .
+
+<uuid:ME4> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP8> <uuid:SP5> ) ] .
+
+<uuid:SolidAggregateAB> a geojson:Feature ;
+    geojson:topology [ a topo:SolidAggregate ;
+            topo:relatedFeatures ( <uuid:SolidA> <uuid:SolidB> ) ] .
+
+<uuid:WE1> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP1> <uuid:SP2> ) ] .
+
+<uuid:WE2> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP2> <uuid:SP3> ) ] .
+
+<uuid:WE3> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP3> <uuid:SP4> ) ] .
+
+<uuid:WE4> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP4> <uuid:SP1> ) ] .
+
+<uuid:aggregate-solids-edges> a topo:Edge,
+        geojson:FeatureCollection ;
+    geojson:features <uuid:CA1>,
+        <uuid:CA2>,
+        <uuid:CA3>,
+        <uuid:CA4>,
+        <uuid:CB1>,
+        <uuid:CB2>,
+        <uuid:CB3>,
+        <uuid:CB4>,
+        <uuid:EE1>,
+        <uuid:EE2>,
+        <uuid:EE3>,
+        <uuid:EE4>,
+        <uuid:ME1>,
+        <uuid:ME2>,
+        <uuid:ME3>,
+        <uuid:ME4>,
+        <uuid:WE1>,
+        <uuid:WE2>,
+        <uuid:WE3>,
+        <uuid:WE4> .
+
+<uuid:aggregate-solids-solids> a topo:Solid,
+        geojson:FeatureCollection ;
+    geojson:features <uuid:SolidA>,
+        <uuid:SolidAggregateAB>,
+        <uuid:SolidB> .
+
+<uuid:SolidA> a geojson:Feature ;
+    geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:ShellA> ] ) ] .
+
+<uuid:SolidB> a geojson:Feature ;
+    geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:ShellB> ] ) ] .
+
+<uuid:SP1> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 0e+00 0e+00 ) ] .
+
+<uuid:SP10> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 0e+00 1e+01 ) ] .
+
+<uuid:SP11> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 1e+01 1e+01 ) ] .
+
+<uuid:SP12> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 1e+01 0e+00 ) ] .
+
+<uuid:SP2> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 0e+00 1e+01 ) ] .
+
+<uuid:SP3> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 1e+01 1e+01 ) ] .
+
+<uuid:SP4> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 1e+01 0e+00 ) ] .
+
+<uuid:SP9> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 0e+00 0e+00 ) ] .
+
+<uuid:SP5> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 0e+00 0e+00 ) ] .
+
+<uuid:SP6> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 0e+00 1e+01 ) ] .
+
+<uuid:SP7> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 1e+01 ) ] .
+
+<uuid:SP8> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 0e+00 ) ] .
+
+[] a geojson:FeatureCollection ;
+    topo:edges ( <uuid:aggregate-solids-edges> ) ;
+    topo:faces ( [ a geojson:FeatureCollection ;
+                geojson:features [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ] ] ) ;
+    topo:points ( [ a geojson:FeatureCollection ;
+                geojson:collectionFeatureType "BoundaryMark" ;
+                geojson:features <uuid:SP1>,
+                    <uuid:SP10>,
+                    <uuid:SP11>,
+                    <uuid:SP12>,
+                    <uuid:SP2>,
+                    <uuid:SP3>,
+                    <uuid:SP4>,
+                    <uuid:SP5>,
+                    <uuid:SP6>,
+                    <uuid:SP7>,
+                    <uuid:SP8>,
+                    <uuid:SP9> ] ) ;
+    topo:rings ( [ a geojson:FeatureCollection ;
+                geojson:features [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ],
+                    [ a geojson:Feature ] ] ) ;
+    topo:shells ( [ a geojson:FeatureCollection ;
+                geojson:features [ a geojson:Feature ],
+                    [ a geojson:Feature ] ] ) ;
+    topo:solids ( <uuid:aggregate-solids-solids> ) .
+

@@ -986,6 +986,7 @@ Links to the schema:
     "Edge": "topo:Edge",
     "Shell": "topo:Shell",
     "Solid": "topo:Solid",
+    "SolidAggregate": "topo:SolidAggregate",
     "shells": {
       "@id": "topo:shells",
       "@container": "@list"

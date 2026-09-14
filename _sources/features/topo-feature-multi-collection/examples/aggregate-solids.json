@@ -81,7 +81,7 @@
             { "ref": "uuid:ME2", "orientation": "-" },
             { "ref": "uuid:ME1", "orientation": "-" }
           ]},
-          "properties": { "description": "Solid A east wall, adjoining Solid B" }
+          "properties": { "description": "Shared wall between Solid A and Solid B" }
         },
         {
           "id": "uuid:RA-Bottom", "type": "Feature", "geometry": null,
@@ -122,16 +122,6 @@
             { "ref": "uuid:CA4", "orientation": "-" }
           ]},
           "properties": { "description": "Solid A north wall" }
-        },
-        {
-          "id": "uuid:RB-Mid", "type": "Feature", "geometry": null,
-          "topology": { "type": "Ring", "directed_references": [
-            { "ref": "uuid:ME1", "orientation": "+" },
-            { "ref": "uuid:ME2", "orientation": "+" },
-            { "ref": "uuid:ME3", "orientation": "+" },
-            { "ref": "uuid:ME4", "orientation": "+" }
-          ]},
-          "properties": { "description": "Solid B west wall, adjoining Solid A" }
         },
         {
           "id": "uuid:RB-East", "type": "Feature", "geometry": null,
@@ -199,7 +189,6 @@
         { "id": "uuid:FA-South",  "type": "Feature", "geometry": null, "topology": { "type": "Face", "directed_references": [{ "ref": "uuid:RA-South",  "orientation": "+" }] }, "properties": { "area": 100.0 } },
         { "id": "uuid:FA-North",  "type": "Feature", "geometry": null, "topology": { "type": "Face", "directed_references": [{ "ref": "uuid:RA-North",  "orientation": "+" }] }, "properties": { "area": 100.0 } },
 
-        { "id": "uuid:FB-Mid",    "type": "Feature", "geometry": null, "topology": { "type": "Face", "directed_references": [{ "ref": "uuid:RB-Mid",    "orientation": "+" }] }, "properties": { "area": 100.0 } },
         { "id": "uuid:FB-East",   "type": "Feature", "geometry": null, "topology": { "type": "Face", "directed_references": [{ "ref": "uuid:RB-East",   "orientation": "+" }] }, "properties": { "area": 100.0 } },
         { "id": "uuid:FB-Bottom", "type": "Feature", "geometry": null, "topology": { "type": "Face", "directed_references": [{ "ref": "uuid:RB-Bottom", "orientation": "+" }] }, "properties": { "area": 100.0 } },
         { "id": "uuid:FB-Top",    "type": "Feature", "geometry": null, "topology": { "type": "Face", "directed_references": [{ "ref": "uuid:RB-Top",    "orientation": "+" }] }, "properties": { "area": 100.0 } },
@@ -229,7 +218,7 @@
         {
           "id": "uuid:ShellB", "type": "Feature", "geometry": null,
           "topology": { "type": "Shell", "directed_references": [
-            { "ref": "uuid:FB-Mid",    "orientation": "+" },
+            { "ref": "uuid:FA-Mid",    "orientation": "-" },
             { "ref": "uuid:FB-East",   "orientation": "+" },
             { "ref": "uuid:FB-Bottom", "orientation": "+" },
             { "ref": "uuid:FB-Top",    "orientation": "+" },

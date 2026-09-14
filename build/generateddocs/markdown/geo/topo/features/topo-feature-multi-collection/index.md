@@ -1021,7 +1021,7 @@ Dataset consists of eight points, 12 edges, six rings, six faces, one shell, and
 ```jsonld
 {
   "@context": [
-    "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
+    "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
     "https://surroundaustralia.github.io/3d-csdm-profile-wa/build/annotated/profiles/wa/wa-core/context.jsonld"
   ],
   "id": "uuid:2c3dbfad-aa78-4ff1-8ef3-4022e7d5eeec",
@@ -2886,7 +2886,7 @@ Dataset consists of four points, six edges, four rings, four faces, one shell, a
 ```jsonld
 {
   "@context": [
-    "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
+    "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
     "https://surroundaustralia.github.io/3d-csdm-profile-wa/build/annotated/profiles/wa/wa-core/context.jsonld"
   ],
   "id": "uuid:6d5cf3b8-c759-4c16-b957-d352cf8ba11f",
@@ -4983,7 +4983,7 @@ Dataset consists of 12 points, 18 edges, eight rings, eight faces, one shell, an
 ```jsonld
 {
   "@context": [
-    "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
+    "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
     "https://surroundaustralia.github.io/3d-csdm-profile-wa/build/annotated/profiles/wa/wa-core/context.jsonld"
   ],
   "id": "uuid:aa3cb916-cd7f-4651-935b-b9cd319f154c",
@@ -11415,7 +11415,7 @@ Dataset consists of 36 points, 65 edges, 35 rings, 35 faces, five shells, and fi
 ```jsonld
 {
   "@context": [
-    "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
+    "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
     {
       "vocabs": "https://linked.data.gov.au/def/csdm/",
       "wa-surveypoint-purpose": "https://linked.data.gov.au/def/csdm/wa-surveypoint-purpose/",
@@ -22458,7 +22458,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
 ```jsonld
 {
   "@context": [
-    "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
+    "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
     "https://surroundaustralia.github.io/3d-csdm-profile-wa/build/annotated/profiles/wa/wa-core/context.jsonld"
   ],
   "id": "uuid:e9901182-59a5-4f67-8093-942fef888bf2",
@@ -30038,10 +30038,10 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     geojson:topology [ a geojson:Polygon ;
             topo:relatedFeatures ( ( <uuid:13b59b93-6f0f-4773-a8b7-88401c9c1fae> <uuid:ff22d8d8-5d2e-4fdd-97ce-d80e2b48b5de> <uuid:5a34b8a2-dac0-4ad4-8a59-cbee38b407c8> <uuid:2fbdbc42-6443-4bc2-bd42-0c77a3e9c9fc> <uuid:54943d43-ea1a-4a8c-8cbb-c6d89187e842> <uuid:cf0f9b8d-c8d2-4691-8c41-086e18375574> <uuid:ed1e393e-d7f5-4a85-93b1-f08812b85014> <uuid:d2ebb167-17a2-4bd0-8411-97f83c92d9e6> <uuid:d75b510f-9b88-4a82-bac4-4de995f4a1b9> <uuid:7914b52a-e13d-4d79-9f76-43e040fa939f> <uuid:b4b815fe-eb25-401b-b65f-f7a020da8944> <uuid:41e63da1-bee7-48da-be90-527c99fa38d8> <uuid:e9b94664-2b7a-4e97-a565-4bcce3896392> <uuid:1ce937ba-14a1-48dc-b65c-3b50e98ceb37> <uuid:6e614af5-e74d-4c6d-b841-85ac4dd93250> <uuid:379f8fe1-7311-4db2-a5b3-8b7cf5dd0882> <uuid:780d3b13-0263-4449-ad1e-1627fd0042aa> <uuid:fd23e6be-fb9a-44fd-8ad1-55df298d506a> <uuid:f7fb3296-07ab-42f6-937f-0ebbe0ee98ea> ) ) ] ;
     parcel:appellation [ rdfs:label "Lot 1" ;
-            dct:hasPart [ rdfs:label "Lot" ;
-                    commonpatterns:namePartType <file:///github/workspace/ParcelType> ],
-                [ rdfs:label "1" ;
-                    commonpatterns:namePartType <file:///github/workspace/ParcelIdentifier> ] ] ;
+            dct:hasPart [ rdfs:label "1" ;
+                    commonpatterns:namePartType <file:///github/workspace/ParcelIdentifier> ],
+                [ rdfs:label "Lot" ;
+                    commonpatterns:namePartType <file:///github/workspace/ParcelType> ] ] ;
     parcel:purpose wa-parcel-purpose:lot ;
     parcel:state wa-parcel-state:created ;
     parcel:surfaceArea 2829 ;
@@ -31851,7 +31851,7 @@ Dataset consists of 16 points, 24 edges, 12 rings, 12 faces, two shells, and one
 ```jsonld
 {
   "@context": [
-    "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
+    "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
     "https://surroundaustralia.github.io/3d-csdm-profile-wa/build/annotated/profiles/wa/wa-core/context.jsonld"
   ],
   "id": "uuid:6b542695-5bb2-41ea-9316-90cf411a77fd",
@@ -35948,7 +35948,7 @@ Dataset consists of 16 points, 24 edges, 12 rings, 11 faces, one shell, and one 
 ```jsonld
 {
   "@context": [
-    "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
+    "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
     "https://surroundaustralia.github.io/3d-csdm-profile-wa/build/annotated/profiles/wa/wa-core/context.jsonld"
   ],
   "id": "uuid:85702346-7889-4c90-88a8-81c0dde911ba",
@@ -38360,7 +38360,7 @@ All other feature types reference these points (directly or transitively) to res
 #### jsonld
 ```jsonld
 {
-  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
   "type": "FeatureCollection",
   "features": [],
   "points": [
@@ -38627,7 +38627,7 @@ geometry is null; actual coordinates are resolved from the referenced points.
 #### jsonld
 ```jsonld
 {
-  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
   "type": "FeatureCollection",
   "features": [],
   "points": [
@@ -40410,7 +40410,7 @@ are derived from the topological reference chain.
 #### jsonld
 ```jsonld
 {
-  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
   "type": "FeatureCollection",
   "features": [],
   "points": [
@@ -45916,7 +45916,7 @@ All supporting points, edges, and faces are included to make the example self-co
 #### jsonld
 ```jsonld
 {
-  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
   "type": "FeatureCollection",
   "features": [],
   "metadata": {
@@ -49876,7 +49876,7 @@ $defs:
     type: array
     items:
       allOf:
-      - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/schema.yaml
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-line/schema.yaml
       - properties:
           topology:
             properties:
@@ -49902,7 +49902,7 @@ properties:
       oneOf:
       - $ref: '#PointFeatures'
       - allOf:
-        - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
+        - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
         - properties:
             features:
               $ref: '#PointFeatures'
@@ -49915,7 +49915,7 @@ properties:
       description: Edge (LineString) features referencing two point nodes via topology.references.
       items:
         allOf:
-        - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
+        - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
         - properties:
             features:
               $ref: '#EdgeFeatures'
@@ -49927,56 +49927,56 @@ properties:
       geometry is null.
     items:
       oneOf:
-      - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml
       - allOf:
-        - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
+        - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
         - properties:
             features:
               type: array
               items:
-                $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml
+                $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml
   faces:
     type: array
     description: Face features whose boundary rings reference edges via directed_references.
       geometry is null.
     items:
       oneOf:
-      - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml
       - allOf:
-        - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
+        - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
         - properties:
             features:
               type: array
               items:
-                $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml
+                $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml
   shells:
     type: array
     description: Shell features referencing faces via directed_references. geometry
       is null.
     items:
       oneOf:
-      - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.yaml
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.yaml
       - allOf:
-        - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
+        - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
         - properties:
             features:
               type: array
               items:
-                $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.yaml
+                $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.yaml
   solids:
     type: array
     description: Solid features whose shells reference faces via directed_references.
       geometry is null.
     items:
       oneOf:
-      - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.yaml
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.yaml
       - allOf:
-        - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
+        - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
         - properties:
             features:
               type: array
               items:
-                $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.yaml
+                $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.yaml
     x-jsonld-id: https://purl.org/geojson/topo#solids
     x-jsonld-container: '@list'
 x-jsonld-prefixes:
@@ -49986,8 +49986,8 @@ x-jsonld-prefixes:
 
 Links to the schema:
 
-* YAML version: [schema.yaml](https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/schema.json)
-* JSON version: [schema.json](https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/schema.yaml)
+* YAML version: [schema.yaml](https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/schema.json)
+* JSON version: [schema.json](https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/schema.yaml)
 
 
 # JSON-LD Context
@@ -50358,13 +50358,13 @@ Links to the schema:
 ```
 
 You can find the full JSON-LD context here:
-[context.jsonld](https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld)
+[context.jsonld](https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld)
 
 
 # For developers
 
 The source code for this Building Block can be found in the following repository:
 
-* URL: [https://github.com/ogcincubator/topo-feature](https://github.com/ogcincubator/topo-feature)
+* URL: [https://github.com/surroundaustralia/topo-feature](https://github.com/surroundaustralia/topo-feature)
 * Path: `_sources/features/topo-feature-multi-collection`
 

@@ -3,11 +3,11 @@ description: Feature with Polyhedral geometry by reference
 $defs:
   PolyhedralFeature:
     allOf:
-    - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
+    - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
     - properties:
         topology:
           allOf:
-          - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.yaml
+          - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.yaml
           - oneOf:
             - properties:
                 type:
@@ -16,7 +16,7 @@ $defs:
       required:
       - topology
   ContainedFeatureCollection:
-    $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml
+    $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml
 oneOf:
 - $ref: '#/$defs/PolyhedralFeature'
 - $ref: '#/$defs/ContainedFeatureCollection'

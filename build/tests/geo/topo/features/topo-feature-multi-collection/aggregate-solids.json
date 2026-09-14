@@ -498,7 +498,7 @@
             ]
           },
           "properties": {
-            "description": "Solid A east wall, adjoining Solid B"
+            "description": "Shared wall between Solid A and Solid B"
           }
         },
         {
@@ -615,35 +615,6 @@
           },
           "properties": {
             "description": "Solid A north wall"
-          }
-        },
-        {
-          "id": "uuid:RB-Mid",
-          "type": "Feature",
-          "geometry": null,
-          "topology": {
-            "type": "Ring",
-            "directed_references": [
-              {
-                "ref": "uuid:ME1",
-                "orientation": "+"
-              },
-              {
-                "ref": "uuid:ME2",
-                "orientation": "+"
-              },
-              {
-                "ref": "uuid:ME3",
-                "orientation": "+"
-              },
-              {
-                "ref": "uuid:ME4",
-                "orientation": "+"
-              }
-            ]
-          },
-          "properties": {
-            "description": "Solid B west wall, adjoining Solid A"
           }
         },
         {
@@ -903,23 +874,6 @@
           }
         },
         {
-          "id": "uuid:FB-Mid",
-          "type": "Feature",
-          "geometry": null,
-          "topology": {
-            "type": "Face",
-            "directed_references": [
-              {
-                "ref": "uuid:RB-Mid",
-                "orientation": "+"
-              }
-            ]
-          },
-          "properties": {
-            "area": 100.0
-          }
-        },
-        {
           "id": "uuid:FB-East",
           "type": "Feature",
           "geometry": null,
@@ -1058,8 +1012,8 @@
             "type": "Shell",
             "directed_references": [
               {
-                "ref": "uuid:FB-Mid",
-                "orientation": "+"
+                "ref": "uuid:FA-Mid",
+                "orientation": "-"
               },
               {
                 "ref": "uuid:FB-East",

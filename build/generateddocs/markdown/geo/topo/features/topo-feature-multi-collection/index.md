@@ -22904,7 +22904,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
                 "role": "containingPrimaryParcel",
-                "targetFeatureType": "surv:PrimaryParcel"
+                "targetFeatureType": "PrimaryParcel"
               }
             ]
           },
@@ -22933,7 +22933,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
                 "role": "containingPrimaryParcel",
-                "targetFeatureType": "surv:PrimaryParcel"
+                "targetFeatureType": "PrimaryParcel"
               }
             ]
           },
@@ -22962,7 +22962,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
                 "role": "containingPrimaryParcel",
-                "targetFeatureType": "surv:PrimaryParcel"
+                "targetFeatureType": "PrimaryParcel"
               }
             ]
           },
@@ -22991,7 +22991,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
                 "role": "containingPrimaryParcel",
-                "targetFeatureType": "surv:PrimaryParcel"
+                "targetFeatureType": "PrimaryParcel"
               }
             ]
           },
@@ -28536,7 +28536,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
                 "role": "containingPrimaryParcel",
-                "targetFeatureType": "surv:PrimaryParcel"
+                "targetFeatureType": "PrimaryParcel"
               }
             ]
           },
@@ -28565,7 +28565,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
                 "role": "containingPrimaryParcel",
-                "targetFeatureType": "surv:PrimaryParcel"
+                "targetFeatureType": "PrimaryParcel"
               }
             ]
           },
@@ -28594,7 +28594,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
                 "role": "containingPrimaryParcel",
-                "targetFeatureType": "surv:PrimaryParcel"
+                "targetFeatureType": "PrimaryParcel"
               }
             ]
           },
@@ -28623,7 +28623,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
                 "role": "containingPrimaryParcel",
-                "targetFeatureType": "surv:PrimaryParcel"
+                "targetFeatureType": "PrimaryParcel"
               }
             ]
           },

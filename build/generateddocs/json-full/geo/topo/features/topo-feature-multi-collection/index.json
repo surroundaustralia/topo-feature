@@ -22,13 +22,13 @@
   ],
   "group": "OGC",
   "shaclShapes": {
-    "ogc.geo.topo.features.topo-feature-collection": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
-    ],
     "ogc.geo.topo.features.topo-feature": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+    ],
+    "ogc.geo.topo.features.topo-feature-collection": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
     ],
     "ogc.geo.features.feature": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
@@ -38,13 +38,13 @@
     ]
   },
   "dependsOn": [
-    "ogc.geo.topo.features.topo-feature-collection",
-    "ogc.geo.topo.features.topo-solid-aggregate",
-    "ogc.geo.topo.features.topo-shell",
     "ogc.geo.topo.features.topo-ring",
+    "ogc.geo.topo.features.topo-shell",
     "ogc.geo.topo.features.topo-line",
+    "ogc.geo.topo.features.topo-face",
+    "ogc.geo.topo.features.topo-feature-collection",
     "ogc.geo.topo.features.topo-solid",
-    "ogc.geo.topo.features.topo-face"
+    "ogc.geo.topo.features.topo-solid-aggregate"
   ],
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
   "schema": {
@@ -55,7 +55,7 @@
   "sourceLdContext": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-multi-collection/context.jsonld",
   "resolvedSchemaProperties": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/resolvedProperties.json",
   "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-multi-collection/",
-  "validationPassed": false,
+  "validationPassed": true,
   "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/features/topo-feature-multi-collection/",
   "transforms": [
     {
@@ -348,12 +348,12 @@
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/transforms/four-unit-parcel.Polygons-2D.geojson"
             }
           },
-          "sizeBytes": 170498
+          "sizeBytes": 170478
         },
         {
           "language": "jsonld",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-multi-collection/four-unit-parcel.jsonld",
-          "sizeBytes": 170701
+          "sizeBytes": 170681
         },
         {
           "language": "ttl",

@@ -2863,7 +2863,7 @@ Dataset consists of four points, six edges, four rings, four faces, one shell, a
             "floors": [
               1
             ],
-            "volume": 302.939
+            "volume": 117.786
           }
         }
       ]
@@ -3436,7 +3436,7 @@ Dataset consists of four points, six edges, four rings, four faces, one shell, a
             "floors": [
               1
             ],
-            "volume": 302.939
+            "volume": 117.786
           }
         }
       ]
@@ -16844,7 +16844,9 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
 #### json
 ```json
 {
-  "@context": [ "https://surroundaustralia.github.io/3d-csdm-profile-wa/build/annotated/profiles/wa/wa-core/context.jsonld"],
+  "@context": [
+    "https://surroundaustralia.github.io/3d-csdm-profile-wa/build/annotated/profiles/wa/wa-core/context.jsonld"
+  ],
   "id": "uuid:e9901182-59a5-4f67-8093-942fef888bf2",
   "name": "DP 12347",
   "description": "Multi-solid test for Solid validation",
@@ -22286,7 +22288,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-           "directed_references": [
+            "directed_references": [
               {
                 "ref": "uuid:26924195-da93-43af-946d-237910710449",
                 "orientation": "+"
@@ -22296,9 +22298,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
               {
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
-                "role": "within",
-
-                "targetRole": "containingPrimaryParcel",
+                "role": "containingPrimaryParcel",
                 "targetFeatureType": "PrimaryParcel"
               }
             ]
@@ -22317,7 +22317,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-           "directed_references": [
+            "directed_references": [
               {
                 "ref": "uuid:89957e86-89d5-459d-a170-0c7c916f2382",
                 "orientation": "+"
@@ -22328,7 +22328,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
                 "role": "containingPrimaryParcel",
-                "targetFeatureType": "surv:PrimaryParcel"
+                "targetFeatureType": "PrimaryParcel"
               }
             ]
           },
@@ -22346,7 +22346,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-           "directed_references": [
+            "directed_references": [
               {
                 "ref": "uuid:9a31a4bf-8d83-4876-8bc3-df640512418a",
                 "orientation": "+"
@@ -22357,7 +22357,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
                 "role": "containingPrimaryParcel",
-                "targetFeatureType": "surv:PrimaryParcel"
+                "targetFeatureType": "PrimaryParcel"
               }
             ]
           },
@@ -22375,7 +22375,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-           "directed_references": [
+            "directed_references": [
               {
                 "ref": "uuid:ddbbed6c-5a7d-4405-9d41-59677b9484ee",
                 "orientation": "+"
@@ -22386,7 +22386,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
                 "role": "containingPrimaryParcel",
-                "targetFeatureType": "surv:PrimaryParcel"
+                "targetFeatureType": "PrimaryParcel"
               }
             ]
           },
@@ -22404,7 +22404,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
           "geometry": null,
           "topology": {
             "type": "Solid",
-           "directed_references": [
+            "directed_references": [
               {
                 "ref": "uuid:1e877d2e-b9b0-4152-b693-fc4d76843142",
                 "orientation": "+"
@@ -22415,7 +22415,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
                 "role": "containingPrimaryParcel",
-                "targetFeatureType": "surv:PrimaryParcel"
+                "targetFeatureType": "PrimaryParcel"
               }
             ]
           },
@@ -27902,8 +27902,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
               {
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
-                "role": "within",
-                "targetRole": "containingPrimaryParcel",
+                "role": "containingPrimaryParcel",
                 "targetFeatureType": "PrimaryParcel"
               }
             ]
@@ -27933,7 +27932,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
                 "role": "containingPrimaryParcel",
-                "targetFeatureType": "surv:PrimaryParcel"
+                "targetFeatureType": "PrimaryParcel"
               }
             ]
           },
@@ -27962,7 +27961,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
                 "role": "containingPrimaryParcel",
-                "targetFeatureType": "surv:PrimaryParcel"
+                "targetFeatureType": "PrimaryParcel"
               }
             ]
           },
@@ -27991,7 +27990,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
                 "role": "containingPrimaryParcel",
-                "targetFeatureType": "surv:PrimaryParcel"
+                "targetFeatureType": "PrimaryParcel"
               }
             ]
           },
@@ -28020,7 +28019,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
                 "role": "containingPrimaryParcel",
-                "targetFeatureType": "surv:PrimaryParcel"
+                "targetFeatureType": "PrimaryParcel"
               }
             ]
           },
@@ -28056,8 +28055,8 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix epsg: <http://www.opengis.net/def/crs/EPSG/0/> .
 @prefix geojson: <https://purl.org/geojson/vocab#> .
-@prefix ns1: <https://linked.data.gov.au/def/csdm/commonpatterns/> .
-@prefix ns2: <http://www.iana.org/assignments/> .
+@prefix ns1: <http://www.iana.org/assignments/> .
+@prefix ns2: <https://linked.data.gov.au/def/csdm/commonpatterns/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix owlTime: <http://www.w3.org/2006/time#> .
 @prefix parcel: <https://w3id.org/ogc/ladm/parcels/> .
@@ -28108,7 +28107,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     geojson:topology [ a topo:Solid ;
             topo:directedReferences ( [ topo:orientation "+" ;
                         topo:ref <uuid:89957e86-89d5-459d-a170-0c7c916f2382> ] ) ;
-            topo:relatedFeatures ( [ ns2:relation <http://www.iana.org/assignments/relation/topology> ;
+            topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
                         prof:hasRole <file:///github/workspace/containingPrimaryParcel> ;
                         oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ] .
 
@@ -28147,8 +28146,8 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     geojson:topology [ a topo:Solid ;
             topo:directedReferences ( [ topo:orientation "+" ;
                         topo:ref <uuid:26924195-da93-43af-946d-237910710449> ] ) ;
-            topo:relatedFeatures ( [ ns2:relation <http://www.iana.org/assignments/relation/topology> ;
-                        prof:hasRole <file:///github/workspace/within> ;
+            topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
+                        prof:hasRole <file:///github/workspace/containingPrimaryParcel> ;
                         oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ] .
 
 <uuid:6ae2b7e0-a540-40c7-81bc-45c2cac1d3e6> a geojson:FeatureCollection ;
@@ -28282,7 +28281,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     geojson:topology [ a topo:Solid ;
             topo:directedReferences ( [ topo:orientation "+" ;
                         topo:ref <uuid:ddbbed6c-5a7d-4405-9d41-59677b9484ee> ] ) ;
-            topo:relatedFeatures ( [ ns2:relation <http://www.iana.org/assignments/relation/topology> ;
+            topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
                         prof:hasRole <file:///github/workspace/containingPrimaryParcel> ;
                         oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ] .
 
@@ -28367,7 +28366,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     geojson:topology [ a topo:Solid ;
             topo:directedReferences ( [ topo:orientation "+" ;
                         topo:ref <uuid:1e877d2e-b9b0-4152-b693-fc4d76843142> ] ) ;
-            topo:relatedFeatures ( [ ns2:relation <http://www.iana.org/assignments/relation/topology> ;
+            topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
                         prof:hasRole <file:///github/workspace/containingPrimaryParcel> ;
                         oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ] .
 
@@ -28376,7 +28375,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     geojson:topology [ a topo:Solid ;
             topo:directedReferences ( [ topo:orientation "+" ;
                         topo:ref <uuid:9a31a4bf-8d83-4876-8bc3-df640512418a> ] ) ;
-            topo:relatedFeatures ( [ ns2:relation <http://www.iana.org/assignments/relation/topology> ;
+            topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
                         prof:hasRole <file:///github/workspace/containingPrimaryParcel> ;
                         oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ] .
 
@@ -28988,7 +28987,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061678e+05 6.471679e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29016,7 +29015,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061316e+05 6.47166e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29044,7 +29043,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061889e+05 6.471667e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29057,7 +29056,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061925e+05 6.471653e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29070,7 +29069,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061303e+05 6.471637e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29088,7 +29087,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061509e+05 6.471677e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29101,7 +29100,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.06149e+05 6.471622e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29114,7 +29113,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061764e+05 6.471677e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29157,7 +29156,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061915e+05 6.471662e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29185,7 +29184,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061739e+05 6.471626e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29248,7 +29247,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.06184e+05 6.471673e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29271,7 +29270,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.06191e+05 6.471645e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29304,7 +29303,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061613e+05 6.471622e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29322,7 +29321,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.06159e+05 6.471679e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29335,7 +29334,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061287e+05 6.471648e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29363,7 +29362,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061869e+05 6.471637e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29386,7 +29385,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061375e+05 6.471628e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29399,7 +29398,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061413e+05 6.471671e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29427,7 +29426,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061811e+05 6.471631e+06 ) ] ;
     dct:time "2026-05-05T00:14:08.163770+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29460,7 +29459,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061484e+05 6.471648e+06 2.3e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29478,7 +29477,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061664e+05 6.471646e+06 2e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29491,7 +29490,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061664e+05 6.471656e+06 2.3e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29514,7 +29513,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061464e+05 6.471646e+06 2.3e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29537,7 +29536,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061644e+05 6.471648e+06 2.3e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29550,7 +29549,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061464e+05 6.471656e+06 2.3e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29568,7 +29567,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061484e+05 6.471648e+06 2.6e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29616,7 +29615,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061664e+05 6.471656e+06 2e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29634,7 +29633,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061544e+05 6.471652e+06 2.6e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29652,7 +29651,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061484e+05 6.471656e+06 2.6e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29670,7 +29669,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061644e+05 6.471648e+06 2.6e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29693,7 +29692,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061464e+05 6.471646e+06 2e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29716,7 +29715,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061464e+05 6.471656e+06 2e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29734,7 +29733,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061584e+05 6.471652e+06 2e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29757,7 +29756,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061584e+05 6.471652e+06 2.6e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29770,7 +29769,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061544e+05 6.471652e+06 2e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29798,7 +29797,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061664e+05 6.471646e+06 2.3e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29811,7 +29810,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061644e+05 6.471656e+06 2.6e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29829,7 +29828,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061584e+05 6.471652e+06 2.3e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29842,7 +29841,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061584e+05 6.471646e+06 2.3e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29855,7 +29854,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061644e+05 6.471656e+06 2.3e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29868,7 +29867,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061544e+05 6.471648e+06 2.6e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29881,7 +29880,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061544e+05 6.471646e+06 2e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29894,7 +29893,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061484e+05 6.471656e+06 2.3e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29907,7 +29906,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061584e+05 6.471648e+06 2.6e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29920,7 +29919,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061564e+05 6.471656e+06 2e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29933,7 +29932,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061544e+05 6.471652e+06 2.3e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29951,7 +29950,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061564e+05 6.471652e+06 2.6e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29964,7 +29963,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061584e+05 6.471646e+06 2e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29977,7 +29976,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061564e+05 6.471656e+06 2.6e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -29990,7 +29989,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061544e+05 6.471646e+06 2.3e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -30003,7 +30002,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061564e+05 6.471652e+06 2e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -30016,7 +30015,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061584e+05 6.471648e+06 2.3e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -30028,10 +30027,10 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     geojson:topology [ a geojson:Polygon ;
             topo:relatedFeatures ( ( <uuid:13b59b93-6f0f-4773-a8b7-88401c9c1fae> <uuid:ff22d8d8-5d2e-4fdd-97ce-d80e2b48b5de> <uuid:5a34b8a2-dac0-4ad4-8a59-cbee38b407c8> <uuid:2fbdbc42-6443-4bc2-bd42-0c77a3e9c9fc> <uuid:54943d43-ea1a-4a8c-8cbb-c6d89187e842> <uuid:cf0f9b8d-c8d2-4691-8c41-086e18375574> <uuid:ed1e393e-d7f5-4a85-93b1-f08812b85014> <uuid:d2ebb167-17a2-4bd0-8411-97f83c92d9e6> <uuid:d75b510f-9b88-4a82-bac4-4de995f4a1b9> <uuid:7914b52a-e13d-4d79-9f76-43e040fa939f> <uuid:b4b815fe-eb25-401b-b65f-f7a020da8944> <uuid:41e63da1-bee7-48da-be90-527c99fa38d8> <uuid:e9b94664-2b7a-4e97-a565-4bcce3896392> <uuid:1ce937ba-14a1-48dc-b65c-3b50e98ceb37> <uuid:6e614af5-e74d-4c6d-b841-85ac4dd93250> <uuid:379f8fe1-7311-4db2-a5b3-8b7cf5dd0882> <uuid:780d3b13-0263-4449-ad1e-1627fd0042aa> <uuid:fd23e6be-fb9a-44fd-8ad1-55df298d506a> <uuid:f7fb3296-07ab-42f6-937f-0ebbe0ee98ea> ) ) ] ;
     parcel:appellation [ rdfs:label "Lot 1" ;
-            dct:hasPart [ rdfs:label "Lot" ;
-                    commonpatterns:namePartType <file:///github/workspace/ParcelType> ],
-                [ rdfs:label "1" ;
-                    commonpatterns:namePartType <file:///github/workspace/ParcelIdentifier> ] ] ;
+            dct:hasPart [ rdfs:label "1" ;
+                    commonpatterns:namePartType <file:///github/workspace/ParcelIdentifier> ],
+                [ rdfs:label "Lot" ;
+                    commonpatterns:namePartType <file:///github/workspace/ParcelType> ] ] ;
     parcel:purpose wa-parcel-purpose:lot ;
     parcel:state wa-parcel-state:created ;
     parcel:surfaceArea 2829 ;
@@ -30042,7 +30041,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061564e+05 6.471656e+06 2.3e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -30055,7 +30054,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061544e+05 6.471648e+06 2.3e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;
@@ -30068,7 +30067,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
     dct:spatial [ a geojson:Point ;
             geojson:coordinates ( 4.061564e+05 6.471652e+06 2.3e+01 ) ] ;
     dct:time "2026-05-04T02:39:38.184691+00:00" ;
-    ns1:qualityMeasure 1e-01 ;
+    ns2:qualityMeasure 1e-01 ;
     surv:monumentedBy [ surv:condition wa-monument-condition:ok ;
             surv:form wa-monument-form:cadastral-point-unmarked ;
             surv:state wa-monument-state:unmarked ] ;

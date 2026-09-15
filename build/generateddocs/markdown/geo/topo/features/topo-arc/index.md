@@ -46,8 +46,8 @@ Radius and arcLength are implicit but may be provided as optional properties of 
     "type": "ArcWithCenter",
     "x-description": "References is an ordered list of features with point geometries Start,End,Center",
     "references": [
-      "P1",
-      "P2",
+      "arcP1",
+      "arcP2",
       "PC"
     ],
     "orientation": "ccw"
@@ -71,8 +71,8 @@ Radius and arcLength are implicit but may be provided as optional properties of 
     "type": "ArcWithCenter",
     "x-description": "References is an ordered list of features with point geometries Start,End,Center",
     "references": [
-      "P1",
-      "P2",
+      "arcP1",
+      "arcP2",
       "PC"
     ],
     "orientation": "ccw"
@@ -97,7 +97,7 @@ Radius and arcLength are implicit but may be provided as optional properties of 
     geojson:radius 1.05438e+02 ;
     geojson:topology [ a geojson:ArcWithCenter ;
             topo:orientation "ccw" ;
-            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> <http://www.example.com/features/PC> ) ] .
+            topo:relatedFeatures ( <http://www.example.com/features/arcP1> <http://www.example.com/features/arcP2> <http://www.example.com/features/PC> ) ] .
 
 
 ```
@@ -120,9 +120,9 @@ Note that properties "radius" and "arcLength" are not required in the containing
     "type": "Arc",
     "x-description": "References is an ordered list of 3 features with point geometries defining Arc",
     "references": [
-      "P1",
-      "P3",
-      "P2"
+      "arcP1",
+      "arcP3",
+      "arcP2"
     ]
   },
   "properties": {
@@ -144,9 +144,9 @@ Note that properties "radius" and "arcLength" are not required in the containing
     "type": "Arc",
     "x-description": "References is an ordered list of 3 features with point geometries defining Arc",
     "references": [
-      "P1",
-      "P3",
-      "P2"
+      "arcP1",
+      "arcP3",
+      "arcP2"
     ]
   },
   "properties": {
@@ -168,7 +168,7 @@ Note that properties "radius" and "arcLength" are not required in the containing
     geojson:arcLength 2.5615e+01 ;
     geojson:radius 1.05438e+02 ;
     geojson:topology [ a geojson:Arc ;
-            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P3> <http://www.example.com/features/P2> ) ] .
+            topo:relatedFeatures ( <http://www.example.com/features/arcP1> <http://www.example.com/features/arcP3> <http://www.example.com/features/arcP2> ) ] .
 
 
 ```
@@ -189,14 +189,14 @@ Arc by Chord example.
     "type": "ArcByChord",
     "x-description": "References is an ordered list of features with for an Arc Chord, radius and length determine geometry",
     "references": [
-      "P1",
-      "P2"
+      "arcP1",
+      "arcP2"
     ],
-    "radius": 105.438,
+    "radius": 10,
     "orientation": "cw"
   },
   "properties": {
-    "arcLength": 25.615
+    "arcLength": 15.25
   }
 }
 ```
@@ -213,14 +213,14 @@ Arc by Chord example.
     "type": "ArcByChord",
     "x-description": "References is an ordered list of features with for an Arc Chord, radius and length determine geometry",
     "references": [
-      "P1",
-      "P2"
+      "arcP1",
+      "arcP2"
     ],
-    "radius": 105.438,
+    "radius": 10,
     "orientation": "cw"
   },
   "properties": {
-    "arcLength": 25.615
+    "arcLength": 15.25
   }
 }
 ```
@@ -234,11 +234,11 @@ Arc by Chord example.
 
 <http://www.example.com/features/chord1> a geojson:Feature,
         <my:ArcChordFeature> ;
-    geojson:arcLength 2.5615e+01 ;
+    geojson:arcLength 1.525e+01 ;
     geojson:topology [ a geojson:ArcByChord ;
             topo:orientation "cw" ;
-            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ;
-            geojson:radius 1.05438e+02 ] .
+            topo:relatedFeatures ( <http://www.example.com/features/arcP1> <http://www.example.com/features/arcP2> ) ;
+            geojson:radius 10 ] .
 
 
 ```
@@ -248,8 +248,6 @@ Arc by Chord example.
 Circle with Center example.
 
 ![Example](assets/circle-with-center.png)
-
-### Example 5
 #### json
 ```json
 {
@@ -310,8 +308,6 @@ Circle with Center example.
 Cubic Spline example.
 
 ![Example](assets/spline.png)
-
-### Example 7
 #### json
 ```json
 {
@@ -323,10 +319,13 @@ Cubic Spline example.
     "type": "CubicSpline",
     "x-description": "References is an ordered list of features with point geometries",
     "references": [
-      "P1",
+      "arcP1",
       "Px1",
       "Px2",
-      "P2"
+      "Px3",
+      "Px4",
+      "Px5",
+      "arcP2"
     ]
   },
   "properties": null
@@ -345,10 +344,13 @@ Cubic Spline example.
     "type": "CubicSpline",
     "x-description": "References is an ordered list of features with point geometries",
     "references": [
-      "P1",
+      "arcP1",
       "Px1",
       "Px2",
-      "P2"
+      "Px3",
+      "Px4",
+      "Px5",
+      "arcP2"
     ]
   },
   "properties": null
@@ -364,7 +366,7 @@ Cubic Spline example.
 <http://www.example.com/features/1853004> a geojson:Feature,
         <my:SplineFeature> ;
     geojson:topology [ a geojson:CubicSpline ;
-            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/Px1> <http://www.example.com/features/Px2> <http://www.example.com/features/P2> ) ] .
+            topo:relatedFeatures ( <http://www.example.com/features/arcP1> <http://www.example.com/features/Px1> <http://www.example.com/features/Px2> <http://www.example.com/features/Px3> <http://www.example.com/features/Px4> <http://www.example.com/features/Px5> <http://www.example.com/features/arcP2> ) ] .
 
 
 ```
@@ -385,18 +387,21 @@ Cubic Spline with Tangents example.
     "startTangentVector": {
       "references": [
         "PVS",
-        "P1"
+        "arcP1"
       ]
     },
     "endTangentVector": {
       "references": [
-        "P2",
+        "arcP2",
         "PVE"
       ]
     },
     "references": [
-      "P1",
-      "P2"
+      "arcP1",
+      "Px1",
+      "Px2",
+      "Px3",
+      "arcP2"
     ]
   },
   "properties": null
@@ -417,18 +422,21 @@ Cubic Spline with Tangents example.
     "startTangentVector": {
       "references": [
         "PVS",
-        "P1"
+        "arcP1"
       ]
     },
     "endTangentVector": {
       "references": [
-        "P2",
+        "arcP2",
         "PVE"
       ]
     },
     "references": [
-      "P1",
-      "P2"
+      "arcP1",
+      "Px1",
+      "Px2",
+      "Px3",
+      "arcP2"
     ]
   },
   "properties": null
@@ -444,9 +452,9 @@ Cubic Spline with Tangents example.
 <http://www.example.com/features/1853004> a geojson:Feature,
         <my:SplineFeature> ;
     geojson:topology [ a geojson:CubicSpline ;
-            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ;
-            geojson:endTangentVector [ topo:relatedFeatures ( <http://www.example.com/features/P2> <http://www.example.com/features/PVE> ) ] ;
-            geojson:startTangentVector [ topo:relatedFeatures ( <http://www.example.com/features/PVS> <http://www.example.com/features/P1> ) ] ] .
+            topo:relatedFeatures ( <http://www.example.com/features/arcP1> <http://www.example.com/features/Px1> <http://www.example.com/features/Px2> <http://www.example.com/features/Px3> <http://www.example.com/features/arcP2> ) ;
+            geojson:endTangentVector [ topo:relatedFeatures ( <http://www.example.com/features/arcP2> <http://www.example.com/features/PVE> ) ] ;
+            geojson:startTangentVector [ topo:relatedFeatures ( <http://www.example.com/features/PVS> <http://www.example.com/features/arcP1> ) ] ] .
 
 
 ```
@@ -714,6 +722,7 @@ Links to the schema:
     "Ring": "topo:Ring",
     "Shell": "topo:Shell",
     "Solid": "topo:Solid",
+    "SolidAggregate": "topo:SolidAggregate",
     "rings": {
       "@id": "topo:rings",
       "@container": "@list"

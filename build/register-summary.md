@@ -61,12 +61,6 @@ A feature representing a Face in topology: a bounded planar region described by 
 
 Demonstration of a schema using coordinates of points, without duplication. Reuses context but constrains to Line types. Testing and visualisation of its examples draw on a common set of referenced objects (points, edges, faces) shared across the topo-* building blocks, at `_sources/examples/referenced-objects.ttl`.
 
-### `ogc.geo.topo.features.topo-polyhedron` — 3D (Polyhedron) using nested Polygons and Point topology
-
-**Type:** schema
-
-Typical 3D polyhedrons using features with Point geometry coordinates - note this does not support full topology of shared faces but matches many simplified geometry models.
-
 ### `ogc.geo.topo.features.topo-ring` — Ring Topology Feature
 
 **Type:** schema
@@ -84,6 +78,12 @@ A feature representing a Shell in topology: a closed set of oriented Face refere
 **Type:** schema
 
 A feature representing a Solid in topology: a volumetric region bounded by one or more oriented Shell references. The first Shell is the outer boundary; any additional Shells describe interior voids. A Solid is the 3D analog of a Face — it is bounded by Shells the way a Face is bounded by Rings.
+
+### `ogc.geo.topo.features.topo-solid-aggregate` — Solid Aggregate Topology Feature
+
+**Type:** schema
+
+A feature representing an aggregation of Solid features into a single combined volumetric object, referencing its member Solids by id. Analogous to AggregatePolygon for Faces/Rings, but one dimension up.
 
 ### `ogc.geo.topo.features.topo-feature-multi-collection` — Topo Feature Multi-Collection
 

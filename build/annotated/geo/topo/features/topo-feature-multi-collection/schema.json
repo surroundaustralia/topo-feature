@@ -52,30 +52,6 @@
           }
         ]
       }
-    },
-    "SolidOrAggregate": {
-      "$anchor": "SolidOrAggregate",
-      "description": "A solids-array entry: either a Solid bounded by its own Shells, or a SolidAggregate combining a set of member Solids by plain reference.",
-      "oneOf": [
-        {
-          "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.json"
-        },
-        {
-          "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid-aggregate/schema.json"
-        }
-      ]
-    },
-    "RingFeature": {
-      "$anchor": "RingFeature",
-      "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.json"
-    },
-    "FaceFeature": {
-      "$anchor": "FaceFeature",
-      "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.json"
-    },
-    "ShellFeature": {
-      "$anchor": "ShellFeature",
-      "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.json"
     }
   },
   "type": "object",
@@ -152,7 +128,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "#RingFeature"
+            "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.json"
           },
           {
             "allOf": [
@@ -164,7 +140,7 @@
                   "features": {
                     "type": "array",
                     "items": {
-                      "$ref": "#RingFeature"
+                      "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.json"
                     }
                   }
                 }
@@ -172,9 +148,7 @@
             ]
           }
         ]
-      },
-      "x-jsonld-id": "https://purl.org/geojson/topo#rings",
-      "x-jsonld-container": "@list"
+      }
     },
     "faces": {
       "type": "array",
@@ -182,7 +156,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "#FaceFeature"
+            "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.json"
           },
           {
             "allOf": [
@@ -194,7 +168,7 @@
                   "features": {
                     "type": "array",
                     "items": {
-                      "$ref": "#FaceFeature"
+                      "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.json"
                     }
                   }
                 }
@@ -202,9 +176,7 @@
             ]
           }
         ]
-      },
-      "x-jsonld-id": "https://purl.org/geojson/topo#faces",
-      "x-jsonld-container": "@list"
+      }
     },
     "shells": {
       "type": "array",
@@ -212,7 +184,7 @@
       "items": {
         "oneOf": [
           {
-            "$ref": "#ShellFeature"
+            "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.json"
           },
           {
             "allOf": [
@@ -224,7 +196,7 @@
                   "features": {
                     "type": "array",
                     "items": {
-                      "$ref": "#ShellFeature"
+                      "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.json"
                     }
                   }
                 }
@@ -232,17 +204,15 @@
             ]
           }
         ]
-      },
-      "x-jsonld-id": "https://purl.org/geojson/topo#shells",
-      "x-jsonld-container": "@list"
+      }
     },
     "solids": {
       "type": "array",
-      "description": "Solid features whose shells reference faces via directed_references, or SolidAggregate features combining a set of member Solids by plain reference. geometry is null.",
+      "description": "Solid features whose shells reference faces via directed_references. geometry is null.",
       "items": {
         "oneOf": [
           {
-            "$ref": "#SolidOrAggregate"
+            "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.json"
           },
           {
             "allOf": [
@@ -254,7 +224,7 @@
                   "features": {
                     "type": "array",
                     "items": {
-                      "$ref": "#SolidOrAggregate"
+                      "$ref": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.json"
                     }
                   }
                 }

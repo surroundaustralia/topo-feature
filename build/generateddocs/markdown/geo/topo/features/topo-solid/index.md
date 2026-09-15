@@ -1901,7 +1901,6 @@ Links to the schema:
     "Ring": "topo:Ring",
     "Shell": "topo:Shell",
     "Solid": "topo:Solid",
-    "SolidAggregate": "topo:SolidAggregate",
     "rings": {
       "@id": "topo:rings",
       "@container": "@list"

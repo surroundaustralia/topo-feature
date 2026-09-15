@@ -2142,7 +2142,6 @@ Links to the schema:
     "Face": "topo:Face",
     "Ring": "topo:Ring",
     "Solid": "topo:Solid",
-    "SolidAggregate": "topo:SolidAggregate",
     "rings": {
       "@id": "topo:rings",
       "@container": "@list"

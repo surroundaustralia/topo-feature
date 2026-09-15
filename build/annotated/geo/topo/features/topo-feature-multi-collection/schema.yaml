@@ -36,22 +36,6 @@ $defs:
               references:
                 minItems: 2
                 maxItems: 2
-  SolidOrAggregate:
-    $anchor: SolidOrAggregate
-    description: 'A solids-array entry: either a Solid bounded by its own Shells,
-      or a SolidAggregate combining a set of member Solids by plain reference.'
-    oneOf:
-    - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.yaml
-    - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid-aggregate/schema.yaml
-  RingFeature:
-    $anchor: RingFeature
-    $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml
-  FaceFeature:
-    $anchor: FaceFeature
-    $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml
-  ShellFeature:
-    $anchor: ShellFeature
-    $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.yaml
 type: object
 required:
 - type
@@ -96,63 +80,56 @@ properties:
       geometry is null.
     items:
       oneOf:
-      - $ref: '#RingFeature'
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml
       - allOf:
         - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
         - properties:
             features:
               type: array
               items:
-                $ref: '#RingFeature'
-    x-jsonld-id: https://purl.org/geojson/topo#rings
-    x-jsonld-container: '@list'
+                $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-ring/schema.yaml
   faces:
     type: array
     description: Face features whose boundary rings reference edges via directed_references.
       geometry is null.
     items:
       oneOf:
-      - $ref: '#FaceFeature'
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml
       - allOf:
         - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
         - properties:
             features:
               type: array
               items:
-                $ref: '#FaceFeature'
-    x-jsonld-id: https://purl.org/geojson/topo#faces
-    x-jsonld-container: '@list'
+                $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/schema.yaml
   shells:
     type: array
     description: Shell features referencing faces via directed_references. geometry
       is null.
     items:
       oneOf:
-      - $ref: '#ShellFeature'
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.yaml
       - allOf:
         - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
         - properties:
             features:
               type: array
               items:
-                $ref: '#ShellFeature'
-    x-jsonld-id: https://purl.org/geojson/topo#shells
-    x-jsonld-container: '@list'
+                $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/schema.yaml
   solids:
     type: array
-    description: Solid features whose shells reference faces via directed_references,
-      or SolidAggregate features combining a set of member Solids by plain reference.
+    description: Solid features whose shells reference faces via directed_references.
       geometry is null.
     items:
       oneOf:
-      - $ref: '#SolidOrAggregate'
+      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.yaml
       - allOf:
         - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureCollectionOptions
         - properties:
             features:
               type: array
               items:
-                $ref: '#SolidOrAggregate'
+                $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.yaml
     x-jsonld-id: https://purl.org/geojson/topo#solids
     x-jsonld-container: '@list'
 x-jsonld-prefixes:

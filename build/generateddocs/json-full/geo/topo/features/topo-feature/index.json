@@ -10,16 +10,13 @@
   "itemClass": "schema",
   "register": "ogc-building-block-register",
   "version": "0.1",
-  "dateOfLastChange": "2026-09-14",
+  "dateOfLastChange": "2023-07-05",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
   "dependsOn": [
-    "ogc.geo.topo.datatypes.topology",
-    "ogc.geo.topo.features.topo-feature-collection"
-  ],
-  "shaclClosures": [
-    "../../examples/referenced-objects-closure.ttl"
+    "ogc.geo.topo.features.topo-feature-collection",
+    "ogc.geo.topo.datatypes.topology"
   ],
   "tags": [
     "topology",
@@ -141,20 +138,20 @@
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature/transforms/LineString.Faces-as-Polygons.geojson"
             }
           },
-          "sizeBytes": 181,
-          "code": "{\n  \"type\": \"Feature\",\n  \"id\": \"LineP1P2\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Edge\",\n    \"references\": [\n      \"arcP1\",\n      \"arcP2\"\n    ]\n  },\n  \"properties\": null\n}"
+          "sizeBytes": 175,
+          "code": "{\n  \"type\": \"Feature\",\n  \"id\": \"LineP1P2\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Edge\",\n    \"references\": [\n      \"P1\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}"
         },
         {
           "language": "jsonld",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature/LineString.jsonld",
-          "sizeBytes": 309,
-          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/context.jsonld\",\n  \"type\": \"Feature\",\n  \"id\": \"LineP1P2\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Edge\",\n    \"references\": [\n      \"arcP1\",\n      \"arcP2\"\n    ]\n  },\n  \"properties\": null\n}"
+          "sizeBytes": 303,
+          "code": "{\n  \"@context\": \"https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/context.jsonld\",\n  \"type\": \"Feature\",\n  \"id\": \"LineP1P2\",\n  \"geometry\": null,\n  \"topology\": {\n    \"type\": \"Edge\",\n    \"references\": [\n      \"P1\",\n      \"P2\"\n    ]\n  },\n  \"properties\": null\n}"
         },
         {
           "language": "ttl",
           "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature/LineString.ttl",
-          "sizeBytes": 386,
-          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n<http://www.example.com/features/LineP1P2> a geojson:Feature ;\n    geojson:topology [ a topo:Edge ;\n            topo:relatedFeatures ( <http://www.example.com/features/arcP1> <http://www.example.com/features/arcP2> ) ] .\n\n"
+          "sizeBytes": 380,
+          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix topo: <https://purl.org/geojson/topo#> .\n\n<http://www.example.com/features/LineP1P2> a geojson:Feature ;\n    geojson:topology [ a topo:Edge ;\n            topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) ] .\n\n"
         }
       ]
     },
@@ -173,7 +170,7 @@
           "transformResults": {
             "Points-n-Edges": {
               "success": true,
-              "sizeBytes": 1685,
+              "sizeBytes": 1676,
               "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature/transforms/Polygon.Points-n-Edges.geojson"
             },
             "Faces-as-Polygons": {

@@ -22872,9 +22872,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
               {
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
-                "role": "within",
-
-                "targetRole": "containingPrimaryParcel",
+                "role": "containingPrimaryParcel",
                 "targetFeatureType": "PrimaryParcel"
               }
             ]
@@ -28505,8 +28503,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
               {
                 "href": "uuid:458ba315-9601-4e0c-9385-f54c1e2372f6",
                 "rel": "topology",
-                "role": "within",
-                "targetRole": "containingPrimaryParcel",
+                "role": "containingPrimaryParcel",
                 "targetFeatureType": "PrimaryParcel"
               }
             ]
@@ -28739,7 +28736,7 @@ Dataset consists of 57 points, 19 vectorObservations, one Polygon, 65 edges, 35 
             topo:directedReferences ( [ topo:orientation "+" ;
                         topo:ref <uuid:26924195-da93-43af-946d-237910710449> ] ) ;
             topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
-                        prof:hasRole <file:///github/workspace/within> ;
+                        prof:hasRole <file:///github/workspace/containingPrimaryParcel> ;
                         oa:hasTarget <uuid:458ba315-9601-4e0c-9385-f54c1e2372f6> ] ) ] .
 
 <uuid:5a34b8a2-dac0-4ad4-8a59-cbee38b407c8> a geojson:Feature ;

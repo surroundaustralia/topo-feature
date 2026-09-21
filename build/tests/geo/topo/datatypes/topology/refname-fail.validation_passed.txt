@@ -1,0 +1,27 @@
+Validation report for ogc.geo.topo.datatypes.topology - Geometry using references
+Generated 2026-09-21T02:01:55.652749+00:00
+=== General ===
+Test was expected to fail and it did.
+=== End General ===
+
+=== Files ===
+Using refname-fail.json from test resources
+JSON-LD context is present - uplifting
+Output JSON-LD refname-fail.jsonld created
+Output Turtle refname-fail.ttl created
+=== End Files ===
+
+=== JSON Schema ===
+
+** Validation error **
+ValidationError: {'type': 'Edge', 'nodes': ['P1', 'P2']} is not valid under any of the given schemas
+
+Failed validating 'oneOf' in schema['allOf'][0]:
+    {'oneOf': [{'$ref': '#/$defs/simpleRefs'},
+               {'$ref': '#/$defs/nestedRefs'},
+               {'$ref': '#/$defs/directedRefs'}]}
+
+On instance:
+    {'nodes': ['P1', 'P2'], 'type': 'Edge'}
+=== End JSON Schema ===
+

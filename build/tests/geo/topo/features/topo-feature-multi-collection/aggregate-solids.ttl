@@ -1,0 +1,393 @@
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix topo: <https://purl.org/geojson/topo#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<uuid:AggregateSolidAB> a geojson:Feature ;
+    geojson:topology [ a topo:AggregateSolid ;
+            topo:relatedFeatures ( <uuid:SolidA> <uuid:SolidB> ) ] .
+
+<uuid:aggregate-solids-edges> a topo:Edge,
+        geojson:FeatureCollection ;
+    geojson:features <uuid:CA1>,
+        <uuid:CA2>,
+        <uuid:CA3>,
+        <uuid:CA4>,
+        <uuid:CB1>,
+        <uuid:CB2>,
+        <uuid:CB3>,
+        <uuid:CB4>,
+        <uuid:EE1>,
+        <uuid:EE2>,
+        <uuid:EE3>,
+        <uuid:EE4>,
+        <uuid:ME1>,
+        <uuid:ME2>,
+        <uuid:ME3>,
+        <uuid:ME4>,
+        <uuid:WE1>,
+        <uuid:WE2>,
+        <uuid:WE3>,
+        <uuid:WE4> .
+
+<uuid:aggregate-solids-faces> a topo:Face,
+        geojson:FeatureCollection ;
+    geojson:features <uuid:FA-Bottom>,
+        <uuid:FA-Mid>,
+        <uuid:FA-North>,
+        <uuid:FA-South>,
+        <uuid:FA-Top>,
+        <uuid:FA-West>,
+        <uuid:FB-Bottom>,
+        <uuid:FB-East>,
+        <uuid:FB-North>,
+        <uuid:FB-South>,
+        <uuid:FB-Top> .
+
+<uuid:aggregate-solids-rings> a topo:Ring,
+        geojson:FeatureCollection ;
+    geojson:features <uuid:RA-Bottom>,
+        <uuid:RA-Mid>,
+        <uuid:RA-North>,
+        <uuid:RA-South>,
+        <uuid:RA-Top>,
+        <uuid:RA-West>,
+        <uuid:RB-Bottom>,
+        <uuid:RB-East>,
+        <uuid:RB-North>,
+        <uuid:RB-South>,
+        <uuid:RB-Top> .
+
+<uuid:aggregate-solids-shells> a topo:Shell,
+        geojson:FeatureCollection ;
+    geojson:features <uuid:ShellA>,
+        <uuid:ShellB> .
+
+<uuid:aggregate-solids-solids> a topo:Solid,
+        geojson:FeatureCollection ;
+    geojson:features <uuid:AggregateSolidAB>,
+        <uuid:SolidA>,
+        <uuid:SolidB> .
+
+<uuid:FA-Bottom> a geojson:Feature ;
+    geojson:topology [ a topo:Face ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:RA-Bottom> ] ) ] .
+
+<uuid:FA-North> a geojson:Feature ;
+    geojson:topology [ a topo:Face ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:RA-North> ] ) ] .
+
+<uuid:FA-South> a geojson:Feature ;
+    geojson:topology [ a topo:Face ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:RA-South> ] ) ] .
+
+<uuid:FA-Top> a geojson:Feature ;
+    geojson:topology [ a topo:Face ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:RA-Top> ] ) ] .
+
+<uuid:FA-West> a geojson:Feature ;
+    geojson:topology [ a topo:Face ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:RA-West> ] ) ] .
+
+<uuid:FB-Bottom> a geojson:Feature ;
+    geojson:topology [ a topo:Face ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:RB-Bottom> ] ) ] .
+
+<uuid:FB-East> a geojson:Feature ;
+    geojson:topology [ a topo:Face ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:RB-East> ] ) ] .
+
+<uuid:FB-North> a geojson:Feature ;
+    geojson:topology [ a topo:Face ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:RB-North> ] ) ] .
+
+<uuid:FB-South> a geojson:Feature ;
+    geojson:topology [ a topo:Face ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:RB-South> ] ) ] .
+
+<uuid:FB-Top> a geojson:Feature ;
+    geojson:topology [ a topo:Face ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:RB-Top> ] ) ] .
+
+<uuid:RA-Bottom> a geojson:Feature ;
+    geojson:topology [ a topo:Ring ;
+            topo:directedReferences ( [ topo:orientation "-" ;
+                        topo:ref <uuid:WE4> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:CA4> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:ME4> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:CA1> ] ) ] .
+
+<uuid:RA-Mid> a geojson:Feature ;
+    geojson:topology [ a topo:Ring ;
+            topo:directedReferences ( [ topo:orientation "-" ;
+                        topo:ref <uuid:ME4> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:ME3> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:ME2> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:ME1> ] ) ] .
+
+<uuid:RA-North> a geojson:Feature ;
+    geojson:topology [ a topo:Ring ;
+            topo:directedReferences ( [ topo:orientation "-" ;
+                        topo:ref <uuid:WE3> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:CA3> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:ME3> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:CA4> ] ) ] .
+
+<uuid:RA-South> a geojson:Feature ;
+    geojson:topology [ a topo:Ring ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:CA1> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:ME1> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:CA2> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:WE1> ] ) ] .
+
+<uuid:RA-Top> a geojson:Feature ;
+    geojson:topology [ a topo:Ring ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:CA2> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:ME2> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:CA3> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:WE2> ] ) ] .
+
+<uuid:RA-West> a geojson:Feature ;
+    geojson:topology [ a topo:Ring ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:WE1> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:WE2> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:WE3> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:WE4> ] ) ] .
+
+<uuid:RB-Bottom> a geojson:Feature ;
+    geojson:topology [ a topo:Ring ;
+            topo:directedReferences ( [ topo:orientation "-" ;
+                        topo:ref <uuid:ME4> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:CB4> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:EE4> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:CB1> ] ) ] .
+
+<uuid:RB-East> a geojson:Feature ;
+    geojson:topology [ a topo:Ring ;
+            topo:directedReferences ( [ topo:orientation "-" ;
+                        topo:ref <uuid:EE4> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:EE3> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:EE2> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:EE1> ] ) ] .
+
+<uuid:RB-North> a geojson:Feature ;
+    geojson:topology [ a topo:Ring ;
+            topo:directedReferences ( [ topo:orientation "-" ;
+                        topo:ref <uuid:ME3> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:CB3> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:EE3> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:CB4> ] ) ] .
+
+<uuid:RB-South> a geojson:Feature ;
+    geojson:topology [ a topo:Ring ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:CB1> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:EE1> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:CB2> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:ME1> ] ) ] .
+
+<uuid:RB-Top> a geojson:Feature ;
+    geojson:topology [ a topo:Ring ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:CB2> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:EE2> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:CB3> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:ME2> ] ) ] .
+
+<uuid:ShellA> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:FA-West> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:FA-Mid> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:FA-Bottom> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:FA-Top> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:FA-South> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:FA-North> ] ) ] .
+
+<uuid:ShellB> a geojson:Feature ;
+    geojson:topology [ a topo:Shell ;
+            topo:directedReferences ( [ topo:orientation "-" ;
+                        topo:ref <uuid:FA-Mid> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:FB-East> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:FB-Bottom> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:FB-Top> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:FB-South> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:FB-North> ] ) ] .
+
+<uuid:SolidA> a geojson:Feature ;
+    geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:ShellA> ] ) ] .
+
+<uuid:SolidB> a geojson:Feature ;
+    geojson:topology [ a topo:Solid ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:ShellB> ] ) ] .
+
+<uuid:CA1> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP1> <uuid:SP5> ) ] .
+
+<uuid:CA2> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP2> <uuid:SP6> ) ] .
+
+<uuid:CA3> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP3> <uuid:SP7> ) ] .
+
+<uuid:CA4> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP4> <uuid:SP8> ) ] .
+
+<uuid:CB1> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP5> <uuid:SP9> ) ] .
+
+<uuid:CB2> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP6> <uuid:SP10> ) ] .
+
+<uuid:CB3> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP7> <uuid:SP11> ) ] .
+
+<uuid:CB4> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP8> <uuid:SP12> ) ] .
+
+<uuid:EE1> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP9> <uuid:SP10> ) ] .
+
+<uuid:EE2> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP10> <uuid:SP11> ) ] .
+
+<uuid:EE3> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP11> <uuid:SP12> ) ] .
+
+<uuid:EE4> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP12> <uuid:SP9> ) ] .
+
+<uuid:FA-Mid> a geojson:Feature ;
+    geojson:topology [ a topo:Face ;
+            topo:directedReferences ( [ topo:orientation "+" ;
+                        topo:ref <uuid:RA-Mid> ] ) ] .
+
+<uuid:WE1> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP1> <uuid:SP2> ) ] .
+
+<uuid:WE2> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP2> <uuid:SP3> ) ] .
+
+<uuid:WE3> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP3> <uuid:SP4> ) ] .
+
+<uuid:WE4> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP4> <uuid:SP1> ) ] .
+
+<uuid:ME1> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP5> <uuid:SP6> ) ] .
+
+<uuid:ME2> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP6> <uuid:SP7> ) ] .
+
+<uuid:ME3> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP7> <uuid:SP8> ) ] .
+
+<uuid:ME4> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:SP8> <uuid:SP5> ) ] .
+
+<uuid:SP1> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 0e+00 0e+00 ) ] .
+
+<uuid:SP10> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 0e+00 1e+01 ) ] .
+
+<uuid:SP11> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 1e+01 1e+01 ) ] .
+
+<uuid:SP12> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 1e+01 0e+00 ) ] .
+
+<uuid:SP2> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 0e+00 1e+01 ) ] .
+
+<uuid:SP3> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 1e+01 1e+01 ) ] .
+
+<uuid:SP4> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 0e+00 1e+01 0e+00 ) ] .
+
+<uuid:SP9> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 2e+01 0e+00 0e+00 ) ] .
+
+<uuid:SP5> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 0e+00 0e+00 ) ] .
+
+<uuid:SP6> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 0e+00 1e+01 ) ] .
+
+<uuid:SP7> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 1e+01 ) ] .
+
+<uuid:SP8> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 0e+00 ) ] .
+
+[] a geojson:FeatureCollection ;
+    topo:edges ( <uuid:aggregate-solids-edges> ) ;
+    topo:faces ( <uuid:aggregate-solids-faces> ) ;
+    topo:points ( [ a geojson:FeatureCollection ;
+                geojson:collectionFeatureType "BoundaryMark" ;
+                geojson:features <uuid:SP1>,
+                    <uuid:SP10>,
+                    <uuid:SP11>,
+                    <uuid:SP12>,
+                    <uuid:SP2>,
+                    <uuid:SP3>,
+                    <uuid:SP4>,
+                    <uuid:SP5>,
+                    <uuid:SP6>,
+                    <uuid:SP7>,
+                    <uuid:SP8>,
+                    <uuid:SP9> ] ) ;
+    topo:rings ( <uuid:aggregate-solids-rings> ) ;
+    topo:shells ( <uuid:aggregate-solids-shells> ) ;
+    topo:solids ( <uuid:aggregate-solids-solids> ) .
+

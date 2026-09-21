@@ -1,0 +1,11 @@
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix topo: <https://purl.org/geojson/topo#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.example.com/features/1853004> a geojson:Feature,
+        <my:CircleFeature> ;
+    geojson:topology [ a geojson:CircleByCenter ;
+            topo:relatedFeatures ( <http://www.example.com/features/PC> ) ;
+            geojson:radius 10 ] .
+

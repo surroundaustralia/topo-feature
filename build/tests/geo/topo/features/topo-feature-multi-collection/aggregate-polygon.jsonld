@@ -1,0 +1,198 @@
+{
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-multi-collection/context.jsonld",
+  "type": "FeatureCollection",
+  "featureType": "CSD",
+  "id": "aggregate-polygon-example",
+  "name": "Aggregate Polygon example",
+  "description": "Two Polygon parcels aggregated into a MultiPolygon via an AggregatePolygon feature that references them by id.",
+  "features": [],
+  "points": [
+    {
+      "type": "FeatureCollection",
+      "featureType": "BoundaryMark",
+      "features": [
+        {
+          "id": "AP1",
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              10.0,
+              10.0
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "AP2",
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              20.0,
+              20.0
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "AP3",
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              13.0,
+              17.0
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "AP4",
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              20.0,
+              10.0
+            ]
+          },
+          "properties": {}
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "type": "FeatureCollection",
+      "featureType": "Edge",
+      "features": [
+        {
+          "id": "AE1",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "AP1",
+              "AP2"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "AE2",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "AP2",
+              "AP3"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "AE3",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "AP3",
+              "AP1"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "AE4",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "AP1",
+              "AP4"
+            ]
+          },
+          "properties": {}
+        },
+        {
+          "id": "AE5",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Edge",
+            "references": [
+              "AP4",
+              "AP2"
+            ]
+          },
+          "properties": {}
+        }
+      ]
+    }
+  ],
+  "parcels": [
+    {
+      "type": "FeatureCollection",
+      "featureType": "PrimaryParcel",
+      "features": [
+        {
+          "id": "AParcel1",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Polygon",
+            "references": [
+              [
+                "AE1",
+                "AE2",
+                "AE3"
+              ]
+            ]
+          },
+          "properties": {
+            "appellation": "Lot 1"
+          }
+        },
+        {
+          "id": "AParcel2",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "Polygon",
+            "references": [
+              [
+                "AE1",
+                "AE5",
+                "AE4"
+              ]
+            ]
+          },
+          "properties": {
+            "appellation": "Lot 2"
+          }
+        },
+        {
+          "id": "AggregateLot",
+          "type": "Feature",
+          "geometry": null,
+          "topology": {
+            "type": "AggregatePolygon",
+            "x-description": "References is a list of Polygon feature ids aggregated into a MultiPolygon.",
+            "references": [
+              "AParcel1",
+              "AParcel2"
+            ]
+          },
+          "properties": {
+            "appellation": "Lot 3 (aggregate of Lots 1 and 2)"
+          }
+        }
+      ]
+    }
+  ]
+}

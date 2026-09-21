@@ -1,0 +1,32 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+description: 'A Ring feature: an ordered closed loop of directed (oriented) Edge references
+  forming a boundary. geometry must be null. Uses directed_references (not references)
+  in its topology.'
+allOf:
+- $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
+- properties:
+    geometry:
+      type: 'null'
+    circumference:
+      type: number
+      x-jsonld-id: topo:circumference
+    topology:
+      properties:
+        type:
+          type: string
+          const: Ring
+        directed_references:
+          type: array
+          description: Ordered list of oriented Edge references forming the closed
+            ring boundary
+          items:
+            $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml
+          minItems: 3
+      required:
+      - type
+      - directed_references
+      not:
+        required:
+        - references
+  required:
+  - topology

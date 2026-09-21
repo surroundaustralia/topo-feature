@@ -1,0 +1,96 @@
+{
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld",
+  "type": "FeatureCollection",
+  "id": "TopoCollectionExample",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "P1",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10,
+          10
+        ]
+      },
+      "properties": null
+    },
+    {
+      "type": "Feature",
+      "id": "P2",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20,
+          20
+        ]
+      },
+      "properties": null
+    },
+    {
+      "type": "Feature",
+      "id": "P3",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10,
+          20
+        ]
+      },
+      "properties": null
+    },
+    {
+      "type": "Feature",
+      "id": "LineP1P2",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "P1",
+          "P2"
+        ]
+      },
+      "properties": null
+    },
+    {
+      "type": "Feature",
+      "id": "LineP2P3",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "P2",
+          "P3"
+        ]
+      },
+      "properties": null
+    },
+    {
+      "type": "Feature",
+      "id": "LineP3P1",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "P3",
+          "P1"
+        ]
+      },
+      "properties": null
+    },
+    {
+      "type": "Feature",
+      "id": "TriangleP1P2P3",
+      "geometry": null,
+      "topology": {
+        "type": "Polygon",
+        "references": [
+          "LineP1P2",
+          "LineP2P3",
+          "LineP3P1"
+        ]
+      },
+      "properties": null
+    }
+  ]
+}

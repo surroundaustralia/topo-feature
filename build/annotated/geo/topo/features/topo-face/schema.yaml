@@ -1,0 +1,40 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+description: 'A Face feature: a bounded planar surface referencing Ring features via
+  directed_references. geometry must be null.'
+$defs:
+  testCollection:
+    $anchor: testCollection
+    description: A convenience ref to a complete, testable collection objects and
+      references
+    $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml
+allOf:
+- $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
+- properties:
+    geometry:
+      type: 'null'
+    topology:
+      properties:
+        type:
+          type: string
+          const: Face
+      required:
+      - type
+      - directed_references
+      x-jsonld-type: '@id'
+      x-jsonld-id: https://purl.org/geojson/vocab#topology
+  required:
+  - topology
+x-jsonld-extra-terms:
+  Face: https://purl.org/geojson/topo#Face
+  Ring: https://purl.org/geojson/topo#Ring
+  rings:
+    x-jsonld-id: https://purl.org/geojson/topo#rings
+    x-jsonld-container: '@list'
+  directed_references:
+    x-jsonld-id: https://purl.org/geojson/topo#directedReferences
+    x-jsonld-container: '@list'
+  ref: '@id'
+  orientation: https://purl.org/geojson/topo#orientation
+x-jsonld-prefixes:
+  geojson: https://purl.org/geojson/vocab#
+  topo: https://purl.org/geojson/topo#

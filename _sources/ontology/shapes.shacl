@@ -1,0 +1,60 @@
+@prefix :        <https://purl.org/geojson/topo#> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+
+# Constraints from the Topo-Feature schemas, expressed on the RDF produced by the Topo-Feature JSON-LD contexts.
+
+:OrientedReferenceShape
+  a sh:NodeShape ;
+  sh:targetClass :OrientedReference ;
+  sh:targetSubjectsOf :ref ;
+  sh:property [
+      sh:path :ref ;
+      sh:nodeKind sh:IRI ;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+      sh:message "An oriented reference has exactly one reference to a topological object."@en ;
+    ] ;
+  sh:property [
+      sh:path :orientation ;
+      sh:in ( "+" "-" ) ;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+      sh:message "An oriented reference has exactly one orientation, '+' or '-'."@en ;
+    ] ;
+.
+
+:DirectedReferencesShape
+  a sh:NodeShape ;
+  sh:targetSubjectsOf :directedReferences ;
+  sh:property [
+      sh:path ( :directedReferences [ sh:zeroOrMorePath rdf:rest ] rdf:first ) ;
+      sh:node :OrientedReferenceShape ;
+      sh:minCount 1 ;
+      sh:message "Directed references are a non-empty list of oriented references."@en ;
+    ] ;
+.
+
+:OrientedArcShape
+  a sh:NodeShape ;
+  sh:targetClass geojson:ArcWithCenter , geojson:ArcByChord ;
+  sh:property [
+      sh:path :orientation ;
+      sh:in ( "cw" "ccw" ) ;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+      sh:message "An arc with centre or arc by chord has exactly one orientation, 'cw' or 'ccw'."@en ;
+    ] ;
+.
+
+:RadiusRequiredShape
+  a sh:NodeShape ;
+  sh:targetClass geojson:ArcByChord , geojson:CircleByCenter ;
+  sh:property [
+      sh:path geojson:radius ;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+      sh:message "An arc by chord or circle by centre has exactly one radius."@en ;
+    ] ;
+.

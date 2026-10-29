@@ -1,0 +1,13 @@
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix topo:    <https://purl.org/geojson/topo#> .
+
+# An oriented reference must use '+' or '-'.
+<urn:uuid:5f0d9a2e-ring-bad-orientation>
+  a geojson:Feature ;
+  geojson:topology [
+      a topo:Ring ;
+      topo:directedReferences (
+          [ topo:ref <urn:uuid:c60507ba-226b-4e49-a702-e9afef899b23> ; topo:orientation "forward" ]
+        ) ;
+    ] ;
+.

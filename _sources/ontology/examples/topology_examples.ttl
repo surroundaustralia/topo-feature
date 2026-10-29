@@ -1,0 +1,50 @@
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix topo:    <https://purl.org/geojson/topo#> .
+@prefix ex:      <http://www.example.com/features/> .
+
+# A Ring feature, from the topo-ring block description: a closed loop of four oriented Edge references.
+<urn:uuid:5f0d9a2e-ring-example>
+  a geojson:Feature ;
+  geojson:topology [
+      a topo:Ring ;
+      topo:directedReferences (
+          [ topo:ref <urn:uuid:c60507ba-226b-4e49-a702-e9afef899b23> ; topo:orientation "+" ]
+          [ topo:ref <urn:uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> ; topo:orientation "+" ]
+          [ topo:ref <urn:uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> ; topo:orientation "+" ]
+          [ topo:ref <urn:uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> ; topo:orientation "+" ]
+        ) ;
+    ] ;
+.
+
+# A Solid with an interior void, from the topo-solid block description.
+<urn:uuid:5f0d9a2e-solid-example>
+  a geojson:Feature ;
+  geojson:topology [
+      a topo:Solid ;
+      topo:directedReferences (
+          [ topo:ref <urn:uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568> ; topo:orientation "+" ]
+          [ topo:ref <urn:uuid:97a089af-4929-4d36-8e01-74f573343edb> ; topo:orientation "-" ]
+        ) ;
+    ] ;
+.
+
+# An Edge referencing its two vertex Points, from the topology datatype description.
+<urn:uuid:5f0d9a2e-edge-example>
+  a geojson:Feature ;
+  geojson:topology [
+      a topo:Edge ;
+      topo:relatedFeatures ( <urn:uuid:point-a> <urn:uuid:point-b> ) ;
+    ] ;
+.
+
+# An arc with centre, from the topo-arc example arc_by_center.json (start, end, centre).
+ex:arcWithCentre
+  a geojson:Feature ;
+  geojson:topology [
+      a geojson:ArcWithCenter ;
+      topo:relatedFeatures ( ex:arcP1 ex:arcP2 ex:PC ) ;
+      topo:orientation "ccw" ;
+    ] ;
+  geojson:radius 105.438 ;
+  geojson:arcLength 25.615 ;
+.

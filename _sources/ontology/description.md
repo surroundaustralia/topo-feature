@@ -3,7 +3,8 @@
 The classes and properties bound by the Topo-Feature JSON-LD contexts.
 
 The value of a feature's `topology` property (`geojson:topology`) is typed with a topology class: `topo:Edge`,
-`topo:Ring`, `topo:Face`, `topo:Shell`, `topo:Solid` or `topo:AggregateSolid` (all subclasses of `topo:Topology`),
+`topo:Ring`, `topo:Face`, `topo:Shell`, `topo:Solid`, `topo:AggregateSolid` or `topo:AggregatePolygon` (all subclasses
+of `topo:Topology`),
 or one of the curve types `Arc`, `ArcWithCenter`, `ArcByChord`, `CircleByCenter` and `CubicSpline`.
 
 | JSON property | RDF |

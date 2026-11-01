@@ -1,0 +1,214 @@
+@prefix : <https://purl.org/geojson/topo#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix ont: <https://purl.org/geojson/topo> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:AggregatePolygon a owl:Class ;
+    rdfs:label "Aggregate Polygon"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-feature-multi-collection> ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf :Topology ;
+    skos:definition "A single combined surface object formed by aggregating existing Polygon (Face) features into a MultiPolygon, given as a list of member feature references. The two-dimensional analogue of AggregateSolid."@en .
+
+:AggregateSolid a owl:Class ;
+    rdfs:label "Aggregate Solid"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-aggregate-solid> ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf :Topology ;
+    skos:definition "A single combined volumetric object formed by aggregating existing Solid features, given as an unordered list of member Solid references. It describes no boundary geometry of its own."@en .
+
+:Edge a owl:Class ;
+    rdfs:label "Edge"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-line> ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf :Topology ;
+    skos:definition "A line topology whose ordered references name its vertex Point features; the first and last references are the start and end points."@en .
+
+:Face a owl:Class ;
+    rdfs:label "Face"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-face> ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf :Topology ;
+    skos:definition "A bounded planar region (a polygon surface) described by an outer boundary Ring and zero or more inner boundary Rings (holes). The first ring is the outer boundary."@en .
+
+:Ring a owl:Class ;
+    rdfs:label "Ring"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-ring> ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf :Topology ;
+    skos:definition "An ordered, closed loop of oriented Edge references forming the boundary of a Face. The end vertex of each edge, considering its orientation, equals the start vertex of the next."@en .
+
+:Shell a owl:Class ;
+    rdfs:label "Shell"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-shell> ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf :Topology ;
+    skos:definition "A closed surface, the boundary of a volumetric Solid, composed of an ordered set of oriented Face references. The orientation of each Face indicates its outward normal with respect to the enclosed volume; Faces shared between adjacent solids appear with opposite orientations."@en .
+
+:Solid a owl:Class ;
+    rdfs:label "Solid"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-solid> ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf :Topology ;
+    skos:definition "A volumetric region bounded by an ordered set of oriented Shell references: the first is the outer bounding Shell (oriented +); any others enclose interior voids (typically oriented -)."@en .
+
+:circumference a owl:DatatypeProperty ;
+    rdfs:label "circumference"@en ;
+    rdfs:isDefinedBy ont: ;
+    skos:definition "The length of a Ring's closed boundary, in the units of the coordinate reference system of the referenced geometry."@en ;
+    skos:scopeNote "The Topo-Feature schemas do not describe this property; the definition follows its use in the topo-face examples, where it equals the perimeter of the ring."@en .
+
+:directedReferences a owl:ObjectProperty ;
+    rdfs:label "directed references"@en ;
+    rdfs:domain :Topology ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:range rdf:List ;
+    skos:definition "An ordered list of oriented references, used where traversal direction matters: Rings referencing Edges, Faces referencing Rings or Edges, Shells referencing Faces and Solids referencing Shells. Each member is an Oriented Reference."@en .
+
+:edges a owl:ObjectProperty ;
+    rdfs:label "edges"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-feature-multi-collection> ;
+    rdfs:isDefinedBy ont: ;
+    skos:definition "The Edge (line) topology features of a topology dataset, organised as a typed collection in a multi-collection."@en .
+
+:faces a owl:ObjectProperty ;
+    rdfs:label "faces"@en ;
+    rdfs:isDefinedBy ont: ;
+    skos:definition "The Faces of a topology: the Face features of a topology dataset organised as a typed collection in a multi-collection."@en .
+
+:orientation a owl:DatatypeProperty ;
+    rdfs:label "orientation"@en ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:range xsd:string ;
+    skos:definition "The direction in which a referenced object is used. In an oriented reference: '+' (forward, the object's natural direction) or '-' (reverse). In an arc topology: 'cw' (clockwise) or 'ccw' (counter-clockwise)."@en .
+
+:points a owl:ObjectProperty ;
+    rdfs:label "points"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-feature-multi-collection> ;
+    rdfs:isDefinedBy ont: ;
+    skos:definition "The Point features (explicit coordinates) of a topology dataset, organised as a typed collection in a multi-collection."@en .
+
+:ref a owl:ObjectProperty ;
+    rdfs:label "reference"@en ;
+    rdfs:domain :OrientedReference ;
+    rdfs:isDefinedBy ont: ;
+    skos:definition "Identifier of the referenced topological object (for example a uuid: URI or local id)."@en .
+
+:relatedFeatures a owl:ObjectProperty ;
+    rdfs:label "related features"@en ;
+    rdfs:domain :Topology ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:range rdf:List ;
+    skos:definition "An ordered list of the features a topology references, used where traversal direction is not meaningful (for example an Edge naming its vertex Points, or the member Solids of an AggregateSolid)."@en ;
+    skos:scopeNote "Bound to the JSON properties references and relationships. The relationships property carries typed links (rel = topology) rather than plain references; both currently map to this property."@en .
+
+:rings a owl:ObjectProperty ;
+    rdfs:label "rings"@en ;
+    rdfs:isDefinedBy ont: ;
+    skos:definition "The Rings of a topology: the boundary Rings of a Face (outer boundary first), or the Ring features of a topology dataset organised as a typed collection in a multi-collection."@en .
+
+:shells a owl:ObjectProperty ;
+    rdfs:label "shells"@en ;
+    rdfs:isDefinedBy ont: ;
+    skos:definition "The Shells of a topology: the bounding Shells of a Solid, or the Shell features of a topology dataset organised as a typed collection in a multi-collection."@en .
+
+:solids a owl:ObjectProperty ;
+    rdfs:label "solids"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-feature-multi-collection> ;
+    rdfs:isDefinedBy ont: ;
+    skos:definition "The Solid (volumetric) topology features of a topology dataset, organised as a typed collection in a multi-collection."@en .
+
+geojson:Arc a owl:Class ;
+    rdfs:label "Arc"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-arc> ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf :Topology ;
+    skos:definition "A circular arc through three referenced points: start, a point on the arc, and end."@en .
+
+geojson:ArcByChord a owl:Class ;
+    rdfs:label "Arc by chord"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-arc> ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf :Topology ;
+    skos:definition "A circular arc defined by two referenced chord end points, a radius and an orientation (cw or ccw)."@en .
+
+geojson:ArcWithCenter a owl:Class ;
+    rdfs:label "Arc with centre"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-arc> ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf :Topology ;
+    skos:definition "A circular arc defined by three referenced points in the order start, end, centre, with an orientation (cw or ccw). Radius and arc length are implicit."@en .
+
+geojson:CircleByCenter a owl:Class ;
+    rdfs:label "Circle by centre"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-arc> ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf :Topology ;
+    skos:definition "A circle defined by one referenced centre point and a radius."@en .
+
+geojson:arcLength a owl:DatatypeProperty ;
+    rdfs:label "arc length"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-arc> ;
+    rdfs:isDefinedBy ont: ;
+    skos:definition "The length of an arc, according to the coordinate reference system of the referenced geometry. Optional property of the feature."@en .
+
+geojson:endTangentVector a owl:ObjectProperty ;
+    rdfs:label "end tangent vector"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-arc> ;
+    rdfs:domain geojson:CubicSpline ;
+    rdfs:isDefinedBy ont: ;
+    skos:definition "The tangent at the end of a cubic spline, given by two referenced points defining the exit direction."@en .
+
+geojson:radius a owl:DatatypeProperty ;
+    rdfs:label "radius"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-arc> ;
+    rdfs:isDefinedBy ont: ;
+    skos:definition "The radius of a circular arc or circle, according to the coordinate reference system of the referenced geometry. Required in the topology of ArcByChord and CircleByCenter; optional as a property of the feature."@en .
+
+geojson:startTangentVector a owl:ObjectProperty ;
+    rdfs:label "start tangent vector"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-arc> ;
+    rdfs:domain geojson:CubicSpline ;
+    rdfs:isDefinedBy ont: ;
+    skos:definition "The tangent at the start of a cubic spline, given by two referenced points defining the entry direction."@en .
+
+geojson:topology a owl:ObjectProperty ;
+    rdfs:label "topology"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-feature> ;
+    rdfs:domain geojson:Feature ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:range :Topology ;
+    skos:definition "The topology of a feature: its geometry defined by references to other features. When topology is used, the feature's geometry is null and coordinates are resolved from the referenced features."@en .
+
+:OrientedReference a owl:Class ;
+    rdfs:label "Oriented Reference"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/datatypes/oriented-ref> ;
+    rdfs:isDefinedBy ont: ;
+    skos:definition "An oriented reference to a topological object: the atomic element of a directed references list, made of a reference (feature identifier) and an orientation."@en .
+
+geojson:CubicSpline a owl:Class ;
+    rdfs:label "Cubic spline"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/features/topo-arc> ;
+    rdfs:isDefinedBy ont: ;
+    rdfs:subClassOf :Topology ;
+    skos:definition "A cubic spline through an ordered list of referenced points, optionally with start and end tangent vectors defining the entry and exit directions."@en .
+
+:Topology a owl:Class ;
+    rdfs:label "Topology"@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature/tree/master/_sources/datatypes/topology> ;
+    rdfs:isDefinedBy ont: ;
+    skos:definition "A description of a feature's geometry through references (identifiers) to other features rather than inline coordinates. Exactly one reference style is used: an ordered list of plain references, or an ordered list of oriented references."@en .
+
+ont: a owl:Ontology ;
+    rdfs:label "Topo-Feature ontology"@en ;
+    dct:description "Classes and properties for features whose geometry is defined by topological references to other features (Topo-Feature). A feature's topology property references an ordered list of other features; coordinates are resolved by following the references down to Point features with explicit coordinates. The hierarchy is Solid (bounded by Shells), Shell (closed from oriented Faces), Face (bounded by Rings), Ring (closed loop of oriented Edges), Edge (referencing Points)."@en ;
+    dct:source <https://github.com/ogcincubator/topo-feature> ;
+    dct:title "Topo-Feature ontology"@en ;
+    owl:versionInfo "0.1" ;
+    skos:scopeNote "Also declares the terms the Topo-Feature JSON-LD contexts map into the GeoJSON-LD namespace (https://purl.org/geojson/vocab#): topology, Arc, ArcWithCenter, ArcByChord, CircleByCenter, CubicSpline, radius, arcLength, startTangentVector and endTangentVector. The GeoJSON-LD vocabulary does not define them; they are declared here, with rdfs:isDefinedBy this ontology, so that the existing bindings resolve. They may move to a more suitable namespace when a target ontology is available (for example GeoSPARQL 1.3)."@en .
+

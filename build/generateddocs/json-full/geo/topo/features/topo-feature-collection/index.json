@@ -10,18 +10,18 @@
   "itemClass": "schema",
   "register": "ogc-building-block-register",
   "version": "0.1",
-  "dateOfLastChange": "2026-09-28",
+  "dateOfLastChange": "2026-11-01",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
   "dependsOn": [
-    "ogc.geo.features.featureCollection",
-    "ogc.geo.json-fg.featureCollection-lenient",
-    "ogc.geo.topo.features.topo-feature",
-    "ogc.geo.json-fg.featureCollection",
-    "ogc.geo.json-fg.feature",
     "ogc.geo.features.feature",
-    "ogc.geo.json-fg.feature-lenient"
+    "ogc.geo.features.featureCollection",
+    "ogc.geo.json-fg.feature",
+    "ogc.geo.json-fg.feature-lenient",
+    "ogc.geo.json-fg.featureCollection",
+    "ogc.geo.json-fg.featureCollection-lenient",
+    "ogc.geo.topo.features.topo-feature"
   ],
   "tags": [
     "topology",
@@ -30,18 +30,21 @@
   "group": "Collections",
   "shaclShapes": {
     "ogc.geo.topo.features.topo-feature-collection": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
-    ],
-    "ogc.geo.features.featureCollection": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ],
     "ogc.geo.features.feature": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ],
+    "ogc.geo.features.featureCollection": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+    ],
     "ogc.geo.topo.features.topo-feature": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
+    ],
+    "ogc.geo.topo.ontology": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/ontology/shapes.shacl"
     ]
   },
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld",
@@ -234,7 +237,7 @@
       ]
     }
   ],
-  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: Feature Collection with defined topology for bounding elements\n$defs:\n  FeatureCollectionOptions:\n    $anchor: FeatureCollectionOptions\n    anyOf:\n    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/json-fg/featureCollection/schema.yaml\n    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/json-fg/featureCollection-lenient/schema.yaml\n    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/featureCollection/schema.yaml\n  FeatureOptions:\n    $anchor: FeatureOptions\n    anyOf:\n    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/json-fg/feature/schema.yaml\n    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/json-fg/feature-lenient/schema.yaml\n    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/feature/schema.yaml\n  PointOptions:\n    $anchor: PointOptions\n    anyOf:\n    - allOf:\n      - $ref: '#/$defs/FeatureOptions'\n      - properties:\n          geometry:\n            properties:\n              type:\n                type: string\n                enum:\n                - Point\nallOf:\n- $ref: '#/$defs/FeatureCollectionOptions'\nproperties:\n  features:\n    type: array\n    items:\n      anyOf:\n      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml\n      - $ref: '#/$defs/PointOptions'\nx-jsonld-extra-terms:\n  properties: '@nest'\n",
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: Feature Collection with defined topology for bounding elements\n$defs:\n  FeatureCollectionOptions:\n    $anchor: FeatureCollectionOptions\n    anyOf:\n    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/json-fg/featureCollection/schema.yaml\n    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/json-fg/featureCollection-lenient/schema.yaml\n    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/featureCollection/schema.yaml\n  FeatureOptions:\n    $anchor: FeatureOptions\n    anyOf:\n    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/json-fg/feature/schema.yaml\n    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/json-fg/feature-lenient/schema.yaml\n    - $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/geo/features/feature/schema.yaml\n  PointOptions:\n    $anchor: PointOptions\n    anyOf:\n    - allOf:\n      - $ref: '#/$defs/FeatureOptions'\n      - properties:\n          geometry:\n            properties:\n              type:\n                type: string\n                enum:\n                - Point\nallOf:\n- $ref: '#/$defs/FeatureCollectionOptions'\nproperties:\n  features:\n    type: array\n    items:\n      anyOf:\n      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml\n      - $ref: '#/$defs/PointOptions'\nx-jsonld-extra-terms:\n  properties: '@nest'\nx-bblocks-metadata:\n  itemIdentifier: ogc.geo.topo.features.topo-feature-collection\n  register: https://surroundaustralia.github.io/topo-feature/build/register.json\n  version: '0.1'\n  dateOfLastChange: '2026-11-01'\n",
   "gitRepository": "https://github.com/surroundaustralia/topo-feature",
   "gitPath": "_sources/features/topo-feature-collection"
 }

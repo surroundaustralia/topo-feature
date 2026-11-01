@@ -45769,6 +45769,11 @@ properties:
     x-jsonld-container: '@list'
 x-jsonld-prefixes:
   topo: https://purl.org/geojson/topo#
+x-bblocks-metadata:
+  itemIdentifier: ogc.geo.topo.features.topo-feature-multi-collection
+  register: https://surroundaustralia.github.io/topo-feature/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-11-01'
 
 ```
 
@@ -45909,16 +45914,6 @@ Links to the schema:
               "@type": "@id",
               "@container": "@list"
             },
-            "directed_references": {
-              "@context": {
-                "ref": {
-                  "@type": "@id",
-                  "@id": "topo:ref"
-                }
-              },
-              "@id": "topo:directedReferences",
-              "@container": "@list"
-            },
             "relationships": {
               "@context": {
                 "href": {
@@ -46006,16 +46001,6 @@ Links to the schema:
             "references": {
               "@id": "topo:relatedFeatures",
               "@type": "@id",
-              "@container": "@list"
-            },
-            "directed_references": {
-              "@context": {
-                "ref": {
-                  "@type": "@id",
-                  "@id": "topo:ref"
-                }
-              },
-              "@id": "topo:directedReferences",
               "@container": "@list"
             },
             "relationships": {
@@ -46108,16 +46093,6 @@ Links to the schema:
               "@type": "@id",
               "@container": "@list"
             },
-            "directed_references": {
-              "@context": {
-                "ref": {
-                  "@type": "@id",
-                  "@id": "topo:ref"
-                }
-              },
-              "@id": "topo:directedReferences",
-              "@container": "@list"
-            },
             "relationships": {
               "@context": {
                 "href": {
@@ -46151,8 +46126,7 @@ Links to the schema:
           },
           "@type": "@id",
           "@id": "geojson:topology"
-        },
-        "ref": "@id"
+        }
       },
       "@id": "topo:faces",
       "@container": "@list"
@@ -46208,16 +46182,6 @@ Links to the schema:
               "@type": "@id",
               "@container": "@list"
             },
-            "directed_references": {
-              "@context": {
-                "ref": {
-                  "@type": "@id",
-                  "@id": "topo:ref"
-                }
-              },
-              "@id": "topo:directedReferences",
-              "@container": "@list"
-            },
             "relationships": {
               "@context": {
                 "href": {
@@ -46251,8 +46215,7 @@ Links to the schema:
           },
           "@type": "@id",
           "@id": "geojson:topology"
-        },
-        "ref": "@id"
+        }
       },
       "@id": "topo:shells",
       "@container": "@list"
@@ -46306,16 +46269,6 @@ Links to the schema:
             "references": {
               "@id": "topo:relatedFeatures",
               "@type": "@id",
-              "@container": "@list"
-            },
-            "directed_references": {
-              "@context": {
-                "ref": {
-                  "@type": "@id",
-                  "@id": "topo:ref"
-                }
-              },
-              "@id": "topo:directedReferences",
               "@container": "@list"
             },
             "relationships": {
@@ -46408,7 +46361,10 @@ Links to the schema:
     "arcLength": "geojson:arcLength",
     "startTangentVector": "geojson:startTangentVector",
     "endTangentVector": "geojson:endTangentVector",
-    "ref": "topo:ref",
+    "ref": {
+      "@id": "topo:ref",
+      "@type": "@id"
+    },
     "orientation": "topo:orientation",
     "Edge": "topo:Edge",
     "Face": "topo:Face",
@@ -46416,6 +46372,7 @@ Links to the schema:
     "Shell": "topo:Shell",
     "Solid": "topo:Solid",
     "AggregateSolid": "topo:AggregateSolid",
+    "AggregatePolygon": "topo:AggregatePolygon",
     "directed_references": {
       "@id": "topo:directedReferences",
       "@container": "@list"

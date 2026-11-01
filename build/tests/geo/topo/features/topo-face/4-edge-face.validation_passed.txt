@@ -1,5 +1,5 @@
 Validation report for ogc.geo.topo.features.topo-face - Face Topology Feature
-Generated 2026-09-28T22:10:51.944696+00:00
+Generated 2026-11-01T23:41:20.739847+00:00
 === Files ===
 Using examples/face-simple.json from examples
 JSON-LD context is present - uplifting
@@ -15,46 +15,57 @@ Validation passed
 === SHACL ===
 Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):
  - /github/workspace/_sources/features/topo-feature/../../examples/referenced-objects-closure.ttl
+ - /github/workspace/_sources/ontology/topo.ttl
+Validation result for _sources/ontology/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for _sources/ontology/shapes.shacl:
+ - Shape :OrientedReferenceShape: <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae>/geojson:topology/topo:directedReferences/rdf:first,_:N0c0ef6357a6341789ae6243e20e4051c,_:Na4b74aa22275476b826f704c1ec01bd2,<uuid:c60507ba-226b-4e49-a702-e9afef899b23>/geojson:topology/topo:directedReferences/rdf:first,_:N31223b9d6d82446fb373d3ef1b16db15
+ - Shape :RadiusRequiredShape: *none*
+ - Shape :OrientedArcShape: *none*
+ - Shape :DirectedReferencesShape: <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae>/geojson:topology,<uuid:c60507ba-226b-4e49-a702-e9afef899b23>/geojson:topology
+
 Validation result for _sources/features/topo-feature/tests/geometry-coordinates.shacl:
   Validation Report
   Conforms: True
   
 Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:
- - Shape _:n4dfe8af7f4b0419eb02e970e2025a1abb3: <uuid:c611f840-2829-44b2-b367-3915ca7875a4>/geojson:geometry,<uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0>/geojson:geometry,<uuid:fad324b9-801f-40f4-b65b-91f8753e9698>/geojson:geometry,<uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38>/geojson:geometry
- - Shape _:n4dfe8af7f4b0419eb02e970e2025a1abb1: <uuid:c611f840-2829-44b2-b367-3915ca7875a4>/geojson:geometry,<uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0>/geojson:geometry,<uuid:fad324b9-801f-40f4-b65b-91f8753e9698>/geojson:geometry,<uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38>/geojson:geometry
+ - Shape _:nc8c1de9824d540b59a0b7da156c87b08b1: <uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38>/geojson:geometry,<uuid:c611f840-2829-44b2-b367-3915ca7875a4>/geojson:geometry,<uuid:fad324b9-801f-40f4-b65b-91f8753e9698>/geojson:geometry,<uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0>/geojson:geometry
+ - Shape _:nc8c1de9824d540b59a0b7da156c87b08b3: <uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38>/geojson:geometry,<uuid:c611f840-2829-44b2-b367-3915ca7875a4>/geojson:geometry,<uuid:fad324b9-801f-40f4-b65b-91f8753e9698>/geojson:geometry,<uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0>/geojson:geometry
 
 Validation result for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:
   Validation Report
   Conforms: True
   
 Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:
- - Shape toporules:testTopoDirectedReferencesExist: <uuid:c60507ba-226b-4e49-a702-e9afef899b23>/geojson:topology,<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae>/geojson:topology
- - Shape toporules:testTopoReferencesExist: <uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a>/geojson:topology,<uuid:3af6ffd3-355f-48a4-badf-dcc136d547f3>/geojson:topology,<uuid:cdf01952-2518-4523-a3a7-363be4b8bc3f>/geojson:topology,<uuid:23641631-470f-4c4b-981d-23ccb35d6a51>/geojson:topology
+ - Shape toporules:testTopoReferencesExist: <uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a>/geojson:topology,<uuid:3af6ffd3-355f-48a4-badf-dcc136d547f3>/geojson:topology,<uuid:23641631-470f-4c4b-981d-23ccb35d6a51>/geojson:topology,<uuid:cdf01952-2518-4523-a3a7-363be4b8bc3f>/geojson:topology
+ - Shape toporules:testTopoDirectedReferencesExist: <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae>/geojson:topology,<uuid:c60507ba-226b-4e49-a702-e9afef899b23>/geojson:topology
  - Shape toporules:testTopoLinesReferencePoints: *none*
  - Shape toporules:testTopoEdgesReferencePoints: *none*
-
-Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
-  Validation Report
-  Conforms: True
-  
-Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
- - Shape geojson:LinkShape: *none*
- - Shape geojson:FeatureCollectionShape: *none*
- - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
- - Shape geojson:GeometryShape: *none*
- - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
- - Shape geojson:FeatureShape: *none*
 
 Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
   Validation Report
   Conforms: True
   
 Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:
+ - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
+ - Shape geojson:LinkShape: *none*
+ - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+ - Shape geojson:FeatureShape: <uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a>,<uuid:23641631-470f-4c4b-981d-23ccb35d6a51>,<uuid:c611f840-2829-44b2-b367-3915ca7875a4>,<uuid:cdf01952-2518-4523-a3a7-363be4b8bc3f>,<uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0>,<uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38>,<uuid:c60507ba-226b-4e49-a702-e9afef899b23>,<uuid:fad324b9-801f-40f4-b65b-91f8753e9698>,<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae>,<uuid:3af6ffd3-355f-48a4-badf-dcc136d547f3>
+ - Shape geojson:GeometryShape: *none*
+
+Validation result for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
+  Validation Report
+  Conforms: True
+  
+Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:
+ - Shape geojson:FeatureCollectionShape: *none*
  - Shape geojson:LinkShape: *none*
  - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*
  - Shape geojson:GeometryShape/sh:or/rdf:first: *none*
+ - Shape geojson:FeatureShape: *none*
  - Shape geojson:GeometryShape: *none*
- - Shape geojson:FeatureShape: <uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38>,<uuid:cdf01952-2518-4523-a3a7-363be4b8bc3f>,<uuid:fad324b9-801f-40f4-b65b-91f8753e9698>,<uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0>,<uuid:c611f840-2829-44b2-b367-3915ca7875a4>,<uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a>,<uuid:23641631-470f-4c4b-981d-23ccb35d6a51>,<uuid:c60507ba-226b-4e49-a702-e9afef899b23>,<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae>,<uuid:3af6ffd3-355f-48a4-badf-dcc136d547f3>
 
 === End SHACL ===
 

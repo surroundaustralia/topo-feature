@@ -137,6 +137,11 @@ required:
 - orientation
 x-jsonld-prefixes:
   topo: https://purl.org/geojson/topo#
+x-bblocks-metadata:
+  itemIdentifier: ogc.geo.topo.datatypes.oriented-ref
+  register: https://surroundaustralia.github.io/topo-feature/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-11-01'
 
 ```
 

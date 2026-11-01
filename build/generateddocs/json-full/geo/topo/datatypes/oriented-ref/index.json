@@ -9,7 +9,7 @@
   "itemClass": "datatype",
   "register": "ogcincubator",
   "version": "0.1",
-  "dateOfLastChange": "2026-09-28",
+  "dateOfLastChange": "2026-11-01",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
@@ -20,9 +20,14 @@
   ],
   "group": "Data Types",
   "dependsOn": [
+    "ogc.geo.topo.ontology",
     "ogc.ogc-utils.iri-or-curie"
   ],
-  "shaclShapes": {},
+  "shaclShapes": {
+    "ogc.geo.topo.ontology": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/ontology/shapes.shacl"
+    ]
+  },
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/context.jsonld",
   "schema": {
     "application/yaml": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml",
@@ -87,7 +92,7 @@
       ]
     }
   ],
-  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: An oriented reference to a topological object, combining a reference\n  identifier with an orientation indicator ('+' for forward/positive, '-' for reverse/negative).\n  Used in Ring members (referencing edges) and Shell members (referencing faces).\ntype: object\nproperties:\n  ref:\n    $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml\n    description: 'Identifier of the referenced topological object (e.g. a uuid: URI\n      or local id)'\n    x-jsonld-type: '@id'\n    x-jsonld-id: https://purl.org/geojson/topo#ref\n  orientation:\n    type: string\n    enum:\n    - +\n    - '-'\n    description: 'Orientation of the reference: ''+'' for forward/positive direction,\n      ''-'' for reverse/negative direction'\n    x-jsonld-id: https://purl.org/geojson/topo#orientation\nrequired:\n- ref\n- orientation\nx-jsonld-prefixes:\n  topo: https://purl.org/geojson/topo#\n",
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: An oriented reference to a topological object, combining a reference\n  identifier with an orientation indicator ('+' for forward/positive, '-' for reverse/negative).\n  Used in Ring members (referencing edges) and Shell members (referencing faces).\ntype: object\nproperties:\n  ref:\n    $ref: https://opengeospatial.github.io/bblocks/annotated-schemas/ogc-utils/iri-or-curie/schema.yaml\n    description: 'Identifier of the referenced topological object (e.g. a uuid: URI\n      or local id)'\n    x-jsonld-type: '@id'\n    x-jsonld-id: https://purl.org/geojson/topo#ref\n  orientation:\n    type: string\n    enum:\n    - +\n    - '-'\n    description: 'Orientation of the reference: ''+'' for forward/positive direction,\n      ''-'' for reverse/negative direction'\n    x-jsonld-id: https://purl.org/geojson/topo#orientation\nrequired:\n- ref\n- orientation\nx-jsonld-prefixes:\n  topo: https://purl.org/geojson/topo#\nx-bblocks-metadata:\n  itemIdentifier: ogc.geo.topo.datatypes.oriented-ref\n  register: https://surroundaustralia.github.io/topo-feature/build/register.json\n  version: '0.1'\n  dateOfLastChange: '2026-11-01'\n",
   "gitRepository": "https://github.com/surroundaustralia/topo-feature",
   "gitPath": "_sources/datatypes/oriented-ref"
 }

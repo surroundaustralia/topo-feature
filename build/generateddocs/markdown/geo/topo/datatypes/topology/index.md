@@ -146,10 +146,10 @@ The 'references' array names the two point features that form the line's endpoin
 @prefix topo: <https://purl.org/geojson/topo#> .
 
 [] a topo:Edge ;
-    topo:relatedFeatures ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
+    topo:relatedFeatures ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ),
+        ( [ ns1:relation <http://www.iana.org/assignments/relation/topology> ;
                 prof:hasRole <geof:sfTouches> ;
-                oa:hasTarget <http://www.example.com/features/L2> ] ),
-        ( <http://www.example.com/features/P1> <http://www.example.com/features/P2> ) .
+                oa:hasTarget <http://www.example.com/features/L2> ] ) .
 
 
 ```
@@ -482,6 +482,7 @@ x-jsonld-extra-terms:
   endTangentVector: https://purl.org/geojson/vocab#endTangentVector
   ref:
     x-jsonld-id: https://purl.org/geojson/topo#ref
+    x-jsonld-type: '@id'
   orientation: https://purl.org/geojson/topo#orientation
   Edge: https://purl.org/geojson/topo#Edge
   Face: https://purl.org/geojson/topo#Face
@@ -489,6 +490,7 @@ x-jsonld-extra-terms:
   Shell: https://purl.org/geojson/topo#Shell
   Solid: https://purl.org/geojson/topo#Solid
   AggregateSolid: https://purl.org/geojson/topo#AggregateSolid
+  AggregatePolygon: https://purl.org/geojson/topo#AggregatePolygon
   points:
     x-jsonld-id: https://purl.org/geojson/topo#points
     x-jsonld-container: '@list'
@@ -511,6 +513,11 @@ x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
   topo: https://purl.org/geojson/topo#
   dct: http://purl.org/dc/terms/
+x-bblocks-metadata:
+  itemIdentifier: ogc.geo.topo.datatypes.topology
+  register: https://surroundaustralia.github.io/topo-feature/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-11-01'
 
 ```
 
@@ -532,12 +539,6 @@ Links to the schema:
       "@container": "@list"
     },
     "directed_references": {
-      "@context": {
-        "ref": {
-          "@type": "@id",
-          "@id": "topo:ref"
-        }
-      },
       "@id": "topo:directedReferences",
       "@container": "@list"
     },
@@ -584,7 +585,10 @@ Links to the schema:
     "arcLength": "geojson:arcLength",
     "startTangentVector": "geojson:startTangentVector",
     "endTangentVector": "geojson:endTangentVector",
-    "ref": "topo:ref",
+    "ref": {
+      "@id": "topo:ref",
+      "@type": "@id"
+    },
     "orientation": "topo:orientation",
     "Edge": "topo:Edge",
     "Face": "topo:Face",
@@ -592,6 +596,7 @@ Links to the schema:
     "Shell": "topo:Shell",
     "Solid": "topo:Solid",
     "AggregateSolid": "topo:AggregateSolid",
+    "AggregatePolygon": "topo:AggregatePolygon",
     "points": {
       "@id": "topo:points",
       "@container": "@list"

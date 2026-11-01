@@ -19,6 +19,12 @@ If desired coordinate compaction transformations could be defined as per TopoJSO
 
 Demonstration of a transform from CityJSON to TopoFeature
 
+### `ogc.geo.topo.ontology` — Topo-Feature Ontology
+
+**Type:** model
+
+Classes and properties for features whose geometry is defined by topological references to other features: the topology types (Edge, Ring, Face, Shell, Solid, AggregateSolid and curve types), plain and oriented references, and the multi-collection groupings. Provides the definitions for the terms bound by the Topo-Feature JSON-LD contexts.
+
 ### `ogc.geo.topo.datatypes.oriented-ref` — Oriented Object Reference
 
 **Type:** datatype
@@ -30,6 +36,12 @@ A datatype for referencing a topological object with an orientation indicator ('
 **Type:** schema
 
 Demonstration of a schema using coordinates of points, withpout duplication
+
+### `ogc.geo.topo.features.topo-feature-collection` — TopoFeatureCollection
+
+**Type:** schema
+
+This building block defines a GeoJSON (or FG-JSON) Feature Collection for a set of features with geometries defined by topological relationships. From these it is possible to derive simplified geometries using coordinates for each feature.
 
 ### `ogc.geo.topo.features.topo-feature` — Feature with topology
 
@@ -43,11 +55,11 @@ This building block defines a GeoJSON feature with topological relationships to 
 
 Defines options for describing Arcs, Circles, Splines using point features as canonical source of geometry coordinates. Testing and visualisation of its examples draw on a common set of referenced objects (points, edges, faces) shared across the topo-* building blocks, at `_sources/examples/referenced-objects.ttl`.
 
-### `ogc.geo.topo.features.topo-feature-collection` — TopoFeatureCollection
+### `ogc.geo.topo.features.topo-face` — Face Topology Feature
 
 **Type:** schema
 
-This building block defines a GeoJSON (or FG-JSON) Feature Collection for a set of features with geometries defined by topological relationships. From these it is possible to derive simplified geometries using coordinates for each feature.
+A feature representing a Face in topology: a bounded planar region described by an outer boundary Ring and zero or more inner boundary (hole) Rings. Faces are used as the surfaces of a Shell/Solid.
 
 ### `ogc.geo.topo.features.topo-line` — Line using Point References
 
@@ -60,12 +72,6 @@ Demonstration of a schema using coordinates of points, without duplication. Reus
 **Type:** schema
 
 A feature representing a Ring in topology: an ordered, closed sequence of oriented Edge references that form a boundary loop. A Ring is used as the boundary of a Face.
-
-### `ogc.geo.topo.features.topo-face` — Face Topology Feature
-
-**Type:** schema
-
-A feature representing a Face in topology: a bounded planar region described by an outer boundary Ring and zero or more inner boundary (hole) Rings. Faces are used as the surfaces of a Shell/Solid.
 
 ### `ogc.geo.topo.features.topo-shell` — Shell Topology Feature
 

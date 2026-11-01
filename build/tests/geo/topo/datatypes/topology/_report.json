@@ -2,7 +2,7 @@
   "title": "Validation report for ogc.geo.topo.datatypes.topology - Geometry using references",
   "bblockName": "Geometry using references",
   "bblockId": "ogc.geo.topo.datatypes.topology",
-  "generated": "2026-09-28T22:10:26.037667+00:00",
+  "generated": "2026-11-01T23:40:54.402145+00:00",
   "result": true,
   "items": [
     {
@@ -66,6 +66,42 @@
               "errorMessage": "'type' is a required property",
               "isError": true,
               "message": "ValidationError: 'type' is a required property\n\nFailed validating 'required' in schema['allOf'][1]:\n    {'properties': {'relationships': {'items': {'allOf': [{'$ref': 'https://opengeospatial.github.io/bblocks/annotated-schemas/geo/json-fg/link-role/schema.yaml'},\n                                                          {'properties': {'rel': {'const': 'topology'}},\n                                                           'required': ['rel']}]},\n                                      'type': 'array',\n                                      'x-jsonld-container': '@list',\n                                      'x-jsonld-id': 'https://purl.org/geojson/topo#relatedFeatures',\n                                      'x-jsonld-type': '@id'},\n                    'type': {'type': 'string', 'x-jsonld-id': '@type'}},\n     'required': ['type']}\n\nOn instance:\n    {'references': ['P1', 'P2']}"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/topo.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/ontology/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "focusNodes": {
+                ":OrientedReferenceShape": {
+                  "nodes": []
+                },
+                ":RadiusRequiredShape": {
+                  "nodes": []
+                },
+                ":OrientedArcShape": {
+                  "nodes": []
+                },
+                ":DirectedReferencesShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :OrientedReferenceShape: *none*\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedArcShape: *none*\n - Shape :DirectedReferencesShape: *none*\n"
             }
           ]
         }
@@ -134,6 +170,42 @@
               "message": "ValidationError: {'type': 'Edge', 'nodes': ['P1', 'P2']} is not valid under any of the given schemas\n\nFailed validating 'oneOf' in schema['allOf'][0]:\n    {'oneOf': [{'$ref': '#/$defs/simpleRefs'},\n               {'$ref': '#/$defs/nestedRefs'},\n               {'$ref': '#/$defs/directedRefs'}]}\n\nOn instance:\n    {'nodes': ['P1', 'P2'], 'type': 'Edge'}"
             }
           ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/topo.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/ontology/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "focusNodes": {
+                ":OrientedReferenceShape": {
+                  "nodes": []
+                },
+                ":RadiusRequiredShape": {
+                  "nodes": []
+                },
+                ":OrientedArcShape": {
+                  "nodes": []
+                },
+                ":DirectedReferencesShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :OrientedReferenceShape: *none*\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedArcShape: *none*\n - Shape :DirectedReferencesShape: *none*\n"
+            }
+          ]
         }
       ]
     },
@@ -200,6 +272,42 @@
               "message": "ValidationError: {'type': 'Face', 'references': ['P1', 'P2']} is not valid under any of the given schemas\n\nFailed validating 'oneOf' in schema['allOf'][0]:\n    {'oneOf': [{'$ref': '#/$defs/simpleRefs'},\n               {'$ref': '#/$defs/nestedRefs'},\n               {'$ref': '#/$defs/directedRefs'}]}\n\nOn instance:\n    {'references': ['P1', 'P2'], 'type': 'Face'}"
             }
           ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/topo.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/ontology/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "focusNodes": {
+                ":OrientedReferenceShape": {
+                  "nodes": []
+                },
+                ":RadiusRequiredShape": {
+                  "nodes": []
+                },
+                ":OrientedArcShape": {
+                  "nodes": []
+                },
+                ":DirectedReferencesShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :OrientedReferenceShape: *none*\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedArcShape: *none*\n - Shape :DirectedReferencesShape: *none*\n"
+            }
+          ]
         }
       ]
     },
@@ -253,6 +361,42 @@
               "result": true,
               "isError": false,
               "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/topo.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/ontology/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "focusNodes": {
+                ":OrientedReferenceShape": {
+                  "nodes": []
+                },
+                ":RadiusRequiredShape": {
+                  "nodes": []
+                },
+                ":OrientedArcShape": {
+                  "nodes": []
+                },
+                ":DirectedReferencesShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :OrientedReferenceShape: *none*\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedArcShape: *none*\n - Shape :DirectedReferencesShape: *none*\n"
             }
           ]
         }
@@ -310,6 +454,42 @@
               "message": "Validation passed"
             }
           ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/topo.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/ontology/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "focusNodes": {
+                ":OrientedReferenceShape": {
+                  "nodes": []
+                },
+                ":RadiusRequiredShape": {
+                  "nodes": []
+                },
+                ":OrientedArcShape": {
+                  "nodes": []
+                },
+                ":DirectedReferencesShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :OrientedReferenceShape: *none*\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedArcShape: *none*\n - Shape :DirectedReferencesShape: *none*\n"
+            }
+          ]
         }
       ]
     },
@@ -363,6 +543,49 @@
               "result": true,
               "isError": false,
               "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/topo.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/ontology/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "focusNodes": {
+                ":OrientedReferenceShape": {
+                  "nodes": [
+                    "_:Nc05d36208c264c1187dd8473748a4d21",
+                    "_:N946548d31b4040d187d3baa5d10b2868",
+                    "_:Nc22210140f544f1ea97873f3c7155637",
+                    "_:Nc3c2b6e5102d4e29b472dc0cabc99ceb"
+                  ]
+                },
+                ":RadiusRequiredShape": {
+                  "nodes": []
+                },
+                ":OrientedArcShape": {
+                  "nodes": []
+                },
+                ":DirectedReferencesShape": {
+                  "nodes": [
+                    "_:Ndee9d1c8049f42b786df76019e7222cb"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :OrientedReferenceShape: _:Nc05d36208c264c1187dd8473748a4d21,_:N946548d31b4040d187d3baa5d10b2868,_:Nc22210140f544f1ea97873f3c7155637,_:Nc3c2b6e5102d4e29b472dc0cabc99ceb\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedArcShape: *none*\n - Shape :DirectedReferencesShape: _:Ndee9d1c8049f42b786df76019e7222cb\n"
             }
           ]
         }
@@ -420,6 +643,46 @@
               "message": "Validation passed"
             }
           ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/topo.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/ontology/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "focusNodes": {
+                ":OrientedReferenceShape": {
+                  "nodes": [
+                    "_:Ndbe4d42a62d44835bb81656750c2d63d"
+                  ]
+                },
+                ":RadiusRequiredShape": {
+                  "nodes": []
+                },
+                ":OrientedArcShape": {
+                  "nodes": []
+                },
+                ":DirectedReferencesShape": {
+                  "nodes": [
+                    "_:N9b896d16abe24cb9a485f60a4e448ae1"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :OrientedReferenceShape: _:Ndbe4d42a62d44835bb81656750c2d63d\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedArcShape: *none*\n - Shape :DirectedReferencesShape: _:N9b896d16abe24cb9a485f60a4e448ae1\n"
+            }
+          ]
         }
       ]
     },
@@ -475,6 +738,49 @@
               "message": "Validation passed"
             }
           ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/topo.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/ontology/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "focusNodes": {
+                ":OrientedReferenceShape": {
+                  "nodes": [
+                    "_:N7e7d670a11e4461e9ee12a990e11fd39",
+                    "_:N8cac6ae8a9694e2596d160950a13e29f",
+                    "_:N7f6a0f86c5b64571889947475dd2e8a1",
+                    "_:N9fb048dcfeb54e639cace3d3e5fa1bc2"
+                  ]
+                },
+                ":RadiusRequiredShape": {
+                  "nodes": []
+                },
+                ":OrientedArcShape": {
+                  "nodes": []
+                },
+                ":DirectedReferencesShape": {
+                  "nodes": [
+                    "_:Nca60481e74964e22989b28022ea34958"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :OrientedReferenceShape: _:N7e7d670a11e4461e9ee12a990e11fd39,_:N8cac6ae8a9694e2596d160950a13e29f,_:N7f6a0f86c5b64571889947475dd2e8a1,_:N9fb048dcfeb54e639cace3d3e5fa1bc2\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedArcShape: *none*\n - Shape :DirectedReferencesShape: _:Nca60481e74964e22989b28022ea34958\n"
+            }
+          ]
         }
       ]
     },
@@ -528,6 +834,46 @@
               "result": true,
               "isError": false,
               "message": "Validation passed"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/topo.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/ontology/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "focusNodes": {
+                ":OrientedReferenceShape": {
+                  "nodes": [
+                    "_:Ncef412c368a44cada02e65926d8b0da5"
+                  ]
+                },
+                ":RadiusRequiredShape": {
+                  "nodes": []
+                },
+                ":OrientedArcShape": {
+                  "nodes": []
+                },
+                ":DirectedReferencesShape": {
+                  "nodes": [
+                    "_:Nf2942df93a6044118a0cca41c98833c1"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :OrientedReferenceShape: _:Ncef412c368a44cada02e65926d8b0da5\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedArcShape: *none*\n - Shape :DirectedReferencesShape: _:Nf2942df93a6044118a0cca41c98833c1\n"
             }
           ]
         }

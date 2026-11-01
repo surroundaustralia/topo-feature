@@ -9,7 +9,7 @@
   "itemClass": "schema",
   "register": "ogcincubator",
   "version": "0.1",
-  "dateOfLastChange": "2026-09-28",
+  "dateOfLastChange": "2026-11-01",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
@@ -21,33 +21,35 @@
   ],
   "group": "Topology Features",
   "shaclShapes": {
-    "ogc.geo.topo.features.topo-feature-collection": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+    "ogc.geo.topo.ontology": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/ontology/shapes.shacl"
     ],
-    "ogc.geo.features.featureCollection": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+    "ogc.geo.topo.features.topo-feature": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
+    ],
+    "ogc.geo.topo.features.topo-feature-collection": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ],
     "ogc.geo.features.feature": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
     ],
-    "ogc.geo.topo.features.topo-feature": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+    "ogc.geo.features.featureCollection": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
     ]
   },
   "dependsOn": [
-    "ogc.geo.topo.features.topo-feature-collection",
+    "ogc.geo.topo.datatypes.oriented-ref",
     "ogc.geo.topo.features.topo-feature",
-    "ogc.geo.topo.datatypes.oriented-ref"
+    "ogc.geo.topo.features.topo-feature-collection"
   ],
-  "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/context.jsonld",
   "schema": {
     "application/yaml": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.yaml",
     "application/json": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/schema.json"
   },
   "sourceSchema": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-solid/schema.json",
-  "sourceLdContext": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-solid/context.jsonld",
+  "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/context.jsonld",
   "resolvedSchemaProperties": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-solid/resolvedProperties.json",
   "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-solid/",
   "validationPassed": true,
@@ -192,7 +194,7 @@
       ]
     }
   ],
-  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: 'A Solid feature: a volumetric region bounded by one or more oriented\n  Shell references. geometry must be null.'\n$defs:\n  testCollection:\n    $anchor: testCollection\n    description: A convenience ref to a complete, testable collection objects and\n      references\n    $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml\nallOf:\n- $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml\n- properties:\n    geometry:\n      type: 'null'\n    topology:\n      properties:\n        type:\n          type: string\n          const: Solid\n        directed_references:\n          type: array\n          description: Ordered list of oriented Shell references bounding the solid.\n            The first entry is the outer boundary Shell; any additional entries describe\n            interior void Shells.\n          items:\n            $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml\n          minItems: 1\n      required:\n      - type\n      - directed_references\n      not:\n        required:\n        - references\n  required:\n  - topology\n",
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: 'A Solid feature: a volumetric region bounded by one or more oriented\n  Shell references. geometry must be null.'\n$defs:\n  testCollection:\n    $anchor: testCollection\n    description: A convenience ref to a complete, testable collection objects and\n      references\n    $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml\nallOf:\n- $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml\n- properties:\n    geometry:\n      type: 'null'\n    topology:\n      properties:\n        type:\n          type: string\n          const: Solid\n        directed_references:\n          type: array\n          description: Ordered list of oriented Shell references bounding the solid.\n            The first entry is the outer boundary Shell; any additional entries describe\n            interior void Shells.\n          items:\n            $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml\n          minItems: 1\n      required:\n      - type\n      - directed_references\n      not:\n        required:\n        - references\n  required:\n  - topology\nx-bblocks-metadata:\n  itemIdentifier: ogc.geo.topo.features.topo-solid\n  register: https://surroundaustralia.github.io/topo-feature/build/register.json\n  version: '0.1'\n  dateOfLastChange: '2026-11-01'\n",
   "gitRepository": "https://github.com/surroundaustralia/topo-feature",
   "gitPath": "_sources/features/topo-solid"
 }

@@ -1,0 +1,60 @@
+
+
+{
+  "itemIdentifier": "ogc.geo.topo.ontology",
+  "name": "Topo-Feature Ontology",
+  "highlighted": true,
+  "abstract": "Classes and properties for features whose geometry is defined by topological references to other features: the topology types (Edge, Ring, Face, Shell, Solid, AggregateSolid and curve types), plain and oriented references, and the multi-collection groupings. Provides the definitions for the terms bound by the Topo-Feature JSON-LD contexts.",
+  "status": "under-development",
+  "dateTimeAddition": "2026-10-30T00:00:00Z",
+  "itemClass": "model",
+  "register": "ogcincubator",
+  "version": "0.1",
+  "dateOfLastChange": "2026-11-01",
+  "shaclShapes": {
+    "ogc.geo.topo.ontology": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/ontology/shapes.shacl"
+    ]
+  },
+  "concept": [
+    "https://purl.org/geojson/topo"
+  ],
+  "sources": [
+    {
+      "title": "Topo-Feature building block descriptions and schemas",
+      "link": "https://github.com/ogcincubator/topo-feature/tree/master/_sources"
+    }
+  ],
+  "maturity": "development",
+  "scope": "unstable",
+  "tags": [
+    "topology",
+    "ontology",
+    "3D"
+  ],
+  "group": "Topology Ontology",
+  "ontology": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/ontology/ontology.ttl",
+  "sourceFiles": "https://surroundaustralia.github.io/topo-feature/_sources/ontology/",
+  "validationPassed": true,
+  "testOutputs": "https://github.com/surroundaustralia/topo-feature/blob/master/build/tests/geo/topo/ontology/",
+  "description": "## Topo-Feature ontology\n\nThe classes and properties bound by the Topo-Feature JSON-LD contexts.\n\nThe value of a feature's `topology` property (`geojson:topology`) is typed with a topology class: `topo:Edge`,\n`topo:Ring`, `topo:Face`, `topo:Shell`, `topo:Solid`, `topo:AggregateSolid` or `topo:AggregatePolygon` (all subclasses\nof `topo:Topology`),\nor one of the curve types `Arc`, `ArcWithCenter`, `ArcByChord`, `CircleByCenter` and `CubicSpline`.\n\n| JSON property | RDF |\n|---|---|\n| `topology` | `geojson:topology` |\n| `references`, `relationships` | `topo:relatedFeatures` (an ordered list) |\n| `directed_references` | `topo:directedReferences` (an ordered list of `topo:OrientedReference`) |\n| `ref`, `orientation` | `topo:ref`, `topo:orientation` |\n| `points`, `edges`, `rings`, `faces`, `shells`, `solids` | `topo:points` ... `topo:solids` |\n| `circumference` | `topo:circumference` |\n| `radius`, `arcLength`, `startTangentVector`, `endTangentVector` | `geojson:radius` ... `geojson:endTangentVector` |\n\n### Terms in the GeoJSON-LD namespace\n\nThe Topo-Feature contexts map `topology`, the curve types, `radius`, `arcLength` and the tangent vectors into the\nGeoJSON-LD namespace (`https://purl.org/geojson/vocab#`), which does not define them. They are declared in this\nontology (with `rdfs:isDefinedBy` the Topo-Feature ontology) so that the existing bindings resolve, and may move to\na more suitable namespace when one is available (for example GeoSPARQL 1.3).\n\n### Known binding issue\n\n`references` (an ordered list of member references) and `relationships` (typed links with `rel` = `topology`) both\nmap to `topo:relatedFeatures`.\n",
+  "examples": [
+    {
+      "title": "Ring, Solid, Edge and arc topologies",
+      "content": "The RDF form of the topology examples in the Topo-Feature block descriptions: a Ring of oriented Edge\nreferences, a Solid with an interior void, an Edge referencing two Points, and an arc with centre\n(from the `topo-arc` example `arc_by_center.json`).",
+      "base-output-filename": "topology_examples",
+      "snippets": [
+        {
+          "language": "turtle",
+          "ref": "https://surroundaustralia.github.io/topo-feature/_sources/ontology/examples/topology_examples.ttl",
+          "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/ontology/topology_examples.ttl",
+          "sizeBytes": 1802,
+          "code": "@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix topo:    <https://purl.org/geojson/topo#> .\n@prefix ex:      <http://www.example.com/features/> .\n\n# A Ring feature, from the topo-ring block description: a closed loop of four oriented Edge references.\n<urn:uuid:5f0d9a2e-ring-example>\n  a geojson:Feature ;\n  geojson:topology [\n      a topo:Ring ;\n      topo:directedReferences (\n          [ topo:ref <urn:uuid:c60507ba-226b-4e49-a702-e9afef899b23> ; topo:orientation \"+\" ]\n          [ topo:ref <urn:uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac> ; topo:orientation \"+\" ]\n          [ topo:ref <urn:uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569> ; topo:orientation \"+\" ]\n          [ topo:ref <urn:uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8> ; topo:orientation \"+\" ]\n        ) ;\n    ] ;\n.\n\n# A Solid with an interior void, from the topo-solid block description.\n<urn:uuid:5f0d9a2e-solid-example>\n  a geojson:Feature ;\n  geojson:topology [\n      a topo:Solid ;\n      topo:directedReferences (\n          [ topo:ref <urn:uuid:e7bbe46f-e375-42b6-84aa-e284bc0b9568> ; topo:orientation \"+\" ]\n          [ topo:ref <urn:uuid:97a089af-4929-4d36-8e01-74f573343edb> ; topo:orientation \"-\" ]\n        ) ;\n    ] ;\n.\n\n# An Edge referencing its two vertex Points, from the topology datatype description.\n<urn:uuid:5f0d9a2e-edge-example>\n  a geojson:Feature ;\n  geojson:topology [\n      a topo:Edge ;\n      topo:relatedFeatures ( <urn:uuid:point-a> <urn:uuid:point-b> ) ;\n    ] ;\n.\n\n# An arc with centre, from the topo-arc example arc_by_center.json (start, end, centre).\nex:arcWithCentre\n  a geojson:Feature ;\n  geojson:topology [\n      a geojson:ArcWithCenter ;\n      topo:relatedFeatures ( ex:arcP1 ex:arcP2 ex:PC ) ;\n      topo:orientation \"ccw\" ;\n    ] ;\n  geojson:radius 105.438 ;\n  geojson:arcLength 25.615 ;\n.\n"
+        }
+      ]
+    }
+  ],
+  "annotatedSchema": null,
+  "gitRepository": "https://github.com/surroundaustralia/topo-feature",
+  "gitPath": "_sources/ontology"
+}

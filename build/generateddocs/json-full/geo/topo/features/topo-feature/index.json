@@ -10,13 +10,14 @@
   "itemClass": "schema",
   "register": "ogc-building-block-register",
   "version": "0.1",
-  "dateOfLastChange": "2026-09-28",
+  "dateOfLastChange": "2026-11-01",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
   "dependsOn": [
+    "ogc.geo.topo.datatypes.topology",
     "ogc.geo.topo.features.topo-feature-collection",
-    "ogc.geo.topo.datatypes.topology"
+    "ogc.geo.topo.ontology"
   ],
   "shaclClosures": [
     "../../examples/referenced-objects-closure.ttl"
@@ -28,18 +29,21 @@
   "group": "Base Features",
   "shaclShapes": {
     "ogc.geo.topo.features.topo-feature": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
+    ],
+    "ogc.geo.topo.ontology": [
+      "https://surroundaustralia.github.io/topo-feature/_sources/ontology/shapes.shacl"
     ],
     "ogc.geo.topo.features.topo-feature-collection": [
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
-    ],
-    "ogc.geo.features.featureCollection": [
-      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ],
     "ogc.geo.features.feature": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
+    ],
+    "ogc.geo.features.featureCollection": [
+      "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl"
     ]
   },
   "ldContext": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/context.jsonld",
@@ -281,7 +285,7 @@
       ]
     }
   ],
-  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: Feature with defined topology for bounding elements. When topology is\n  used to define geometry, the 'geometry' property should be null (coordinates are\n  derived from referenced features). The 'topology' property uses either 'references'\n  (plain string IDs) or 'directed_references' (oriented refs with '+'/'-'), but not\n  both.\nallOf:\n- $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureOptions\n- type: object\n  properties:\n    id:\n      type: string\n    geometry:\n      description: Null when geometry is fully defined by topology references; a GeoJSON\n        geometry object otherwise\n      oneOf:\n      - type: 'null'\n      - type: object\n        required:\n        - type\n        properties:\n          type:\n            type: string\n    topology:\n      $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.yaml\n      x-jsonld-type: '@id'\n      x-jsonld-id: https://purl.org/geojson/vocab#topology\n  required:\n  - topology\nx-jsonld-prefixes:\n  geojson: https://purl.org/geojson/vocab#\n",
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: Feature with defined topology for bounding elements. When topology is\n  used to define geometry, the 'geometry' property should be null (coordinates are\n  derived from referenced features). The 'topology' property uses either 'references'\n  (plain string IDs) or 'directed_references' (oriented refs with '+'/'-'), but not\n  both.\nallOf:\n- $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml#FeatureOptions\n- type: object\n  properties:\n    id:\n      type: string\n    geometry:\n      description: Null when geometry is fully defined by topology references; a GeoJSON\n        geometry object otherwise\n      oneOf:\n      - type: 'null'\n      - type: object\n        required:\n        - type\n        properties:\n          type:\n            type: string\n    topology:\n      $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.yaml\n      x-jsonld-type: '@id'\n      x-jsonld-id: https://purl.org/geojson/vocab#topology\n  required:\n  - topology\nx-jsonld-prefixes:\n  geojson: https://purl.org/geojson/vocab#\nx-bblocks-metadata:\n  itemIdentifier: ogc.geo.topo.features.topo-feature\n  register: https://surroundaustralia.github.io/topo-feature/build/register.json\n  version: '0.1'\n  dateOfLastChange: '2026-11-01'\n",
   "gitRepository": "https://github.com/surroundaustralia/topo-feature",
   "gitPath": "_sources/features/topo-feature"
 }

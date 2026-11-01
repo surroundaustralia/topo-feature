@@ -409,11 +409,28 @@ edge and face geometry are null (topology-only).
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix topo: <https://purl.org/geojson/topo#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <uuid:2c21efab-db80-4dd0-96c0-59a63f956d5b> a geojson:Feature ;
     geojson:topology [ a topo:Face ;
             topo:directedReferences ( [ topo:orientation "+" ;
                         topo:ref <uuid:fbcc1a1e-5e9a-47c4-b3b0-d7812f585ab8> ] ) ] .
+
+<uuid:23641631-470f-4c4b-981d-23ccb35d6a51> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:fad324b9-801f-40f4-b65b-91f8753e9698> <uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> ) ] .
+
+<uuid:3af6ffd3-355f-48a4-badf-dcc136d547f3> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> <uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0> ) ] .
+
+<uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:c611f840-2829-44b2-b367-3915ca7875a4> <uuid:fad324b9-801f-40f4-b65b-91f8753e9698> ) ] .
+
+<uuid:cdf01952-2518-4523-a3a7-363be4b8bc3f> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0> <uuid:c611f840-2829-44b2-b367-3915ca7875a4> ) ] .
 
 <uuid:fbcc1a1e-5e9a-47c4-b3b0-d7812f585ab8> a geojson:Feature ;
     geojson:topology [ a topo:Ring ;
@@ -423,8 +440,26 @@ edge and face geometry are null (topology-only).
                         topo:ref <uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a> ] [ topo:orientation "+" ;
                         topo:ref <uuid:23641631-470f-4c4b-981d-23ccb35d6a51> ] ) ] .
 
+<uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 0e+00 ) ] .
+
+<uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 0e+00 0e+00 ) ] .
+
+<uuid:c611f840-2829-44b2-b367-3915ca7875a4> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 1e+01 ) ] .
+
+<uuid:fad324b9-801f-40f4-b65b-91f8753e9698> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 0e+00 1e+01 ) ] .
+
 [] a geojson:FeatureCollection ;
+    topo:edges ( <uuid:3af6ffd3-355f-48a4-badf-dcc136d547f3> <uuid:cdf01952-2518-4523-a3a7-363be4b8bc3f> <uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a> <uuid:23641631-470f-4c4b-981d-23ccb35d6a51> ) ;
     topo:faces ( <uuid:2c21efab-db80-4dd0-96c0-59a63f956d5b> ) ;
+    topo:points ( <uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> <uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0> <uuid:c611f840-2829-44b2-b367-3915ca7875a4> <uuid:fad324b9-801f-40f4-b65b-91f8753e9698> ) ;
     topo:rings ( <uuid:fbcc1a1e-5e9a-47c4-b3b0-d7812f585ab8> ) .
 
 
@@ -442,6 +477,122 @@ coordinates are derived from the referenced edges and points.
 {
   "type": "FeatureCollection",
   "features": [],
+  "points": [
+    {
+      "id": "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.0,
+          0.0,
+          0.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.0,
+          10.0,
+          0.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:c611f840-2829-44b2-b367-3915ca7875a4",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.0,
+          10.0,
+          10.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:fad324b9-801f-40f4-b65b-91f8753e9698",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.0,
+          0.0,
+          10.0
+        ]
+      },
+      "properties": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "uuid:3af6ffd3-355f-48a4-badf-dcc136d547f3",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
+          "uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    },
+    {
+      "id": "uuid:cdf01952-2518-4523-a3a7-363be4b8bc3f",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0",
+          "uuid:c611f840-2829-44b2-b367-3915ca7875a4"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    },
+    {
+      "id": "uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:c611f840-2829-44b2-b367-3915ca7875a4",
+          "uuid:fad324b9-801f-40f4-b65b-91f8753e9698"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    },
+    {
+      "id": "uuid:23641631-470f-4c4b-981d-23ccb35d6a51",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:fad324b9-801f-40f4-b65b-91f8753e9698",
+          "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    }
+  ],
   "rings": [
     {
       "id": "uuid:c60507ba-226b-4e49-a702-e9afef899b23",
@@ -507,6 +658,122 @@ coordinates are derived from the referenced edges and points.
   "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/context.jsonld",
   "type": "FeatureCollection",
   "features": [],
+  "points": [
+    {
+      "id": "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.0,
+          0.0,
+          0.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.0,
+          10.0,
+          0.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:c611f840-2829-44b2-b367-3915ca7875a4",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.0,
+          10.0,
+          10.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:fad324b9-801f-40f4-b65b-91f8753e9698",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.0,
+          0.0,
+          10.0
+        ]
+      },
+      "properties": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "uuid:3af6ffd3-355f-48a4-badf-dcc136d547f3",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
+          "uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    },
+    {
+      "id": "uuid:cdf01952-2518-4523-a3a7-363be4b8bc3f",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0",
+          "uuid:c611f840-2829-44b2-b367-3915ca7875a4"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    },
+    {
+      "id": "uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:c611f840-2829-44b2-b367-3915ca7875a4",
+          "uuid:fad324b9-801f-40f4-b65b-91f8753e9698"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    },
+    {
+      "id": "uuid:23641631-470f-4c4b-981d-23ccb35d6a51",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:fad324b9-801f-40f4-b65b-91f8753e9698",
+          "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    }
+  ],
   "rings": [
     {
       "id": "uuid:c60507ba-226b-4e49-a702-e9afef899b23",
@@ -570,11 +837,24 @@ coordinates are derived from the referenced edges and points.
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix topo: <https://purl.org/geojson/topo#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> a geojson:Feature ;
     geojson:topology [ a topo:Face ;
             topo:directedReferences ( [ topo:orientation "+" ;
                         topo:ref <uuid:c60507ba-226b-4e49-a702-e9afef899b23> ] ) ] .
+
+<uuid:23641631-470f-4c4b-981d-23ccb35d6a51> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:fad324b9-801f-40f4-b65b-91f8753e9698> <uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> ) ] .
+
+<uuid:3af6ffd3-355f-48a4-badf-dcc136d547f3> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> <uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0> ) ] .
+
+<uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:c611f840-2829-44b2-b367-3915ca7875a4> <uuid:fad324b9-801f-40f4-b65b-91f8753e9698> ) ] .
 
 <uuid:c60507ba-226b-4e49-a702-e9afef899b23> a geojson:Feature ;
     geojson:topology [ a topo:Ring ;
@@ -584,8 +864,30 @@ coordinates are derived from the referenced edges and points.
                         topo:ref <uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a> ] [ topo:orientation "+" ;
                         topo:ref <uuid:23641631-470f-4c4b-981d-23ccb35d6a51> ] ) ] .
 
+<uuid:cdf01952-2518-4523-a3a7-363be4b8bc3f> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0> <uuid:c611f840-2829-44b2-b367-3915ca7875a4> ) ] .
+
+<uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 0e+00 ) ] .
+
+<uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 0e+00 0e+00 ) ] .
+
+<uuid:c611f840-2829-44b2-b367-3915ca7875a4> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 1e+01 1e+01 ) ] .
+
+<uuid:fad324b9-801f-40f4-b65b-91f8753e9698> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1.8e+01 0e+00 1e+01 ) ] .
+
 [] a geojson:FeatureCollection ;
+    topo:edges ( <uuid:3af6ffd3-355f-48a4-badf-dcc136d547f3> <uuid:cdf01952-2518-4523-a3a7-363be4b8bc3f> <uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a> <uuid:23641631-470f-4c4b-981d-23ccb35d6a51> ) ;
     topo:faces ( <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> ) ;
+    topo:points ( <uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> <uuid:8d2be28b-8f31-46de-99cb-4d8709502cd0> <uuid:c611f840-2829-44b2-b367-3915ca7875a4> <uuid:fad324b9-801f-40f4-b65b-91f8753e9698> ) ;
     topo:rings ( <uuid:c60507ba-226b-4e49-a702-e9afef899b23> ) .
 
 
@@ -602,36 +904,208 @@ reflecting the shared boundary convention.
 {
   "type": "FeatureCollection",
   "features": [],
+  "points": [
+    {
+      "id": "uuid:c1d01755-482d-46ef-aad5-036ef16479a7",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.0,
+          0.0,
+          0.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:181335c0-66b5-4833-aa5f-5cafceacc00c",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.0,
+          8.66,
+          0.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.0,
+          8.66,
+          0.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:2bbb6d45-2fc0-4c59-a113-e9c80facae70",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -10.0,
+          0.0,
+          0.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:4ff47317-43eb-411e-adac-7067eca50060",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.0,
+          -8.66,
+          0.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:90e32c41-8acf-444e-b9c5-d0b6e83e6a66",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.0,
+          -8.66,
+          0.0
+        ]
+      },
+      "properties": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "uuid:bbe7fba9-f4be-4c96-9dfd-63b451336834",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:c1d01755-482d-46ef-aad5-036ef16479a7",
+          "uuid:181335c0-66b5-4833-aa5f-5cafceacc00c"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    },
+    {
+      "id": "uuid:50f8823b-2f0e-4226-a93d-a759ed62d441",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:181335c0-66b5-4833-aa5f-5cafceacc00c",
+          "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    },
+    {
+      "id": "uuid:32f5065b-343f-405e-91e3-6911c65198d2",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
+          "uuid:2bbb6d45-2fc0-4c59-a113-e9c80facae70"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    },
+    {
+      "id": "uuid:dafaa7c9-eeba-4f4d-8f25-c86079b8c0ab",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:2bbb6d45-2fc0-4c59-a113-e9c80facae70",
+          "uuid:4ff47317-43eb-411e-adac-7067eca50060"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    },
+    {
+      "id": "uuid:1d5fb099-05e7-4db1-91d7-2a3fde577c98",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:90e32c41-8acf-444e-b9c5-d0b6e83e6a66",
+          "uuid:4ff47317-43eb-411e-adac-7067eca50060"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    },
+    {
+      "id": "uuid:66706270-590b-43a0-a970-01c1fbeb06f4",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:c1d01755-482d-46ef-aad5-036ef16479a7",
+          "uuid:90e32c41-8acf-444e-b9c5-d0b6e83e6a66"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    }
+  ],
   "rings": [
     {
-      "id": "uuid:c60507ba-226b-4e49-a702-e9afef899b23",
+      "id": "uuid:c79d9c9a-eaf5-404b-ae29-91b3274ab294",
       "type": "Feature",
       "geometry": null,
       "topology": {
         "type": "Ring",
         "directed_references": [
           {
-            "ref": "uuid:3af6ffd3-355f-48a4-badf-dcc136d547f3",
+            "ref": "uuid:bbe7fba9-f4be-4c96-9dfd-63b451336834",
             "orientation": "+"
           },
           {
-            "ref": "uuid:cdf01952-2518-4523-a3a7-363be4b8bc3f",
+            "ref": "uuid:50f8823b-2f0e-4226-a93d-a759ed62d441",
             "orientation": "+"
           },
           {
-            "ref": "uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a",
+            "ref": "uuid:32f5065b-343f-405e-91e3-6911c65198d2",
             "orientation": "+"
           },
           {
-            "ref": "uuid:23641631-470f-4c4b-981d-23ccb35d6a51",
+            "ref": "uuid:dafaa7c9-eeba-4f4d-8f25-c86079b8c0ab",
             "orientation": "+"
           },
           {
-            "ref": "uuid:23141631-470f-4c4b-981d-23ccb35d6a51",
+            "ref": "uuid:1d5fb099-05e7-4db1-91d7-2a3fde577c98",
             "orientation": "-"
           },
           {
-            "ref": "uuid:23641631-470f-4d4b-981d-23ccb35d6a51",
+            "ref": "uuid:66706270-590b-43a0-a970-01c1fbeb06f4",
             "orientation": "-"
           }
         ]
@@ -650,7 +1124,7 @@ reflecting the shared boundary convention.
         "type": "Face",
         "directed_references": [
           {
-            "ref": "uuid:c60507ba-226b-4e49-a702-e9afef899b23",
+            "ref": "uuid:c79d9c9a-eaf5-404b-ae29-91b3274ab294",
             "orientation": "+"
           }
         ]
@@ -661,7 +1135,7 @@ reflecting the shared boundary convention.
           0.0,
           0.0
         ],
-        "area": 260.0
+        "area": 259.8
       }
     }
   ]
@@ -674,36 +1148,208 @@ reflecting the shared boundary convention.
   "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-face/context.jsonld",
   "type": "FeatureCollection",
   "features": [],
+  "points": [
+    {
+      "id": "uuid:c1d01755-482d-46ef-aad5-036ef16479a7",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.0,
+          0.0,
+          0.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:181335c0-66b5-4833-aa5f-5cafceacc00c",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.0,
+          8.66,
+          0.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.0,
+          8.66,
+          0.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:2bbb6d45-2fc0-4c59-a113-e9c80facae70",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -10.0,
+          0.0,
+          0.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:4ff47317-43eb-411e-adac-7067eca50060",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.0,
+          -8.66,
+          0.0
+        ]
+      },
+      "properties": null
+    },
+    {
+      "id": "uuid:90e32c41-8acf-444e-b9c5-d0b6e83e6a66",
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.0,
+          -8.66,
+          0.0
+        ]
+      },
+      "properties": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "uuid:bbe7fba9-f4be-4c96-9dfd-63b451336834",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:c1d01755-482d-46ef-aad5-036ef16479a7",
+          "uuid:181335c0-66b5-4833-aa5f-5cafceacc00c"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    },
+    {
+      "id": "uuid:50f8823b-2f0e-4226-a93d-a759ed62d441",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:181335c0-66b5-4833-aa5f-5cafceacc00c",
+          "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    },
+    {
+      "id": "uuid:32f5065b-343f-405e-91e3-6911c65198d2",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38",
+          "uuid:2bbb6d45-2fc0-4c59-a113-e9c80facae70"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    },
+    {
+      "id": "uuid:dafaa7c9-eeba-4f4d-8f25-c86079b8c0ab",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:2bbb6d45-2fc0-4c59-a113-e9c80facae70",
+          "uuid:4ff47317-43eb-411e-adac-7067eca50060"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    },
+    {
+      "id": "uuid:1d5fb099-05e7-4db1-91d7-2a3fde577c98",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:90e32c41-8acf-444e-b9c5-d0b6e83e6a66",
+          "uuid:4ff47317-43eb-411e-adac-7067eca50060"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    },
+    {
+      "id": "uuid:66706270-590b-43a0-a970-01c1fbeb06f4",
+      "type": "Feature",
+      "geometry": null,
+      "topology": {
+        "type": "Edge",
+        "references": [
+          "uuid:c1d01755-482d-46ef-aad5-036ef16479a7",
+          "uuid:90e32c41-8acf-444e-b9c5-d0b6e83e6a66"
+        ]
+      },
+      "properties": {
+        "length": 10.0
+      }
+    }
+  ],
   "rings": [
     {
-      "id": "uuid:c60507ba-226b-4e49-a702-e9afef899b23",
+      "id": "uuid:c79d9c9a-eaf5-404b-ae29-91b3274ab294",
       "type": "Feature",
       "geometry": null,
       "topology": {
         "type": "Ring",
         "directed_references": [
           {
-            "ref": "uuid:3af6ffd3-355f-48a4-badf-dcc136d547f3",
+            "ref": "uuid:bbe7fba9-f4be-4c96-9dfd-63b451336834",
             "orientation": "+"
           },
           {
-            "ref": "uuid:cdf01952-2518-4523-a3a7-363be4b8bc3f",
+            "ref": "uuid:50f8823b-2f0e-4226-a93d-a759ed62d441",
             "orientation": "+"
           },
           {
-            "ref": "uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a",
+            "ref": "uuid:32f5065b-343f-405e-91e3-6911c65198d2",
             "orientation": "+"
           },
           {
-            "ref": "uuid:23641631-470f-4c4b-981d-23ccb35d6a51",
+            "ref": "uuid:dafaa7c9-eeba-4f4d-8f25-c86079b8c0ab",
             "orientation": "+"
           },
           {
-            "ref": "uuid:23141631-470f-4c4b-981d-23ccb35d6a51",
+            "ref": "uuid:1d5fb099-05e7-4db1-91d7-2a3fde577c98",
             "orientation": "-"
           },
           {
-            "ref": "uuid:23641631-470f-4d4b-981d-23ccb35d6a51",
+            "ref": "uuid:66706270-590b-43a0-a970-01c1fbeb06f4",
             "orientation": "-"
           }
         ]
@@ -722,7 +1368,7 @@ reflecting the shared boundary convention.
         "type": "Face",
         "directed_references": [
           {
-            "ref": "uuid:c60507ba-226b-4e49-a702-e9afef899b23",
+            "ref": "uuid:c79d9c9a-eaf5-404b-ae29-91b3274ab294",
             "orientation": "+"
           }
         ]
@@ -733,7 +1379,7 @@ reflecting the shared boundary convention.
           0.0,
           0.0
         ],
-        "area": 260.0
+        "area": 259.8
       }
     }
   ]
@@ -745,25 +1391,76 @@ reflecting the shared boundary convention.
 @prefix geojson: <https://purl.org/geojson/vocab#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix topo: <https://purl.org/geojson/topo#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> a geojson:Feature ;
     geojson:topology [ a topo:Face ;
             topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:c60507ba-226b-4e49-a702-e9afef899b23> ] ) ] .
+                        topo:ref <uuid:c79d9c9a-eaf5-404b-ae29-91b3274ab294> ] ) ] .
 
-<uuid:c60507ba-226b-4e49-a702-e9afef899b23> a geojson:Feature ;
+<uuid:1d5fb099-05e7-4db1-91d7-2a3fde577c98> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:90e32c41-8acf-444e-b9c5-d0b6e83e6a66> <uuid:4ff47317-43eb-411e-adac-7067eca50060> ) ] .
+
+<uuid:32f5065b-343f-405e-91e3-6911c65198d2> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> <uuid:2bbb6d45-2fc0-4c59-a113-e9c80facae70> ) ] .
+
+<uuid:50f8823b-2f0e-4226-a93d-a759ed62d441> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:181335c0-66b5-4833-aa5f-5cafceacc00c> <uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> ) ] .
+
+<uuid:66706270-590b-43a0-a970-01c1fbeb06f4> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:c1d01755-482d-46ef-aad5-036ef16479a7> <uuid:90e32c41-8acf-444e-b9c5-d0b6e83e6a66> ) ] .
+
+<uuid:bbe7fba9-f4be-4c96-9dfd-63b451336834> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:c1d01755-482d-46ef-aad5-036ef16479a7> <uuid:181335c0-66b5-4833-aa5f-5cafceacc00c> ) ] .
+
+<uuid:c79d9c9a-eaf5-404b-ae29-91b3274ab294> a geojson:Feature ;
     geojson:topology [ a topo:Ring ;
             topo:directedReferences ( [ topo:orientation "+" ;
-                        topo:ref <uuid:3af6ffd3-355f-48a4-badf-dcc136d547f3> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:cdf01952-2518-4523-a3a7-363be4b8bc3f> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:47d12439-8724-4a64-b43b-5f2f7ff9ce1a> ] [ topo:orientation "+" ;
-                        topo:ref <uuid:23641631-470f-4c4b-981d-23ccb35d6a51> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:23141631-470f-4c4b-981d-23ccb35d6a51> ] [ topo:orientation "-" ;
-                        topo:ref <uuid:23641631-470f-4d4b-981d-23ccb35d6a51> ] ) ] .
+                        topo:ref <uuid:bbe7fba9-f4be-4c96-9dfd-63b451336834> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:50f8823b-2f0e-4226-a93d-a759ed62d441> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:32f5065b-343f-405e-91e3-6911c65198d2> ] [ topo:orientation "+" ;
+                        topo:ref <uuid:dafaa7c9-eeba-4f4d-8f25-c86079b8c0ab> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:1d5fb099-05e7-4db1-91d7-2a3fde577c98> ] [ topo:orientation "-" ;
+                        topo:ref <uuid:66706270-590b-43a0-a970-01c1fbeb06f4> ] ) ] .
+
+<uuid:dafaa7c9-eeba-4f4d-8f25-c86079b8c0ab> a geojson:Feature ;
+    geojson:topology [ a topo:Edge ;
+            topo:relatedFeatures ( <uuid:2bbb6d45-2fc0-4c59-a113-e9c80facae70> <uuid:4ff47317-43eb-411e-adac-7067eca50060> ) ] .
+
+<uuid:181335c0-66b5-4833-aa5f-5cafceacc00c> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 5e+00 8.66e+00 0e+00 ) ] .
+
+<uuid:2bbb6d45-2fc0-4c59-a113-e9c80facae70> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( -1e+01 0e+00 0e+00 ) ] .
+
+<uuid:4ff47317-43eb-411e-adac-7067eca50060> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( -5e+00 -8.66e+00 0e+00 ) ] .
+
+<uuid:90e32c41-8acf-444e-b9c5-d0b6e83e6a66> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 5e+00 -8.66e+00 0e+00 ) ] .
+
+<uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( -5e+00 8.66e+00 0e+00 ) ] .
+
+<uuid:c1d01755-482d-46ef-aad5-036ef16479a7> a geojson:Feature ;
+    geojson:geometry [ a geojson:Point ;
+            geojson:coordinates ( 1e+01 0e+00 0e+00 ) ] .
 
 [] a geojson:FeatureCollection ;
+    topo:edges ( <uuid:bbe7fba9-f4be-4c96-9dfd-63b451336834> <uuid:50f8823b-2f0e-4226-a93d-a759ed62d441> <uuid:32f5065b-343f-405e-91e3-6911c65198d2> <uuid:dafaa7c9-eeba-4f4d-8f25-c86079b8c0ab> <uuid:1d5fb099-05e7-4db1-91d7-2a3fde577c98> <uuid:66706270-590b-43a0-a970-01c1fbeb06f4> ) ;
     topo:faces ( <uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae> ) ;
-    topo:rings ( <uuid:c60507ba-226b-4e49-a702-e9afef899b23> ) .
+    topo:points ( <uuid:c1d01755-482d-46ef-aad5-036ef16479a7> <uuid:181335c0-66b5-4833-aa5f-5cafceacc00c> <uuid:ad6d8fcc-402c-482e-8f1a-7492ccaead38> <uuid:2bbb6d45-2fc0-4c59-a113-e9c80facae70> <uuid:4ff47317-43eb-411e-adac-7067eca50060> <uuid:90e32c41-8acf-444e-b9c5-d0b6e83e6a66> ) ;
+    topo:rings ( <uuid:c79d9c9a-eaf5-404b-ae29-91b3274ab294> ) .
 
 
 ```
@@ -987,12 +1684,24 @@ Links to the schema:
     "Shell": "topo:Shell",
     "Solid": "topo:Solid",
     "AggregateSolid": "topo:AggregateSolid",
+    "points": {
+      "@id": "topo:points",
+      "@container": "@list"
+    },
+    "edges": {
+      "@id": "topo:edges",
+      "@container": "@list"
+    },
     "shells": {
       "@id": "topo:shells",
       "@container": "@list"
     },
     "faces": {
       "@id": "topo:faces",
+      "@container": "@list"
+    },
+    "solids": {
+      "@id": "topo:solids",
       "@container": "@list"
     },
     "geojson": "https://purl.org/geojson/vocab#",

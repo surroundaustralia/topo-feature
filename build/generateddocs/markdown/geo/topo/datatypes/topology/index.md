@@ -489,6 +489,12 @@ x-jsonld-extra-terms:
   Shell: https://purl.org/geojson/topo#Shell
   Solid: https://purl.org/geojson/topo#Solid
   AggregateSolid: https://purl.org/geojson/topo#AggregateSolid
+  points:
+    x-jsonld-id: https://purl.org/geojson/topo#points
+    x-jsonld-container: '@list'
+  edges:
+    x-jsonld-id: https://purl.org/geojson/topo#edges
+    x-jsonld-container: '@list'
   rings:
     x-jsonld-id: https://purl.org/geojson/topo#rings
     x-jsonld-container: '@list'
@@ -497,6 +503,9 @@ x-jsonld-extra-terms:
     x-jsonld-container: '@list'
   faces:
     x-jsonld-id: https://purl.org/geojson/topo#faces
+    x-jsonld-container: '@list'
+  solids:
+    x-jsonld-id: https://purl.org/geojson/topo#solids
     x-jsonld-container: '@list'
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
@@ -583,6 +592,14 @@ Links to the schema:
     "Shell": "topo:Shell",
     "Solid": "topo:Solid",
     "AggregateSolid": "topo:AggregateSolid",
+    "points": {
+      "@id": "topo:points",
+      "@container": "@list"
+    },
+    "edges": {
+      "@id": "topo:edges",
+      "@container": "@list"
+    },
     "rings": {
       "@id": "topo:rings",
       "@container": "@list"
@@ -593,6 +610,10 @@ Links to the schema:
     },
     "faces": {
       "@id": "topo:faces",
+      "@container": "@list"
+    },
+    "solids": {
+      "@id": "topo:solids",
       "@container": "@list"
     },
     "geojson": "https://purl.org/geojson/vocab#",

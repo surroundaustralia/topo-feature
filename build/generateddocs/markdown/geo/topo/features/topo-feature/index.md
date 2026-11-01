@@ -474,6 +474,14 @@ Links to the schema:
     "Shell": "topo:Shell",
     "Solid": "topo:Solid",
     "AggregateSolid": "topo:AggregateSolid",
+    "points": {
+      "@id": "topo:points",
+      "@container": "@list"
+    },
+    "edges": {
+      "@id": "topo:edges",
+      "@container": "@list"
+    },
     "rings": {
       "@id": "topo:rings",
       "@container": "@list"
@@ -484,6 +492,10 @@ Links to the schema:
     },
     "faces": {
       "@id": "topo:faces",
+      "@container": "@list"
+    },
+    "solids": {
+      "@id": "topo:solids",
       "@container": "@list"
     },
     "geojson": "https://purl.org/geojson/vocab#",

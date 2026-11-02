@@ -63,7 +63,7 @@ Topological defined objects can be solids, swept volumes or any other concept.
 #### jsonld
 ```jsonld
 {
-  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld",
+  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld",
   "type": "FeatureCollection",
   "id": "pointsonly",
   "features": [
@@ -168,7 +168,7 @@ Topological defined objects can be solids, swept volumes or any other concept.
 #### jsonld
 ```jsonld
 {
-  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld",
+  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld",
   "type": "FeatureCollection",
   "id": "line",
   "features": [
@@ -344,7 +344,7 @@ Topological defined objects can be solids, swept volumes or any other concept.
 #### jsonld
 ```jsonld
 {
-  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld",
+  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld",
   "type": "FeatureCollection",
   "id": "TopoCollectionExample",
   "features": [
@@ -525,22 +525,22 @@ properties:
     type: array
     items:
       anyOf:
-      - $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
+      - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
       - $ref: '#/$defs/PointOptions'
 x-jsonld-extra-terms:
   properties: '@nest'
 x-bblocks-metadata:
   itemIdentifier: ogc.geo.topo.features.topo-feature-collection
-  register: https://surroundaustralia.github.io/topo-feature/build/register.json
+  register: https://ogcincubator.github.io/topo-feature/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-11-01'
+  dateOfLastChange: '2026-11-02'
 
 ```
 
 Links to the schema:
 
-* YAML version: [schema.yaml](https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.json)
-* JSON version: [schema.json](https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml)
+* YAML version: [schema.yaml](https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.json)
+* JSON version: [schema.json](https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml)
 
 
 # JSON-LD Context
@@ -699,14 +699,6 @@ Links to the schema:
     "Solid": "topo:Solid",
     "AggregateSolid": "topo:AggregateSolid",
     "AggregatePolygon": "topo:AggregatePolygon",
-    "points": {
-      "@id": "topo:points",
-      "@container": "@list"
-    },
-    "edges": {
-      "@id": "topo:edges",
-      "@container": "@list"
-    },
     "rings": {
       "@id": "topo:rings",
       "@container": "@list"
@@ -717,10 +709,6 @@ Links to the schema:
     },
     "faces": {
       "@id": "topo:faces",
-      "@container": "@list"
-    },
-    "solids": {
-      "@id": "topo:solids",
       "@container": "@list"
     },
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -737,13 +725,13 @@ Links to the schema:
 ```
 
 You can find the full JSON-LD context here:
-[context.jsonld](https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld)
+[context.jsonld](https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/context.jsonld)
 
 
 # For developers
 
 The source code for this Building Block can be found in the following repository:
 
-* URL: [https://github.com/surroundaustralia/topo-feature](https://github.com/surroundaustralia/topo-feature)
+* URL: [https://github.com/ogcincubator/topo-feature](https://github.com/ogcincubator/topo-feature)
 * Path: `_sources/features/topo-feature-collection`
 

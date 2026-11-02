@@ -6,9 +6,9 @@ $defs:
     $anchor: testCollection
     description: A convienence ref to a complete, testable collection objects and
       references
-    $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml
+    $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml
 allOf:
-- $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
+- $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
 - properties:
     geometry:
       type: 'null'
@@ -22,7 +22,7 @@ allOf:
           description: Ordered list of oriented Face references forming the closed
             shell surface
           items:
-            $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml
+            $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml
           minItems: 4
           x-jsonld-id: https://purl.org/geojson/topo#directedReferences
           x-jsonld-container: '@list'
@@ -37,10 +37,6 @@ allOf:
   required:
   - topology
 x-jsonld-extra-terms:
-  Point: https://purl.org/geojson/topo#Point
-  Edge: https://purl.org/geojson/topo#Edge
-  Ring: https://purl.org/geojson/topo#Ring
-  Face: https://purl.org/geojson/topo#Face
   Shell: https://purl.org/geojson/topo#Shell
   ref:
     x-jsonld-id: https://purl.org/geojson/topo#ref
@@ -51,6 +47,6 @@ x-jsonld-prefixes:
   topo: https://purl.org/geojson/topo#
 x-bblocks-metadata:
   itemIdentifier: ogc.geo.topo.features.topo-shell
-  register: https://surroundaustralia.github.io/topo-feature/build/register.json
+  register: https://ogcincubator.github.io/topo-feature/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-11-01'
+  dateOfLastChange: '2026-11-02'

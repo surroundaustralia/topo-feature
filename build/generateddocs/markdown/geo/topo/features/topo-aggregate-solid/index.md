@@ -119,7 +119,7 @@ resolve within the example's own graph closure.
 #### jsonld
 ```jsonld
 {
-  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-aggregate-solid/context.jsonld",
+  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-aggregate-solid/context.jsonld",
   "id": "uuid:1c2d3e4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f",
   "type": "FeatureCollection",
   "features": [
@@ -219,9 +219,9 @@ $defs:
     $anchor: testCollection
     description: A convenience ref to a complete, testable collection objects and
       references
-    $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml
+    $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml
 allOf:
-- $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
+- $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml
 - properties:
     geometry:
       type: 'null'
@@ -247,16 +247,16 @@ allOf:
   - topology
 x-bblocks-metadata:
   itemIdentifier: ogc.geo.topo.features.topo-aggregate-solid
-  register: https://surroundaustralia.github.io/topo-feature/build/register.json
+  register: https://ogcincubator.github.io/topo-feature/build/register.json
   version: '0.1'
-  dateOfLastChange: '2026-11-01'
+  dateOfLastChange: '2026-11-02'
 
 ```
 
 Links to the schema:
 
-* YAML version: [schema.yaml](https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-aggregate-solid/schema.json)
-* JSON version: [schema.json](https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-aggregate-solid/schema.yaml)
+* YAML version: [schema.yaml](https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-aggregate-solid/schema.json)
+* JSON version: [schema.json](https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-aggregate-solid/schema.yaml)
 
 
 # JSON-LD Context
@@ -415,14 +415,6 @@ Links to the schema:
     "Solid": "topo:Solid",
     "AggregateSolid": "topo:AggregateSolid",
     "AggregatePolygon": "topo:AggregatePolygon",
-    "points": {
-      "@id": "topo:points",
-      "@container": "@list"
-    },
-    "edges": {
-      "@id": "topo:edges",
-      "@container": "@list"
-    },
     "rings": {
       "@id": "topo:rings",
       "@container": "@list"
@@ -433,10 +425,6 @@ Links to the schema:
     },
     "faces": {
       "@id": "topo:faces",
-      "@container": "@list"
-    },
-    "solids": {
-      "@id": "topo:solids",
       "@container": "@list"
     },
     "geojson": "https://purl.org/geojson/vocab#",
@@ -453,13 +441,13 @@ Links to the schema:
 ```
 
 You can find the full JSON-LD context here:
-[context.jsonld](https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/features/topo-aggregate-solid/context.jsonld)
+[context.jsonld](https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-aggregate-solid/context.jsonld)
 
 
 # For developers
 
 The source code for this Building Block can be found in the following repository:
 
-* URL: [https://github.com/surroundaustralia/topo-feature](https://github.com/surroundaustralia/topo-feature)
+* URL: [https://github.com/ogcincubator/topo-feature](https://github.com/ogcincubator/topo-feature)
 * Path: `_sources/features/topo-aggregate-solid`
 

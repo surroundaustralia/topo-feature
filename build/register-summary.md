@@ -19,6 +19,12 @@ If desired coordinate compaction transformations could be defined as per TopoJSO
 
 Demonstration of a transform from CityJSON to TopoFeature
 
+### `ogc.geo.topo.ontology` — Topo-Feature Ontology
+
+**Type:** model
+
+Classes and properties for features whose geometry is defined by topological references to other features: the topology types (Edge, Ring, Face, Shell, Solid, AggregateSolid and curve types), plain and oriented references, and the multi-collection groupings. Provides the definitions for the terms bound by the Topo-Feature JSON-LD contexts.
+
 ### `ogc.geo.topo.datatypes.oriented-ref` — Oriented Object Reference
 
 **Type:** datatype

@@ -11,7 +11,7 @@
   "itemClass": "schema",
   "register": "ogcincubator",
   "version": "0.1",
-  "dateOfLastChange": "2026-09-23",
+  "dateOfLastChange": "2026-11-02",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
@@ -22,16 +22,19 @@
   ],
   "shaclShapes": {
     "ogc.geo.topo.features.topo-arc": [
-      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
+    ],
+    "ogc.geo.topo.ontology": [
+      "https://ogcincubator.github.io/topo-feature/_sources/ontology/shapes.shacl"
     ],
     "ogc.geo.topo.features.topo-feature": [
-      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ],
     "ogc.geo.topo.features.topo-feature-collection": [
-      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ],
     "ogc.geo.features.feature": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
@@ -41,16 +44,15 @@
     ]
   },
   "dependsOn": [
-    "ogc.geo.topo.features.topo-feature",
-    "ogc.geo.topo.datatypes.topology"
+    "ogc.geo.topo.datatypes.topology",
+    "ogc.geo.topo.features.topo-feature"
   ],
-  "ldContext": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld",
   "schema": {
     "application/yaml": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/schema.yaml",
     "application/json": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/schema.json"
   },
   "sourceSchema": "https://ogcincubator.github.io/topo-feature/_sources/features/topo-arc/schema.json",
-  "sourceLdContext": "https://ogcincubator.github.io/topo-feature/_sources/features/topo-arc/context.jsonld",
+  "ldContext": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/context.jsonld",
   "resolvedSchemaProperties": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-arc/resolvedProperties.json",
   "sourceFiles": "https://ogcincubator.github.io/topo-feature/_sources/features/topo-arc/",
   "validationPassed": true,
@@ -305,12 +307,12 @@
           "transformResults": {
             "Points-n-Edges": {
               "success": true,
-              "sizeBytes": 5351,
+              "sizeBytes": 5352,
               "url": "https://ogcincubator.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/spline.Points-n-Edges.geojson"
             },
             "Densified-Curves": {
               "success": true,
-              "sizeBytes": 2751,
+              "sizeBytes": 2752,
               "url": "https://ogcincubator.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/spline.Densified-Curves.geojson"
             }
           },
@@ -347,12 +349,12 @@
           "transformResults": {
             "Points-n-Edges": {
               "success": true,
-              "sizeBytes": 5565,
+              "sizeBytes": 5566,
               "url": "https://ogcincubator.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/spline-with-tangents.Points-n-Edges.geojson"
             },
             "Densified-Curves": {
               "success": true,
-              "sizeBytes": 4186,
+              "sizeBytes": 4187,
               "url": "https://ogcincubator.github.io/topo-feature/build/tests/geo/topo/features/topo-arc/transforms/spline-with-tangents.Densified-Curves.geojson"
             }
           },
@@ -374,7 +376,7 @@
       ]
     }
   ],
-  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: Arc Feature with geometry by reference\nallOf:\n- $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml\n- properties:\n    topology:\n      allOf:\n      - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.yaml\n      - oneOf:\n        - properties:\n            type:\n              type: string\n              const: Arc\n            references:\n              minItems: 3\n              maxItems: 3\n        - properties:\n            type:\n              type: string\n              const: ArcWithCenter\n            references:\n              minItems: 3\n              maxItems: 3\n            orientation:\n              type: string\n              enum:\n              - cw\n              - ccw\n          required:\n          - orientation\n        - properties:\n            type:\n              type: string\n              const: ArcByChord\n            references:\n              minItems: 2\n              maxItems: 2\n            radius:\n              type: number\n            orientation:\n              type: string\n              enum:\n              - cw\n              - ccw\n          required:\n          - radius\n          - orientation\n        - properties:\n            type:\n              type: string\n              const: CircleByCenter\n            references:\n              minItems: 1\n              maxItems: 1\n            radius:\n              type: number\n          required:\n          - radius\n        - properties:\n            type:\n              type: string\n              const: CubicSpline\n            references:\n              minItems: 3\n          not:\n            required:\n            - startTangentVector\n            - endTangentVector\n        - properties:\n            type:\n              type: string\n              const: CubicSpline\n            references:\n              minItems: 2\n            startTangentVector:\n              properties:\n                references:\n                  minItems: 2\n            endTangentVector:\n              properties:\n                references:\n                  minItems: 2\n          required:\n          - startTangentVector\n          - endTangentVector\n    radius:\n      type: number\n      description: optional property of the feature defining radius according to coordinate\n        reference system of the referenced geometry. Note where necessary to define\n        geometry this is a mandatory sub-property of the topology property.\n    arcLength:\n      type: number\n      description: optional property of the feature defining arcLength according to\n        coordinate reference system of the referenced geometry.\n  required:\n  - topology\n",
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: Arc Feature with geometry by reference\nallOf:\n- $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml\n- properties:\n    topology:\n      allOf:\n      - $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.yaml\n      - oneOf:\n        - properties:\n            type:\n              type: string\n              const: Arc\n            references:\n              minItems: 3\n              maxItems: 3\n        - properties:\n            type:\n              type: string\n              const: ArcWithCenter\n            references:\n              minItems: 3\n              maxItems: 3\n            orientation:\n              type: string\n              enum:\n              - cw\n              - ccw\n          required:\n          - orientation\n        - properties:\n            type:\n              type: string\n              const: ArcByChord\n            references:\n              minItems: 2\n              maxItems: 2\n            radius:\n              type: number\n            orientation:\n              type: string\n              enum:\n              - cw\n              - ccw\n          required:\n          - radius\n          - orientation\n        - properties:\n            type:\n              type: string\n              const: CircleByCenter\n            references:\n              minItems: 1\n              maxItems: 1\n            radius:\n              type: number\n          required:\n          - radius\n        - properties:\n            type:\n              type: string\n              const: CubicSpline\n            references:\n              minItems: 3\n          not:\n            required:\n            - startTangentVector\n            - endTangentVector\n        - properties:\n            type:\n              type: string\n              const: CubicSpline\n            references:\n              minItems: 2\n            startTangentVector:\n              properties:\n                references:\n                  minItems: 2\n            endTangentVector:\n              properties:\n                references:\n                  minItems: 2\n          required:\n          - startTangentVector\n          - endTangentVector\n    radius:\n      type: number\n      description: optional property of the feature defining radius according to coordinate\n        reference system of the referenced geometry. Note where necessary to define\n        geometry this is a mandatory sub-property of the topology property.\n    arcLength:\n      type: number\n      description: optional property of the feature defining arcLength according to\n        coordinate reference system of the referenced geometry.\n  required:\n  - topology\nx-bblocks-metadata:\n  itemIdentifier: ogc.geo.topo.features.topo-arc\n  register: https://ogcincubator.github.io/topo-feature/build/register.json\n  version: '0.1'\n  dateOfLastChange: '2026-11-02'\n",
   "gitRepository": "https://github.com/ogcincubator/topo-feature",
   "gitPath": "_sources/features/topo-arc"
 }

@@ -153,7 +153,7 @@ allOf:
       type: 'null'
     circumference:
       type: number
-      x-jsonld-id: topo:circumference
+      x-jsonld-id: https://purl.org/geojson/topo#circumference
     topology:
       properties:
         type:
@@ -174,6 +174,13 @@ allOf:
         - references
   required:
   - topology
+x-jsonld-prefixes:
+  topo: https://purl.org/geojson/topo#
+x-bblocks-metadata:
+  itemIdentifier: ogc.geo.topo.features.topo-ring
+  register: https://ogcincubator.github.io/topo-feature/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-11-02'
 
 ```
 
@@ -281,12 +288,6 @@ Links to the schema:
           "@container": "@list"
         },
         "directed_references": {
-          "@context": {
-            "ref": {
-              "@type": "@id",
-              "@id": "topo:ref"
-            }
-          },
           "@id": "topo:directedReferences",
           "@container": "@list"
         },
@@ -334,7 +335,10 @@ Links to the schema:
     "arcLength": "geojson:arcLength",
     "startTangentVector": "geojson:startTangentVector",
     "endTangentVector": "geojson:endTangentVector",
-    "ref": "topo:ref",
+    "ref": {
+      "@id": "topo:ref",
+      "@type": "@id"
+    },
     "orientation": "topo:orientation",
     "Edge": "topo:Edge",
     "Face": "topo:Face",
@@ -342,6 +346,7 @@ Links to the schema:
     "Shell": "topo:Shell",
     "Solid": "topo:Solid",
     "AggregateSolid": "topo:AggregateSolid",
+    "AggregatePolygon": "topo:AggregatePolygon",
     "rings": {
       "@id": "topo:rings",
       "@container": "@list"

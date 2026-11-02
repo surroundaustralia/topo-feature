@@ -1,0 +1,42 @@
+Validation report for ogc.geo.topo.ontology - Topo-Feature Ontology
+Generated 2026-11-02T00:04:17.171723+00:00
+=== General ===
+Test was expected to fail and it did.
+=== End General ===
+
+=== Files ===
+Using orientation-invalid-fail.ttl from test resources
+=== End Files ===
+
+=== SHACL ===
+Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):
+ - /github/workspace/_sources/ontology/topo.ttl
+
+** Validation error **
+Validation result for _sources/ontology/shapes.shacl:
+  Validation Report
+  Conforms: False
+  Results (2):
+  Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):
+  	Severity: sh:Violation
+  	Source Shape: [ sh:message Literal("Directed references are a non-empty list of oriented references.", lang=en) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:node :OrientedReferenceShape ; sh:path ( :directedReferences [ sh:zeroOrMorePath rdf:rest ] rdf:first ) ]
+  	Focus Node: [ rdf:type topo:Ring ; topo:directedReferences ( [ topo:orientation Literal("forward") ; topo:ref <urn:uuid:c60507ba-226b-4e49-a702-e9afef899b23> ] ) ]
+  	Value Node: [ topo:orientation Literal("forward") ; topo:ref <urn:uuid:c60507ba-226b-4e49-a702-e9afef899b23> ]
+  	Result Path: ( :directedReferences [ sh:zeroOrMorePath rdf:rest ] rdf:first )
+  	Message: Directed references are a non-empty list of oriented references.
+  Constraint Violation in InConstraintComponent (http://www.w3.org/ns/shacl#InConstraintComponent):
+  	Severity: sh:Violation
+  	Source Shape: [ sh:in ( Literal("+") Literal("-") ) ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:message Literal("An oriented reference has exactly one orientation, '+' or '-'.", lang=en) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path :orientation ]
+  	Focus Node: [ topo:orientation Literal("forward") ; topo:ref <urn:uuid:c60507ba-226b-4e49-a702-e9afef899b23> ]
+  	Value Node: Literal("forward")
+  	Result Path: :orientation
+  	Message: An oriented reference has exactly one orientation, '+' or '-'.
+  
+Focus nodes for _sources/ontology/shapes.shacl:
+ - Shape :DirectedReferencesShape: <urn:uuid:5f0d9a2e-ring-bad-orientation>/geojson:topology
+ - Shape :OrientedArcShape: *none*
+ - Shape :RadiusRequiredShape: *none*
+ - Shape :OrientedReferenceShape: <urn:uuid:5f0d9a2e-ring-bad-orientation>/geojson:topology/topo:directedReferences/rdf:first
+
+=== End SHACL ===
+

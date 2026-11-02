@@ -806,11 +806,18 @@ x-jsonld-extra-terms:
   directed_references:
     x-jsonld-id: https://purl.org/geojson/topo#directedReferences
     x-jsonld-container: '@list'
-  ref: '@id'
+  ref:
+    x-jsonld-id: https://purl.org/geojson/topo#ref
+    x-jsonld-type: '@id'
   orientation: https://purl.org/geojson/topo#orientation
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
   topo: https://purl.org/geojson/topo#
+x-bblocks-metadata:
+  itemIdentifier: ogc.geo.topo.features.topo-face
+  register: https://ogcincubator.github.io/topo-feature/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-11-02'
 
 ```
 
@@ -917,16 +924,6 @@ Links to the schema:
           "@type": "@id",
           "@container": "@list"
         },
-        "directed_references": {
-          "@context": {
-            "ref": {
-              "@type": "@id",
-              "@id": "topo:ref"
-            }
-          },
-          "@id": "topo:directedReferences",
-          "@container": "@list"
-        },
         "relationships": {
           "@context": {
             "href": {
@@ -956,8 +953,7 @@ Links to the schema:
           "@id": "topo:relatedFeatures",
           "@type": "@id",
           "@container": "@list"
-        },
-        "ref": "topo:ref"
+        }
       },
       "@type": "@id",
       "@id": "geojson:topology"
@@ -972,7 +968,10 @@ Links to the schema:
       "@id": "topo:directedReferences",
       "@container": "@list"
     },
-    "ref": "@id",
+    "ref": {
+      "@id": "topo:ref",
+      "@type": "@id"
+    },
     "orientation": "topo:orientation",
     "Arc": "geojson:Arc",
     "ArcWithCenter": "geojson:ArcWithCenter",
@@ -987,6 +986,7 @@ Links to the schema:
     "Shell": "topo:Shell",
     "Solid": "topo:Solid",
     "AggregateSolid": "topo:AggregateSolid",
+    "AggregatePolygon": "topo:AggregatePolygon",
     "shells": {
       "@id": "topo:shells",
       "@container": "@list"

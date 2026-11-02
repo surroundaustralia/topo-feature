@@ -92,16 +92,6 @@
           "@type": "@id",
           "@container": "@list"
         },
-        "directed_references": {
-          "@context": {
-            "ref": {
-              "@type": "@id",
-              "@id": "topo:ref"
-            }
-          },
-          "@id": "topo:directedReferences",
-          "@container": "@list"
-        },
         "relationships": {
           "@context": {
             "href": {
@@ -131,8 +121,7 @@
           "@id": "topo:relatedFeatures",
           "@type": "@id",
           "@container": "@list"
-        },
-        "ref": "topo:ref"
+        }
       },
       "@type": "@id",
       "@id": "geojson:topology"
@@ -147,7 +136,10 @@
       "@id": "topo:directedReferences",
       "@container": "@list"
     },
-    "ref": "@id",
+    "ref": {
+      "@id": "topo:ref",
+      "@type": "@id"
+    },
     "orientation": "topo:orientation",
     "Arc": "geojson:Arc",
     "ArcWithCenter": "geojson:ArcWithCenter",
@@ -162,6 +154,7 @@
     "Shell": "topo:Shell",
     "Solid": "topo:Solid",
     "AggregateSolid": "topo:AggregateSolid",
+    "AggregatePolygon": "topo:AggregatePolygon",
     "shells": {
       "@id": "topo:shells",
       "@container": "@list"

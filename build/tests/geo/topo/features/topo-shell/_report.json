@@ -2,8 +2,8 @@
   "title": "Validation report for ogc.geo.topo.features.topo-shell - Shell Topology Feature",
   "bblockName": "Shell Topology Feature",
   "bblockId": "ogc.geo.topo.features.topo-shell",
-  "generated": "2026-09-23T03:41:17.447814+00:00",
-  "result": true,
+  "generated": "2026-11-02T00:04:49.568409+00:00",
+  "result": false,
   "items": [
     {
       "source": {
@@ -15,7 +15,7 @@
         "snippetIndex": 1,
         "language": "application/json"
       },
-      "result": true,
+      "result": false,
       "sections": [
         {
           "name": "FILES",
@@ -69,7 +69,79 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/features/topo-feature/../../examples/referenced-objects-closure.ttl"
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/features/topo-feature/../../examples/referenced-objects-closure.ttl\n - /github/workspace/_sources/ontology/topo.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/ontology/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "focusNodes": {
+                ":DirectedReferencesShape": {
+                  "nodes": [
+                    "<uuid:4ba85faa-3935-4e89-a9f8-dcd647a5dbed>/geojson:topology/topo:rings/rdf:first",
+                    "<uuid:4a294022-4864-49c7-8cee-f9e43360bc4e>/geojson:topology/topo:rings/rdf:first",
+                    "<uuid:607a3363-3eb7-4ce6-a633-86d2e565692b>/geojson:topology/topo:rings/rdf:first",
+                    "<uuid:01947f47-ee13-44a9-85a4-2bcb4881982a>/geojson:topology/topo:rings/rdf:first",
+                    "<uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f>/geojson:topology/topo:rings/rdf:first",
+                    "<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae>/geojson:topology/topo:rings/rdf:first",
+                    "<uuid:2387ae98-9236-42fe-9414-c45b99954c41>/geojson:topology/topo:rings/rdf:first",
+                    "<uuid:fe522919-1421-4fd1-9930-8c6551e3f2a5>/geojson:topology/topo:rings/rdf:first"
+                  ]
+                },
+                ":OrientedArcShape": {
+                  "nodes": []
+                },
+                ":RadiusRequiredShape": {
+                  "nodes": []
+                },
+                ":OrientedReferenceShape": {
+                  "nodes": [
+                    "_:Nb94308081b0d4589a90bcaa5708be481",
+                    "_:Ndf670b54f8c24f66969fd54e965d5550",
+                    "_:Ncef17f1a5d7544a4b1a869bd3f716fc2",
+                    "_:N0b068f52ac1a4fe1ae98681951a7d148",
+                    "_:N1a1e90debf634c3d89b6398a38c78470",
+                    "_:Nfeda919338d84232b6bdd7d3123d3c5b",
+                    "_:N0e769a41294846dfb2da117e38a093b1",
+                    "_:N0eb1940723694203a28a9e0a10c4b093",
+                    "_:Nd32d0f9b01cc4097942fb84d5f971977",
+                    "_:Nb4e74605b0a3420b95ae2c3e9b92d763",
+                    "_:Nc0f4c70a7b47427eb02ad17e366973b4",
+                    "_:N32f1e4f5ee084e66ac794016bde56f0f",
+                    "_:Nb3bf532dc0594a0d8abffd400ed9ca36",
+                    "_:N4b5d32b7a40f40389023cbc9950d3b2a",
+                    "_:Ne112e0ba200e4dc1aaffcfd5ed42bc2b",
+                    "_:N21abdb5d3ce5468999166bec65ef2a62",
+                    "_:N8f4fecbd3ece46dc8e6e39b462bd42d8",
+                    "_:N6f5c69eb56ec401dac9868faacbbc094",
+                    "_:Nd33e4f1489e44b13a7c982a019d76326",
+                    "_:Nf37310e44ff4475bae39438054fa81b8",
+                    "_:Nce7e7010761e421a9b388a214e528b3d",
+                    "_:N6fb2a4acaa324736a83eb1f1a4d9c214",
+                    "_:N3be139f007c840a9a4f36880bd76e813",
+                    "_:Nd97142703cc64c4ba794fdcc110ce832",
+                    "_:Na6a952703d5441419e4bf7a9ee2c0683",
+                    "_:N47cef7f2cfd64adbbf32274822247e0e",
+                    "_:N602fb45965dc4e12a44e730d553160e3",
+                    "_:N257a2b605b194e268d1dcfc393ed513c",
+                    "_:Na6bd2304cf48493297086eecb5f259be",
+                    "_:Ne4c2391137de432791037edf881bca6c",
+                    "_:Nf4e2eb6fd92b4ce1a389bcd0ffe89cd8",
+                    "_:N7745d47930b24ca4967ee8fccb3b6ef0",
+                    "_:Na43fbe6e310c4e8991d93bb5204dc627",
+                    "_:N1a16ac68b836435c901f49ccc0bcd1f9",
+                    "_:N98313d1e1a064db9a6f0271203870ae6",
+                    "_:Nc31a30d3eb1d48eab53447cea9d7b4e3"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :DirectedReferencesShape: <uuid:4ba85faa-3935-4e89-a9f8-dcd647a5dbed>/geojson:topology/topo:rings/rdf:first,<uuid:4a294022-4864-49c7-8cee-f9e43360bc4e>/geojson:topology/topo:rings/rdf:first,<uuid:607a3363-3eb7-4ce6-a633-86d2e565692b>/geojson:topology/topo:rings/rdf:first,<uuid:01947f47-ee13-44a9-85a4-2bcb4881982a>/geojson:topology/topo:rings/rdf:first,<uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f>/geojson:topology/topo:rings/rdf:first,<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae>/geojson:topology/topo:rings/rdf:first,<uuid:2387ae98-9236-42fe-9414-c45b99954c41>/geojson:topology/topo:rings/rdf:first,<uuid:fe522919-1421-4fd1-9930-8c6551e3f2a5>/geojson:topology/topo:rings/rdf:first\n - Shape :OrientedArcShape: *none*\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedReferenceShape: _:Nb94308081b0d4589a90bcaa5708be481,_:Ndf670b54f8c24f66969fd54e965d5550,_:Ncef17f1a5d7544a4b1a869bd3f716fc2,_:N0b068f52ac1a4fe1ae98681951a7d148,_:N1a1e90debf634c3d89b6398a38c78470,_:Nfeda919338d84232b6bdd7d3123d3c5b,_:N0e769a41294846dfb2da117e38a093b1,_:N0eb1940723694203a28a9e0a10c4b093,_:Nd32d0f9b01cc4097942fb84d5f971977,_:Nb4e74605b0a3420b95ae2c3e9b92d763,_:Nc0f4c70a7b47427eb02ad17e366973b4,_:N32f1e4f5ee084e66ac794016bde56f0f,_:Nb3bf532dc0594a0d8abffd400ed9ca36,_:N4b5d32b7a40f40389023cbc9950d3b2a,_:Ne112e0ba200e4dc1aaffcfd5ed42bc2b,_:N21abdb5d3ce5468999166bec65ef2a62,_:N8f4fecbd3ece46dc8e6e39b462bd42d8,_:N6f5c69eb56ec401dac9868faacbbc094,_:Nd33e4f1489e44b13a7c982a019d76326,_:Nf37310e44ff4475bae39438054fa81b8,_:Nce7e7010761e421a9b388a214e528b3d,_:N6fb2a4acaa324736a83eb1f1a4d9c214,_:N3be139f007c840a9a4f36880bd76e813,_:Nd97142703cc64c4ba794fdcc110ce832,_:Na6a952703d5441419e4bf7a9ee2c0683,_:N47cef7f2cfd64adbbf32274822247e0e,_:N602fb45965dc4e12a44e730d553160e3,_:N257a2b605b194e268d1dcfc393ed513c,_:Na6bd2304cf48493297086eecb5f259be,_:Ne4c2391137de432791037edf881bca6c,_:Nf4e2eb6fd92b4ce1a389bcd0ffe89cd8,_:N7745d47930b24ca4967ee8fccb3b6ef0,_:Na43fbe6e310c4e8991d93bb5204dc627,_:N1a16ac68b836435c901f49ccc0bcd1f9,_:N98313d1e1a064db9a6f0271203870ae6,_:Nc31a30d3eb1d48eab53447cea9d7b4e3\n"
             },
             {
               "op": "shacl-report",
@@ -81,15 +153,15 @@
             {
               "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
               "focusNodes": {
-                "_:n571d0bff78194b5bb17e0e8b1715024fb3": {
+                "_:nb7f5f0e250ac42e48ffb08ebd657cffdb3": {
                   "nodes": []
                 },
-                "_:n571d0bff78194b5bb17e0e8b1715024fb1": {
+                "_:nb7f5f0e250ac42e48ffb08ebd657cffdb1": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:n571d0bff78194b5bb17e0e8b1715024fb3: *none*\n - Shape _:n571d0bff78194b5bb17e0e8b1715024fb1: *none*\n"
+              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:nb7f5f0e250ac42e48ffb08ebd657cffdb3: *none*\n - Shape _:nb7f5f0e250ac42e48ffb08ebd657cffdb1: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -104,27 +176,27 @@
                 "toporules:testTopoLinesReferencePoints": {
                   "nodes": []
                 },
-                "toporules:testTopoEdgesReferencePoints": {
-                  "nodes": []
-                },
                 "toporules:testTopoDirectedReferencesExist": {
                   "nodes": [
-                    "<uuid:fe522919-1421-4fd1-9930-8c6551e3f2a5>/geojson:topology/topo:rings/rdf:first",
-                    "<uuid:01947f47-ee13-44a9-85a4-2bcb4881982a>/geojson:topology/topo:rings/rdf:first",
-                    "<uuid:2387ae98-9236-42fe-9414-c45b99954c41>/geojson:topology/topo:rings/rdf:first",
-                    "<uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f>/geojson:topology/topo:rings/rdf:first",
-                    "<uuid:607a3363-3eb7-4ce6-a633-86d2e565692b>/geojson:topology/topo:rings/rdf:first",
                     "<uuid:4ba85faa-3935-4e89-a9f8-dcd647a5dbed>/geojson:topology/topo:rings/rdf:first",
                     "<uuid:4a294022-4864-49c7-8cee-f9e43360bc4e>/geojson:topology/topo:rings/rdf:first",
-                    "<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae>/geojson:topology/topo:rings/rdf:first"
+                    "<uuid:607a3363-3eb7-4ce6-a633-86d2e565692b>/geojson:topology/topo:rings/rdf:first",
+                    "<uuid:01947f47-ee13-44a9-85a4-2bcb4881982a>/geojson:topology/topo:rings/rdf:first",
+                    "<uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f>/geojson:topology/topo:rings/rdf:first",
+                    "<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae>/geojson:topology/topo:rings/rdf:first",
+                    "<uuid:2387ae98-9236-42fe-9414-c45b99954c41>/geojson:topology/topo:rings/rdf:first",
+                    "<uuid:fe522919-1421-4fd1-9930-8c6551e3f2a5>/geojson:topology/topo:rings/rdf:first"
                   ]
                 },
                 "toporules:testTopoReferencesExist": {
                   "nodes": []
+                },
+                "toporules:testTopoEdgesReferencePoints": {
+                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:\n - Shape toporules:testTopoLinesReferencePoints: *none*\n - Shape toporules:testTopoEdgesReferencePoints: *none*\n - Shape toporules:testTopoDirectedReferencesExist: <uuid:fe522919-1421-4fd1-9930-8c6551e3f2a5>/geojson:topology/topo:rings/rdf:first,<uuid:01947f47-ee13-44a9-85a4-2bcb4881982a>/geojson:topology/topo:rings/rdf:first,<uuid:2387ae98-9236-42fe-9414-c45b99954c41>/geojson:topology/topo:rings/rdf:first,<uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f>/geojson:topology/topo:rings/rdf:first,<uuid:607a3363-3eb7-4ce6-a633-86d2e565692b>/geojson:topology/topo:rings/rdf:first,<uuid:4ba85faa-3935-4e89-a9f8-dcd647a5dbed>/geojson:topology/topo:rings/rdf:first,<uuid:4a294022-4864-49c7-8cee-f9e43360bc4e>/geojson:topology/topo:rings/rdf:first,<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae>/geojson:topology/topo:rings/rdf:first\n - Shape toporules:testTopoReferencesExist: *none*\n"
+              "message": "Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:\n - Shape toporules:testTopoLinesReferencePoints: *none*\n - Shape toporules:testTopoDirectedReferencesExist: <uuid:4ba85faa-3935-4e89-a9f8-dcd647a5dbed>/geojson:topology/topo:rings/rdf:first,<uuid:4a294022-4864-49c7-8cee-f9e43360bc4e>/geojson:topology/topo:rings/rdf:first,<uuid:607a3363-3eb7-4ce6-a633-86d2e565692b>/geojson:topology/topo:rings/rdf:first,<uuid:01947f47-ee13-44a9-85a4-2bcb4881982a>/geojson:topology/topo:rings/rdf:first,<uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f>/geojson:topology/topo:rings/rdf:first,<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae>/geojson:topology/topo:rings/rdf:first,<uuid:2387ae98-9236-42fe-9414-c45b99954c41>/geojson:topology/topo:rings/rdf:first,<uuid:fe522919-1421-4fd1-9930-8c6551e3f2a5>/geojson:topology/topo:rings/rdf:first\n - Shape toporules:testTopoReferencesExist: *none*\n - Shape toporules:testTopoEdgesReferencePoints: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -136,25 +208,25 @@
             {
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
               "focusNodes": {
-                "geojson:GeometryShape": {
-                  "nodes": []
-                },
                 "geojson:GeometryShape/sh:or/rdf:first": {
                   "nodes": []
                 },
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
+                "geojson:GeometryShape": {
+                  "nodes": []
+                },
                 "geojson:FeatureShape": {
                   "nodes": [
-                    "<uuid:2387ae98-9236-42fe-9414-c45b99954c41>",
-                    "<uuid:fe522919-1421-4fd1-9930-8c6551e3f2a5>",
-                    "<uuid:607a3363-3eb7-4ce6-a633-86d2e565692b>",
-                    "<uuid:4a294022-4864-49c7-8cee-f9e43360bc4e>",
                     "<uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f>",
-                    "<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae>",
                     "<uuid:4ba85faa-3935-4e89-a9f8-dcd647a5dbed>",
-                    "<uuid:01947f47-ee13-44a9-85a4-2bcb4881982a>"
+                    "<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae>",
+                    "<uuid:01947f47-ee13-44a9-85a4-2bcb4881982a>",
+                    "<uuid:4a294022-4864-49c7-8cee-f9e43360bc4e>",
+                    "<uuid:2387ae98-9236-42fe-9414-c45b99954c41>",
+                    "<uuid:607a3363-3eb7-4ce6-a633-86d2e565692b>",
+                    "<uuid:fe522919-1421-4fd1-9930-8c6551e3f2a5>"
                   ]
                 },
                 "geojson:LinkShape": {
@@ -162,7 +234,7 @@
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:FeatureShape: <uuid:2387ae98-9236-42fe-9414-c45b99954c41>,<uuid:fe522919-1421-4fd1-9930-8c6551e3f2a5>,<uuid:607a3363-3eb7-4ce6-a633-86d2e565692b>,<uuid:4a294022-4864-49c7-8cee-f9e43360bc4e>,<uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f>,<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae>,<uuid:4ba85faa-3935-4e89-a9f8-dcd647a5dbed>,<uuid:01947f47-ee13-44a9-85a4-2bcb4881982a>\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: <uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f>,<uuid:4ba85faa-3935-4e89-a9f8-dcd647a5dbed>,<uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae>,<uuid:01947f47-ee13-44a9-85a4-2bcb4881982a>,<uuid:4a294022-4864-49c7-8cee-f9e43360bc4e>,<uuid:2387ae98-9236-42fe-9414-c45b99954c41>,<uuid:607a3363-3eb7-4ce6-a633-86d2e565692b>,<uuid:fe522919-1421-4fd1-9930-8c6551e3f2a5>\n - Shape geojson:LinkShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -174,19 +246,19 @@
             {
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl",
               "focusNodes": {
-                "geojson:GeometryShape": {
+                "geojson:FeatureCollectionShape": {
                   "nodes": []
                 },
                 "geojson:GeometryShape/sh:or/rdf:first": {
                   "nodes": []
                 },
-                "geojson:FeatureCollectionShape": {
-                  "nodes": []
-                },
-                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                "geojson:GeometryShape": {
                   "nodes": []
                 },
                 "geojson:FeatureShape": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
                 "geojson:LinkShape": {
@@ -194,7 +266,7 @@
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureCollectionShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:FeatureShape: *none*\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:FeatureCollectionShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n"
             }
           ]
         },
@@ -203,17 +275,259 @@
           "title": "Plugin",
           "entries": [
             {
-              "counts": {
-                "points": 0,
-                "edges": 0,
-                "rings": 0,
-                "faces": 0,
-                "shells": 0,
-                "solids": 0
+              "code": "DUPLICATE_SURFACE",
+              "object_id": "uuid:4a294022-4864-49c7-8cee-f9e43360bc4e",
+              "path": null,
+              "extra": {
+                "duplicate_of": "uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae"
+              },
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DUPLICATE_SURFACE: Surface uuid:4a294022-4864-49c7-8cee-f9e43360bc4e is a duplicate of surface 'uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae'"
+            },
+            {
+              "code": "DUPLICATE_SURFACE",
+              "object_id": "uuid:01947f47-ee13-44a9-85a4-2bcb4881982a",
+              "path": null,
+              "extra": {
+                "duplicate_of": "uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae"
+              },
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DUPLICATE_SURFACE: Surface uuid:01947f47-ee13-44a9-85a4-2bcb4881982a is a duplicate of surface 'uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae'"
+            },
+            {
+              "code": "DUPLICATE_SURFACE",
+              "object_id": "uuid:607a3363-3eb7-4ce6-a633-86d2e565692b",
+              "path": null,
+              "extra": {
+                "duplicate_of": "uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae"
+              },
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DUPLICATE_SURFACE: Surface uuid:607a3363-3eb7-4ce6-a633-86d2e565692b is a duplicate of surface 'uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae'"
+            },
+            {
+              "code": "DUPLICATE_SURFACE",
+              "object_id": "uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f",
+              "path": null,
+              "extra": {
+                "duplicate_of": "uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae"
+              },
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DUPLICATE_SURFACE: Surface uuid:3c1f5c4b-d842-40b6-a332-99d50015fa8f is a duplicate of surface 'uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae'"
+            },
+            {
+              "code": "DUPLICATE_SURFACE",
+              "object_id": "uuid:fe522919-1421-4fd1-9930-8c6551e3f2a5",
+              "path": null,
+              "extra": {
+                "duplicate_of": "uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae"
+              },
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DUPLICATE_SURFACE: Surface uuid:fe522919-1421-4fd1-9930-8c6551e3f2a5 is a duplicate of surface 'uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae'"
+            },
+            {
+              "code": "DUPLICATE_SURFACE",
+              "object_id": "uuid:2387ae98-9236-42fe-9414-c45b99954c41",
+              "path": null,
+              "extra": {
+                "duplicate_of": "uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae"
+              },
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DUPLICATE_SURFACE: Surface uuid:2387ae98-9236-42fe-9414-c45b99954c41 is a duplicate of surface 'uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae'"
+            },
+            {
+              "code": "DUPLICATE_SURFACE",
+              "object_id": "uuid:4ba85faa-3935-4e89-a9f8-dcd647a5dbed",
+              "path": null,
+              "extra": {
+                "duplicate_of": "uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae"
+              },
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DUPLICATE_SURFACE: Surface uuid:4ba85faa-3935-4e89-a9f8-dcd647a5dbed is a duplicate of surface 'uuid:4ac3b91b-eeb7-428c-b5e9-7e8a3f0998ae'"
+            },
+            {
+              "code": "GEOMETRY_TIER_NOT_TESTED",
+              "object_id": null,
+              "path": null,
+              "extra": {
+                "rule_ids": [
+                  "TR-06",
+                  "TR-18",
+                  "TR-27"
+                ],
+                "reason": "no shells present in this dataset"
               },
               "plugin": "topo_validator.plugin.TopoValidatorPlugin",
               "isError": false,
-              "message": "Validation passed (points: 0, edges: 0, rings: 0, faces: 0, shells: 0, solids: 0)"
+              "message": "GEOMETRY_TIER_NOT_TESTED: CC-04 Shell topology (TR-06, TR-18, TR-27) not tested -- no shells present in this dataset."
+            },
+            {
+              "code": "DANGLING_CURVE",
+              "object_id": "uuid:c60507ba-226b-4e49-a702-e9afef899b23",
+              "path": null,
+              "extra": {},
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DANGLING_CURVE: Curve uuid:c60507ba-226b-4e49-a702-e9afef899b23 is not referenced by any face"
+            },
+            {
+              "code": "DANGLING_CURVE",
+              "object_id": "uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac",
+              "path": null,
+              "extra": {},
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DANGLING_CURVE: Curve uuid:7dc1cc1c-8e7f-4666-9f52-4e6c2e6f57ac is not referenced by any face"
+            },
+            {
+              "code": "DANGLING_CURVE",
+              "object_id": "uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569",
+              "path": null,
+              "extra": {},
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DANGLING_CURVE: Curve uuid:83ff2cdf-6c58-4e7b-ba55-e084eff8c569 is not referenced by any face"
+            },
+            {
+              "code": "DANGLING_CURVE",
+              "object_id": "uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8",
+              "path": null,
+              "extra": {},
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DANGLING_CURVE: Curve uuid:d69c596c-134e-4216-9bf6-d0f10e6886d8 is not referenced by any face"
+            },
+            {
+              "code": "DANGLING_CURVE",
+              "object_id": "uuid:32e82eb1-93a4-4387-8cd0-9616ebf1e39b",
+              "path": null,
+              "extra": {},
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DANGLING_CURVE: Curve uuid:32e82eb1-93a4-4387-8cd0-9616ebf1e39b is not referenced by any face"
+            },
+            {
+              "code": "DANGLING_CURVE",
+              "object_id": "uuid:8582d9c2-6053-495a-8413-f5493691c0de",
+              "path": null,
+              "extra": {},
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DANGLING_CURVE: Curve uuid:8582d9c2-6053-495a-8413-f5493691c0de is not referenced by any face"
+            },
+            {
+              "code": "DANGLING_CURVE",
+              "object_id": "uuid:120defbd-2e05-4ec3-ba3c-ffee086d2add",
+              "path": null,
+              "extra": {},
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DANGLING_CURVE: Curve uuid:120defbd-2e05-4ec3-ba3c-ffee086d2add is not referenced by any face"
+            },
+            {
+              "code": "DANGLING_CURVE",
+              "object_id": "uuid:4c2a6434-03b0-4aa2-85ea-a9fcaea41555",
+              "path": null,
+              "extra": {},
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DANGLING_CURVE: Curve uuid:4c2a6434-03b0-4aa2-85ea-a9fcaea41555 is not referenced by any face"
+            },
+            {
+              "code": "DANGLING_CURVE",
+              "object_id": "uuid:830b9098-d914-4e8b-869d-4d20f1eb5c81",
+              "path": null,
+              "extra": {},
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DANGLING_CURVE: Curve uuid:830b9098-d914-4e8b-869d-4d20f1eb5c81 is not referenced by any face"
+            },
+            {
+              "code": "DANGLING_CURVE",
+              "object_id": "uuid:3b72e45d-d351-46e4-a5b7-9ac9bc339d03",
+              "path": null,
+              "extra": {},
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DANGLING_CURVE: Curve uuid:3b72e45d-d351-46e4-a5b7-9ac9bc339d03 is not referenced by any face"
+            },
+            {
+              "code": "DANGLING_CURVE",
+              "object_id": "uuid:921e2351-efbf-48be-85d3-eedc0dc2ddc0",
+              "path": null,
+              "extra": {},
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DANGLING_CURVE: Curve uuid:921e2351-efbf-48be-85d3-eedc0dc2ddc0 is not referenced by any face"
+            },
+            {
+              "code": "DANGLING_CURVE",
+              "object_id": "uuid:73f88b47-78ab-474d-9c62-73dfefd0dd5d",
+              "path": null,
+              "extra": {},
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DANGLING_CURVE: Curve uuid:73f88b47-78ab-474d-9c62-73dfefd0dd5d is not referenced by any face"
+            },
+            {
+              "code": "DANGLING_CURVE",
+              "object_id": "uuid:7aa2a76d-9d5c-4540-9f2e-d8bcf36fadb5",
+              "path": null,
+              "extra": {},
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DANGLING_CURVE: Curve uuid:7aa2a76d-9d5c-4540-9f2e-d8bcf36fadb5 is not referenced by any face"
+            },
+            {
+              "code": "DANGLING_CURVE",
+              "object_id": "uuid:ed6b8b1c-7030-4d70-ab61-94cb3aa904a7",
+              "path": null,
+              "extra": {},
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DANGLING_CURVE: Curve uuid:ed6b8b1c-7030-4d70-ab61-94cb3aa904a7 is not referenced by any face"
+            },
+            {
+              "code": "DANGLING_CURVE",
+              "object_id": "uuid:5f17e211-e8b5-4a7c-85e4-798787fd82a5",
+              "path": null,
+              "extra": {},
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DANGLING_CURVE: Curve uuid:5f17e211-e8b5-4a7c-85e4-798787fd82a5 is not referenced by any face"
+            },
+            {
+              "code": "DANGLING_CURVE",
+              "object_id": "uuid:7da1c2fe-f798-43cc-af44-ac63f968139c",
+              "path": null,
+              "extra": {},
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DANGLING_CURVE: Curve uuid:7da1c2fe-f798-43cc-af44-ac63f968139c is not referenced by any face"
+            },
+            {
+              "code": "DANGLING_CURVE",
+              "object_id": "uuid:46fd1def-a93e-4c99-9868-172cf1b40ff1",
+              "path": null,
+              "extra": {},
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DANGLING_CURVE: Curve uuid:46fd1def-a93e-4c99-9868-172cf1b40ff1 is not referenced by any face"
+            },
+            {
+              "code": "DANGLING_CURVE",
+              "object_id": "uuid:856e43bc-ee35-44d0-b25e-ea94a53e1db6",
+              "path": null,
+              "extra": {},
+              "plugin": "topo_validator.plugin.TopoValidatorPlugin",
+              "isError": true,
+              "message": "DANGLING_CURVE: Curve uuid:856e43bc-ee35-44d0-b25e-ea94a53e1db6 is not referenced by any face"
             }
           ]
         }
@@ -278,7 +592,44 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/features/topo-feature/../../examples/referenced-objects-closure.ttl"
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/features/topo-feature/../../examples/referenced-objects-closure.ttl\n - /github/workspace/_sources/ontology/topo.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/ontology/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "focusNodes": {
+                ":DirectedReferencesShape": {
+                  "nodes": [
+                    "<uuid:shell-upper-east>/geojson:topology"
+                  ]
+                },
+                ":OrientedArcShape": {
+                  "nodes": []
+                },
+                ":RadiusRequiredShape": {
+                  "nodes": []
+                },
+                ":OrientedReferenceShape": {
+                  "nodes": [
+                    "_:N4e9d3ac17a9b4375b4b1b009c87f8c35",
+                    "<uuid:shell-upper-east>/geojson:topology/topo:directedReferences/rdf:first",
+                    "_:Nb3da1ffab8c44658b8fd1d76d4ac855f",
+                    "_:N0530ba54bfa249e09c1bff7b924059c2",
+                    "_:N89e7761128504c1288d38a78becbc0de",
+                    "_:N02ec70f0c6734ade89bb750ac20f5337",
+                    "_:N24afdaae40554637ad28422ba6fac33d",
+                    "_:Nd8da07f0248c40e4a0892514d3107126"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :DirectedReferencesShape: <uuid:shell-upper-east>/geojson:topology\n - Shape :OrientedArcShape: *none*\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedReferenceShape: _:N4e9d3ac17a9b4375b4b1b009c87f8c35,<uuid:shell-upper-east>/geojson:topology/topo:directedReferences/rdf:first,_:Nb3da1ffab8c44658b8fd1d76d4ac855f,_:N0530ba54bfa249e09c1bff7b924059c2,_:N89e7761128504c1288d38a78becbc0de,_:N02ec70f0c6734ade89bb750ac20f5337,_:N24afdaae40554637ad28422ba6fac33d,_:Nd8da07f0248c40e4a0892514d3107126\n"
             },
             {
               "op": "shacl-report",
@@ -290,15 +641,15 @@
             {
               "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
               "focusNodes": {
-                "_:n571d0bff78194b5bb17e0e8b1715024fb3": {
+                "_:nb7f5f0e250ac42e48ffb08ebd657cffdb3": {
                   "nodes": []
                 },
-                "_:n571d0bff78194b5bb17e0e8b1715024fb1": {
+                "_:nb7f5f0e250ac42e48ffb08ebd657cffdb1": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:n571d0bff78194b5bb17e0e8b1715024fb3: *none*\n - Shape _:n571d0bff78194b5bb17e0e8b1715024fb1: *none*\n"
+              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:nb7f5f0e250ac42e48ffb08ebd657cffdb3: *none*\n - Shape _:nb7f5f0e250ac42e48ffb08ebd657cffdb1: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -313,9 +664,6 @@
                 "toporules:testTopoLinesReferencePoints": {
                   "nodes": []
                 },
-                "toporules:testTopoEdgesReferencePoints": {
-                  "nodes": []
-                },
                 "toporules:testTopoDirectedReferencesExist": {
                   "nodes": [
                     "<uuid:shell-upper-east>/geojson:topology"
@@ -323,10 +671,13 @@
                 },
                 "toporules:testTopoReferencesExist": {
                   "nodes": []
+                },
+                "toporules:testTopoEdgesReferencePoints": {
+                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:\n - Shape toporules:testTopoLinesReferencePoints: *none*\n - Shape toporules:testTopoEdgesReferencePoints: *none*\n - Shape toporules:testTopoDirectedReferencesExist: <uuid:shell-upper-east>/geojson:topology\n - Shape toporules:testTopoReferencesExist: *none*\n"
+              "message": "Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:\n - Shape toporules:testTopoLinesReferencePoints: *none*\n - Shape toporules:testTopoDirectedReferencesExist: <uuid:shell-upper-east>/geojson:topology\n - Shape toporules:testTopoReferencesExist: *none*\n - Shape toporules:testTopoEdgesReferencePoints: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -338,13 +689,13 @@
             {
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl",
               "focusNodes": {
-                "geojson:GeometryShape": {
-                  "nodes": []
-                },
                 "geojson:GeometryShape/sh:or/rdf:first": {
                   "nodes": []
                 },
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape": {
                   "nodes": []
                 },
                 "geojson:FeatureShape": {
@@ -357,7 +708,7 @@
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:FeatureShape: <uuid:shell-upper-east>\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: <uuid:shell-upper-east>\n - Shape geojson:LinkShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -369,19 +720,19 @@
             {
               "shaclFile": "https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl",
               "focusNodes": {
-                "geojson:GeometryShape": {
+                "geojson:FeatureCollectionShape": {
                   "nodes": []
                 },
                 "geojson:GeometryShape/sh:or/rdf:first": {
                   "nodes": []
                 },
-                "geojson:FeatureCollectionShape": {
-                  "nodes": []
-                },
-                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
+                "geojson:GeometryShape": {
                   "nodes": []
                 },
                 "geojson:FeatureShape": {
+                  "nodes": []
+                },
+                "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
                 "geojson:LinkShape": {
@@ -389,7 +740,7 @@
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureCollectionShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:FeatureShape: *none*\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:FeatureCollectionShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n"
             }
           ]
         }
@@ -399,7 +750,7 @@
   "globalErrors": {},
   "counts": {
     "total": 2,
-    "passed": 2,
-    "failed": 0
+    "passed": 1,
+    "failed": 1
   }
 }

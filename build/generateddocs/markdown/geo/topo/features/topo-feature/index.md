@@ -307,6 +307,11 @@ allOf:
   - topology
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
+x-bblocks-metadata:
+  itemIdentifier: ogc.geo.topo.features.topo-feature
+  register: https://ogcincubator.github.io/topo-feature/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-11-02'
 
 ```
 
@@ -414,12 +419,6 @@ Links to the schema:
           "@container": "@list"
         },
         "directed_references": {
-          "@context": {
-            "ref": {
-              "@type": "@id",
-              "@id": "topo:ref"
-            }
-          },
           "@id": "topo:directedReferences",
           "@container": "@list"
         },
@@ -466,7 +465,10 @@ Links to the schema:
     "arcLength": "geojson:arcLength",
     "startTangentVector": "geojson:startTangentVector",
     "endTangentVector": "geojson:endTangentVector",
-    "ref": "topo:ref",
+    "ref": {
+      "@id": "topo:ref",
+      "@type": "@id"
+    },
     "orientation": "topo:orientation",
     "Edge": "topo:Edge",
     "Face": "topo:Face",
@@ -474,6 +476,7 @@ Links to the schema:
     "Shell": "topo:Shell",
     "Solid": "topo:Solid",
     "AggregateSolid": "topo:AggregateSolid",
+    "AggregatePolygon": "topo:AggregatePolygon",
     "rings": {
       "@id": "topo:rings",
       "@container": "@list"

@@ -126,16 +126,6 @@
               "@type": "@id",
               "@container": "@list"
             },
-            "directed_references": {
-              "@context": {
-                "ref": {
-                  "@type": "@id",
-                  "@id": "topo:ref"
-                }
-              },
-              "@id": "topo:directedReferences",
-              "@container": "@list"
-            },
             "relationships": {
               "@context": {
                 "href": {
@@ -223,16 +213,6 @@
             "references": {
               "@id": "topo:relatedFeatures",
               "@type": "@id",
-              "@container": "@list"
-            },
-            "directed_references": {
-              "@context": {
-                "ref": {
-                  "@type": "@id",
-                  "@id": "topo:ref"
-                }
-              },
-              "@id": "topo:directedReferences",
               "@container": "@list"
             },
             "relationships": {
@@ -325,16 +305,6 @@
               "@type": "@id",
               "@container": "@list"
             },
-            "directed_references": {
-              "@context": {
-                "ref": {
-                  "@type": "@id",
-                  "@id": "topo:ref"
-                }
-              },
-              "@id": "topo:directedReferences",
-              "@container": "@list"
-            },
             "relationships": {
               "@context": {
                 "href": {
@@ -368,8 +338,7 @@
           },
           "@type": "@id",
           "@id": "geojson:topology"
-        },
-        "ref": "@id"
+        }
       },
       "@id": "topo:faces",
       "@container": "@list"
@@ -425,16 +394,6 @@
               "@type": "@id",
               "@container": "@list"
             },
-            "directed_references": {
-              "@context": {
-                "ref": {
-                  "@type": "@id",
-                  "@id": "topo:ref"
-                }
-              },
-              "@id": "topo:directedReferences",
-              "@container": "@list"
-            },
             "relationships": {
               "@context": {
                 "href": {
@@ -468,8 +427,7 @@
           },
           "@type": "@id",
           "@id": "geojson:topology"
-        },
-        "ref": "@id"
+        }
       },
       "@id": "topo:shells",
       "@container": "@list"
@@ -523,16 +481,6 @@
             "references": {
               "@id": "topo:relatedFeatures",
               "@type": "@id",
-              "@container": "@list"
-            },
-            "directed_references": {
-              "@context": {
-                "ref": {
-                  "@type": "@id",
-                  "@id": "topo:ref"
-                }
-              },
-              "@id": "topo:directedReferences",
               "@container": "@list"
             },
             "relationships": {
@@ -625,7 +573,10 @@
     "arcLength": "geojson:arcLength",
     "startTangentVector": "geojson:startTangentVector",
     "endTangentVector": "geojson:endTangentVector",
-    "ref": "topo:ref",
+    "ref": {
+      "@id": "topo:ref",
+      "@type": "@id"
+    },
     "orientation": "topo:orientation",
     "Edge": "topo:Edge",
     "Face": "topo:Face",
@@ -633,6 +584,7 @@
     "Shell": "topo:Shell",
     "Solid": "topo:Solid",
     "AggregateSolid": "topo:AggregateSolid",
+    "AggregatePolygon": "topo:AggregatePolygon",
     "directed_references": {
       "@id": "topo:directedReferences",
       "@container": "@list"

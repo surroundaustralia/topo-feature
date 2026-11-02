@@ -1970,11 +1970,18 @@ allOf:
   - topology
 x-jsonld-extra-terms:
   Shell: https://purl.org/geojson/topo#Shell
-  ref: '@id'
+  ref:
+    x-jsonld-id: https://purl.org/geojson/topo#ref
+    x-jsonld-type: '@id'
   orientation: https://purl.org/geojson/topo#orientation
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
   topo: https://purl.org/geojson/topo#
+x-bblocks-metadata:
+  itemIdentifier: ogc.geo.topo.features.topo-shell
+  register: https://ogcincubator.github.io/topo-feature/build/register.json
+  version: '0.1'
+  dateOfLastChange: '2026-11-02'
 
 ```
 
@@ -2082,12 +2089,6 @@ Links to the schema:
           "@container": "@list"
         },
         "directed_references": {
-          "@context": {
-            "ref": {
-              "@type": "@id",
-              "@id": "topo:ref"
-            }
-          },
           "@id": "topo:directedReferences",
           "@container": "@list"
         },
@@ -2120,14 +2121,16 @@ Links to the schema:
           "@id": "topo:relatedFeatures",
           "@type": "@id",
           "@container": "@list"
-        },
-        "ref": "topo:ref"
+        }
       },
       "@type": "@id",
       "@id": "geojson:topology"
     },
     "Shell": "topo:Shell",
-    "ref": "@id",
+    "ref": {
+      "@id": "topo:ref",
+      "@type": "@id"
+    },
     "orientation": "topo:orientation",
     "Arc": "geojson:Arc",
     "ArcWithCenter": "geojson:ArcWithCenter",
@@ -2143,6 +2146,7 @@ Links to the schema:
     "Ring": "topo:Ring",
     "Solid": "topo:Solid",
     "AggregateSolid": "topo:AggregateSolid",
+    "AggregatePolygon": "topo:AggregatePolygon",
     "rings": {
       "@id": "topo:rings",
       "@container": "@list"

@@ -9,15 +9,16 @@
   "itemClass": "schema",
   "register": "ogcincubator",
   "version": "0.1",
-  "dateOfLastChange": "2026-09-23",
+  "dateOfLastChange": "2026-11-02",
   "sources": [],
   "maturity": "development",
   "scope": "unstable",
   "dependsOn": [
-    "ogc.geo.topo.features.topo-feature",
     "ogc.geo.topo.datatypes.oriented-ref",
+    "ogc.geo.topo.datatypes.topology",
+    "ogc.geo.topo.features.topo-feature",
     "ogc.geo.topo.features.topo-feature-collection",
-    "ogc.geo.topo.datatypes.topology"
+    "ogc.geo.topo.ontology"
   ],
   "tags": [
     "topology",
@@ -27,13 +28,16 @@
   ],
   "group": "Topology Features",
   "shaclShapes": {
+    "ogc.geo.topo.ontology": [
+      "https://ogcincubator.github.io/topo-feature/_sources/ontology/shapes.shacl"
+    ],
     "ogc.geo.topo.features.topo-feature": [
-      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ],
     "ogc.geo.topo.features.topo-feature-collection": [
-      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl",
-      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl"
+      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
+      "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature/tests/geometry-coordinates.shacl"
     ],
     "ogc.geo.features.feature": [
       "https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl"
@@ -51,7 +55,7 @@
   "sourceLdContext": "https://ogcincubator.github.io/topo-feature/_sources/features/topo-shell/context.jsonld",
   "resolvedSchemaProperties": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-shell/resolvedProperties.json",
   "sourceFiles": "https://ogcincubator.github.io/topo-feature/_sources/features/topo-shell/",
-  "validationPassed": true,
+  "validationPassed": false,
   "testOutputs": "https://github.com/ogcincubator/topo-feature/blob/master/build/tests/geo/topo/features/topo-shell/",
   "transforms": [
     {
@@ -193,7 +197,7 @@
       ]
     }
   ],
-  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: 'A Shell feature: a closed surface boundary of a Solid, described as\n  an ordered set of directed (oriented) Face references. geometry must be null.'\n$defs:\n  testCollection:\n    $anchor: testCollection\n    description: A convienence ref to a complete, testable collection objects and\n      references\n    $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml\nallOf:\n- $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml\n- properties:\n    geometry:\n      type: 'null'\n    topology:\n      properties:\n        type:\n          type: string\n          const: Shell\n        directed_references:\n          type: array\n          description: Ordered list of oriented Face references forming the closed\n            shell surface\n          items:\n            $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml\n          minItems: 4\n          x-jsonld-id: https://purl.org/geojson/topo#directedReferences\n          x-jsonld-container: '@list'\n      required:\n      - type\n      - directed_references\n      not:\n        required:\n        - references\n      x-jsonld-type: '@id'\n      x-jsonld-id: https://purl.org/geojson/vocab#topology\n  required:\n  - topology\nx-jsonld-extra-terms:\n  Shell: https://purl.org/geojson/topo#Shell\n  ref: '@id'\n  orientation: https://purl.org/geojson/topo#orientation\nx-jsonld-prefixes:\n  geojson: https://purl.org/geojson/vocab#\n  topo: https://purl.org/geojson/topo#\n",
+  "annotatedSchema": "$schema: https://json-schema.org/draft/2020-12/schema\ndescription: 'A Shell feature: a closed surface boundary of a Solid, described as\n  an ordered set of directed (oriented) Face references. geometry must be null.'\n$defs:\n  testCollection:\n    $anchor: testCollection\n    description: A convienence ref to a complete, testable collection objects and\n      references\n    $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature-collection/schema.yaml\nallOf:\n- $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/features/topo-feature/schema.yaml\n- properties:\n    geometry:\n      type: 'null'\n    topology:\n      properties:\n        type:\n          type: string\n          const: Shell\n        directed_references:\n          type: array\n          description: Ordered list of oriented Face references forming the closed\n            shell surface\n          items:\n            $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml\n          minItems: 4\n          x-jsonld-id: https://purl.org/geojson/topo#directedReferences\n          x-jsonld-container: '@list'\n      required:\n      - type\n      - directed_references\n      not:\n        required:\n        - references\n      x-jsonld-type: '@id'\n      x-jsonld-id: https://purl.org/geojson/vocab#topology\n  required:\n  - topology\nx-jsonld-extra-terms:\n  Shell: https://purl.org/geojson/topo#Shell\n  ref:\n    x-jsonld-id: https://purl.org/geojson/topo#ref\n    x-jsonld-type: '@id'\n  orientation: https://purl.org/geojson/topo#orientation\nx-jsonld-prefixes:\n  geojson: https://purl.org/geojson/vocab#\n  topo: https://purl.org/geojson/topo#\nx-bblocks-metadata:\n  itemIdentifier: ogc.geo.topo.features.topo-shell\n  register: https://ogcincubator.github.io/topo-feature/build/register.json\n  version: '0.1'\n  dateOfLastChange: '2026-11-02'\n",
   "gitRepository": "https://github.com/ogcincubator/topo-feature",
   "gitPath": "_sources/features/topo-shell"
 }

@@ -1,0 +1,241 @@
+{
+  "title": "Validation report for ogc.geo.topo.ontology - Topo-Feature Ontology",
+  "bblockName": "Topo-Feature Ontology",
+  "bblockId": "ogc.geo.topo.ontology",
+  "generated": "2026-11-02T00:04:17.214031+00:00",
+  "result": true,
+  "items": [
+    {
+      "source": {
+        "type": "TEST_RESOURCE",
+        "requireFail": true,
+        "filename": "_sources/ontology/tests/arc-by-chord-no-radius-fail.ttl",
+        "url": "https://ogcincubator.github.io/topo-feature/_sources/ontology/tests/arc-by-chord-no-radius-fail.ttl",
+        "language": "ttl"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "GENERAL",
+          "title": "General",
+          "entries": [
+            {
+              "op": "require-fail",
+              "isError": false,
+              "message": "Test was expected to fail and it did."
+            }
+          ]
+        },
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using arc-by-chord-no-radius-fail.ttl from test resources"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/topo.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "graph": "@prefix : <https://purl.org/geojson/topo#> .\n@prefix geojson: <https://purl.org/geojson/vocab#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms false ;\n    sh:result [ a sh:ValidationResult ;\n            sh:focusNode [ a geojson:ArcByChord ;\n                    :orientation \"cw\" ;\n                    :relatedFeatures ( <http://www.example.com/features/arcP1> <http://www.example.com/features/arcP2> ) ] ;\n            sh:resultMessage \"An arc by chord or circle by centre has exactly one radius.\"@en ;\n            sh:resultPath geojson:radius ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;\n            sh:sourceShape [ sh:maxCount 1 ;\n                    sh:message \"An arc by chord or circle by centre has exactly one radius.\"@en ;\n                    sh:minCount 1 ;\n                    sh:path geojson:radius ] ] .\n\n",
+              "isError": true,
+              "message": "Validation result for _sources/ontology/shapes.shacl:\n  Validation Report\n  Conforms: False\n  Results (1):\n  Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:message Literal(\"An arc by chord or circle by centre has exactly one radius.\", lang=en) ; sh:minCount Literal(\"1\", datatype=xsd:integer) ; sh:path geojson:radius ]\n  \tFocus Node: [ rdf:type geojson:ArcByChord ; topo:orientation Literal(\"cw\") ; topo:relatedFeatures ( ex:arcP1 ex:arcP2 ) ]\n  \tResult Path: geojson:radius\n  \tMessage: An arc by chord or circle by centre has exactly one radius.\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "focusNodes": {
+                ":DirectedReferencesShape": {
+                  "nodes": []
+                },
+                ":OrientedArcShape": {
+                  "nodes": [
+                    "ex:arcByChordNoRadius/geojson:topology"
+                  ]
+                },
+                ":RadiusRequiredShape": {
+                  "nodes": [
+                    "ex:arcByChordNoRadius/geojson:topology"
+                  ]
+                },
+                ":OrientedReferenceShape": {
+                  "nodes": []
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :DirectedReferencesShape: *none*\n - Shape :OrientedArcShape: ex:arcByChordNoRadius/geojson:topology\n - Shape :RadiusRequiredShape: ex:arcByChordNoRadius/geojson:topology\n - Shape :OrientedReferenceShape: *none*\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "TEST_RESOURCE",
+        "requireFail": true,
+        "filename": "_sources/ontology/tests/orientation-invalid-fail.ttl",
+        "url": "https://ogcincubator.github.io/topo-feature/_sources/ontology/tests/orientation-invalid-fail.ttl",
+        "language": "ttl"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "GENERAL",
+          "title": "General",
+          "entries": [
+            {
+              "op": "require-fail",
+              "isError": false,
+              "message": "Test was expected to fail and it did."
+            }
+          ]
+        },
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using orientation-invalid-fail.ttl from test resources"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/topo.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "graph": "@prefix : <https://purl.org/geojson/topo#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms false ;\n    sh:result [ a sh:ValidationResult ;\n            sh:focusNode _:n789fa578aa014557b88e6cb32a94825fb2 ;\n            sh:resultMessage \"An oriented reference has exactly one orientation, '+' or '-'.\"@en ;\n            sh:resultPath :orientation ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:InConstraintComponent ;\n            sh:sourceShape [ sh:in ( \"+\" \"-\" ) ;\n                    sh:maxCount 1 ;\n                    sh:message \"An oriented reference has exactly one orientation, '+' or '-'.\"@en ;\n                    sh:minCount 1 ;\n                    sh:path :orientation ] ;\n            sh:value \"forward\" ],\n        [ a sh:ValidationResult ;\n            sh:focusNode [ a :Ring ;\n                    :directedReferences ( [ :orientation \"forward\" ;\n                                :ref <urn:uuid:c60507ba-226b-4e49-a702-e9afef899b23> ] ) ] ;\n            sh:resultMessage \"Directed references are a non-empty list of oriented references.\"@en ;\n            sh:resultPath ( :directedReferences [ sh:zeroOrMorePath rdf:rest ] rdf:first ) ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:NodeConstraintComponent ;\n            sh:sourceShape [ sh:message \"Directed references are a non-empty list of oriented references.\"@en ;\n                    sh:minCount 1 ;\n                    sh:node :OrientedReferenceShape ;\n                    sh:path ( :directedReferences [ sh:zeroOrMorePath rdf:rest ] rdf:first ) ] ;\n            sh:value _:n789fa578aa014557b88e6cb32a94825fb2 ] .\n\n_:n789fa578aa014557b88e6cb32a94825fb2 :orientation \"forward\" ;\n    :ref <urn:uuid:c60507ba-226b-4e49-a702-e9afef899b23> .\n\n",
+              "isError": true,
+              "message": "Validation result for _sources/ontology/shapes.shacl:\n  Validation Report\n  Conforms: False\n  Results (2):\n  Constraint Violation in NodeConstraintComponent (http://www.w3.org/ns/shacl#NodeConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:message Literal(\"Directed references are a non-empty list of oriented references.\", lang=en) ; sh:minCount Literal(\"1\", datatype=xsd:integer) ; sh:node :OrientedReferenceShape ; sh:path ( :directedReferences [ sh:zeroOrMorePath rdf:rest ] rdf:first ) ]\n  \tFocus Node: [ rdf:type topo:Ring ; topo:directedReferences ( [ topo:orientation Literal(\"forward\") ; topo:ref <urn:uuid:c60507ba-226b-4e49-a702-e9afef899b23> ] ) ]\n  \tValue Node: [ topo:orientation Literal(\"forward\") ; topo:ref <urn:uuid:c60507ba-226b-4e49-a702-e9afef899b23> ]\n  \tResult Path: ( :directedReferences [ sh:zeroOrMorePath rdf:rest ] rdf:first )\n  \tMessage: Directed references are a non-empty list of oriented references.\n  Constraint Violation in InConstraintComponent (http://www.w3.org/ns/shacl#InConstraintComponent):\n  \tSeverity: sh:Violation\n  \tSource Shape: [ sh:in ( Literal(\"+\") Literal(\"-\") ) ; sh:maxCount Literal(\"1\", datatype=xsd:integer) ; sh:message Literal(\"An oriented reference has exactly one orientation, '+' or '-'.\", lang=en) ; sh:minCount Literal(\"1\", datatype=xsd:integer) ; sh:path :orientation ]\n  \tFocus Node: [ topo:orientation Literal(\"forward\") ; topo:ref <urn:uuid:c60507ba-226b-4e49-a702-e9afef899b23> ]\n  \tValue Node: Literal(\"forward\")\n  \tResult Path: :orientation\n  \tMessage: An oriented reference has exactly one orientation, '+' or '-'.\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "focusNodes": {
+                ":DirectedReferencesShape": {
+                  "nodes": [
+                    "<urn:uuid:5f0d9a2e-ring-bad-orientation>/geojson:topology"
+                  ]
+                },
+                ":OrientedArcShape": {
+                  "nodes": []
+                },
+                ":RadiusRequiredShape": {
+                  "nodes": []
+                },
+                ":OrientedReferenceShape": {
+                  "nodes": [
+                    "<urn:uuid:5f0d9a2e-ring-bad-orientation>/geojson:topology/topo:directedReferences/rdf:first"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :DirectedReferencesShape: <urn:uuid:5f0d9a2e-ring-bad-orientation>/geojson:topology\n - Shape :OrientedArcShape: *none*\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedReferenceShape: <urn:uuid:5f0d9a2e-ring-bad-orientation>/geojson:topology/topo:directedReferences/rdf:first\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "type": "EXAMPLE",
+        "requireFail": false,
+        "filename": "build/tests/geo/topo/ontology/topology_examples.ttl",
+        "url": "https://ogcincubator.github.io/topo-feature/build/tests/geo/topo/ontology/topology_examples.ttl",
+        "exampleIndex": 1,
+        "snippetIndex": 1,
+        "language": "text/turtle"
+      },
+      "result": true,
+      "sections": [
+        {
+          "name": "FILES",
+          "title": "Files",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using examples/topology_examples.ttl from examples"
+            },
+            {
+              "op": "ttl-create",
+              "empty": false,
+              "filename": "topology_examples.ttl",
+              "size": 53,
+              "isError": false,
+              "message": "Output Turtle topology_examples.ttl created"
+            }
+          ]
+        },
+        {
+          "name": "SHACL",
+          "title": "SHACL",
+          "entries": [
+            {
+              "isError": false,
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/topo.ttl"
+            },
+            {
+              "op": "shacl-report",
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "graph": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n",
+              "isError": false,
+              "message": "Validation result for _sources/ontology/shapes.shacl:\n  Validation Report\n  Conforms: True\n  "
+            },
+            {
+              "shaclFile": "_sources/ontology/shapes.shacl",
+              "focusNodes": {
+                ":DirectedReferencesShape": {
+                  "nodes": [
+                    "<urn:uuid:5f0d9a2e-ring-example>/geojson:topology",
+                    "<urn:uuid:5f0d9a2e-solid-example>/geojson:topology"
+                  ]
+                },
+                ":OrientedArcShape": {
+                  "nodes": [
+                    "ex:arcWithCentre/geojson:topology"
+                  ]
+                },
+                ":RadiusRequiredShape": {
+                  "nodes": []
+                },
+                ":OrientedReferenceShape": {
+                  "nodes": [
+                    "_:n21d364c921d5480d82bb521d7b8d9e9eb3",
+                    "_:n21d364c921d5480d82bb521d7b8d9e9eb5",
+                    "<urn:uuid:5f0d9a2e-ring-example>/geojson:topology/topo:directedReferences/rdf:first",
+                    "_:n21d364c921d5480d82bb521d7b8d9e9eb4",
+                    "_:n21d364c921d5480d82bb521d7b8d9e9eb12",
+                    "<urn:uuid:5f0d9a2e-solid-example>/geojson:topology/topo:directedReferences/rdf:first"
+                  ]
+                }
+              },
+              "isError": false,
+              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :DirectedReferencesShape: <urn:uuid:5f0d9a2e-ring-example>/geojson:topology,<urn:uuid:5f0d9a2e-solid-example>/geojson:topology\n - Shape :OrientedArcShape: ex:arcWithCentre/geojson:topology\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedReferenceShape: _:n21d364c921d5480d82bb521d7b8d9e9eb3,_:n21d364c921d5480d82bb521d7b8d9e9eb5,<urn:uuid:5f0d9a2e-ring-example>/geojson:topology/topo:directedReferences/rdf:first,_:n21d364c921d5480d82bb521d7b8d9e9eb4,_:n21d364c921d5480d82bb521d7b8d9e9eb12,<urn:uuid:5f0d9a2e-solid-example>/geojson:topology/topo:directedReferences/rdf:first\n"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "globalErrors": {},
+  "counts": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0
+  }
+}

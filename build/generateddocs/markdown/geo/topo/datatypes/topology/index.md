@@ -75,7 +75,7 @@ The 'references' array names the two point features that form the line's endpoin
 #### jsonld
 ```jsonld
 {
-  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld",
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld",
   "type": "Edge",
   "references": [
     "P1",
@@ -121,7 +121,7 @@ The 'references' array names the two point features that form the line's endpoin
 #### jsonld
 ```jsonld
 {
-  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld",
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld",
   "type": "Edge",
   "references": [
     "P1",
@@ -176,7 +176,7 @@ and an 'orientation' ('+' or '-'). Mutually exclusive with 'references'.
 #### jsonld
 ```jsonld
 {
-  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld",
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld",
   "type": "Ring",
   "directed_references": [
     {
@@ -234,7 +234,7 @@ Mutually exclusive with 'references'.
 #### jsonld
 ```jsonld
 {
-  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld",
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld",
   "type": "Face",
   "directed_references": [
     {
@@ -280,7 +280,7 @@ Mutually exclusive with 'references'.
 #### jsonld
 ```jsonld
 {
-  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld",
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld",
   "type": "Shell",
   "directed_references": [
     {
@@ -338,7 +338,7 @@ Mutually exclusive with 'references'.
 #### jsonld
 ```jsonld
 {
-  "@context": "https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld",
+  "@context": "https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld",
   "type": "Solid",
   "directed_references": [
     {
@@ -434,7 +434,7 @@ $defs:
       directed_references:
         type: array
         items:
-          $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml
+          $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml
         x-jsonld-id: https://purl.org/geojson/topo#directedReferences
         x-jsonld-container: '@list'
     required:
@@ -491,6 +491,12 @@ x-jsonld-extra-terms:
   Solid: https://purl.org/geojson/topo#Solid
   AggregateSolid: https://purl.org/geojson/topo#AggregateSolid
   AggregatePolygon: https://purl.org/geojson/topo#AggregatePolygon
+  points:
+    x-jsonld-id: https://purl.org/geojson/topo#points
+    x-jsonld-container: '@list'
+  edges:
+    x-jsonld-id: https://purl.org/geojson/topo#edges
+    x-jsonld-container: '@list'
   rings:
     x-jsonld-id: https://purl.org/geojson/topo#rings
     x-jsonld-container: '@list'
@@ -500,13 +506,16 @@ x-jsonld-extra-terms:
   faces:
     x-jsonld-id: https://purl.org/geojson/topo#faces
     x-jsonld-container: '@list'
+  solids:
+    x-jsonld-id: https://purl.org/geojson/topo#solids
+    x-jsonld-container: '@list'
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
   topo: https://purl.org/geojson/topo#
   dct: http://purl.org/dc/terms/
 x-bblocks-metadata:
   itemIdentifier: ogc.geo.topo.datatypes.topology
-  register: https://ogcincubator.github.io/topo-feature/build/register.json
+  register: https://surroundaustralia.github.io/topo-feature/build/register.json
   version: '0.1'
   dateOfLastChange: '2026-11-02'
 
@@ -514,8 +523,8 @@ x-bblocks-metadata:
 
 Links to the schema:
 
-* YAML version: [schema.yaml](https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.json)
-* JSON version: [schema.json](https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.yaml)
+* YAML version: [schema.yaml](https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.json)
+* JSON version: [schema.json](https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/schema.yaml)
 
 
 # JSON-LD Context
@@ -588,6 +597,14 @@ Links to the schema:
     "Solid": "topo:Solid",
     "AggregateSolid": "topo:AggregateSolid",
     "AggregatePolygon": "topo:AggregatePolygon",
+    "points": {
+      "@id": "topo:points",
+      "@container": "@list"
+    },
+    "edges": {
+      "@id": "topo:edges",
+      "@container": "@list"
+    },
     "rings": {
       "@id": "topo:rings",
       "@container": "@list"
@@ -598,6 +615,10 @@ Links to the schema:
     },
     "faces": {
       "@id": "topo:faces",
+      "@container": "@list"
+    },
+    "solids": {
+      "@id": "topo:solids",
       "@container": "@list"
     },
     "geojson": "https://purl.org/geojson/vocab#",
@@ -612,13 +633,13 @@ Links to the schema:
 ```
 
 You can find the full JSON-LD context here:
-[context.jsonld](https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld)
+[context.jsonld](https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/topology/context.jsonld)
 
 
 # For developers
 
 The source code for this Building Block can be found in the following repository:
 
-* URL: [https://github.com/ogcincubator/topo-feature](https://github.com/ogcincubator/topo-feature)
+* URL: [https://github.com/surroundaustralia/topo-feature](https://github.com/surroundaustralia/topo-feature)
 * Path: `_sources/datatypes/topology`
 

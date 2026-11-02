@@ -68,7 +68,7 @@ $defs:
       directed_references:
         type: array
         items:
-          $ref: https://ogcincubator.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml
+          $ref: https://surroundaustralia.github.io/topo-feature/build/annotated/geo/topo/datatypes/oriented-ref/schema.yaml
         x-jsonld-id: https://purl.org/geojson/topo#directedReferences
         x-jsonld-container: '@list'
     required:
@@ -125,6 +125,12 @@ x-jsonld-extra-terms:
   Solid: https://purl.org/geojson/topo#Solid
   AggregateSolid: https://purl.org/geojson/topo#AggregateSolid
   AggregatePolygon: https://purl.org/geojson/topo#AggregatePolygon
+  points:
+    x-jsonld-id: https://purl.org/geojson/topo#points
+    x-jsonld-container: '@list'
+  edges:
+    x-jsonld-id: https://purl.org/geojson/topo#edges
+    x-jsonld-container: '@list'
   rings:
     x-jsonld-id: https://purl.org/geojson/topo#rings
     x-jsonld-container: '@list'
@@ -134,12 +140,15 @@ x-jsonld-extra-terms:
   faces:
     x-jsonld-id: https://purl.org/geojson/topo#faces
     x-jsonld-container: '@list'
+  solids:
+    x-jsonld-id: https://purl.org/geojson/topo#solids
+    x-jsonld-container: '@list'
 x-jsonld-prefixes:
   geojson: https://purl.org/geojson/vocab#
   topo: https://purl.org/geojson/topo#
   dct: http://purl.org/dc/terms/
 x-bblocks-metadata:
   itemIdentifier: ogc.geo.topo.datatypes.topology
-  register: https://ogcincubator.github.io/topo-feature/build/register.json
+  register: https://surroundaustralia.github.io/topo-feature/build/register.json
   version: '0.1'
   dateOfLastChange: '2026-11-02'

@@ -2,7 +2,7 @@
   "title": "Validation report for ogc.geo.topo.features.topo-feature-collection - TopoFeatureCollection",
   "bblockName": "TopoFeatureCollection",
   "bblockId": "ogc.geo.topo.features.topo-feature-collection",
-  "generated": "2026-11-02T00:04:21.883386+00:00",
+  "generated": "2026-11-02T00:11:13.788784+00:00",
   "result": true,
   "items": [
     {
@@ -10,7 +10,7 @@
         "type": "TEST_RESOURCE",
         "requireFail": true,
         "filename": "_sources/features/topo-feature-collection/tests/linestring-fail.json",
-        "url": "https://ogcincubator.github.io/topo-feature/_sources/features/topo-feature-collection/tests/linestring-fail.json",
+        "url": "https://surroundaustralia.github.io/topo-feature/_sources/features/topo-feature-collection/tests/linestring-fail.json",
         "language": "json"
       },
       "result": true,
@@ -73,7 +73,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/features/topo-feature/../../examples/referenced-objects-closure.ttl\n - /github/workspace/_sources/ontology/topo.ttl"
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/topo.ttl\n - /github/workspace/_sources/features/topo-feature/../../examples/referenced-objects-closure.ttl"
             },
             {
               "op": "shacl-report",
@@ -85,13 +85,13 @@
             {
               "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
               "focusNodes": {
-                "_:nfeee4ce06389499e9097e79d7d153185b1": {
+                "_:nb4e6fbd36e1044a7b578aab9f2245299b1": {
                   "nodes": [
                     "<file:///github/workspace/P3>/geojson:geometry",
                     "<file:///github/workspace/P1>/geojson:geometry"
                   ]
                 },
-                "_:nfeee4ce06389499e9097e79d7d153185b3": {
+                "_:nb4e6fbd36e1044a7b578aab9f2245299b3": {
                   "nodes": [
                     "<file:///github/workspace/P3>/geojson:geometry",
                     "<file:///github/workspace/P1>/geojson:geometry"
@@ -99,7 +99,7 @@
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:nfeee4ce06389499e9097e79d7d153185b1: <file:///github/workspace/P3>/geojson:geometry,<file:///github/workspace/P1>/geojson:geometry\n - Shape _:nfeee4ce06389499e9097e79d7d153185b3: <file:///github/workspace/P3>/geojson:geometry,<file:///github/workspace/P1>/geojson:geometry\n"
+              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:nb4e6fbd36e1044a7b578aab9f2245299b1: <file:///github/workspace/P3>/geojson:geometry,<file:///github/workspace/P1>/geojson:geometry\n - Shape _:nb4e6fbd36e1044a7b578aab9f2245299b3: <file:///github/workspace/P3>/geojson:geometry,<file:///github/workspace/P1>/geojson:geometry\n"
             },
             {
               "op": "shacl-report",
@@ -111,10 +111,10 @@
             {
               "shaclFile": "_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
               "focusNodes": {
-                "toporules:testTopoLinesReferencePoints": {
+                "toporules:testTopoDirectedReferencesExist": {
                   "nodes": []
                 },
-                "toporules:testTopoDirectedReferencesExist": {
+                "toporules:testTopoEdgesReferencePoints": {
                   "nodes": []
                 },
                 "toporules:testTopoReferencesExist": {
@@ -122,12 +122,12 @@
                     "<file:///github/workspace/LineP1P2>/geojson:topology"
                   ]
                 },
-                "toporules:testTopoEdgesReferencePoints": {
+                "toporules:testTopoLinesReferencePoints": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:\n - Shape toporules:testTopoLinesReferencePoints: *none*\n - Shape toporules:testTopoDirectedReferencesExist: *none*\n - Shape toporules:testTopoReferencesExist: <file:///github/workspace/LineP1P2>/geojson:topology\n - Shape toporules:testTopoEdgesReferencePoints: *none*\n"
+              "message": "Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:\n - Shape toporules:testTopoDirectedReferencesExist: *none*\n - Shape toporules:testTopoEdgesReferencePoints: *none*\n - Shape toporules:testTopoReferencesExist: <file:///github/workspace/LineP1P2>/geojson:topology\n - Shape toporules:testTopoLinesReferencePoints: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -145,6 +145,9 @@
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
                 "geojson:GeometryShape": {
                   "nodes": []
                 },
@@ -154,13 +157,10 @@
                     "<file:///github/workspace/LineP1P2>",
                     "<file:///github/workspace/P1>"
                   ]
-                },
-                "geojson:LinkShape": {
-                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: <file:///github/workspace/P3>,<file:///github/workspace/LineP1P2>,<file:///github/workspace/P1>\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: <file:///github/workspace/P3>,<file:///github/workspace/LineP1P2>,<file:///github/workspace/P1>\n"
             },
             {
               "op": "shacl-report",
@@ -175,26 +175,26 @@
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
-                "geojson:FeatureCollectionShape": {
-                  "nodes": [
-                    "<file:///github/workspace/line>"
-                  ]
-                },
-                "geojson:GeometryShape": {
+                "geojson:LinkShape": {
                   "nodes": []
                 },
                 "geojson:GeometryShape/sh:or/rdf:first": {
                   "nodes": []
                 },
-                "geojson:FeatureShape": {
+                "geojson:GeometryShape": {
                   "nodes": []
                 },
-                "geojson:LinkShape": {
+                "geojson:FeatureCollectionShape": {
+                  "nodes": [
+                    "<file:///github/workspace/line>"
+                  ]
+                },
+                "geojson:FeatureShape": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:FeatureCollectionShape: <file:///github/workspace/line>\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureShape: *none*\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureCollectionShape: <file:///github/workspace/line>\n - Shape geojson:FeatureShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -206,21 +206,21 @@
             {
               "shaclFile": "_sources/ontology/shapes.shacl",
               "focusNodes": {
-                ":DirectedReferencesShape": {
-                  "nodes": []
-                },
-                ":OrientedArcShape": {
-                  "nodes": []
-                },
                 ":RadiusRequiredShape": {
                   "nodes": []
                 },
                 ":OrientedReferenceShape": {
                   "nodes": []
+                },
+                ":OrientedArcShape": {
+                  "nodes": []
+                },
+                ":DirectedReferencesShape": {
+                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :DirectedReferencesShape: *none*\n - Shape :OrientedArcShape: *none*\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedReferenceShape: *none*\n"
+              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedReferenceShape: *none*\n - Shape :OrientedArcShape: *none*\n - Shape :DirectedReferencesShape: *none*\n"
             }
           ]
         }
@@ -231,7 +231,7 @@
         "type": "EXAMPLE",
         "requireFail": false,
         "filename": "build/tests/geo/topo/features/topo-feature-collection/points-only.json",
-        "url": "https://ogcincubator.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/points-only.json",
+        "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/points-only.json",
         "exampleIndex": 1,
         "snippetIndex": 1,
         "language": "application/json"
@@ -285,7 +285,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/features/topo-feature/../../examples/referenced-objects-closure.ttl\n - /github/workspace/_sources/ontology/topo.ttl"
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/topo.ttl\n - /github/workspace/_sources/features/topo-feature/../../examples/referenced-objects-closure.ttl"
             },
             {
               "op": "shacl-report",
@@ -297,13 +297,13 @@
             {
               "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
               "focusNodes": {
-                "_:nfeee4ce06389499e9097e79d7d153185b1": {
+                "_:nb4e6fbd36e1044a7b578aab9f2245299b1": {
                   "nodes": [
                     "<http://www.example.com/features/P2>/geojson:geometry",
                     "<http://www.example.com/features/P1>/geojson:geometry"
                   ]
                 },
-                "_:nfeee4ce06389499e9097e79d7d153185b3": {
+                "_:nb4e6fbd36e1044a7b578aab9f2245299b3": {
                   "nodes": [
                     "<http://www.example.com/features/P2>/geojson:geometry",
                     "<http://www.example.com/features/P1>/geojson:geometry"
@@ -311,7 +311,7 @@
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:nfeee4ce06389499e9097e79d7d153185b1: <http://www.example.com/features/P2>/geojson:geometry,<http://www.example.com/features/P1>/geojson:geometry\n - Shape _:nfeee4ce06389499e9097e79d7d153185b3: <http://www.example.com/features/P2>/geojson:geometry,<http://www.example.com/features/P1>/geojson:geometry\n"
+              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:nb4e6fbd36e1044a7b578aab9f2245299b1: <http://www.example.com/features/P2>/geojson:geometry,<http://www.example.com/features/P1>/geojson:geometry\n - Shape _:nb4e6fbd36e1044a7b578aab9f2245299b3: <http://www.example.com/features/P2>/geojson:geometry,<http://www.example.com/features/P1>/geojson:geometry\n"
             },
             {
               "op": "shacl-report",
@@ -323,21 +323,21 @@
             {
               "shaclFile": "_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
               "focusNodes": {
-                "toporules:testTopoLinesReferencePoints": {
+                "toporules:testTopoDirectedReferencesExist": {
                   "nodes": []
                 },
-                "toporules:testTopoDirectedReferencesExist": {
+                "toporules:testTopoEdgesReferencePoints": {
                   "nodes": []
                 },
                 "toporules:testTopoReferencesExist": {
                   "nodes": []
                 },
-                "toporules:testTopoEdgesReferencePoints": {
+                "toporules:testTopoLinesReferencePoints": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:\n - Shape toporules:testTopoLinesReferencePoints: *none*\n - Shape toporules:testTopoDirectedReferencesExist: *none*\n - Shape toporules:testTopoReferencesExist: *none*\n - Shape toporules:testTopoEdgesReferencePoints: *none*\n"
+              "message": "Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:\n - Shape toporules:testTopoDirectedReferencesExist: *none*\n - Shape toporules:testTopoEdgesReferencePoints: *none*\n - Shape toporules:testTopoReferencesExist: *none*\n - Shape toporules:testTopoLinesReferencePoints: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -355,21 +355,21 @@
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
                 "geojson:GeometryShape": {
                   "nodes": []
                 },
                 "geojson:FeatureShape": {
                   "nodes": [
-                    "<http://www.example.com/features/P1>",
-                    "<http://www.example.com/features/P2>"
+                    "<http://www.example.com/features/P2>",
+                    "<http://www.example.com/features/P1>"
                   ]
-                },
-                "geojson:LinkShape": {
-                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: <http://www.example.com/features/P1>,<http://www.example.com/features/P2>\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: <http://www.example.com/features/P2>,<http://www.example.com/features/P1>\n"
             },
             {
               "op": "shacl-report",
@@ -384,26 +384,26 @@
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
-                "geojson:FeatureCollectionShape": {
-                  "nodes": [
-                    "<http://www.example.com/features/pointsonly>"
-                  ]
-                },
-                "geojson:GeometryShape": {
+                "geojson:LinkShape": {
                   "nodes": []
                 },
                 "geojson:GeometryShape/sh:or/rdf:first": {
                   "nodes": []
                 },
-                "geojson:FeatureShape": {
+                "geojson:GeometryShape": {
                   "nodes": []
                 },
-                "geojson:LinkShape": {
+                "geojson:FeatureCollectionShape": {
+                  "nodes": [
+                    "<http://www.example.com/features/pointsonly>"
+                  ]
+                },
+                "geojson:FeatureShape": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:FeatureCollectionShape: <http://www.example.com/features/pointsonly>\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureShape: *none*\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureCollectionShape: <http://www.example.com/features/pointsonly>\n - Shape geojson:FeatureShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -415,21 +415,21 @@
             {
               "shaclFile": "_sources/ontology/shapes.shacl",
               "focusNodes": {
-                ":DirectedReferencesShape": {
-                  "nodes": []
-                },
-                ":OrientedArcShape": {
-                  "nodes": []
-                },
                 ":RadiusRequiredShape": {
                   "nodes": []
                 },
                 ":OrientedReferenceShape": {
                   "nodes": []
+                },
+                ":OrientedArcShape": {
+                  "nodes": []
+                },
+                ":DirectedReferencesShape": {
+                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :DirectedReferencesShape: *none*\n - Shape :OrientedArcShape: *none*\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedReferenceShape: *none*\n"
+              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedReferenceShape: *none*\n - Shape :OrientedArcShape: *none*\n - Shape :DirectedReferencesShape: *none*\n"
             }
           ]
         }
@@ -440,7 +440,7 @@
         "type": "EXAMPLE",
         "requireFail": false,
         "filename": "build/tests/geo/topo/features/topo-feature-collection/referenced-points.json",
-        "url": "https://ogcincubator.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/referenced-points.json",
+        "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/referenced-points.json",
         "exampleIndex": 2,
         "snippetIndex": 1,
         "language": "application/json"
@@ -494,7 +494,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/features/topo-feature/../../examples/referenced-objects-closure.ttl\n - /github/workspace/_sources/ontology/topo.ttl"
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/topo.ttl\n - /github/workspace/_sources/features/topo-feature/../../examples/referenced-objects-closure.ttl"
             },
             {
               "op": "shacl-report",
@@ -506,13 +506,13 @@
             {
               "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
               "focusNodes": {
-                "_:nfeee4ce06389499e9097e79d7d153185b1": {
+                "_:nb4e6fbd36e1044a7b578aab9f2245299b1": {
                   "nodes": [
                     "<http://www.example.com/features/P2>/geojson:geometry",
                     "<http://www.example.com/features/P1>/geojson:geometry"
                   ]
                 },
-                "_:nfeee4ce06389499e9097e79d7d153185b3": {
+                "_:nb4e6fbd36e1044a7b578aab9f2245299b3": {
                   "nodes": [
                     "<http://www.example.com/features/P2>/geojson:geometry",
                     "<http://www.example.com/features/P1>/geojson:geometry"
@@ -520,7 +520,7 @@
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:nfeee4ce06389499e9097e79d7d153185b1: <http://www.example.com/features/P2>/geojson:geometry,<http://www.example.com/features/P1>/geojson:geometry\n - Shape _:nfeee4ce06389499e9097e79d7d153185b3: <http://www.example.com/features/P2>/geojson:geometry,<http://www.example.com/features/P1>/geojson:geometry\n"
+              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:nb4e6fbd36e1044a7b578aab9f2245299b1: <http://www.example.com/features/P2>/geojson:geometry,<http://www.example.com/features/P1>/geojson:geometry\n - Shape _:nb4e6fbd36e1044a7b578aab9f2245299b3: <http://www.example.com/features/P2>/geojson:geometry,<http://www.example.com/features/P1>/geojson:geometry\n"
             },
             {
               "op": "shacl-report",
@@ -532,10 +532,10 @@
             {
               "shaclFile": "_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
               "focusNodes": {
-                "toporules:testTopoLinesReferencePoints": {
+                "toporules:testTopoDirectedReferencesExist": {
                   "nodes": []
                 },
-                "toporules:testTopoDirectedReferencesExist": {
+                "toporules:testTopoEdgesReferencePoints": {
                   "nodes": []
                 },
                 "toporules:testTopoReferencesExist": {
@@ -543,12 +543,12 @@
                     "<http://www.example.com/features/LineP1P2>/geojson:topology"
                   ]
                 },
-                "toporules:testTopoEdgesReferencePoints": {
+                "toporules:testTopoLinesReferencePoints": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:\n - Shape toporules:testTopoLinesReferencePoints: *none*\n - Shape toporules:testTopoDirectedReferencesExist: *none*\n - Shape toporules:testTopoReferencesExist: <http://www.example.com/features/LineP1P2>/geojson:topology\n - Shape toporules:testTopoEdgesReferencePoints: *none*\n"
+              "message": "Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:\n - Shape toporules:testTopoDirectedReferencesExist: *none*\n - Shape toporules:testTopoEdgesReferencePoints: *none*\n - Shape toporules:testTopoReferencesExist: <http://www.example.com/features/LineP1P2>/geojson:topology\n - Shape toporules:testTopoLinesReferencePoints: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -566,22 +566,22 @@
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
                 "geojson:GeometryShape": {
                   "nodes": []
                 },
                 "geojson:FeatureShape": {
                   "nodes": [
-                    "<http://www.example.com/features/P1>",
                     "<http://www.example.com/features/LineP1P2>",
-                    "<http://www.example.com/features/P2>"
+                    "<http://www.example.com/features/P2>",
+                    "<http://www.example.com/features/P1>"
                   ]
-                },
-                "geojson:LinkShape": {
-                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: <http://www.example.com/features/P1>,<http://www.example.com/features/LineP1P2>,<http://www.example.com/features/P2>\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: <http://www.example.com/features/LineP1P2>,<http://www.example.com/features/P2>,<http://www.example.com/features/P1>\n"
             },
             {
               "op": "shacl-report",
@@ -596,26 +596,26 @@
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
-                "geojson:FeatureCollectionShape": {
-                  "nodes": [
-                    "<http://www.example.com/features/line>"
-                  ]
-                },
-                "geojson:GeometryShape": {
+                "geojson:LinkShape": {
                   "nodes": []
                 },
                 "geojson:GeometryShape/sh:or/rdf:first": {
                   "nodes": []
                 },
-                "geojson:FeatureShape": {
+                "geojson:GeometryShape": {
                   "nodes": []
                 },
-                "geojson:LinkShape": {
+                "geojson:FeatureCollectionShape": {
+                  "nodes": [
+                    "<http://www.example.com/features/line>"
+                  ]
+                },
+                "geojson:FeatureShape": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:FeatureCollectionShape: <http://www.example.com/features/line>\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureShape: *none*\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureCollectionShape: <http://www.example.com/features/line>\n - Shape geojson:FeatureShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -627,21 +627,21 @@
             {
               "shaclFile": "_sources/ontology/shapes.shacl",
               "focusNodes": {
-                ":DirectedReferencesShape": {
-                  "nodes": []
-                },
-                ":OrientedArcShape": {
-                  "nodes": []
-                },
                 ":RadiusRequiredShape": {
                   "nodes": []
                 },
                 ":OrientedReferenceShape": {
                   "nodes": []
+                },
+                ":OrientedArcShape": {
+                  "nodes": []
+                },
+                ":DirectedReferencesShape": {
+                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :DirectedReferencesShape: *none*\n - Shape :OrientedArcShape: *none*\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedReferenceShape: *none*\n"
+              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedReferenceShape: *none*\n - Shape :OrientedArcShape: *none*\n - Shape :DirectedReferencesShape: *none*\n"
             }
           ]
         }
@@ -652,7 +652,7 @@
         "type": "EXAMPLE",
         "requireFail": false,
         "filename": "build/tests/geo/topo/features/topo-feature-collection/referenced-point-line-polygon.json",
-        "url": "https://ogcincubator.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/referenced-point-line-polygon.json",
+        "url": "https://surroundaustralia.github.io/topo-feature/build/tests/geo/topo/features/topo-feature-collection/referenced-point-line-polygon.json",
         "exampleIndex": 3,
         "snippetIndex": 1,
         "language": "application/json"
@@ -706,7 +706,7 @@
           "entries": [
             {
               "isError": false,
-              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/features/topo-feature/../../examples/referenced-objects-closure.ttl\n - /github/workspace/_sources/ontology/topo.ttl"
+              "message": "Using SHACL closure graph sources (declared closures, ontologies and RDF data resources):\n - /github/workspace/_sources/ontology/topo.ttl\n - /github/workspace/_sources/features/topo-feature/../../examples/referenced-objects-closure.ttl"
             },
             {
               "op": "shacl-report",
@@ -718,23 +718,23 @@
             {
               "shaclFile": "_sources/features/topo-feature/tests/geometry-coordinates.shacl",
               "focusNodes": {
-                "_:nfeee4ce06389499e9097e79d7d153185b1": {
+                "_:nb4e6fbd36e1044a7b578aab9f2245299b1": {
                   "nodes": [
+                    "<http://www.example.com/features/P2>/geojson:geometry",
                     "<http://www.example.com/features/P1>/geojson:geometry",
-                    "<http://www.example.com/features/P3>/geojson:geometry",
-                    "<http://www.example.com/features/P2>/geojson:geometry"
+                    "<http://www.example.com/features/P3>/geojson:geometry"
                   ]
                 },
-                "_:nfeee4ce06389499e9097e79d7d153185b3": {
+                "_:nb4e6fbd36e1044a7b578aab9f2245299b3": {
                   "nodes": [
+                    "<http://www.example.com/features/P2>/geojson:geometry",
                     "<http://www.example.com/features/P1>/geojson:geometry",
-                    "<http://www.example.com/features/P3>/geojson:geometry",
-                    "<http://www.example.com/features/P2>/geojson:geometry"
+                    "<http://www.example.com/features/P3>/geojson:geometry"
                   ]
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:nfeee4ce06389499e9097e79d7d153185b1: <http://www.example.com/features/P1>/geojson:geometry,<http://www.example.com/features/P3>/geojson:geometry,<http://www.example.com/features/P2>/geojson:geometry\n - Shape _:nfeee4ce06389499e9097e79d7d153185b3: <http://www.example.com/features/P1>/geojson:geometry,<http://www.example.com/features/P3>/geojson:geometry,<http://www.example.com/features/P2>/geojson:geometry\n"
+              "message": "Focus nodes for _sources/features/topo-feature/tests/geometry-coordinates.shacl:\n - Shape _:nb4e6fbd36e1044a7b578aab9f2245299b1: <http://www.example.com/features/P2>/geojson:geometry,<http://www.example.com/features/P1>/geojson:geometry,<http://www.example.com/features/P3>/geojson:geometry\n - Shape _:nb4e6fbd36e1044a7b578aab9f2245299b3: <http://www.example.com/features/P2>/geojson:geometry,<http://www.example.com/features/P1>/geojson:geometry,<http://www.example.com/features/P3>/geojson:geometry\n"
             },
             {
               "op": "shacl-report",
@@ -746,26 +746,26 @@
             {
               "shaclFile": "_sources/features/topo-feature-collection/tests/topo-refs-exist.shacl",
               "focusNodes": {
-                "toporules:testTopoLinesReferencePoints": {
+                "toporules:testTopoDirectedReferencesExist": {
                   "nodes": []
                 },
-                "toporules:testTopoDirectedReferencesExist": {
+                "toporules:testTopoEdgesReferencePoints": {
                   "nodes": []
                 },
                 "toporules:testTopoReferencesExist": {
                   "nodes": [
-                    "<http://www.example.com/features/LineP3P1>/geojson:topology",
-                    "<http://www.example.com/features/LineP1P2>/geojson:topology",
                     "<http://www.example.com/features/TriangleP1P2P3>/geojson:topology",
+                    "<http://www.example.com/features/LineP1P2>/geojson:topology",
+                    "<http://www.example.com/features/LineP3P1>/geojson:topology",
                     "<http://www.example.com/features/LineP2P3>/geojson:topology"
                   ]
                 },
-                "toporules:testTopoEdgesReferencePoints": {
+                "toporules:testTopoLinesReferencePoints": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:\n - Shape toporules:testTopoLinesReferencePoints: *none*\n - Shape toporules:testTopoDirectedReferencesExist: *none*\n - Shape toporules:testTopoReferencesExist: <http://www.example.com/features/LineP3P1>/geojson:topology,<http://www.example.com/features/LineP1P2>/geojson:topology,<http://www.example.com/features/TriangleP1P2P3>/geojson:topology,<http://www.example.com/features/LineP2P3>/geojson:topology\n - Shape toporules:testTopoEdgesReferencePoints: *none*\n"
+              "message": "Focus nodes for _sources/features/topo-feature-collection/tests/topo-refs-exist.shacl:\n - Shape toporules:testTopoDirectedReferencesExist: *none*\n - Shape toporules:testTopoEdgesReferencePoints: *none*\n - Shape toporules:testTopoReferencesExist: <http://www.example.com/features/TriangleP1P2P3>/geojson:topology,<http://www.example.com/features/LineP1P2>/geojson:topology,<http://www.example.com/features/LineP3P1>/geojson:topology,<http://www.example.com/features/LineP2P3>/geojson:topology\n - Shape toporules:testTopoLinesReferencePoints: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -783,26 +783,26 @@
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
+                "geojson:LinkShape": {
+                  "nodes": []
+                },
                 "geojson:GeometryShape": {
                   "nodes": []
                 },
                 "geojson:FeatureShape": {
                   "nodes": [
-                    "<http://www.example.com/features/LineP3P1>",
+                    "<http://www.example.com/features/LineP1P2>",
                     "<http://www.example.com/features/LineP2P3>",
                     "<http://www.example.com/features/P2>",
                     "<http://www.example.com/features/P1>",
                     "<http://www.example.com/features/P3>",
-                    "<http://www.example.com/features/LineP1P2>",
-                    "<http://www.example.com/features/TriangleP1P2P3>"
+                    "<http://www.example.com/features/TriangleP1P2P3>",
+                    "<http://www.example.com/features/LineP3P1>"
                   ]
-                },
-                "geojson:LinkShape": {
-                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: <http://www.example.com/features/LineP3P1>,<http://www.example.com/features/LineP2P3>,<http://www.example.com/features/P2>,<http://www.example.com/features/P1>,<http://www.example.com/features/P3>,<http://www.example.com/features/LineP1P2>,<http://www.example.com/features/TriangleP1P2P3>\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/feature/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureShape: <http://www.example.com/features/LineP1P2>,<http://www.example.com/features/LineP2P3>,<http://www.example.com/features/P2>,<http://www.example.com/features/P1>,<http://www.example.com/features/P3>,<http://www.example.com/features/TriangleP1P2P3>,<http://www.example.com/features/LineP3P1>\n"
             },
             {
               "op": "shacl-report",
@@ -817,26 +817,26 @@
                 "geojson:GeometryShape/sh:or/rdf:rest/rdf:first": {
                   "nodes": []
                 },
-                "geojson:FeatureCollectionShape": {
-                  "nodes": [
-                    "<http://www.example.com/features/TopoCollectionExample>"
-                  ]
-                },
-                "geojson:GeometryShape": {
+                "geojson:LinkShape": {
                   "nodes": []
                 },
                 "geojson:GeometryShape/sh:or/rdf:first": {
                   "nodes": []
                 },
-                "geojson:FeatureShape": {
+                "geojson:GeometryShape": {
                   "nodes": []
                 },
-                "geojson:LinkShape": {
+                "geojson:FeatureCollectionShape": {
+                  "nodes": [
+                    "<http://www.example.com/features/TopoCollectionExample>"
+                  ]
+                },
+                "geojson:FeatureShape": {
                   "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:FeatureCollectionShape: <http://www.example.com/features/TopoCollectionExample>\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:FeatureShape: *none*\n - Shape geojson:LinkShape: *none*\n"
+              "message": "Focus nodes for https://opengeospatial.github.io/bblocks/registereditems/geo/features/featureCollection/shapes.shacl:\n - Shape geojson:GeometryShape/sh:or/rdf:rest/rdf:first: *none*\n - Shape geojson:LinkShape: *none*\n - Shape geojson:GeometryShape/sh:or/rdf:first: *none*\n - Shape geojson:GeometryShape: *none*\n - Shape geojson:FeatureCollectionShape: <http://www.example.com/features/TopoCollectionExample>\n - Shape geojson:FeatureShape: *none*\n"
             },
             {
               "op": "shacl-report",
@@ -848,21 +848,21 @@
             {
               "shaclFile": "_sources/ontology/shapes.shacl",
               "focusNodes": {
-                ":DirectedReferencesShape": {
-                  "nodes": []
-                },
-                ":OrientedArcShape": {
-                  "nodes": []
-                },
                 ":RadiusRequiredShape": {
                   "nodes": []
                 },
                 ":OrientedReferenceShape": {
                   "nodes": []
+                },
+                ":OrientedArcShape": {
+                  "nodes": []
+                },
+                ":DirectedReferencesShape": {
+                  "nodes": []
                 }
               },
               "isError": false,
-              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :DirectedReferencesShape: *none*\n - Shape :OrientedArcShape: *none*\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedReferenceShape: *none*\n"
+              "message": "Focus nodes for _sources/ontology/shapes.shacl:\n - Shape :RadiusRequiredShape: *none*\n - Shape :OrientedReferenceShape: *none*\n - Shape :OrientedArcShape: *none*\n - Shape :DirectedReferencesShape: *none*\n"
             }
           ]
         }

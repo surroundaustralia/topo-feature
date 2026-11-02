@@ -1,0 +1,13 @@
+@prefix geojson: <https://purl.org/geojson/vocab#> .
+@prefix topo:    <https://purl.org/geojson/topo#> .
+@prefix ex:      <http://www.example.com/features/> .
+
+# An arc by chord must have a radius.
+ex:arcByChordNoRadius
+  a geojson:Feature ;
+  geojson:topology [
+      a geojson:ArcByChord ;
+      topo:relatedFeatures ( ex:arcP1 ex:arcP2 ) ;
+      topo:orientation "cw" ;
+    ] ;
+.
